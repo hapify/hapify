@@ -22,9 +22,9 @@ You can browse and import sample boilerplates & data models in your Hapfy projec
 ### Contributing
 
 Contributions are **welcome and extremely helpful** 🙌
-- [File a detailed bug report](https://github.com/vanilla/vanilla/issues/new?template=bug_report.md)
-- [Plan out a new feature](https://github.com/vanilla/vanilla/issues/new?template=feature_request.md)
-- [Povide Documentation Feedback](https://github.com/vanilla/vanilla/issues/new??template=documentation.md)
+- [File a detailed bug report](https://github.com/hapify/hapify/issues/new?template=bug_report.md)
+- [Plan out a new feature](https://github.com/hapify/hapify/issues/new?template=feature_request.md)
+- [Povide Documentation Feedback](https://github.com/hapify/hapify/issues/new??template=documentation.md)
 
 Please refer [to the contribution guide](https://github.com/hapify/hapify/blob/master/CONTRIBUTING.md) for more information.
 

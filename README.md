@@ -9,7 +9,7 @@
 - Hapify takes two inputs, the relational data-models and code templates.
 - Hapify by does not command any paradigm or code structure. Users can defined their own code templates with their preferred language.
 
-## Installation
+## Get Started
 
 Visit our [Get Sarted Tutorial](https://www.hapify.io/get-started)
 
@@ -28,7 +28,7 @@ Contributions are **welcome and extremely helpful** 🙌
 
 Please refer [to the contribution guide](https://github.com/hapify/hapify/blob/master/CONTRIBUTING.md) for more information.
 
-## Channels
+### Channels
 - [Slack](https://hapify.slack.com)
 - [Email](mailto:hello@hapify.io)
 

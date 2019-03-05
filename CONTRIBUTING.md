@@ -8,7 +8,7 @@ Please read this guide if you're interested in contributing to Hapify.
 
 **Our community is a safe and friendly environment, where we support and treat each other with respect**.
 
-We invite you to actively participate in discussions on Github, [the Forum](https://www.Hapify.io/forum/) and [Slack](https://slack.Hapify.io/).
+We invite you to actively participate in discussions on Github, and [Slack](https://slack.Hapify.io/).
 
 You'll see many discussions about usage or design questions, but any topic is welcome.
 They are a great foundation to find potential issues, feature requests or documentation improvements.
@@ -27,7 +27,7 @@ Adding tests is a great way to help preventing future bugs.
 
 You can either improve existing content or add new resources.
 
-If you miss a particular information in [the reference documentation](https://www.hapify.io/docs), feel free to either create an issue or PR. We also welcome [tutorials](https://www.Hapify.io/docs/tutorials) for related topics that you're interested in. If you come across an interesting pattern, feel free to add a new example [to our example list](https://github.com/Hapify/Hapify/tree/master/examples)!
+If you miss a particular information in [the reference documentation](https://www.hapify.io/documentation), feel free to either create an issue or PR. We also welcome [tutorials](https://www.Hapify.io/docs/tutorials) for related topics that you're interested in. If you come across an interesting pattern, feel free to add a new example [to our example list](https://github.com/Hapify/Hapify/tree/master/examples)!
 
 
 ## Features
@@ -45,6 +45,5 @@ your pull request should be accepted quickly.
 
 ## Attribution
 
-This content is adapted from the PRISMA Contributing Document
-available at https://github.com/prisma/prisma/blob/master/CONTRIBUTING.md
+This content is adapted from the [PRISMA Contributing Document](https://github.com/prisma/prisma/blob/master/CONTRIBUTING.md).
 

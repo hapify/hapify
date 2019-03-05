@@ -43,3 +43,8 @@ After getting some feedback, push to your fork and submit a pull request. We
 may suggest some changes or improvements or alternatives, but for small changes
 your pull request should be accepted quickly.
 
+## Attribution
+
+This content is adapted from the PRISMA Contributing Document
+available at https://github.com/prisma/prisma/blob/master/CONTRIBUTING.md
+

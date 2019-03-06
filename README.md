@@ -13,7 +13,7 @@
 
 Hapify was born out of the desire to **accelerate modern development**, by replacing traditionnal statics boilerplates with **dynamic boilerplates**. Hapify removes the need to write repeating boilerplate for extended CRUD operations for both backend & frontend development. Focus on features instead of doing repetitive work !
 
-- Hapify is an agnostic code engine allowing the creation of any kind of API based app, in any language
+- Hapify is an agnostic code engine & tools allowing the creation of any kind of API based app, in any language
 - Hapify takes two inputs, the relational data-models and code templates.
 - Hapify does not command any paradigm or code structure. You can write your own code templates or use the ones provided by the community.
 

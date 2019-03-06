@@ -1,6 +1,4 @@
 <img align="center" width="300" src="https://github.com/hapify/hapify/blob/master/images/Hapify_logo_white.png" alt="Hapify Logo">
-
-In this article:
 - [Howdy, developer!](https://github.com/hapify/hapify#howdy-developer)
 - [Good reasons to check out Hapify](https://github.com/hapify/hapify#5-reasons-to-check-out-hapify)
 - [Get Started](https://github.com/hapify/hapify#get-started)

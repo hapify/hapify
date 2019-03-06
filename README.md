@@ -1,9 +1,21 @@
 <img align="center" width="300" src="https://github.com/hapify/hapify/blob/master/images/Hapify_logo_white.png" alt="Hapify Logo">
 
+In this article:
+- [Howdy, developer!](https://github.com/hapify/hapify#howdy-developer)
+- [Good reasons to check out Hapify](https://github.com/hapify/hapify#5-reasons-to-check-out-hapify)
+- [Get Started](https://github.com/hapify/hapify#get-started)
+- [Community](https://github.com/hapify/hapify#community)
+  - Ressources
+  - Contributing
+  - Channels
+- [Getting Help](https://github.com/hapify/hapify#getting-help)
+- [Architecture](https://github.com/hapify/hapify/blob/master/README.md#architecture)
+
+
 
 ## Howdy, developer!
 
-Hapify was born out of the desire to accelerate modern development, by replacing traditionnal statics boilerplates with **dynamic boilerplates**. Hapify removes the need to write repeating boilerplate for extended CRUD operations for both backend & frontend development. Focus on features instead of doing repetitive work !
+Hapify was born out of the desire to **accelerate modern development**, by replacing traditionnal statics boilerplates with **dynamic boilerplates**. Hapify removes the need to write repeating boilerplate for extended CRUD operations for both backend & frontend development. Focus on features instead of doing repetitive work !
 
 - Hapify is an agnostic code engine allowing the creation of any kind of API based app, in any language
 - Hapify takes two inputs, the relational data-models and code templates.

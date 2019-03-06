@@ -1,17 +1,33 @@
-<img src="https://drive.google.com/file/d/1N7jkKZe3W8a2vqqNkDgT0oCB184SCDul/view?usp=sharing" alt="Hapify Logo" width=500/>
+<img align="center" width="300" src="https://github.com/hapify/hapify/blob/master/images/Hapify_logo_white.png" alt="Hapify Logo">
 
 
-[Website](https://hapify.io) • [Docs](https://www.hapify.io/documenation/) • [Slack](https://slack.hapify.io/)
+## Howdy, developer!
 
-## Key concepts
+Hapify was born out of the desire to accelerate modern developpment, by replacing traditionnal statics boilerplates with dynamic boilerplates. Hapify removes the need to write repeating boilerplate for extended CRUD operations for both backend & frontend development. Focus on features instead of doing repetitive work !
 
-- Hapify is an agnostic code generator allowing the creation of any kind of app.
+- Hapify is an agnostic code engine allowing the creation of any kind of API based app, in any language
 - Hapify takes two inputs, the relational data-models and code templates.
-- Hapify by does not command any paradigm or code structure. Users can defined their own code templates with their preferred language.
+- Hapify by does not command any paradigm or code structure. You can write your own code templates or use the ones provided by the community.
+
+
+| 1. Dynamic Templating | 2. Data Modelisation | 3. Code Engine |
+| --- | --- | --- |
+| <img align="center" width="600" src="https://github.com/hapify/hapify/blob/master/images/1.adaptative-template-hapify.png"> | <img align="center" width="600" src="https://github.com/hapify/hapify/blob/master/images/2.data-modelisation-hapify.png"> | <img align="center" width="600" src="https://github.com/hapify/hapify/blob/master/images/3.code-engine-hapify.png"> |
+
+
+## 5 reasons to check out Hapify
+
+1. We've reimagined boilerplates.
+1. Our opensource templating syntax is unique, simple and powerful.
+1. Your are free to write you own dynamic boilerplates with you own specifications, in any language
+1. You can easily reverse-engineer your current static boilerplates
+1. We strongly encourage our community to share boilerplates and data-models collections
+
 
 ## Get Started
 
 Visit our [Get Sarted Tutorial](https://www.hapify.io/get-started)
+
 
 ## Community
 
@@ -39,8 +55,7 @@ Please refer [to the contribution guide](https://github.com/hapify/hapify/blob/m
 
 
 ## Architecture
-<img src="https://www.hapify.io/assets/svg/how-it-works-schema-hapify.svg" alt="Hapify Architecture" width=500/>
-
+<img align="center" width="600" src="https://github.com/hapify/hapify/blob/master/images/how-it-works-schema-hapify.png">
 
 
 

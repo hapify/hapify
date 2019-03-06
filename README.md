@@ -4,9 +4,6 @@
 - [Good reasons to check out Hapify](https://github.com/hapify/hapify#5-reasons-to-check-out-hapify)
 - [Get Started](https://github.com/hapify/hapify#get-started)
 - [Community](https://github.com/hapify/hapify#community)
-  - Ressources
-  - Contributing
-  - Channels
 - [Getting Help](https://github.com/hapify/hapify#getting-help)
 - [Architecture](https://github.com/hapify/hapify/blob/master/README.md#architecture)
 

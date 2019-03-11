@@ -11,41 +11,21 @@ The following lists represent a number of smaller-scope issues and improvements 
 
 #### Improvements
 
-- [ ] Lorem
-- [ ] Lorem
-- [ ] Lorem
-- [ ] Lorem
-- [ ] Lorem
-
 #### Bug fixes
 
-- [ ] Lorem
-- [ ] Lorem
-- [ ] Lorem
+- [ ] Hapify GUI: Responive issue, unable to select some accesses in small screens
+- [ ] Hapify GUI: Responive issue, unable to select some fields properties in small screens
 
 ### Specification phase
 
 The "specification phase" reflects the spec work we do before starting to actually implement a feature. 
 Here are the big features that are currently being specced out:
 
-- [ ] Lorem
-- [ ] Lorem
-- [ ] Lorem
-
 ### Implementation phase
 
 The "implementation phase" reflects the larger features that we are currently working on. These features typically require multiple weeks/months to be implemented:
-
-- [ ] Lorem
-- [ ] Lorem
-- [ ] Lorem
 
 ## Upcoming
 
 While the following features are currently not listed in the `Q1/Q2 2019`-section, they may still get added to it:
 
-- Lorem
-- Lorem
-- Lorem
-- Lorem
-- Lorem

@@ -11,6 +11,10 @@ The following lists represent a number of smaller-scope issues and improvements 
 
 #### Improvements
 
+- [ ] Hapify GUI: Ability to add notes on models and fields
+- [ ] Hapify GUI: Ability to copy/paste models, even between different projects
+- [ ] Hapify GUI: Improve resources management while editing on large projects
+
 #### Bug fixes
 
 - [ ] Hapify GUI: Responive issue, unable to select some accesses in small screens

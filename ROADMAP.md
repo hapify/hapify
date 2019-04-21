@@ -19,6 +19,7 @@ The following lists represent a number of smaller-scope issues and improvements 
 
 - [ ] Hapify GUI: Responive issue, unable to select some accesses in small screens
 - [ ] Hapify GUI: Responive issue, unable to select some fields properties in small screens
+- [ ] Hapify Syntax: Cannot limit loop over more than 9 fields
 
 ### Specification phase
 

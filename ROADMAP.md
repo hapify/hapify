@@ -11,16 +11,17 @@ The following lists represent a number of smaller-scope issues and improvements 
 
 #### Improvements
 
-- [ ] Hapify GUI: Ability to add notes on models and fields
-- [ ] Hapify GUI: Ability to copy/paste models, even between different projects
-- [ ] Hapify GUI: Ability to search/filter models
-- [ ] Hapify GUI: Improve resources management while editing on large projects
+- [ ] Hapify Syntax & Hapify CLI: Handle enum fields
+- [x] Hapify GUI: Ability to add notes on models and fields
+- [x] Hapify GUI: Ability to copy/paste models, even between different projects
+- [x] Hapify GUI: Ability to search/filter models
+- [x] Hapify GUI: Improve resources management while editing on large projects
 
 #### Bug fixes
 
 - [ ] Hapify GUI: Responive issue, unable to select some accesses in small screens
-- [ ] Hapify GUI: Responive issue, unable to select some fields properties in small screens
-- [ ] Hapify Syntax: Cannot limit loop over more than 9 fields
+- [x] Hapify GUI: Responive issue, unable to select some fields properties in small screens
+- [x] Hapify Syntax: Cannot limit loop over more than 9 fields
 
 ### Specification phase
 

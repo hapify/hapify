@@ -11,3 +11,5 @@ pages:
       - JavaScript: 'templating/templating-javascript.md'
   - Best practices: 'best-practices.md'
   - Troubleshooting: 'troubleshooting.md'
+theme:
+  name: material

@@ -1,6 +1,0 @@
-site_name: Hapify
-pages:
-  - Hapify overview: index.md
-  - Get started: get-started.md
-  - CLI: cli.md
-theme: readthedocs

@@ -12,6 +12,9 @@ The following lists represent a number of smaller-scope issues and improvements 
 #### Improvements
 
 - [ ] Hapify Syntax & Hapify CLI: Handle enum fields
+- [x] Hapify Syntax: Add explicit syntax (long syntax)
+- [x] Hapify CLI: Stores model locally
+- [x] Hapify CLI: Run generation locally
 - [x] Hapify GUI: Ability to add notes on models and fields
 - [x] Hapify GUI: Ability to copy/paste models, even between different projects
 - [x] Hapify GUI: Ability to search/filter models
@@ -19,14 +22,15 @@ The following lists represent a number of smaller-scope issues and improvements 
 
 #### Bug fixes
 
-- [ ] Hapify GUI: Responive issue, unable to select some accesses in small screens
-- [x] Hapify GUI: Responive issue, unable to select some fields properties in small screens
+- [ ] Hapify CLI: Override issue when running multiple instances on same templates.
+- [ ] Hapify GUI: Responsive issue, unable to select some accesses in small screens
+- [x] Hapify GUI: Responsive issue, unable to select some fields properties in small screens
 - [x] Hapify Syntax: Cannot limit loop over more than 9 fields
 
 ### Specification phase
 
 The "specification phase" reflects the spec work we do before starting to actually implement a feature. 
-Here are the big features that are currently being specced out:
+Here are the big features that are currently being specked out:
 
 ### Implementation phase
 

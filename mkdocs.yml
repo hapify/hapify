@@ -13,3 +13,6 @@ pages:
   - Troubleshooting: 'troubleshooting.md'
 theme:
   name: material
+  palette:
+    primary: deep purple
+    accent: purple

@@ -14,7 +14,7 @@ Therefore, boilerplates for Hapify embed compatible code templates. You can brow
 
 ### Tutorial quick overview
 
-![Hapify CLI - Terminal sample](/assets/asciinema/get-started.gif 'Terminal sample')
+![Hapify CLI - Terminal sample](/assets/get-started.gif 'Terminal sample')
 
 ## 1. Install the CLI
 
@@ -52,7 +52,7 @@ Now your CLI can interact with Hapify Cloud.
 ## 4. Start a new project
 
 In this section, we will describe how to start a project from an existing boilerplate.
-To start a project from a legacy boilerplate, please refer to [legacy](/documentation).
+To start a project from a legacy boilerplate, please refer to [legacy](/templating/code-samples/).
 
 ### Prepare folder
 
@@ -142,9 +142,9 @@ hpf serve
 
 The local GUI looks like:
 
-![Hapify GUI - models edition](/assets/docs/resources/gui-models.png 'Models Edition')
+![Hapify GUI - models edition](/assets/gui-models.png 'Models Edition')
 
-To learn more about models management please refer to [GUI Models](/documentation).
+To learn more about models management please refer to [GUI Models](/concepts/models/).
 
 ## 6. Generate the code
 
@@ -160,4 +160,4 @@ Now you can start customizing and running the generated code.
 ## 7. Lifecycle
 
 Use the command `hpf patch` if you need to re-generate the code due to models or templates modifications, whereas you have already modified the generated code.
-To prevent conflict during re-generation, please read our [best practices guide](/documentation/best-practices).
+To prevent conflict during re-generation, please read our [best practices guide](/best-practices).

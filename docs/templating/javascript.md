@@ -2,13 +2,13 @@
 
 ## Hapify syntax
 
-For documentation about Hapify syntax, please refer to [syntax](/documentation/templating-hapify).
+For documentation about Hapify syntax, please refer to [syntax](/templating/hapify).
 
 ## Model usage within a template
 
 We will describe the structure of the object that represent a model when writing a template.
 
-Before reading this, you should have a look to the [key-concepts](/documentation/key-concepts) section.
+Before reading this, you should have a look to the [key-concepts](/concepts/key-concepts) section.
 
 ### Object types
 

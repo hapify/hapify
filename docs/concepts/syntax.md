@@ -2,7 +2,7 @@
 
 ## Pre-requisites
 
-Before reading this article, we recommend that you read the documentation about [models and fields structure](/documentation/templating-javascript).
+Before reading this article, we recommend that you read the documentation about [models and fields structure](/templating/javascript).
 
 ## Wrappers
 

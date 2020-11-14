@@ -9,6 +9,7 @@ nav:
   - Templating:
       - Samples: 'templating/code-samples.md'
       - Hapify: 'templating/hapify.md'
+      - Reference: 'templating/hapify-reference.md'
       - JavaScript: 'templating/javascript.md'
   - Best practices: 'best-practices.md'
   - Troubleshooting: 'troubleshooting.md'
@@ -22,6 +23,7 @@ theme:
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences
+  - pymdownx.tabbed
 extra:
   social:
     - icon: fontawesome/solid/globe

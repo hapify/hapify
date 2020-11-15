@@ -2,14 +2,14 @@
 
 ## Why using a specific syntax ?
 
-We designed a syntax to manipulate the [object](templating/javascript) injected in the templates that represents the data-model.
+We designed a syntax to manipulate the [model object](../../model-object) injected in the templates that represents the data-model.
 This syntax is optimized to play with this object's properties with short words.
 This allow us to deal with complex ideas with short sentences.
 
 For example, this loop in Javascript:
 
 ```javascript
-for (let f of root.fields.list.filter(f => f.searchable && f.type === 'entity')) {
+for (let f of model.fields.list.filter(f => f.searchable && f.type === 'entity')) {
 	out += '    Do something';
 }
 ```
@@ -576,8 +576,8 @@ Define a custom function and call it
 
 ### Error
 
-Do not write this: `#!hapify <<= JSON.stringify(root) >>`.
-The `root` object has recursive properties. Therefore this command will enter an infinite loop.
+Do not write this: `#!hapify <<= JSON.stringify(model) >>`.
+The `model` object has recursive properties. Therefore this command will enter an infinite loop.
 
 ## Comments
 
@@ -587,6 +587,12 @@ This syntax writes a comment in the template without any output to the generated
 <<# This is just a comment>>
 ```
 
+## Reserved words
+
+The following list of words cannot be used for naming variables.
+
+`A`, `Ac`, `Accesses`, `ad`, `Ad`, `admin`, `An`, `and`, `andNot`, `Ar`, `As`, `au`, `Au`, `audio`, `auth`, `boolean`, `CountAccess`, `CreateAccess`, `D`, `date`, `datetime`, `Dependencies`, `document`, `else`, `elseif`, `em`, `email`, `embedded`, `endfor`, `endif`, `entity`, `F`, `Fields`, `file`, `float`, `for`, `gs`, `gteAdmin`, `gteAuth`, `gteGuest`, `gteOwner`, `guest`, `hd`, `hidden`, `if`, `image`, `in`, `integer`, `internal`, `isGeolocated`, `isGeoSearchable`, `label`, `latitude`, `lb`, `longitude`, `lteAdmin`, `lteAuth`, `lteGuest`, `lteOwner`, `M`, `mainlyHidden`, `mainlyInternal`, `maxAdmin`, `maxAuth`, `maxGuest`, `maxOwner`, `ml`, `Model`, `Models`, `multiple`, `noAdmin`, `noAuth`, `noGuest`, `noOwner`, `not`, `nu`, `nullable`, `number`, `object`, `onlyAdmin`, `onlyAuth`, `onlyGuest`, `onlyOwner`, `or`, `orNot`, `os`, `out`, `ow`, `owner`, `ownership`, `P`, `password`, `pGeo`, `pGSe`, `pMAd`, `pMAu`, `pMGs`, `pMHd`, `pMIn`, `pMOw`, `pNAd`, `pNAu`, `pNGs`, `pNOw`, `pOAd`, `pOAu`, `pOGs`, `pOOw`, `pr`, `primary`, `PrimaryField`, `R`, `ReadAccess`, `ReferencedIn`, `RefModels`, `RemoveAccess`, `restricted`, `rich`, `richText`, `root`, `rs`, `se`, `searchable`, `SearchAccess`, `so`, `sortable`, `string`, `tB`, `tD`, `tDd`, `tDt`, `tE`, `text`, `tF`, `tFa`, `tFd`, `tFi`, `tFv`, `time`, `tN`, `tNf`, `tNg`, `tNi`, `tNt`, `tO`, `tS`, `tSe`, `tSp`, `tSr`, `tSt`, `tSu`, `un`, `unique`, `UpdateAccess`, `url`, `video`.
+
 ## Learn more
 
-If you want to learn more about Hapify syntax and how it is mapped to the [JavaScript object](templating/javascript) injected in the templates, please refer to the documentation [syntax detailed](documentation/syntax).
+If you want to learn more about Hapify syntax and how it is mapped to the [model object](templating/model-object) injected in the templates, please refer to this [documentation](templating/model-object).

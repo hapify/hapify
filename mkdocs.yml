@@ -7,10 +7,13 @@ nav:
       - Models: 'concepts/models.md'
   - Templating:
       - Hapify:
-        - Samples: 'templating/hapify/code-samples.md'
         - Syntax: 'templating/hapify/syntax.md'
-      - Reference: 'templating/hapify-reference.md'
-      - JavaScript: 'templating/javascript.md'
+        - Samples: 'templating/hapify/code-samples.md'
+      - JavaScript:
+          - Usage: 'templating/javascript/usage.md'
+          - Samples: 'templating/javascript/code-samples.md'
+      - Model object: 'templating/model-object.md'
+      - Models validator: 'templating/models-validator.md'
   - Best practices: 'best-practices.md'
   - Troubleshooting: 'troubleshooting.md'
 theme:

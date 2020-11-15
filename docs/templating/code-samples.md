@@ -12,11 +12,30 @@ Before reading this article, we recommend that you read the documentation about 
 
 This block creates a class for the model (in pascal case) and set the name of the primary key, in snake case.
 
-```
-class <<M AA>> {
-    private primaryKey = '<<P a_a>>';
-}
-```
+
+=== "Long syntax"
+
+    ```hapify
+    class <<Model pascal>> {
+        private primaryKey = '<<PrimaryField snake>>';
+    }
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    class <<M AA>> {
+        private primaryKey = '<<P a_a>>';
+    }
+    ```
+    
+=== "Sample output"
+
+    ```typescript
+    class Place {
+        private primaryKey = '_id';
+    }
+    ```
 
 ## Conditions
 
@@ -24,32 +43,83 @@ class <<M AA>> {
 
 In a single model template, this block requires MongoDb driver if the model has a relation to another one.
 
-```
-<<? F tE>>
-const mongoDb = require('mongodb');
-<<?>>
-```
+
+=== "Long syntax"
+
+    ```hapify
+    <<if Fields entity>>
+    const mongoDb = require('mongodb');
+    <<endif>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<? F tE>>
+    const mongoDb = require('mongodb');
+    <<?>>
+    ```
+    
+=== "Sample output"
+
+    ```javascript
+    const mongoDb = require('mongodb');
+    ```
 
 ### Includes session validation if the action requires authentication
 
 In a single model template, if the action `create` requires at least an authenticated user, this block get the connected user.
 
-```
-<<? Ac [au>>
-const user = Session.getCurrent();
-<<?>>
-```
+
+=== "Long syntax"
+
+    ```hapify
+    <<if CreateAccess gteAuth>>
+    const user = Session.getCurrent();
+    <<endif>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<? Ac [au>>
+    const user = Session.getCurrent();
+    <<?>>
+    ```
+    
+=== "Sample output"
+
+    ```javascript
+    const user = Session.getCurrent();
+    ```
 
 ### Test if the model is geo-located
 
 In a single model template, if the model has the property `isGeolocated` (i.e. if the model contains at least one latitude field and one longitude field),
 this block calls the map position picker component.
 
-```
-<<? M pGeo>>
-<app-map-position-picker [model]="<<M aA>>"></app-map-position-picker>
-<<?>>
-```
+
+=== "Long syntax"
+
+    ```hapify
+    <<if Model isGeolocated>>
+    <app-map-position-picker [model]="<<Model camel>>"></app-map-position-picker>
+    <<endif>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<? M pGeo>>
+    <app-map-position-picker [model]="<<M aA>>"></app-map-position-picker>
+    <<?>>
+    ```
+    
+=== "Sample output"
+
+    ```html
+    <app-map-position-picker [model]="place"></app-map-position-picker>
+    ```
 
 ## Iterations
 
@@ -57,33 +127,95 @@ this block calls the map position picker component.
 
 In a single model template, this block creates an array (in Javascript) that contains the hidden (`hd`) fields' names (in camel case).
 
-```
-const hiddenFields = [
-<<@ F hd f>>
-    '<<f aA>>',
-<<?>>
-];
-```
+
+=== "Long syntax"
+
+    ```hapify
+    const hiddenFields = [
+    <<for Fields hidden f>>
+        '<<f camel>>',
+    <<endif>>
+    ];
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    const hiddenFields = [
+    <<@ F hd f>>
+        '<<f aA>>',
+    <<?>>
+    ];
+    ```
+    
+=== "Sample output"
+
+    ```javascript
+    const hiddenFields = [
+        'password',
+        'token',
+    ];
+    ```
 
 ### Create an index file that includes all models
 
 In a multiple model template, this will call all model's index file.
 
-```
-<<@ M m>>
-require_once('./<<m a-a>>.php'),
-<<@>>
-```
+
+=== "Long syntax"
+
+    ```hapify
+    <<for Models m>>
+    require_once('./<<m kebab>>.php'),
+    <<endfor>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<@ M m>>
+    require_once('./<<m a-a>>.php'),
+    <<@>>
+    ```
+    
+=== "Sample output"
+
+    ```php
+    require_once('./user.php'),
+    require_once('./place.php'),
+    require_once('./service.php'),
+    require_once('./place-category.php'),
+    ```
 
 ### Create an index file that includes models accessible by admins only
 
 If you want to restrict the previous loop for models that only contains admin actions:
 
-```
-<<@ M pOAd m>>
-require_once('./<<m a-a>>.php'),
-<<@>>
-```
+
+=== "Long syntax"
+
+    ```hapify
+    <<for Models onlyAdmin m>>
+    require_once('./<<m kebab>>.php'),
+    <<endfor>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<@ M pOAd m>>
+    require_once('./<<m a-a>>.php'),
+    <<@>>
+    ```
+    
+=== "Sample output"
+
+    ```php
+    require_once('./menu.php'),
+    require_once('./menu-part.php'),
+    require_once('./menu-item.php'),
+    require_once('./order.php'),
+    ```
 
 ### Define a default value depending on data type for internal fields
 
@@ -91,38 +223,104 @@ In a single model template, this block assigns a value to the field depending on
 If the type of the field is `boolean` it assigns `false`, if the type is `string` it assigns `''`, if the type is `number` it assigns `0`, else it assigns `NULL`
 This template outputs PHP.
 
-```
-<<@ F in f>>
-    <<? f tB>>
-$value = false;
-    <<?? f tS>>
-$value = '';
-    <<?? f tN>>
-$value = 0;
-    <<??>>
-$value = NULL;
-    <<?>>
-<<@>>
-```
+
+=== "Long syntax"
+
+    ```hapify
+    <<for Fields internal f>>
+        <<if f boolean>>
+    $default<<f pascal>> = false;
+        <<elseif f string>>
+    $default<<f pascal>> = '';
+        <<elseif f number>>
+    $default<<f pascal>> = 0;
+        <<else>>
+    $default<<f pascal>> = NULL;
+        <<endif>>
+    <<endfor>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<@ F in f>>
+        <<? f tB>>
+    $default<<f AA>> = false;
+        <<?? f tS>>
+    $default<<f AA>> = '';
+        <<?? f tN>>
+    $default<<f AA>> = 0;
+        <<??>>
+    $default<<f AA>> = NULL;
+        <<?>>
+    <<@>>
+    ```
+    
+=== "Sample output"
+
+    ```php
+    $defaultId = '';
+    $defaultCreatedAt = NULL;
+    $defaultStock = 0;
+    ```
 
 ### Requires all dependencies
 
 In a single model template, this block requires other models pointed by entity fields.
 If the model as a self-dependency, it won't be included in the loop.
 
-```
-<<@ D d>>
-import {<<d AA>>} from '../<<d a-a>>';
-<<@>>
-```
+
+=== "Long syntax"
+
+    ```hapify
+    <<for Dependencies d>>
+    import {<<d pascal>>} from '../<<d kebab>>';
+    <<endfor>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<@ D d>>
+    import {<<d AA>>} from '../<<d a-a>>';
+    <<@>>
+    ```
+
+=== "Sample output"
+
+    ```typescript
+    import {Restaurant} from '../restaurant';
+    import {User} from '../user';
+    import {MenuPart} from '../menu-part';
+    import {MenuItem} from '../menu-item';
+    ```
 
 You can also filter models by fields properties. This block excludes models that contains hidden fields:
 
-```
-<<@ D !hd d>>
-import {<<d AA>>} from '../<<d a-a>>';
-<<@>>
-```
+
+=== "Long syntax"
+
+    ```hapify
+    <<for Dependencies not hidden dep>>
+    import {<<dep pascal>>} from '../<<dep kebab>>';
+    <<endfor>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<@ D !hd d>>
+    import {<<d AA>>} from '../<<d a-a>>';
+    <<@>>
+    ```
+
+=== "Sample output"
+
+    ```typescript
+    import {PlaceCategory} from '../place-category';
+    import {Service} from '../service';
+    import {User} from '../user';
+    ```
 
 ### Cascading deletion
 
@@ -130,10 +328,36 @@ In a single model template, this block lists all models that refer to the curren
 The first iteration loops over all models that have dependency to this one.
 The second iteration loops over all entity relations contained in those dependant models.
 
-```
-<<@ R m>>
-    <<@ m.f f>>
-await db.collection('<<m AA>>').deleteMany({ <<f a_a>>: id });
+
+=== "Long syntax"
+
+    ```hapify
+    <<@ ReferencedIn model>>
+        <<for model.fields field>>
+    await db.collection('<<model pascal>>').deleteMany({ <<field snake>>: id });
+        <<endfor>>
     <<@>>
-<<@>>
-```
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<@ R m>>
+        <<@ m.f f>>
+    await db.collection('<<m AA>>').deleteMany({ <<f a_a>>: id });
+        <<@>>
+    <<@>>
+    ```
+
+=== "Sample output"
+
+    ```javascript
+    await db.collection('Place').deleteMany({ owner: id });
+    await db.collection('Bookmark').deleteMany({ owner: id });
+    await db.collection('Message').deleteMany({ sender: id });
+    await db.collection('Message').deleteMany({ recipient: id });
+    await db.collection('Conversation').deleteMany({ participants: id });
+    await db.collection('Conversation').deleteMany({ closed_by: id });
+    await db.collection('ConversationReport').deleteMany({ complainant: id });
+    await db.collection('ConversationReport').deleteMany({ defendant: id });
+    ```

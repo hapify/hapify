@@ -5,7 +5,6 @@ nav:
   - Concepts:
       - Key concepts: 'concepts/key-concepts.md'
       - Models: 'concepts/models.md'
-      - Syntax: 'concepts/syntax.md'
   - Templating:
       - Samples: 'templating/code-samples.md'
       - Hapify: 'templating/hapify.md'

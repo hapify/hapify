@@ -27,7 +27,7 @@ In a template, you can mix both syntax.
 
 === "Long syntax"
 
-    ``` hpf
+    ```hapify
     <<for Fields searchable and sortable and not label f>>
         // Code here
     <<endfor>>
@@ -35,7 +35,7 @@ In a template, you can mix both syntax.
 
 === "Short syntax"
 
-    ``` hapify
+    ```hapify
     <<@ F se*so/lb f>>
         // Code here
     <<@>>
@@ -61,17 +61,17 @@ Therefore, `Model` or `Models` is just a shortcut to `root`.
 
 By default, in a case of a single model template:
 
--   `Fields` (short: `F`) refers to the fields list: `root.fields.list`
--   `Dependencies` (short: `D`) refers to the models list: `root.dependencies`
--   `ReferencedIn` (alias: `RefModels`, short: `R`) refers to the models list: `root.referencedIn`
--   `PrimaryField` (short: `P`) refers to the models primary field: `root.fileds.primary`
--   `Accesses` (short: `A`) refers to the action's accesses list: `root.accesses.list`
--   `CreateAccess` (short: `Ac`) refers to the create action's access: `root.accesses.create`
--   `ReadAccess` (short: `Ar`) refers to the read action's access: `root.accesses.read`
--   `UpdateAccess` (short: `Au`) refers to the update action's access: `root.accesses.update`
--   `RemoveAccess` (short: `Ad`) refers to the delete (remove) action's access: `root.accesses.remove`
--   `SearchAccess` (short: `As`) refers to the search action's access: `root.accesses.search`
--   `CountAccess` (short: `An`) refers to the count action's access: `root.accesses.count`
+-   `Fields` (short: `F`) fields list: `root.fields.list`
+-   `Dependencies` (short: `D`) model's dependencies list: `root.dependencies`
+-   `ReferencedIn` (alias: `RefModels`, short: `R`) dependent models list: `root.referencedIn`
+-   `PrimaryField` (short: `P`) model's primary field: `root.fileds.primary`
+-   `Accesses` (short: `A`) action's accesses list: `root.accesses.list`
+-   `CreateAccess` (short: `Ac`) create action's access: `root.accesses.create`
+-   `ReadAccess` (short: `Ar`) read action's access: `root.accesses.read`
+-   `UpdateAccess` (short: `Au`) update action's access: `root.accesses.update`
+-   `RemoveAccess` (short: `Ad`) delete (remove) action's access: `root.accesses.remove`
+-   `SearchAccess` (short: `As`) search action's access: `root.accesses.search`
+-   `CountAccess` (short: `An`) count action's access: `root.accesses.count`
 
 ## Conditional operator
 
@@ -84,22 +84,23 @@ Then, this operator can test if a model has dependencies that has fields with a 
 
 ### Syntax
 
-**Long syntax**
-
-```
-<<if Fields entity and multiple>>
-<<endif>>
-```
-
-
-**Short syntax**
-
-```
-<<? F tE*ml>>
-<<?>>
-```
-
 Tests if the model has at least one multiple entity.
+
+=== "Long syntax"
+    
+    ```hapify
+    <<if Fields entity and multiple>>
+        // ...
+    <<endif>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<? F tE*ml>>
+        // ...
+    <<?>>
+    ```
 
 ### Operators
 
@@ -115,11 +116,21 @@ Therefore, `-searchable*sortable` and `andNot searchable and sortable` are equiv
 
 **Example**
 
-```
-<<if Fields not nullable andNot (number or not date)>>
-    ...
-<<endfor>>
-```
+=== "Long syntax"
+
+    ```hapify
+    <<if Fields not nullable andNot (number or not date)>>
+        // ...
+    <<endif>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<? F !nu/(tN-tDd)>>
+        // ...
+    <<?>>
+    ```
 
 ### Properties short-codes
 
@@ -164,11 +175,21 @@ Available properties for a field:
 
 **Example**
 
-```
-<<if Fields (restricted or internal) and not number>>
-    Current model has at least one field matching to the condition. Do some stuff...
-<<endfor>>
-```
+=== "Long syntax"
+
+    ```hapify
+    <<if Fields (restricted or internal) and not number>>
+        // Current model has at least one field matching to the condition
+    <<endif>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<? F (rs+in)/tN>>
+        // Current model has at least one field matching to the condition
+    <<?>>
+    ```
 
 You can also test a model or filter a list of models by its pre-computed properties:
 
@@ -179,11 +200,21 @@ You can also test a model or filter a list of models by its pre-computed propert
 
 **Example**
 
-```
-<<for Models isGeolocated model>>
-    For each model matching the condition, do some stuff
-<<endfor>>
-```
+=== "Long syntax"
+
+    ```hapify
+    <<for Models isGeolocated model>>
+        // For each model matching the condition
+    <<endfor>>
+    ```
+    
+=== "Short syntax"
+
+    ```hapify
+    <<@ M pGeo m>>
+        // For each model matching the condition
+    <<@>>
+    ```
 
 #### Access controls
 
@@ -204,17 +235,41 @@ You can filter an array of actions or to test an action by its access properties
 
 **Examples**
 
-```
-<<for Accesses gteAuth action>>
-    For each action of the current model that requires auth or admin accees
-<<endfor>>
-```
+Loop over all actions' accesses:
 
-```
-<<if ReadAccess guest>>
-    Read this model is public
-<<endfor>>
-```
+=== "Long syntax"
+
+    ```hapify
+    <<for Accesses gteAuth action>>
+        // For each action of the current model that requires auth or admin accees
+    <<endfor>>
+    ```
+    
+=== "Short syntax"
+
+    ```hapify
+    <<@ A [au a>>
+        // For each action of the current model that requires auth or admin accees
+    <<@>>
+    ```
+
+Test one action's access:
+
+=== "Long syntax"
+
+    ```hapify
+    <<if ReadAccess guest>>
+        // Anyone can read this model
+    <<endif>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<? Ar gs>>
+        // Anyone can read this model
+    <<?>>
+    ```
 
 Words available for the access' properties of a model:
 
@@ -233,49 +288,73 @@ Words available for the access' properties of a model:
 
 **Example**
 
-```
-<<if Accesses onlyAdmin>>
-    All acrions on this model are reserved to admins
-<<endfor>>
-```
+=== "Long syntax"
+
+    ```hapify
+    <<if Accesses onlyAdmin>>
+        // All actions on this model are restricted to admins
+    <<endif>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<? A pOAd>>
+        // All actions on this model are restricted to admins
+    <<?>>
+    ```
 
 ### Structure
 
 A complete conditional writing will look like this:
 
-```
-<<if4 Fields hidden>>
-    This model has at least 4 hidden fields
-<<elseif2 Fields label or boolean>>
-    This model has at least 2 label or boolean fields
-<<elseif PrimaryField string>>
-    The primary key of the model is a string
-<<else>>
-    Something else
-<<endif>>
-```
+=== "Long syntax"
 
-Is equivalent to:
+    ```hapify
+    <<if4 Fields hidden>>
+        // This model has at least 4 hidden fields
+    <<elseif2 Fields label or boolean>>
+        // This model has at least 2 label or boolean fields
+    <<elseif PrimaryField string>>
+        // The primary key of the model is a string
+    <<else>>
+        // Something else
+    <<endif>>
+    ```
 
-```javascript
-if (root.fields.list.filter(f => f.hidden).length >= 4) {
-	out += '    This model has at least 4 hidden fields';
-} else if (
-	root.fields.list.filter(f => f.label || f.type === 'boolean').length >= 2
-) {
-	out += '    This model has at least 2 label or boolean fields';
-} else if (root.fields.primary.type === 'string') {
-	out += '    The primary key of the model is a string';
-} else {
-	out += '    Something else';
-}
-```
+=== "Short syntax"
+
+    ```hapify
+    <<?4 F hd>>
+        // This model has at least 4 hidden fields
+    <<??2 F lb+tB>>
+        // This model has at least 2 label or boolean fields
+    <<?? P tS>>
+        // The primary key of the model is a string
+    <<??>>
+        // Something else
+    <<?>>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    if (root.fields.list.filter(f => f.hidden).length >= 4) {
+        out += '    // This model has at least 4 hidden fields';
+    } else if (root.fields.list.filter(f => f.label || f.type === 'boolean').length >= 2) {
+        out += '    // This model has at least 2 label or boolean fields';
+    } else if (root.fields.primary.type === 'string') {
+        out += '    // The primary key of the model is a string';
+    } else {
+        out += '    // Something else';
+    }
+    ```
 
 ### Statements analysis
 
 #### if
 
-`<<if4 Fields hidden>>` is equivalent to: `if (condition) {`.
+`#!hapify <<if4 Fields hidden>>` is equivalent to: `if (condition) {`.
 
 -   `<<if` is the opening tag.
 -   `4` is the minimum length of the filtered array. This value is optional and only usable if the variable is an array. If omitted, we assume the required length is 1.
@@ -285,16 +364,16 @@ if (root.fields.list.filter(f => f.hidden).length >= 4) {
 
 #### else if
 
-`<<elseif2 Fields label or boolean>>` Js equivalent would be: `} else if (condition) {`.
+`#!hapify <<elseif2 Fields label or boolean>>` Js equivalent would be: `} else if (condition) {`.
 It follows the same rules as an **if** statement, unless its opening tag is `<<elseif`.
 
 #### else
 
-`<<else>>` is equivalent to: `} else {`.
+`#!hapify <<else>>` is equivalent to: `} else {`.
 
 #### ending
 
-`<<endif>>` is equivalent to: `}`.
+`#!hapify <<endif>>` is equivalent to: `}`.
 
 
 ### Examples
@@ -303,139 +382,139 @@ It follows the same rules as an **if** statement, unless its opening tag is `<<e
 
 This tests if the model has some searchable and sortable but not hidden fields
 
-**Long syntax**
+=== "Long syntax"
 
-```
-<<if Fields searchable and sortable and not hidden>>
-    ...
-<<endif>>
-```
+    ```hapify
+    <<if Fields searchable and sortable and not hidden>>
+        // ...
+    <<endif>>
+    ```
 
-**Short syntax**
+=== "Short syntax"
 
-```
-<<? F se*so/hd>>
-    ...
-<<?>>
-```
+    ```hapify
+    <<? F se*so/hd>>
+        // ...
+    <<?>>
+    ```
 
-Is equivalent to:
-
-```javascript
-if (root.fields.list.filter(f => f.searchable && f.sortable && !f.hidden).length > 0) {
-	out += '...';
-}
-```
+=== "JavaScript"
+    
+    ```javascript
+    if (root.fields.list.filter(f => f.searchable && f.sortable && !f.hidden).length > 0) {
+        out += '    // ...';
+    }
+    ```
 
 #### Example without condition:
 
-**Long syntax**
+=== "Long syntax"
 
-```
-<<if Fields>>
-    .....
-<<endif>>
-```
+    ```hapify
+    <<if Fields>>
+        // ...
+    <<endif>>
+    ```
 
-**Short syntax**
+=== "Short syntax"
 
-```
-<<? F>>
-    .....
-<<?>>
-```
+    ```hapify
+    <<? F>>
+        // ...
+    <<?>>
+    ```
 
-Is equivalent to:
+=== "JavaScript"
 
-```javascript
-if (root.fields.list.length > 0) {
-	out += '.....';
-}
-```
+    ```javascript
+    if (root.fields.list.length > 0) {
+        out += '    // ...';
+    }
+    ```
 
 #### Example with more than 2 elements
 
 Example to test if the model has at least two label fields
 
-**Long syntax**
+=== "Long syntax"
 
-```
-<<if2 Fields label>>
-    .....
-<<endif>>
-```
+    ```hapify
+    <<if2 Fields label>>
+        // ...
+    <<endif>>
+    ```
 
-**Short syntax**
+=== "Short syntax"
 
-```
-<<?2 F lb>>
-    ...
-<<?>>
-```
+    ```hapify
+    <<?2 F lb>>
+        // ...
+    <<?>>
+    ```
 
-Is equivalent to:
+=== "JavaScript"
 
-```javascript
-if (root.fields.list.filter(f => f.label).length >= 2) {
-	out += '.....';
-}
-```
+    ```javascript
+    if (root.fields.list.filter(f => f.label).length >= 2) {
+        out += '    // ...';
+    }
+    ```
 
 #### Example for a specific action's access
 
 Example to test if the update action is restricted to admin or owner
 
-**Long syntax**
+=== "Long syntax"
 
-```
-<<if UpdateAccess admin or owner>>
-    .....
-<<endif>>
-```
+    ```hapify
+    <<if UpdateAccess admin or owner>>
+        // ...
+    <<endif>>
+    ```
 
-**Short syntax**
+=== "Short syntax"
 
-```
-<<? Au ad+ow>>
-    .....
-<<?>>
-```
+    ```hapify
+    <<? Au ad+ow>>
+        // ...
+    <<?>>
+    ```
 
-Is equivalent to:
+=== "JavaScript"
 
-```javascript
-if (root.accesses.update.admin || root.accesses.update.owner) {
-	out += '.....';
-}
-```
+    ```javascript
+    if (root.accesses.update.admin || root.accesses.update.owner) {
+        out += '    // ...';
+    }
+    ```
 
 #### Example for many action's accesses
 
 Example to test if at least one action is restricted to authenticated user or less
 
-**Long syntax**
+=== "Long syntax"
 
-```
-<<if Accesses lteAuth>>
-    .....
-<<endif>>
-```
+    ```hapify
+    <<if Accesses lteAuth>>
+        // ...
+    <<endif>>
+    ```
 
-**Short syntax**
+=== "Short syntax"
 
-```
-<<? A au]>>
-    .....
-<<?>>
-```
+    ```hapify
+    <<? A au]>>
+        // ...
+    <<?>>
+    ```
 
-Is equivalent to:
+=== "JavaScript"
 
-```javascript
-if (root.accesses.filter(a => a.lteAuth).length > 0) {
-	out += '.....';
-}
-```
+    ```javascript
+    if (root.accesses.filter(a => a.lteAuth).length > 0) {
+        out += '    // ...';
+    }
+    ```
 
 ## Iteration operator
 
@@ -448,56 +527,58 @@ Actually, it inherits from the conditional operator.
 
 ### Syntax
 
-**Long syntax**
-
-```
-<<for Fields entity and multiple f>>
-<<endfor>>
-```
-
-**Short syntax**
-
-```
-<<@ F tE*ml f>>
-<<@>>
-```
-
 The operators and the properties used in the condition are the same as for the conditional operator.
 This will loop over all fields of type entity and multiple and assign the current field to the variable `f`.
+
+=== "Long syntax"
+
+    ```hapify
+    <<for Fields entity and multiple f>>
+        // ...
+    <<endfor>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<@ F tE*ml f>>
+        // ...
+    <<@>>
+    ```
 
 ### Structure
 
 A complete iteration will look like this:
 
-**Long syntax**
+=== "Long syntax"
 
-```
-<<for4 Fields hidden f>>
-    Do something
-<<endfor>>
-```
+    ```hapify
+    <<for4 Fields hidden f>>
+        // Do something
+    <<endfor>>
+    ```
 
-**Short syntax**
+=== "Short syntax"
 
-```
-<<@4 F hd f>>
-    Do something
-<<@>>
-```
+    ```hapify
+    <<@4 F hd f>>
+        // Do something
+    <<@>>
+    ```
 
-Is equivalent to:
+=== "JavaScript"
 
-```javascript
-for (let f of root.fields.list.filter(f => f.hidden).slice(0, 4)) {
-	out += '    Do something';
-}
-```
+    ```javascript
+    for (let f of root.fields.list.filter(f => f.hidden).slice(0, 4)) {
+        out += '    // Do something';
+    }
+    ```
 
 ### Analysis
 
 #### loop
 
-`<<for4 Fields hidden f>>` is equivalent to: `for (assigment + condition) {`.
+`#!hapify <<for4 Fields hidden f>>` is equivalent to: `for (assigment + condition) {`.
 
 -   `<<for` is the opening tag.
 -   `4` is the maximum length of the filtered array. This value is optional. If omitted, we do not slice the filtered array.
@@ -508,7 +589,7 @@ for (let f of root.fields.list.filter(f => f.hidden).slice(0, 4)) {
 
 #### ending 
 
-`<<endfor>>` is equivalent to: `}`.
+`#!hapify <<endfor>>` is equivalent to: `}`.
 
 
 ### Examples
@@ -517,141 +598,141 @@ for (let f of root.fields.list.filter(f => f.hidden).slice(0, 4)) {
 
 To loop over model's searchable entity fields
 
-**Long syntax**
+=== "Long syntax"
 
-```
-<<for Fields searchable and entity f>>
-    ...
-<<endfor>>
-```
+    ```hapify
+    <<for Fields searchable and entity f>>
+        // ...
+    <<endfor>>
+    ```
 
-**Short syntax**
+=== "Short syntax"
 
-```
-<<@ F se*tE f>>
-    ...
-<<@>>
-```
+    ```hapify
+    <<@ F se*tE f>>
+        // ...
+    <<@>>
+    ```
 
-Is equivalent to
+=== "JavaScript"
 
-```javascript
-for (let f of root.fields.list.filter(f => f.searchable && f.type === 'entity')) {
-	out += '...';
-}
-```
+    ```javascript
+    for (let f of root.fields.list.filter(f => f.searchable && f.type === 'entity')) {
+        out += '    // ...';
+    }
+    ```
 
 #### Example with conditions over models:
 
 In the context of a multiple models template, this loops over all models that are geo-located.
 
-**Long syntax**
+=== "Long syntax"
 
-```
-<<for Models isGeolocated m>>
-    .....
-<<endfor>>
-```
+    ```hapify
+    <<for Models isGeolocated m>>
+        // ...
+    <<endfor>>
+    ```
 
-**Short syntax**
+=== "Short syntax"
 
-```
-<<@ M pGeo m>>
-    .....
-<<@>>
-```
+    ```hapify
+    <<@ M pGeo m>>
+        // ...
+    <<@>>
+    ```
 
-Is equivalent to:
+=== "JavaScript"
 
-```javascript
-for (let m of root.filter(i => i.properties.isGeolocated)) {
-	out += '.....';
-}
-```
+    ```javascript
+    for (let m of root.filter(i => i.properties.isGeolocated)) {
+        out += '    // ...';
+    }
+    ```
 
 #### Example with 2 elements
 
 This example will loop over the two first dependency models that have sortable fields.
 
-**Long syntax**
+=== "Long syntax"
 
-```
-<<for2 Dependencies sortable d>>
-    ...
-<<endfor>>
-```
+    ```hapify
+    <<for2 Dependencies sortable d>>
+        // ...
+    <<endfor>>
+    ```
 
-**Short syntax**
+=== "Short syntax"
 
-```
-<<@2 D so d>>
-    ...
-<<@>>
-```
+    ```hapify
+    <<@2 D so d>>
+        // ...
+    <<@>>
+    ```
 
-Is equivalent to:
+=== "JavaScript"
 
-```javascript
-for (let d of root.dependencies.filter(f => f.sortable).slice(0, 2)) {
-	out += '...';
-}
-```
+    ```javascript
+    for (let d of root.dependencies.filter(f => f.sortable).slice(0, 2)) {
+        out += '    // ...';
+    }
+    ```
 
 #### Example without conditions
 
 This will loop over all fields.
 
-**Long syntax**
+=== "Long syntax"
 
-```
-<<for Fields f>>
-    .....
-<<endfor>>
-```
+    ```hapify
+    <<for Fields f>>
+        // ...
+    <<endfor>>
+    ```
 
-**Short syntax**
+=== "Short syntax"
 
-```
-<<@ F f>>
-    .....
-<<@>>
-```
+    ```hapify
+    <<@ F f>>
+        // ...
+    <<@>>
+    ```
 
-Is equivalent to:
+=== "JavaScript"
 
-```javascript
-for (let f of root.fields.list) {
-	out += '.....';
-}
-```
+    ```javascript
+    for (let f of root.fields.list) {
+        out += '    // ...';
+    }
+    ```
 
 #### Example with accesses
 
 This will loop over all actions restricted to admin or owner.
 
-**Long syntax**
+=== "Long syntax"
 
-```
-<<for Accesses admin or owner>>
-    .....
-<<endfor>>
-```
+    ```hapify
+    <<for Accesses admin or owner>>
+        // ...
+    <<endfor>>
+    ```
 
-**Short syntax**
+=== "Short syntax"
 
-```
-<<@ A ad+ow>>
-    .....
-<<@>>
-```
+    ```hapify
+    <<@ A ad+ow>>
+        // ...
+    <<@>>
+    ```
 
-Is equivalent to:
+=== "JavaScript"
 
-```javascript
-for (let f of root.accesses.list.filter(a => a.admin || a.owner)) {
-	out += '...';
-}
-```
+    ```javascript
+    for (let f of root.accesses.list.filter(a => a.admin || a.owner)) {
+        out += '    // ...';
+    }
+    ```
 
 ## Name interpolation
 
@@ -660,31 +741,43 @@ To print the name of a variable (model or field), we omit the operation.
 
 Example for the root model's name as upper camel:
 
-**Long syntax**
+=== "Long syntax"
 
-```
-<<Model pascal>>
-```
+    ```hapify
+    <<Model pascal>>
+    ```
 
-**Short syntax**
+=== "Short syntax"
 
-```
-<<M AA>>
-```
+    ```hapify
+    <<M AA>>
+    ```
+
+=== "Output sample"
+
+    ```
+    UserProfile
+    ```
 
 Example for field's name as kebab:
 
-**Long syntax**
+=== "Long syntax"
 
-```
-<<f kebab>>
-```
+    ```hapify
+    <<f kebab>>
+    ```
 
-**Short syntax**
+=== "Short syntax"
 
-```
-<<f a-a>>
-```
+    ```hapify
+    <<f a-a>>
+    ```
+
+=== "Output sample"
+
+    ```
+    creation-date
+    ```
 
 The values for the name are:
 
@@ -715,19 +808,19 @@ Between those tags you can write pure Javascript code to inject new variables an
 ### Output
 
 The output variable is named `out`.
-Therefore to concatenate a string to the template output, you have to write: `<<< out += 'more content here'; >>>`.
+Therefore to concatenate a string to the template output, you have to write: `#!hapify <<< out += 'more content here'; >>>`.
 
 ### Examples
 
 Insert a custom variable:
 
-```
+```hapify
 <<< const l = model.fields.length; >>>
 ```
 
 Declare a processing function:
 
-```
+```hapify
 <<<
 function fieldName(f) {
     return f.names.snake.toUpperCase();
@@ -742,20 +835,20 @@ It is useful to print the result of a custom function or the value of a custom v
 
 ### Syntax
 
-`<<= myFunction() >>` or `<<=customVariable>>`
+`#!hapify <<= myFunction() >>` or `#!hapify <<=customVariable>>`
 
-This is equivalent to `<<< out += myFunction(); >>>`.
+This is equivalent to `#!hapify <<< out += myFunction(); >>>`.
 
 ### Error
 
-Do not write this: `<<= JSON.stringify(root) >>`.
+Do not write this: `#!hapify <<= JSON.stringify(root) >>`.
 The `root` object has recursive properties. Therefore this command will enter an infinite loop.
 
 ## Comments
 
 This operator writes a comment in the template without any output to the generated file.
 
-```
+```hapify
 <<# This is just a comment>>
 ```
 

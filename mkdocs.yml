@@ -6,8 +6,9 @@ nav:
       - Key concepts: 'concepts/key-concepts.md'
       - Models: 'concepts/models.md'
   - Templating:
-      - Samples: 'templating/code-samples.md'
-      - Hapify: 'templating/hapify.md'
+      - Hapify:
+        - Samples: 'templating/hapify/code-samples.md'
+        - Syntax: 'templating/hapify/syntax.md'
       - Reference: 'templating/hapify-reference.md'
       - JavaScript: 'templating/javascript.md'
   - Best practices: 'best-practices.md'

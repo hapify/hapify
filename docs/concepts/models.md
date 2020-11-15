@@ -79,7 +79,7 @@ Available types are:
 
 - **Multiple** : This field will contain not a single value but a list of value or references
 
-- **Embedded** : ability to automatically "join" data from a linked entity. (Ex: When you get a user's details, you may want to get his avatar at the same time). 
+- **Embedded** : ability to automatically "join" data from a linked entity. (Ex: When you get a user's details, you may want to get his avatar at the same time). This can be used to embed forms as well.
 
 - **Searchable** : ability to search for entities based on this field.
 

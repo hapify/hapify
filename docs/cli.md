@@ -1,15 +1,5 @@
 # Hapify CLI
 
-
---------
-**In this article**
-
-* Installation
-* Global options
-* Commands
-
--------- 
-
 ## Description
 
 Hapify is a code generation tool based on relational data models.
@@ -156,12 +146,13 @@ It will prompt a form to:
 _Options_
 
 -   `-p <id>`, `--project <id>`: The project to use (if already existing)
--   `--project-name <name>`: The project's name to create
--   `--project-desc <description>`: The project's description to create
 -   `-b <slug>`, `--boilerplate <slug>`: The slug name of the boilerplate to clone
 -   `--boilerplate-id <id>`: The id of the boilerplate to clone
 -   `--boilerplate-url <url>`: The git URL of the boilerplate to clone
 -   `--preset [id]`: Ids of presets to preload in the project
+-   `--no-presets`: Do not prompt for presets
+-   `--project-name <name>`: The project's name to create
+-   `--project-desc <description>`: The project's description to create (name must be defined)
 
 To browse available boilerplates, please visit [hub.hapify.io](https://hub.hapify.io).
 
@@ -180,11 +171,11 @@ It will prompt a form to select or create a project.
 _Options_
 
 -   `-p <id>`, `--project <id>`: The project to use (if already created)
--   `--project-name <name>`: The project's name to create
--   `--project-desc <description>`: The project's description to create
 -   `--channel-name <name>`: The name of the channel to init
 -   `--channel-desc <description>`: The description of the channel to init
 -   `--channel-logo <url>`: The URL of the logo of the channel to init
+-   `--project-name <name>`: The project's name to create
+-   `--project-desc <description>`: The project's description to create (name must be defined)
 
 #### Define project to use in a boilerplate (channel)
 

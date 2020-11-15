@@ -14,8 +14,8 @@ nav:
   - Troubleshooting: 'troubleshooting.md'
 theme:
   name: material
-  favicon: /assets/icon-192x192.png
-  logo: /assets/logo-no-margin-white.png
+  favicon: assets/icon-192x192.png
+  logo: assets/logo-no-margin-white.png
   palette:
     primary: deep purple
     accent: cyan

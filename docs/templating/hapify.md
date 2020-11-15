@@ -2,7 +2,7 @@
 
 ## Why using a specific syntax ?
 
-We designed a syntax to manipulate the [object](/templating/javascript) injected in the templates that represents the data-model.
+We designed a syntax to manipulate the [object](templating/javascript) injected in the templates that represents the data-model.
 This syntax is optimized to play with this object's properties with short words.
 This allow us to deal with complex ideas with short sentences.
 
@@ -422,4 +422,4 @@ This syntax writes a comment in the template without any output to the generated
 
 ## Learn more
 
-If you want to learn more about Hapify syntax and how it is mapped to the [JavaScript object](/templating/javascript) injected in the templates, please refer to the documentation [syntax detailed](/documentation/syntax).
+If you want to learn more about Hapify syntax and how it is mapped to the [JavaScript object](templating/javascript) injected in the templates, please refer to the documentation [syntax detailed](documentation/syntax).

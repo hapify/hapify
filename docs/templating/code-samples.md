@@ -4,7 +4,7 @@ This document shows code samples in order to help you play with the Hapify synta
 
 ## Pre-requisites
 
-Before reading this article, we recommend that you read the documentation about [Hapify syntax](/templating/hapify).
+Before reading this article, we recommend that you read the documentation about [Hapify syntax](templating/hapify).
 
 ## Names
 

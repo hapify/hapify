@@ -9,6 +9,10 @@ This validator is written in pure JavaScript. It receives a single model and ret
 
 Those warnings and errors will be shown when managing models:
 
+| Warning | Error |
+| --- | --- |
+| ![Validator - Warning](../assets/validation-warning.png 'Validation warning') | ![Validator - Error](../assets/validation-error.png 'Validation error') |
+
 ## Write a validator
 
 When running the model validation, the JavaScript code is wrapped into a function. Therefore, the code you are writing is the body of this function.
@@ -21,18 +25,59 @@ return {
 }
 ```
 
+### Access model properties
+
+In the validator's script, the model is available under the `model` variable.
+The `model` variable has this structure:
+
+```json
+{
+    "id": "bdc6c58e-ec49-9193-6b29-6c75518bc3ad",
+    "name": "Bookmark",
+    "notes": "A user can only list its own bookmarks",
+    "fields": [
+        {
+            "name": "_id",
+            "notes": null,
+            "type": "string",
+            "subtype": null,
+            "reference": null,
+            "primary": true,
+            "unique": false,
+            "label": false,
+            "nullable": false,
+            "multiple": false,
+            "embedded": false,
+            "searchable": false,
+            "sortable": false,
+            "hidden": false,
+            "internal": true,
+            "restricted": false,
+            "ownership": false
+        }
+    ],
+    "accesses": {
+        "create": "auth",
+        "read": "owner",
+        "update": "admin",
+        "remove": "owner",
+        "search": "owner",
+        "count": "owner"
+    }
+}
+```
+
+Unlike JavaScript template, the model properties is not pre-computed and you don't have access to its dependencies.
+
 ## Validator sample
 
+Here is a validator sample that sends a warning for unsupported fields type and an error if primary key is malformed.
+
 ```javascript
-// Errors bucket
+// Model object is injected as "model"
 const errors = [];
 const warnings = [];
 
-// Model object is injected as "model"
-
-// ###########################################################
-//  GLOBAL
-// ###########################################################
 // -----------------------------
 // File fields
 if (model.fields.filter((f) => f.type === 'file').length) {
@@ -43,10 +88,6 @@ if (model.fields.filter((f) => f.type === 'string' && f.subtype === 'url').lengt
     warnings.push('URL string is not supported yet and will be handle as default string');
 }
 
-
-// ###########################################################
-//  ROUTES
-// ###########################################################
 // -----------------------------
 // Primary key
 const primaries = model.fields.filter((f) => f.primary);
@@ -55,7 +96,6 @@ if (primaries.length > 1) {
 }
 const primary = primaries[0];
 if (primary) {
-
     if (primary.name !== '_id') {
         errors.push('Primary key must be called "_id"');
     }
@@ -65,97 +105,8 @@ if (primary) {
     if (!primary.internal) {
         errors.push('Primary key must be a internal');
     }
-    if (primary.nullable) {
-        errors.push('Primary key cannot be nullable');
-    }
-    if (primary.multiple) {
-        errors.push('Primary key cannot be multiple');
-    }
-    if (primary.hidden) {
-        errors.push('Primary key cannot be hidden');
-    }
-    if (primary.searchable) {
-        errors.push('Primary key cannot be searchable');
-    }
-
-    if (primary.unique) {
-        warnings.push('Primary key as unique will be ignored');
-    }
-    if (primary.label) {
-        warnings.push('Primary key as label will be ignored');
-    }
 } else {
     errors.push('Primary key is required');
-}
-
-// -----------------------------
-// Multiple fields
-if (model.fields.filter((f) => f.multiple && f.type !== 'entity').length) {
-    errors.push('Multiple fields can only be entities references');
-}
-
-// -----------------------------
-// Embedded fields
-if (model.fields.filter((f) => f.embedded && f.type !== 'entity').length) {
-    errors.push('Embedded fields can only be entities references');
-}
-if (model.fields.filter((f) => f.embedded && f.hidden).length) {
-    errors.push('Embedded fields cannot be hidden');
-}
-
-// -----------------------------
-// Password fields
-if (model.fields.filter((f) => f.type === 'string' && f.subtype === 'password' && !f.hidden).length) {
-    warnings.push('Passwords should be hidden');
-}
-
-// -----------------------------
-// Restricted fields
-if (model.fields.filter((f) => f.restricted && f.internal).length) {
-    warnings.push('A fields cannot be internal and restricted');
-}
-
-// -----------------------------
-// Owner fields
-if (model.fields.filter((f) => f.ownership).length > 1) {
-    errors.push('Only one field can be ownership');
-}
-if (model.fields.filter((f) => f.ownership && f.type !== 'entity' && !f.primary).length > 0) {
-    errors.push('Ownership field must be an entity');
-}
-if (model.fields.filter((f) => f.ownership && !f.primary).length && model.accesses.create === 'guest') {
-    errors.push('Model with ownership cannot be created as guest');
-}
-let hasOwnerAccess = false;
-for (const action in model.accesses) {
-    if (model.accesses[action] === 'owner') {
-        hasOwnerAccess = true;
-        break;
-    }
-}
-if (hasOwnerAccess && model.fields.filter((f) => f.ownership).length === 0) {
-    errors.push('Model with owner access must have a ownership field');
-}
-
-// -----------------------------
-// Object fields
-if (model.fields.filter((f) => f.type === 'object' && (f.searchable || f.sortable)).length) {
-    errors.push('Object cannot be searchable nor sortable');
-}
-
-// -----------------------------
-// Accesses
-if ((model.accesses.search === 'owner' || model.accesses.count === 'owner') && model.accesses.search !== model.accesses.count) {
-    errors.push('Search and count actions access must be both "owner" or none.');
-}
-
-// ###########################################################
-//  MONGO
-// ###########################################################
-// -----------------------------
-// Multiple fields
-if (model.fields.filter((f) => f.label && f.type !== 'string').length) {
-    errors.push('Label fields can only be string');
 }
 
 return {

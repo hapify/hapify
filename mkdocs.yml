@@ -10,8 +10,8 @@ nav:
         - Syntax: 'templating/hapify/syntax.md'
         - Samples: 'templating/hapify/code-samples.md'
       - JavaScript:
-          - Usage: 'templating/javascript/usage.md'
-          - Samples: 'templating/javascript/code-samples.md'
+        - Usage: 'templating/javascript/usage.md'
+        - Samples: 'templating/javascript/code-samples.md'
       - Model object: 'templating/model-object.md'
       - Models validator: 'templating/models-validator.md'
   - Best practices: 'best-practices.md'

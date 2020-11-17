@@ -26,30 +26,7 @@ npm install -g @hapify/cli
 
 Additionally you can check if the package is installed by running: `hpf --version`.
 
-## 2. Connect the CLI to Hapify Cloud
-
-The Hapify CLI interact with Hapify Cloud for project & models storage and code generation.
-Therefore, you need to get an API key from Hapify Cloud to access all the CLI features.
-
-## 3. Register on Hapify Cloud
-
-If you do not have an account yet, please visit [hapify.io/sign-up](https://www.hapify.io/sign-up).
-
-### Get API key
-
-Once you have registered, or if you already have an account, go to [hapify.io/my-key](https://www.hapify.io/my-key) and copy your API Key.
-
-### Configure the CLI
-
-Run this command with your API key to connect the CLI to Hapify Cloud once for all.
-
-```bash
-hpf key XXXXXXXXXXXX
-```
-
-Now your CLI can interact with Hapify Cloud.
-
-## 4. Start a new project
+## 2. Start a new project
 
 In this section, we will describe how to start a project from an existing boilerplate.
 To start a project from a legacy boilerplate, please refer to [legacy](templating/code-samples/).
@@ -131,7 +108,7 @@ After few seconds, the boilerplate will be cloned in your current folder and you
 ✓ Created 1 new dynamic boilerplate in ~/my-project. Run 'hpf serve' to edit.
 ```
 
-## 5. Edit project models
+## 3. Edit project models
 
 At this stage you you have a fresh boilerplate but no data-models in your project, unless you have imported pre-defined models.
 In order to create or edit the models of your project, run this command to start the local GUI:
@@ -146,7 +123,7 @@ The local GUI looks like:
 
 To learn more about models management please refer to [GUI Models](concepts/models/).
 
-## 6. Generate the code
+## 4. Generate the code
 
 Once your models are ready, you will be able to generate the code with this command:
 
@@ -157,7 +134,49 @@ hpf generate
 This will run the generator and copy the generated files into your local boilerplate.
 Now you can start customizing and running the generated code.
 
-## 7. Lifecycle
+## 5. Lifecycle
 
 Use the command `hpf patch` if you need to re-generate the code due to models or templates modifications, whereas you have already modified the generated code.
 To prevent conflict during re-generation, please read our [best practices guide](best-practices).
+
+## Store your models in Hapify Cloud
+
+By default, Hapify stores your models locally. Usually next to the `hapify.json` file. The path is defined in this file.
+
+If you prefer to store your models remotely, follow the next steps
+
+### 1. Connect the CLI to Hapify Cloud
+
+The Hapify CLI interact with Hapify Cloud for project & models storage and code generation.
+Therefore, you need to get an API key from Hapify Cloud to access all the CLI features.
+
+### 2. Register on Hapify Cloud
+
+If you do not have an account yet, please visit [hapify.io/sign-up](https://www.hapify.io/sign-up).
+
+#### Get API key
+
+Once you have registered, or if you already have an account, go to [hapify.io/my-key](https://www.hapify.io/my-key) and copy your API Key.
+
+#### Configure the CLI
+
+Run [this command](cli/#set-global-api-key) with your API key to connect the CLI to Hapify Cloud once for all.
+
+```bash
+hpf key XXXXXXXXXXXX
+```
+
+Now your CLI can interact with Hapify Cloud.
+
+### 3. Connect your local boilerplate to a remote project
+
+For every boilerplate you want to connect a remote project run [this command](cli/#define-project-to-use-in-a-boilerplate-channel):
+
+```bash
+hpf use
+```
+
+Then create or select a project.
+
+Now the boilerplate will store and read models from Hapify Cloud.
+The id of the project is stored in `hapify.json`.

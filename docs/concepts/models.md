@@ -1,14 +1,14 @@
-# Data models
+# Models
 
 ## Modeling approach
 
-Hapify let you define the data-models that fit your project specifications.
+Hapify lets you define the data-models that fit your project specifications.
 
 The model definition in Hapify is **agnostic** and **featured-oriented** (behavioral), which means Hapify defines what the model **should do**, not **how it will do it**.
 
-## Actions & access management
+## Access management
 
-In order to removes the need to write repeating boilerplate for extended CRUD operations,  Hapify supports the 6 following base operations:
+In order to remove the need to write repeating boilerplates for extended CRUD operations, Hapify supports the 6 following base operations:
 
 -   _Create_
 -   _Read_
@@ -17,24 +17,25 @@ In order to removes the need to write repeating boilerplate for extended CRUD op
 -   _Search_
 -   _Count_
 
-For each of these actions, Hapify allow you to define the following access restrictions:
+For each of these actions, Hapify allows you to define the following access restrictions:
 
--   _Guest_: user that is not logged-in.
+-   _Guest_: user who is not logged-in.
 -   _Authenticated_: logged-in user.
--   _Owner_ : logged-in user which owns the entity (see *Fields properties* for more details).
+-   _Owner_ : logged-in user who owns the entity (see [Field properties](#field-properties) for more details).
 -   _Admin_: logged-in super-admin user.
 
 Accesses are inclusive, which means the _Authenticated_ restriction necessarily includes _Owner_ and _Admin_.
 
-## Models properties
+## Model properties
 
-A model contains a list of fields. Each of this field is defined by
+A model contains a list of fields. Each field is defined by:
+
 - a name
 - a type
 - a sub-type (optional)
 - a set of (behavioral) properties.
 
-### Type and sub-types
+### Types and sub-types
 
 Available types are:
 
@@ -67,28 +68,28 @@ Available types are:
 	- `audio`
 	- `document`
 
-### Fields properties
+### Field properties
 
-- **Primary** : the fields is the primary identifier.
+- **Primary**: the field is the primary identifier.
 
-- **Unique** : the field contains unique values requires to avoid duplicates. A model could have multiple unique keys. (Ex: user's email or coupon code).
+- **Unique**: the field contains unique values, required to avoid duplicates. A model could have multiple unique keys. (e.g.: user's email or coupon code).
 
-- **Label** : the fields is a human readable identifier. (Ex: user `First Name` and `Last Name`, a movie title).
+- **Label**: the field is a human readable identifier. (e.g.: user `First Name` and `Last Name`, a movie title).
 
-- **Nullable** : the field can contains empty value. In other words, it is not required.
+- **Nullable**: the field can contain empty value. In other words, it is not required.
 
-- **Multiple** : This field will contain not a single value but a list of value or references
+- **Multiple**: this field will contain not a single value but a list of value or references.
 
-- **Embedded** : ability to automatically "join" data from a linked entity. (Ex: When you get a user's details, you may want to get his avatar at the same time). This can be used to embed forms as well.
+- **Embedded**: ability to automatically attach data from a linked entity. (e.g.: When you get a user's details, you may want to get their avatar at the same time). This can be used to embed forms as well.
 
-- **Searchable** : ability to search for entities based on this field.
+- **Searchable**: ability to search for entities based on this field.
 
-- **Sortable** : ability to sort search results based on this field.
+- **Sortable**: ability to sort search results based on this field.
 
-- **Hidden** : this field should never be sent to the end-user. (Ex: user's password).
+- **Hidden**: this field should never be sent to the end-user. (e.g.: user's password).
 	
-- **Internal** : a value defined internally by the system, which the end-user cannot set. (Ex: entity creation date, primary key etc.).
+- **Internal**: a value defined internally by the system, which the end-user cannot set (e.g.: entity creation date, primary key, etc.).
 	
-- **Restricted** : if data access (read and/or write) is restricted to specific users. (Ex: a `validated` status to be set by an admin only).
+- **Restricted**: if data access (read and/or write) is restricted to specific users (e.g.: a `validated` status to be set by an admin only).
 
-- **Ownership** : defines the identity of the entity's owner(s). (Ex: a bar with a field `creator` containing the user id).
+- **Ownership**: defines the identity of the entity's owner(s) (e.g.: a bar with a field `creator` containing the user ID).

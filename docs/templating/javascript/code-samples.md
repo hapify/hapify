@@ -1,6 +1,6 @@
 # JavaScript code samples
 
-This document shows code samples in order to help you play JavaScript templates
+This document shows code samples in order to help you play JavaScript templates.
 
 ## Pre-requisites
 
@@ -8,9 +8,9 @@ Before reading this article, we recommend that you read the documentation about 
 
 ## Create indexes for MongoDB
 
-This template will produce a JSON containing all indexes that should be created in MongoDB accordingly to the fields requirements.
-It create an index for fields searchable, sortable or entity references.
-It also creates unique index for unique fields and text index for searchable string fields.
+This template will produce a JSON containing all indexes that should be created in MongoDB according to the field requirements.
+It creates an index for searchable or sortable fields or entity references.
+It also creates a unique index for unique fields and a text index for searchable string fields.
 
 === "JavaScript"
 
@@ -148,9 +148,9 @@ It also creates unique index for unique fields and text index for searchable str
     }
     ```
 
-## Output models details as JSON
+## Output model description as JSON
 
-This template will output a JSON listing fields and resolving dependencies between models.
+This template will output a JSON that lists fields and resolves dependencies between models.
 
 === "JavaScript"
 

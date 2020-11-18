@@ -2,9 +2,9 @@
 
 ## Description
 
-Hapify is a code generation tool based on relational data models.
+Hapify is a code generation tool based on relational data-models.
 It uses a dedicated templating language.
-It exposes a web-based console for models definition and templates writing.
+It displays a web-based console for model definition and template writing.
 
 ## Usage
 
@@ -23,7 +23,7 @@ To check the installed version, run `hpf --version`.
 -   `-V`, `--version`: output the version number
 -   `--debug`: enable debug mode
 -   `-d <path>`, `--dir <path>`: change the working directory. This path can be absolute or relative to the current path
--   `-k <secret>`, `--key <secret>`: force usage of an API key rather than the one defined in global config. If you want to define your api key permanently, you should use command `hpf key`)
+-   `-k <secret>`, `--key <secret>`: force usage of an API key rather than the one defined in global configuration. If you want to define your API key permanently, you should use command `hpf key`
 -   `-h`, `--help`: show help
 
 ### Commands
@@ -35,12 +35,12 @@ hpf config [options]
 ```
 
 This command stores your one (or more) global configuration in `~/.hapify/config.json`.
-If the file does not exists, it will be automatically created.
+If the file does not exist, it will be automatically created.
 
 _Available configuration_
 
--   `hpf config --apiKey <secret>`: define the API key to use for every commands. This is equivalent to `hpf key <key>`.
--   `hpf config --apiUrl <url>`: override default api url.
+-   `hpf config --apiKey <secret>`: define the API key to use for every command. This is equivalent to `hpf key <key>`.
+-   `hpf config --apiUrl <url>`: override default API url.
 
 #### Set global API key
 
@@ -61,7 +61,7 @@ Alias: `hpf ls`
 This command displays what is visible for the CLI from this directory.
 It shows the list of channels and the list of models used by those channels.
 
-The CLI looks for `hapify.json` files to auto-detect channels.
+The CLI looks for `hapify.json` files in order to auto-detect channels.
 It recurses over sub-directories. Default depth is `2`.
 To modify this value, use the `depth` option.
 
@@ -70,8 +70,8 @@ hpf list --depth 3
 ```
 
 _Note:_
-You are not supposed to run the CLI with different models sets.
-If this is the case, the first found set will be used.
+You are not supposed to run the CLI with different model sets.
+If this is the case, the first set to be found will be used.
 
 #### Generate the code
 
@@ -81,8 +81,8 @@ hpf generate
 
 Alias: `hpf g`
 
-This command generates all found channels from theirs templates and models.
-To define the depth to look for channels, use this option: `--depth <n>`. Default is `2`.
+This command generates all found channels from their templates and models.
+To define the search depth for channels, use this option: `--depth <n>`. Default is `2`.
 
 ```bash
 hpf generate --depth 3
@@ -98,9 +98,9 @@ Alias: `hpf x`
 
 This command generates the channel from its templates and its models.
 Then it saves the generated files in a zip file.
-To run this command you must be in the channel directory, next to the `hapify.json` file.
+To run this command, you must be in the channel directory, next to the `hapify.json` file.
 
-By default, the zip file has the channel's name, ie the folder name.
+By default, the zip file has the channel name, i.e. the folder name.
 Example: `angular-admin/angular-admin.zip`.
 You can define a custom path with this option: `-o, --output <path>`.
 
@@ -118,11 +118,11 @@ Alias: `hpf m`
 
 Use this command to import pre-defined models from the Cloud database (called presets).
 This command displays the list of available presets of models.
-Press space bar to select a preset to import and enter to confirm.
+Press the space bar to select a preset to import and enter to confirm.
 
-_Import presets from ids_
+_Import presets from IDs_
 
-Alternatively, you can import presets from their Ids (visible in [Hapify Hub](https://hub.hapify.io/))
+Alternatively, you can import presets from their IDs (visible in [Hapify Hub](https://hub.hapify.io/))
 
 ```bash
 hpf import --preset ab123 --preset bd456
@@ -136,7 +136,7 @@ hpf new
 
 Alias: `hpf n`
 
-This command let you clone and configure a boilerplate.
+This command allows you to clone and configure a boilerplate.
 It will prompt a form to:
 
 -   select a boilerpalte
@@ -147,12 +147,12 @@ _Options_
 
 -   `-p <id>`, `--project <id>`: The project to use (if already existing)
 -   `-b <slug>`, `--boilerplate <slug>`: The slug name of the boilerplate to clone
--   `--boilerplate-id <id>`: The id of the boilerplate to clone
+-   `--boilerplate-id <id>`: The ID of the boilerplate to clone
 -   `--boilerplate-url <url>`: The git URL of the boilerplate to clone
--   `--preset [id]`: Ids of presets to preload in the project
+-   `--preset [id]`: IDs of presets to preload in the project
 -   `--no-presets`: Do not prompt for presets
--   `--project-name <name>`: The project's name to create
--   `--project-desc <description>`: The project's description to create (name must be defined)
+-   `--project-name <name>`: The project name to create
+-   `--project-desc <description>`: The project description to create (name must be defined)
 
 To browse available boilerplates, please visit [hub.hapify.io](https://hub.hapify.io).
 
@@ -174,8 +174,8 @@ _Options_
 -   `--channel-name <name>`: The name of the channel to init
 -   `--channel-desc <description>`: The description of the channel to init
 -   `--channel-logo <url>`: The URL of the logo of the channel to init
--   `--project-name <name>`: The project's name to create
--   `--project-desc <description>`: The project's description to create (name must be defined)
+-   `--project-name <name>`: The project name to create
+-   `--project-desc <description>`: The project description to create (name must be defined)
 
 #### Define project to use in a boilerplate (channel)
 
@@ -186,19 +186,19 @@ hpf use
 Alias: `hpf u`
 
 Change the project used by one or more existing channels.
-It changes the project's id in file `hapify.json` for each found channels.
+It changes the project ID in file `hapify.json` for each found channels.
 It will prompt a form to select or create the project to use.
 
 _Options_
 
 -   `-p <id>`, `--project <id>`: The project to use (if already created)
--   `--project-name <name>`: The project's name to create
--   `--project-desc <description>`: The project's description to create
+-   `--project-name <name>`: The project name to create
+-   `--project-desc <description>`: The project description to create
 
 #### Patch source code with new models
 
 During the development process, you may want to add, edit or remove some models.
-To automatically apply the difference between two generation to your working branch, use this command.
+To automatically apply the difference between two generations to your working branch, use this command.
 
 This command uses `git format-patch` and `git am`.
 
@@ -206,7 +206,7 @@ This command uses `git format-patch` and `git am`.
 hpf patch
 ```
 
-This will prompt a form to let you choose the source branch and commits then destination branch.
+This will prompt a form which lets you choose the source branch and commit, and then the destination branch.
 
 #### Start the console
 
@@ -216,11 +216,11 @@ Run this command to edit models and templates.
 hpf serve
 ```
 
-This will start a server that hosts a web-based console for models and templates edition.
+This will start a server that hosts a web-based console for model and template edition.
 
 _Options_
 
--   `-p <n>`, `--port <n>`: the required port number (default between 4800 and 4820)
--   `-H <hostname>`, `--hostname <hostname>`: the required hostname (default: localhost)
--   `--no-open`: do not open a new tab in the browser to show the console
--   `--depth <n>`: depth to recursively look for channels (default: 2)
+-   `-p <n>`, `--port <n>`: The required port number (default between 4800 and 4820)
+-   `-H <hostname>`, `--hostname <hostname>`: The required hostname (default: localhost)
+-   `--no-open`: Do not open a new tab in the browser to show the console
+-   `--depth <n>`: Search depth for channel discovery (default: 2)

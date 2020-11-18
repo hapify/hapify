@@ -1,7 +1,7 @@
-# Models validator
+# Model validator
 
-Your templates cannot handle any combination of models and fields properties.
-To prevent this, you can associate a models validator to your templates.
+Your templates cannot handle any combination of model and field properties.
+To prevent this, you can associate a model validator to your templates.
 
 ## How it works
 
@@ -67,11 +67,11 @@ The `model` variable has this structure:
 }
 ```
 
-Unlike JavaScript template, the model properties is not pre-computed and you don't have access to its dependencies.
+Unlike JavaScript template, the model properties are not pre-computed and you don't have access to the model dependencies.
 
 ## Validator sample
 
-Here is a validator sample that sends a warning for unsupported fields type and an error if primary key is malformed.
+Here is a validator sample that sends a warning for unsupported field type, and an error if primary key is malformed.
 
 ```javascript
 // Model object is injected as "model"

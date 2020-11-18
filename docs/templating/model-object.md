@@ -33,7 +33,7 @@ The following objects will be available in the template.
 
 **Model object**
 
--   `id` (string): an unique id
+-   `id` (string): an unique ID
 -   `name` (string): name of the model, as the user entered it.
 -   `names` (object): name variants computed from the `name` property.
     -   `raw` (string): as the user entered it. Example `Online item`.
@@ -162,7 +162,7 @@ The following objects will be available in the template.
     -   `entity`: Is `null`.
     -   `object`: Is `null`.
     -   `file`: Can be `null`, `image`, `video`, `audio` or `document`.
--   `reference` (string): id of the target model if the field is of type `entity`. `null` otherwise
+-   `reference` (string): ID of the target model if the field is of type `entity`. `null` otherwise
 -   `model` - alias `m` (object): target model object if the field is of type `entity`. `null` otherwise
 
 **Access object**
@@ -239,9 +239,9 @@ As a convention, we use lower case to name dynamically defined variables (user v
 An user variable cannot use system reserved words. To see the complete list of reserved words, please refer to the end of this file.
 
 To refer to the root variable, we use `Model` or `Models` (short: `M`).
-It refers to the model in a single model template and to the models list in a multiple models template.
+It refers to the model in a single-model template and to the models list in a multiple-model template.
 
-By default, in a case of a single model template:
+By default, in a case of a single-model template:
 
 -   `Fields` (short: `F`) fields list: `model.fields.list`
 -   `Dependencies` (short: `D`) model's dependencies list: `model.dependencies`
@@ -557,7 +557,6 @@ It follows the same rules as an **if** statement, unless its opening tag is `<<e
 
 `#!hapify <<endif>>` is equivalent to: `}`.
 
-
 #### Examples
 
 ##### Example with conditions:
@@ -773,7 +772,6 @@ A complete iteration will look like this:
 
 `#!hapify <<endfor>>` is equivalent to: `}`.
 
-
 #### Examples
 
 ##### Example with conditions over fields:
@@ -806,7 +804,7 @@ To loop over model's searchable entity fields
 
 ##### Example with conditions over models:
 
-In the context of a multiple models template, this loops over all models that are geo-located.
+In the context of a multiple-model template, this loops over all models that are geo-located.
 
 === "Long syntax"
 

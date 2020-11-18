@@ -1,6 +1,6 @@
 # Code samples
 
-This document shows code samples in order to help you play with the Hapify syntax like a boss.
+This document shows code samples in order to help you play with the Hapify syntax like a king.
 
 ## Pre-requisites
 
@@ -10,8 +10,7 @@ Before reading this article, we recommend that you read the documentation about 
 
 ### Create a class for the current model
 
-This block creates a class for the model (in pascal case) and set the name of the primary key, in snake case.
-
+This block creates a class for the model (in pascal case) and sets the name of the primary key, in snake case.
 
 === "Long syntax"
 
@@ -39,10 +38,9 @@ This block creates a class for the model (in pascal case) and set the name of th
 
 ## Conditions
 
-### Include dependencies depending on fields properties
+### Include dependencies depending on field properties
 
-In a single model template, this block requires MongoDb driver if the model has a relation to another one.
-
+In a single-model template, this block requires the MongoDb driver if the model has a relation to another one.
 
 === "Long syntax"
 
@@ -66,10 +64,9 @@ In a single model template, this block requires MongoDb driver if the model has 
     const mongoDb = require('mongodb');
     ```
 
-### Includes session validation if the action requires authentication
+### Include session validation if the action requires authentication
 
-In a single model template, if the action `create` requires at least an authenticated user, this block get the connected user.
-
+In a single-model template, if the action `create` requires at least an authenticated user, this block gets the connected user.
 
 === "Long syntax"
 
@@ -95,9 +92,8 @@ In a single model template, if the action `create` requires at least an authenti
 
 ### Test if the model is geo-located
 
-In a single model template, if the model has the property `isGeolocated` (i.e. if the model contains at least one latitude field and one longitude field),
+In a single-model template, if the model has the property `isGeolocated` (i.e. if the model contains at least one latitude field and one longitude field),
 this block calls the map position picker component.
-
 
 === "Long syntax"
 
@@ -123,10 +119,9 @@ this block calls the map position picker component.
 
 ## Iterations
 
-### Populate an array with all hidden fields' name
+### Populate an array with all hidden field names
 
-In a single model template, this block creates an array (in Javascript) that contains the hidden (`hd`) fields' names (in camel case).
-
+In a single-model template, this block creates an array (in Javascript) that contains the hidden (`hd`) field names (in camel case).
 
 === "Long syntax"
 
@@ -159,8 +154,7 @@ In a single model template, this block creates an array (in Javascript) that con
 
 ### Create an index file that includes all models
 
-In a multiple model template, this will call all model's index file.
-
+In a multiple-model template, this will call all models' index files.
 
 === "Long syntax"
 
@@ -189,8 +183,7 @@ In a multiple model template, this will call all model's index file.
 
 ### Create an index file that includes models accessible by admins only
 
-If you want to restrict the previous loop for models that only contains admin actions:
-
+If you want to restrict the previous loop for models that only contain admin actions:
 
 === "Long syntax"
 
@@ -219,10 +212,9 @@ If you want to restrict the previous loop for models that only contains admin ac
 
 ### Define a default value depending on data type for internal fields
 
-In a single model template, this block assigns a value to the field depending on its type for all internal (`in`) fields.
-If the type of the field is `boolean` it assigns `false`, if the type is `string` it assigns `''`, if the type is `number` it assigns `0`, else it assigns `NULL`
+In a single-model template, this block assigns a value to the field depending on its type for all internal (`in`) fields.
+If the type of the field is `boolean` it assigns `false`, if the type is `string` it assigns `''`, if the type is `number` it assigns `0`, else it assigns `NULL`.
 This template outputs PHP.
-
 
 === "Long syntax"
 
@@ -266,9 +258,8 @@ This template outputs PHP.
 
 ### Requires all dependencies
 
-In a single model template, this block requires other models pointed by entity fields.
-If the model as a self-dependency, it won't be included in the loop.
-
+In a single-model template, this block requires other models pointed by entity fields.
+If the model has a self-dependency, it won't be included in the loop.
 
 === "Long syntax"
 
@@ -295,8 +286,7 @@ If the model as a self-dependency, it won't be included in the loop.
     import {MenuItem} from '../menu-item';
     ```
 
-You can also filter models by fields properties. This block excludes models that contains hidden fields:
-
+You can also filter models by field properties. This block excludes models that contain hidden fields:
 
 === "Long syntax"
 
@@ -324,10 +314,9 @@ You can also filter models by fields properties. This block excludes models that
 
 ### Cascading deletion
 
-In a single model template, this block lists all models that refer to the current one and delete them.
+In a single-model template, this block lists all models that refer to the current one and deletes them.
 The first iteration loops over all models that have dependency to this one.
-The second iteration loops over all entity relations contained in those dependant models.
-
+The second iteration loops over all entity relations contained in those dependent models.
 
 === "Long syntax"
 

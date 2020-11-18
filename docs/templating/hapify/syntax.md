@@ -1,10 +1,10 @@
 # Hapify templating
 
-## Why using a specific syntax ?
+## Why use a specific syntax?
 
-We designed a syntax to manipulate the [model object](../../model-object) injected in the templates that represents the data-model.
+We designed a syntax to manipulate the [model object](../../model-object), injected in the templates, that represents the data-model.
 This syntax is optimized to play with this object's properties with short words.
-This allow us to deal with complex ideas with short sentences.
+This allows us to manage complex ideas with short sentences.
 
 For example, this loop in Javascript:
 
@@ -36,7 +36,7 @@ Will be written like this with Hapify syntax:
 
 ### Model names
 
-In a single model template:
+In a single-model template:
 
 === "Long syntax"
 
@@ -52,7 +52,7 @@ In a single model template:
     const <<M aA>> = new <<M AA>>();
     ```
 
-For a model named `user group`, this will output:
+For a model named `user group`, this will output as:
 
 ```javascript
 // Create a new user group
@@ -133,14 +133,14 @@ Available cases are:
     <<?>>
     ```
 
-For a model that contains at least one entity field, this will output:
+For a model that contains at least one entity field, this will output as:
 
 ```javascript
 const utils = require('utils');
 const mongoDb = require('mongodb');
 ```
 
-For a model that contains no entity field, this will output:
+For a model that contains no entity field, this will output as:
 
 ```javascript
 const utils = require('utils');
@@ -172,7 +172,7 @@ const utils = require('utils');
     <<?>>
     ```
 
-### Complex condition
+### Complex conditions
 
 #### Operators
 
@@ -188,7 +188,7 @@ Example:
 === "Long syntax"
 
     ```hapify
-    <<if Fields entity and hidden or unique and not multiple>>
+    <<if Fields (entity and hidden) or (unique and not multiple)>>
       // This code block is reached if the model has at least one field that validates this conditions:
       // (type entity AND hidden) OR (unique AND NOT multiple)
     <<endif>>
@@ -197,7 +197,7 @@ Example:
 === "Short syntax"
 
     ```hapify
-    <<? F tE*hd+un/ml>>
+    <<? F (tE*hd)+(un/ml)>>
       // This code block is reached if the model has at least one field that validates this conditions:
       // (type entity AND hidden) OR (unique AND NOT multiple)
     <<?>>
@@ -246,7 +246,7 @@ Let's rewrite the last one:
 
 #### Test a single model
 
-In a single model template.
+In a single-model template.
 
 === "Long syntax"
 
@@ -268,7 +268,7 @@ In a single model template.
 
 #### Test a list of models
 
-In a multiple model template.
+In a multiple-model template.
 
 === "Long syntax"
 
@@ -292,23 +292,23 @@ In a multiple model template.
 
 #### Root object
 
-`M` refers to the top object: the model in a single model template or the array of models in a multiple model template.
+`M` refers to the top object: the model in a single-model template or the array of models in a multiple-model template.
 
 #### Filterable and testable objects
 
-In case of a single model template:
+In the case of a single-model template:
 
 -   `Fields` (short: `F`) is the fields list
 -   `Dependencies` (short: `D`) is the dependencies list (list of models)
 -   `ReferencedIn` (alias: `RefModels`, short: `R`) is the models list that depend from this one
 -   `PrimaryField` (short: `P`) is the models primary field
--   `Accesses` (short: `A`) is the action's accesses list
--   `CreateAccess` (short: `Ac`) is the create action's access
--   `ReadAccess` (short: `Ar`) is the read action's access
--   `UpdateAccess` (short: `Au`) is the update action's access
--   `RemoveAccess` (short: `Ad`) is the delete (remove) action's access
--   `SearchAccess` (short: `As`) is the search action's access
--   `CountAccess` (short: `An`) is the count action's access
+-   `Accesses` (short: `A`) is the action accesses list
+-   `CreateAccess` (short: `Ac`) is the create action access
+-   `ReadAccess` (short: `Ar`) is the read action access
+-   `UpdateAccess` (short: `Au`) is the update action access
+-   `RemoveAccess` (short: `Ad`) is the delete (remove) action access
+-   `SearchAccess` (short: `As`) is the search action access
+-   `CountAccess` (short: `An`) is the count action access
 
 #### Filtering on field properties
 
@@ -358,7 +358,7 @@ Short-codes available for the properties of a model:
 -   `isGeolocated` (short: `pGeo`) the model contains at least one latitude field and one longitude field
 -   `isGeoSearchable` (short: `pGSe`) the model contains at least one searchable latitude field and one searchable longitude field
 
-Short-codes available for the access' properties of a model:
+Short-codes available for the access properties of a model:
 
 -   `onlyAdmin` (short: `pOAd`) the model only contains actions restricted to `admin`
 -   `onlyOwner` (short: `pOOw`) the model only contains actions restricted to `owner`
@@ -392,11 +392,11 @@ Short-codes available for the access of an action:
 
 ## Iterations
 
-Iterations uses the same operators as conditions.
+Iterations use the same operators as conditions.
 
 ### Simple iteration
 
-Loop over all fields of a model that are not hidden and assign them to variable `f`.
+Loop over all fields of a model that are not hidden and assign them to variable `f`:
 
 === "Long syntax"
 
@@ -432,7 +432,7 @@ $fields = array(
 
 ### Shortened iteration
 
-Loop over the 2 first fields of a model
+Loop over the first 2 fields of a model:
 
 === "Long syntax"
 
@@ -468,7 +468,7 @@ $fields = array(
 
 ### Nested iterations
 
-In a multiple model template, this will loop over all fields of all models:
+In a multiple-model template, this will loop over all fields of all models:
 
 === "Long syntax"
 
@@ -538,7 +538,7 @@ Define a custom variable and print it:
 
 ### Custom function
 
-Define a custom function and call it
+Define a custom function and call it:
 
 === "Long syntax"
 
@@ -577,7 +577,7 @@ Define a custom function and call it
 ### Error
 
 Do not write this: `#!hapify <<= JSON.stringify(model) >>`.
-The `model` object has recursive properties. Therefore this command will enter an infinite loop.
+The `model` object has recursive properties. Therefore this command will lead to an infinite loop.
 
 ## Comments
 

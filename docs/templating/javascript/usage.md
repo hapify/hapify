@@ -1,12 +1,11 @@
 # JavaScript templates
 
-You can write templates in pure JavaScript.
-In some cases, writing templates in JavaScript is more efficient. For example to output JSON object or documentation.
+You can write templates in JavaScript: in some cases, this is more efficient. For example, to output JSON object or documentation.
 
 ## Model object
 
 The templates receive the [model object](templating/model-object) under the `model` (or `m`) variable.
-In case of a multiple models template, an array of model objects will be available under the `models` (or `m`) variable.
+In the case of a multiple-model template, an array of model objects will be available under the `models` (or `m`) variable.
 
 The next block is a JSON export of the model object for a very simple case. Here the `User profile` model has 3 fields including an entity reference.
 To keep this JSON as short as possible, we have removed all short codes, many recurrent properties and sub-models details.
@@ -278,9 +277,9 @@ or to the TypeScript interface `ExplicitModel` in the `hapify/generator` [source
 Now we know the model object structure, we can start coding a JavaScript template.
 
 When running the generation, the JavaScript templates are wrapped into a function. Therefore, the code you are writing is the body of this function.
-You code must return a string.
+Your code must return a string.
 
-### Single model template
+### Single-model template
 
 === "JavaScript"
 
@@ -296,7 +295,7 @@ You code must return a string.
     Fields are: Id, CreatedAt, Avatar
     ```
 
-### Multiple models template
+### Multiple-model template
 
 === "JavaScript"
 

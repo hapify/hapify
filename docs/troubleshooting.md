@@ -1,8 +1,8 @@
 # Troubleshooting
 
-While using the Hapify CLI/GUI, you may encounter some errors during code generation, templates or models edition and project management
+While using the Hapify CLI/GUI, you may encounter some errors during code generation, template or model edition and project management.
 
-This guide will list all known errors to help you to get through them.
+This guide will list all known errors to help you resolve them.
 
 If you find an unknown error, please contact us: [hapify.io/contact](https://www.hapify.io/contact).
 
@@ -11,9 +11,9 @@ If you find an unknown error, please contact us: [hapify.io/contact](https://www
 Errors range: 1000 to 1999
 
 -   1001 (SyntaxInternalError): Thrown when an unexpected error is triggered.
--   1002 (SyntaxArgumentsError): Thrown when the "run" function is call with wrong arguments.
+-   1002 (SyntaxArgumentsError): Thrown when the "run" function is called with wrong arguments.
 -   1003 (SyntaxParsingError): Thrown when the Hpf template has a syntax error.
--   1004 (SyntaxEvaluationError): Thrown when the evaluation of the Hpf template cause an error.
+-   1004 (SyntaxEvaluationError): Thrown when the evaluation of the Hpf template causes an error.
 -   1005 (SyntaxTimeoutError): Thrown when the Hpf template is too long to process.
 
 ## Errors sent by the Hapify Generator
@@ -33,23 +33,23 @@ Errors range: 3000 to 3999
 ### Generic errors
 
 -   3001 (ApiInternalError): Thrown when an unexpected error is triggered.
--   3002 (ApiError): Thrown when routes emit an error that cannot be specified.
--   3003 (ApiRequestError): Thrown when routes are called with wrong arguments.
+-   3002 (ApiError): Thrown when a route emits an error that cannot be specified.
+-   3003 (ApiRequestError): Thrown when a route are called with wrong arguments.
 -   3010 (ApiAuthenticationError): Thrown when there was an issue with the authentication.
 -   3020 (ApiPlanError): Thrown when the resource reached a limit of the current plan.
 -   3030 (ApiForbiddenError): Thrown when the access to the resource is forbidden.
 -   3040 (ApiNotFoundError): Thrown when the resource is not found.
 -   3090 (ApiDuplicateError): Thrown when the resource already exists.
--   3220 (ApiDataError): Thrown when there data to process are malformed.
--   3290 (ApiRateError): Thrown when two many requests has been done.
+-   3220 (ApiDataError): Thrown when the data to process is malformed.
+-   3290 (ApiRateError): Thrown when too many requests have been done.
 
 ### Generator errors
 
 -   3021 (ApiGeneratorPlanError): Thrown when a limit about models, fields or templates has been reached.
 -   3031 (ApiGeneratorForbiddenError): Thrown when the access to a project or model is forbidden.
 -   3041 (ApiGeneratorNotFoundError): Thrown when a project or model does not exist.
--   3221 (ApiGeneratorDataError): Thrown when there is no models attached to this project.
--   3291 (ApiGeneratorRateError): Thrown when two many requests has been done to the generator.
+-   3221 (ApiGeneratorDataError): Thrown when there is no model attached to this project.
+-   3291 (ApiGeneratorRateError): Thrown when too many requests have been done to the generator.
 
 ### Model errors
 
@@ -58,7 +58,7 @@ Errors range: 3000 to 3999
 
 ### Project errors
 
--   3023 (ApiProjectPlanError): Thrown when the user already reach its projects limit.
+-   3023 (ApiProjectPlanError): Thrown when the user already reached their project limit.
 -   3033 (ApiProjectForbiddenError): Thrown when the access to the project is forbidden.
 -   3043 (ApiProjectNotFoundError): Thrown when the project does not exist.
 
@@ -69,7 +69,7 @@ Errors range: 4000 to 4999
 -   4001 (CliInternalError): Thrown when an unexpected error is triggered.
 -   4002 (CliMessageValidationError): Thrown when an incoming message from web console is malformed.
 -   4003 (CliDataValidationError): Thrown when data sent by the web console is malformed.
--   4004 (CliUnknownMessageError): Thrown when the incoming message id is unkmown.
+-   4004 (CliUnknownMessageError): Thrown when the incoming message ID is unknown.
 -   4005 (CliValidatorEvaluationError): Thrown when the evaluation of the JS validator causes an error.
 -   4006 (CliValidatorTimeoutError): Thrown when the JS validator is too long to process.
 -   4007 (CliValidatorOutputError): Thrown when the JS validator returns malformed data.

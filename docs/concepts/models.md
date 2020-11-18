@@ -92,4 +92,4 @@ Available types are:
 	
 - **Restricted**: if data access (read and/or write) is restricted to specific users (e.g.: a `validated` status to be set by an admin only).
 
-- **Ownership**: defines the identity of the entity's owner(s) (e.g.: a bar with a field `creator` containing the user ID).
+- **Ownership**: defines the identity of the entity owner(s) (e.g.: a bar with a field `creator` containing the user ID).

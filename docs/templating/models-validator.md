@@ -27,7 +27,7 @@ return {
 
 ### Access model properties
 
-In the validator's script, the model is available under the `model` variable.
+In the validator script, the model is available under the `model` variable.
 The `model` variable has this structure:
 
 ```json

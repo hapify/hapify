@@ -3,7 +3,7 @@
 ## Why use a specific syntax?
 
 We designed a syntax to manipulate the [model object](../../model-object), injected in the templates, that represents the data-model.
-This syntax is optimized to play with this object's properties with short words.
+This syntax is optimized to play with this object properties with short words.
 This allows us to manage complex ideas with short sentences.
 
 For example, this loop in Javascript:

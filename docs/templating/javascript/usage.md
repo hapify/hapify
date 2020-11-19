@@ -4,14 +4,14 @@ You can write templates in JavaScript: in some cases, this is more efficient. Fo
 
 ## Model object
 
-The templates receive the [model object](templating/model-object) under the `model` (or `m`) variable.
+The templates receive the [model object](../../model-object/) under the `model` (or `m`) variable.
 In the case of a multiple-model template, an array of model objects will be available under the `models` (or `m`) variable.
 
 The next block is a JSON export of the model object for a very simple case. Here the `User profile` model has 3 fields including an entity reference.
 To keep this JSON as short as possible, we have removed all short codes, many recurrent properties and sub-models details.
 This JSON is a partial representation of the real injected model object, but it gives you a good overview of its structure.
 
-If you want to know the complete structure of the model object, you can refer to the [model object documentation](templating/model-object)
+If you want to know the complete structure of the model object, you can refer to the [model object documentation](../../model-object/)
 or to the TypeScript interface `ExplicitModel` in the `hapify/generator` [source code](https://github.com/hapify/generator/blob/master/src/interfaces.ts).
 
 ```json
@@ -319,4 +319,4 @@ Your code must return a string.
 
 ### More usages
 
-To read more samples, please refer to [JavaScript code samples](../code-samples).
+To read more samples, please refer to [JavaScript code samples](../code-samples/).

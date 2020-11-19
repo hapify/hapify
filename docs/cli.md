@@ -21,7 +21,8 @@ To check the installed version, run `hpf --version`.
 ### Global options
 
 -   `-V`, `--version`: output the version number
--   `--debug`: enable debug mode
+-   `--debug`: enable debug mode (default: false)
+-   `--silent`: enable silent mode (default: false)
 -   `-d <path>`, `--dir <path>`: change the working directory. This path can be absolute or relative to the current path
 -   `-k <secret>`, `--key <secret>`: force usage of an API key rather than the one defined in global configuration. If you want to define your API key permanently, you should use command `hpf key`
 -   `-h`, `--help`: show help
@@ -148,7 +149,7 @@ _Options_
 -   `-p <id>`, `--project <id>`: The project to use (if already existing)
 -   `-b <slug>`, `--boilerplate <slug>`: The slug name of the boilerplate to clone
 -   `--boilerplate-id <id>`: The ID of the boilerplate to clone
--   `--boilerplate-url <url>`: The git URL of the boilerplate to clone
+-   `--boilerplate-url [url]`: The git URLs of the boilerplates to clone
 -   `--preset [id]`: IDs of presets to preload in the project
 -   `--no-presets`: Do not prompt for presets
 -   `--project-name <name>`: The project name to create
@@ -170,7 +171,6 @@ It will prompt a form to select or create a project.
 
 _Options_
 
--   `-p <id>`, `--project <id>`: The project to use (if already created)
 -   `--channel-name <name>`: The name of the channel to init
 -   `--channel-desc <description>`: The description of the channel to init
 -   `--channel-logo <url>`: The URL of the logo of the channel to init

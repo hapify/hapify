@@ -2,7 +2,7 @@
 
 ## Why use a specific syntax?
 
-We designed a syntax to manipulate the [model object](../../model-object), injected in the templates, that represents the data-model.
+We designed a syntax to manipulate the [model object](../../model-object/), injected in the templates, that represents the data-model.
 This syntax is optimized to play with this object properties with short words.
 This allows us to manage complex ideas with short sentences.
 
@@ -595,4 +595,4 @@ The following list of words cannot be used for naming variables.
 
 ## Learn more
 
-If you want to learn more about Hapify syntax and how it is mapped to the [model object](templating/model-object) injected in the templates, please refer to this [documentation](templating/model-object).
+If you want to learn more about Hapify syntax and how it is mapped to the [model object](../../model-object/) injected in the templates, please refer to this [documentation](../../model-object/).

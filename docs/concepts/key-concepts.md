@@ -16,7 +16,7 @@ Using Hapify you can either:
 - **Reverse Engineer** your own static boilerplates
 - Use **[community boilerplates](https://hub.hapify.io/)**
 
-For detailed information about templating you can refer to the [syntax documentation](../templating/hapify) and the [templating documentation](../templating/javascript).
+For detailed information about templating you can refer to the [syntax documentation](../templating/hapify/syntax/) and the [templating documentation](../templating/javascript/usage/).
 
 ## Modeling 
 
@@ -24,11 +24,11 @@ Hapify lets you define the data-models that fit your project specifications. The
 
 The data-models can be edited in a local Web Console.
 
-![Hapify GUI - models edition](../assets/gui-models.png 'Models Edition')
+![Hapify GUI - models edition](../assets/gui-models-access.png 'Models Edition')
 
 Note: you can import data-models provided by the Community on the [Hapify Hub](https://hub.hapify.io/).
 
-For detailed information about data-models you can refer to the [data-models documentation](./models).
+For detailed information about data-models you can refer to the [data-models documentation](./models/).
 
 ## Hapify Boilerplate
 

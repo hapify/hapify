@@ -29,7 +29,7 @@ Additionally you can check if the package is installed by running: `hpf --versio
 ## 2. Start a new project
 
 In this section, we will describe how to start a project from an pre-packaged boilerplate.
-To start a project from a legacy boilerplate, please refer to [legacy](templating/code-samples/).
+To start a project from a legacy boilerplate, please refer to the [init command](cli/#create-a-new-boilerplate-channel).
 
 ### Prepare folder
 
@@ -119,7 +119,7 @@ hpf serve
 
 The local GUI looks like:
 
-![Hapify GUI - models edition](assets/gui-models.png 'Models Edition')
+![Hapify GUI - models edition](assets/gui-models-access.png 'Models Edition')
 
 To learn more about model management please refer to [GUI Models](concepts/models/).
 
@@ -137,7 +137,7 @@ Now you can start customizing and running the generated code.
 ## 5. Lifecycle
 
 If you need to re-generate the code (because of models or templates modifications), although you have already modified the generated code, use the command `hpf patch`.
-To prevent conflicts during re-generation, please read our [best practice guide](best-practices).
+To prevent conflicts during re-generation, please read our [best practice guide](best-practices/).
 
 ## Store your models in Hapify Cloud
 

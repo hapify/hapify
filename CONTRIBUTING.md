@@ -27,7 +27,7 @@ Adding tests is a great way to help preventing future bugs.
 
 You can either improve existing content or add new resources.
 
-If you miss a particular information in [the reference documentation](https://www.hapify.io/documentation), feel free to either create an issue or PR.
+If you miss a particular information in [the reference documentation](https://docs.hapify.io/), feel free to either create an issue or PR.
 
 
 ## Features

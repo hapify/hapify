@@ -26,8 +26,8 @@ Hapify was born out of the desire to **accelerate modern development**, by repla
 ## 5 reasons to check out Hapify
 
 1. We've improved boilerplates.
-2. Our open source [templating syntax](https://hapify.io/documentation/syntax) is unique, simple and powerful.
-3. Your are free to [write you own dynamic boilerplates](https://hapify.io/documentation/templating) with you own specifications, in any language
+2. Our open source [templating syntax](https://docs.hapify.io/en/latest/templating/hapify/syntax/) is unique, simple and powerful.
+3. Your are free to [write you own dynamic boilerplates](https://docs.hapify.io/en/latest/cli/#create-a-new-boilerplate-channel) with you own specifications, in any language
 4. You can easily reverse-engineer your current static boilerplates
 5. We strongly encourage our community to share boilerplates and data-models collections on [Hapify Hub](https://hub.hapify.io/).
 
@@ -58,7 +58,7 @@ Please refer [to the contribution guide](https://github.com/hapify/hapify/blob/m
 
 
 ## Getting Help
-- [Official documentation](https://www.hapify.io/documentation)
+- [Official documentation](https://docs.hapify.io/)
 - [Official website](https://www.hapify.io)
 
 

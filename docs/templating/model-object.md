@@ -4,7 +4,7 @@ This document describes the structure of the object that represent a model when 
 
 The second part of the document explained how the Hapify syntax map this object properties to an understandable syntax.
 
-Before reading this, you should have a look to the [key-concepts](concepts/key-concepts) section.
+Before reading this, you should have a look to the [key-concepts](../../concepts/key-concepts/) section.
 
 ## Within the templates
 

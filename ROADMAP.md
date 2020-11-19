@@ -12,6 +12,9 @@ The following lists represent a number of smaller-scope issues and improvements 
 #### Improvements
 
 - [ ] Hapify Syntax & Hapify CLI: Handle enum fields
+- [ ] Hapify CLI: Refactor code using design patterns as factories and adapters
+- [ ] Hapify Syntax: Work with a walker pattern rather than a global replacement
+- [ ] Hapify Syntax & Hapify CLI: Create a connector for IDE support
 - [x] Hapify Syntax: Add explicit syntax (long syntax)
 - [x] Hapify CLI: Stores model locally
 - [x] Hapify CLI: Run generation locally

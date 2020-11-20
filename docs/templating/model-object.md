@@ -1,8 +1,8 @@
 # Model object
 
-This document describes the structure of the object that represent a model when writing a template.
+This document describes the structure of the object that represents a model when writing a template.
 
-The second part of the document explained how the Hapify syntax map this object properties to an understandable syntax.
+The second part of the document explains how the Hapify syntax map this object properties to an understandable syntax.
 
 Before reading this, you should have a look to the [key-concepts](../../concepts/key-concepts/) section.
 
@@ -10,13 +10,13 @@ Before reading this, you should have a look to the [key-concepts](../../concepts
 
 ### Model injection
 
-The template's input can be defined as `one` or `all` models.
-During the generation process, if defined as `one`, the template will be called for each model. Therefore it generates one output file for each model.
+The template input can be defined as `one` or `all` models.
+During the generation process, if defined as `one`, the template will be called one time for each model. Therefore it will generate one output file for each model.
 If defined as `all`, the template will be called once for all models. Then it will generate one output file.
 
 #### Single model
 
-If the template requires one models, therefore, an object `model` (alias `m`) will be available as a global variable in the template.
+If the template requires one model, therefore, an object `model` (alias `m`) will be available as a global variable in the template.
 In a Hapify template it will be available under `Model` or `M`.
 In a Javascript template it will be available under `model` or `m`.
 

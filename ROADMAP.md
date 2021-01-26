@@ -11,7 +11,8 @@ The following lists represent a number of smaller-scope issues and improvements 
 
 #### Improvements
 
-- [ ] Hapify Syntax & Hapify CLI: Handle enum fields
+- [x] Hapify Syntax & Hapify CLI: Handle enum fields
+- [ ] Hapify Syntax & Hapify CLI: Handle entity relation types (one-to-one, one-to-many, many-to-many)
 - [ ] Hapify CLI: Refactor code using design patterns as factories and adapters
 - [ ] Hapify Syntax: Work with a walker pattern rather than a global replacement
 - [ ] Hapify Syntax & Hapify CLI: Create a connector for IDE support
@@ -19,7 +20,7 @@ The following lists represent a number of smaller-scope issues and improvements 
 - [x] Hapify CLI: Stores model locally
 - [x] Hapify CLI: Run generation locally
 - [x] Hapify GUI: Ability to add notes on models and fields
-- [x] Hapify GUI: Ability to copy/paste models, even between different projects
+- [x] Hapify GUI: Ability to copy/paste models, even between different projectsen
 - [x] Hapify GUI: Ability to search/filter models
 - [x] Hapify GUI: Improve resources management while editing on large projects
 

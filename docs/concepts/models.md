@@ -58,6 +58,8 @@ Available types are:
 	- `date`
 	- `time`
 
+- `enum`
+
 - `entity` (reference to another model)
 
 - `object`

@@ -71,7 +71,7 @@ The following objects will be available in the template.
     -   `filter` - alias `f` (function): filter dependencies.
         -   First argument (function - default `(f) => f`): filter function receiving the referencer field (the entity field).
         -   Second argument (boolean - default `true`): boolean indicating if we should filter the self dependency.
--   `referencedIn` - alias `ri` - non-deep model only (array): models that refer to this one. These models are added as "deep models".
+-   `referencedIn` - alias `ri` - non-deep model only (array): models that refer to this one. These models are added as "deep models". These models only contains fields of type `entity` referring to the current model.
     -   `filter` - alias `f` (function): filter the array.
 -   `properties` - alias `p` (object): pre-computed properties from fields.
     -   `fieldsCount` (number): the number of fields contained in the model.
@@ -128,7 +128,7 @@ The following objects will be available in the template.
 **Field object**
 
 -   `name` (string): name of the field, as the user entered it.
--   `names` (object): name variants computed  the `name` property. As for the field object.
+-   `names` (object): name variants computed  the `name` property. As for the model object.
     -   `raw` (string): as the user entered it. Example `first_name`.
     -   `kebab` (string): example `first-name`.
     -   `big` (string): example `FIRST-NAME`.
@@ -162,8 +162,29 @@ The following objects will be available in the template.
     -   `entity`: Is `null`.
     -   `object`: Is `null`.
     -   `file`: Can be `null`, `image`, `video`, `audio` or `document`.
--   `reference` (string): ID of the target model if the field is of type `entity`. `null` otherwise
--   `model` - alias `m` (object): target model object if the field is of type `entity`. `null` otherwise
+-   `model` - alias `m` (object): target model object if the field is of type `entity`. `null` otherwise.
+-   `enum` - alias `e` (array): an array containing all enum if the field is of type `enum`. `null` otherwise. See *Enum object* section to learn more about enum's structure.
+-   `value` (string|string[]):
+    -   If type is `entity`: raw ID of the target model (string).
+    -   If type is `enum`: raw enum list (string[]).
+    -   Otherwise `null`.
+    
+**Enum object**
+
+-   `name` (string): name of the enum, as the user entered it.
+-   `names` (object): name variants computed  the `name` property. As for the field and model object.
+    -   `raw` (string): as the user entered it. Example `first_name`.
+    -   `kebab` (string): example `first-name`.
+    -   `big` (string): example `FIRST-NAME`.
+    -   `header` (string): example `First-Name`.
+    -   `snake` (string): example `first_name`.
+    -   `constant` (string): example `FIRST_NAME`.
+    -   `compact` (string): example `firstname`.
+    -   `camel` (string): example `firstName`.
+    -   `pascal` (string): example `FirstName`.
+    -   `lower` (string): example `first name`.
+    -   `upper` (string): example `FIRST NAME`.
+    -   `capital` (string): example `First Name`.
 
 **Access object**
 

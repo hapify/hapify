@@ -151,6 +151,49 @@ In a single-model template, this block creates an array (in Javascript) that con
         'token',
     ];
     ```
+    
+### Create an array containing all possible values of an enum
+
+In a single-model template, this block defines enums values as a arrays (in constant case):
+
+=== "Long syntax"
+
+    ```hapify
+    <<for Fields enum field>>
+    const <<field camel>>Values = [
+        <<for field.enum e>>
+        '<<e constant>>',
+        <<endfor>>
+    ];
+    <<endfor>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<@ F tU f>>
+    const <<f aA>>Values = [
+        <<@ f.e e>>
+        '<<e A_A>>',
+        <<@>>
+    ];
+    <<@>>
+    ```
+    
+=== "Sample output"
+
+    ```javascript
+    const roleValues = [
+        'ADMIN',
+        'USER',
+        'CUSTOMER',
+    ];
+    const statusValues = [
+        'BUSY',
+        'AVAILABLE',
+        'OUT_OF_OFFICE',
+    ];
+    ```
 
 ### Create an index file that includes all models
 
@@ -317,6 +360,10 @@ You can also filter models by field properties. This block excludes models that 
 In a single-model template, this block lists all models that refer to the current one and deletes them.
 The first iteration loops over all models that have dependency to this one.
 The second iteration loops over all entity relations contained in those dependent models.
+
+**Note**: The `ReferencedIn` array contains all models that refer to the current one through entity fields.
+Only referring entity fields are defined in those referring models.
+Therefore, if you loop over refers' fields, you won't be disturbed by other fields.
 
 === "Long syntax"
 

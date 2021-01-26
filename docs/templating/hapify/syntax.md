@@ -341,6 +341,7 @@ Short-codes available for a field:
 -   `datetime` (short: `tD`) for type `datetime`
     -   `date` (short: `tDd`) for type `datetime` and subtype `date`
     -   `time` (short: `tDt`) for type `datetime` and subtype `time`
+-   `enum` (short: `tU`) for type `enum`
 -   `entity` (short: `tE`) for type `entity`
 -   `object` (short: `tO`) for type `object`
 -   `file` (short: `tF`) for type `file`
@@ -468,6 +469,34 @@ $fields = array(
 
 ### Nested iterations
 
+#### Loop over enums
+
+In a single-model, this will define a TypeScript type for all enum fields:
+
+=== "Long syntax"
+
+    ```hapify
+    <<for Fields enum field>>
+    type <<field pascal>> =<<for field.enum e>> | '<<e snake>>'<<endfor>>;
+    <<endfor>>
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    <<@ F tU f>>
+    type <<f AA>> =<<@ f.e e>> | '<<e a_a>>'<<@>>;
+    <<@>>
+    ```
+
+=== "Sample output"
+
+    ```javascript
+    type Role = | 'admin' | 'user' | 'customer';
+    ```
+
+#### Loop over fields of all models
+
 In a multiple-model template, this will loop over all fields of all models:
 
 === "Long syntax"
@@ -498,29 +527,29 @@ In a multiple-model template, this will loop over all fields of all models:
     }
     ```
 
-This will generate something like this:
+=== "Sample output"
 
-```javascript
-const models = {
-    user: [
-        'id',
-        'createdAt',
-        'email',
-        'name',
-    ],
-    place: [
-        'id',
-        'name',
-        'category',
-    ],
-    placeCategory: [
-        'id',
-        'createdAt',
-        'email',
-        'name',
-    ],
-}
-```
+    ```javascript
+    const models = {
+        user: [
+            'id',
+            'createdAt',
+            'email',
+            'name',
+        ],
+        place: [
+            'id',
+            'name',
+            'category',
+        ],
+        placeCategory: [
+            'id',
+            'createdAt',
+            'email',
+            'name',
+        ],
+    }
+    ```
 
 ## Raw inputs & interpolation
 
@@ -591,7 +620,7 @@ This syntax writes a comment in the template without any output to the generated
 
 The following list of words cannot be used for naming variables.
 
-`A`, `Ac`, `Accesses`, `ad`, `Ad`, `admin`, `An`, `and`, `andNot`, `Ar`, `As`, `au`, `Au`, `audio`, `auth`, `boolean`, `CountAccess`, `CreateAccess`, `D`, `date`, `datetime`, `Dependencies`, `document`, `else`, `elseif`, `em`, `email`, `embedded`, `endfor`, `endif`, `entity`, `F`, `Fields`, `file`, `float`, `for`, `gs`, `gteAdmin`, `gteAuth`, `gteGuest`, `gteOwner`, `guest`, `hd`, `hidden`, `if`, `image`, `in`, `integer`, `internal`, `isGeolocated`, `isGeoSearchable`, `label`, `latitude`, `lb`, `longitude`, `lteAdmin`, `lteAuth`, `lteGuest`, `lteOwner`, `M`, `mainlyHidden`, `mainlyInternal`, `maxAdmin`, `maxAuth`, `maxGuest`, `maxOwner`, `ml`, `Model`, `Models`, `multiple`, `noAdmin`, `noAuth`, `noGuest`, `noOwner`, `not`, `nu`, `nullable`, `number`, `object`, `onlyAdmin`, `onlyAuth`, `onlyGuest`, `onlyOwner`, `or`, `orNot`, `os`, `out`, `ow`, `owner`, `ownership`, `P`, `password`, `pGeo`, `pGSe`, `pMAd`, `pMAu`, `pMGs`, `pMHd`, `pMIn`, `pMOw`, `pNAd`, `pNAu`, `pNGs`, `pNOw`, `pOAd`, `pOAu`, `pOGs`, `pOOw`, `pr`, `primary`, `PrimaryField`, `R`, `ReadAccess`, `ReferencedIn`, `RefModels`, `RemoveAccess`, `restricted`, `rich`, `richText`, `root`, `rs`, `se`, `searchable`, `SearchAccess`, `so`, `sortable`, `string`, `tB`, `tD`, `tDd`, `tDt`, `tE`, `text`, `tF`, `tFa`, `tFd`, `tFi`, `tFv`, `time`, `tN`, `tNf`, `tNg`, `tNi`, `tNt`, `tO`, `tS`, `tSe`, `tSp`, `tSr`, `tSt`, `tSu`, `un`, `unique`, `UpdateAccess`, `url`, `video`.
+`A`, `Ac`, `Accesses`, `ad`, `Ad`, `admin`, `An`, `and`, `andNot`, `Ar`, `As`, `au`, `Au`, `audio`, `auth`, `boolean`, `CountAccess`, `CreateAccess`, `D`, `date`, `datetime`, `Dependencies`, `document`, `else`, `elseif`, `em`, `email`, `embedded`, `endfor`, `endif`, `entity`, `enum`, `F`, `Fields`, `file`, `float`, `for`, `gs`, `gteAdmin`, `gteAuth`, `gteGuest`, `gteOwner`, `guest`, `hd`, `hidden`, `if`, `image`, `in`, `integer`, `internal`, `isGeolocated`, `isGeoSearchable`, `label`, `latitude`, `lb`, `longitude`, `lteAdmin`, `lteAuth`, `lteGuest`, `lteOwner`, `M`, `mainlyHidden`, `mainlyInternal`, `maxAdmin`, `maxAuth`, `maxGuest`, `maxOwner`, `ml`, `Model`, `Models`, `multiple`, `noAdmin`, `noAuth`, `noGuest`, `noOwner`, `not`, `nu`, `nullable`, `number`, `object`, `onlyAdmin`, `onlyAuth`, `onlyGuest`, `onlyOwner`, `or`, `orNot`, `os`, `out`, `ow`, `owner`, `ownership`, `P`, `password`, `pGeo`, `pGSe`, `pMAd`, `pMAu`, `pMGs`, `pMHd`, `pMIn`, `pMOw`, `pNAd`, `pNAu`, `pNGs`, `pNOw`, `pOAd`, `pOAu`, `pOGs`, `pOOw`, `pr`, `primary`, `PrimaryField`, `R`, `ReadAccess`, `ReferencedIn`, `RefModels`, `RemoveAccess`, `restricted`, `rich`, `richText`, `root`, `rs`, `se`, `searchable`, `SearchAccess`, `so`, `sortable`, `string`, `tB`, `tD`, `tDd`, `tDt`, `tE`, `text`, `tF`, `tFa`, `tFd`, `tFi`, `tFv`, `time`, `tN`, `tNf`, `tNg`, `tNi`, `tNt`, `tO`, `tS`, `tSe`, `tSp`, `tSr`, `tSt`, `tSu`, `tU`, `un`, `unique`, `UpdateAccess`, `url`, `video`.
 
 ## Learn more
 

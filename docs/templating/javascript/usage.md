@@ -53,7 +53,7 @@ or to the TypeScript interface `ExplicitModel` in the `hapify/generator` [source
         "notes": null,
         "type": "string",
         "subtype": null,
-        "reference": null,
+        "value": null,
         "primary": true,
         "unique": false,
         "label": false,
@@ -86,7 +86,7 @@ or to the TypeScript interface `ExplicitModel` in the `hapify/generator` [source
         "notes": null,
         "type": "datetime",
         "subtype": null,
-        "reference": null,
+        "value": null,
         "primary": false,
         "unique": false,
         "label": false,
@@ -119,7 +119,7 @@ or to the TypeScript interface `ExplicitModel` in the `hapify/generator` [source
         "notes": null,
         "type": "entity",
         "subtype": null,
-        "reference": "ac046aac-7a20-de65-2209-57e80a2bbea4",
+        "value": "ac046aac-7a20-de65-2209-57e80a2bbea4",
         "primary": false,
         "unique": false,
         "label": false,
@@ -133,7 +133,60 @@ or to the TypeScript interface `ExplicitModel` in the `hapify/generator` [source
         "restricted": false,
         "ownership": false,
         "model": "// Avatar model details..."
-      }
+      },
+      {
+        "names": {
+          "raw": "role",
+          "kebab": "role",
+          "snake": "role",
+          "header": "Role",
+          "constant": "ROLE",
+          "big": "ROLE",
+          "capital": "Role",
+          "lower": "role",
+          "upper": "ROLE",
+          "compact": "role",
+          "pascal": "Role",
+          "camel": "role"
+        },
+        "name": "role",
+        "notes": null,
+        "type": "enum",
+        "subtype": null,
+        "value": ["admin", "user", "customer"],
+        "primary": false,
+        "unique": false,
+        "label": false,
+        "nullable": false,
+        "multiple": false,
+        "embedded": false,
+        "searchable": true,
+        "sortable": false,
+        "hidden": false,
+        "internal": false,
+        "restricted": false,
+        "ownership": false,
+        "enum": [
+            {
+              "name": "admin",
+              "names": {
+                "raw": "admin",
+                "kebab": "admin",
+                "snake": "admin",
+                "header": "Admin",
+                "constant": "ADMIN",
+                "big": "ADMIN",
+                "capital": "Admin",
+                "lower": "admin",
+                "upper": "ADMIN",
+                "compact": "admin",
+                "pascal": "Admin",
+                "camel": "admin"
+              }
+            },
+            "// Same structure for each enum"
+          ]
+        }
     ],
     "primary": "// Primary field details...",
     "unique": ["// unique fields details (if any)..."],
@@ -268,7 +321,7 @@ or to the TypeScript interface `ExplicitModel` in the `hapify/generator` [source
     "list": ["// Avatar model details..."],
     "self": false
   },
-  "referencedIn": []
+  "referencedIn": ["// Referring models come here, populated with entity fields only."]
 }
 ```
 

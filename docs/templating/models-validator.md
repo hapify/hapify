@@ -41,7 +41,7 @@ The `model` variable has this structure:
             "notes": null,
             "type": "string",
             "subtype": null,
-            "reference": null,
+            "value": null,
             "primary": true,
             "unique": false,
             "label": false,

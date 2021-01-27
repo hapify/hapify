@@ -89,6 +89,8 @@ To define the search depth for channels, use this option: `--depth <n>`. Default
 hpf generate --depth 3
 ```
 
+Note that empty generated files will not be saved.
+
 #### Export the code
 
 ```bash
@@ -108,6 +110,8 @@ You can define a custom path with this option: `-o, --output <path>`.
 ```bash
 hpf export -o /path/to/file.zip
 ```
+
+Note that empty generated files will not be added to the zip.
 
 #### Import the models
 

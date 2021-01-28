@@ -117,6 +117,56 @@ this block calls the map position picker component.
     <app-map-position-picker [model]="place"></app-map-position-picker>
     ```
 
+### Get related instances based on cardinality
+
+This example creates a method to fetch related entities from a store, regarding the relation type: one-to-one, one-to-many or many-to-many.
+
+=== "Long syntax"
+
+    ```hapify
+    class <<Model pascal>> extends BaseModel {
+    <<for Fields entity field>>
+        get<<field pascal>>() {
+        <<if field oneOne>>
+            return this.<<field.model camel>>Store.findOne(this.properties.<<field camel>>);
+        <<elseif field oneMany or manyMany>>
+            return this.<<field.model camel>>Store.findMany(this.properties.<<field camel>>);
+        <<endif>>
+        }
+    <<endfor>>
+    }
+    ```
+
+=== "Short syntax"
+
+    ```hapify
+    class <<M AA>> extends BaseModel {
+    <<@ F tE f>>
+        get<<f AA>>() {
+        <<? f tEoo>>
+            return this.<<f.m aA>>Store.findOne(this.properties.<<f aA>>);
+        <<?? f tEom + tEmm>>
+            return this.<<f.m aA>>Store.findMany(this.properties.<<f aA>>);
+        <<?>>
+        }
+    <<@>>
+    }
+    ```
+    
+=== "Sample output"
+
+    ```typescript
+    class User extends BaseModel {
+        getAvatar() {
+            return this.avatarStore.findOne(this.properties.avatar);
+        }
+        getBookmarks() {
+            return this.placeStore.findMany(this.properties.bookmarks);
+        }
+    }
+    ```
+
+
 ## Iterations
 
 ### Populate an array with all hidden field names

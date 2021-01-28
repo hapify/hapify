@@ -61,6 +61,9 @@ Available types are:
 - `enum`
 
 - `entity` (reference to another model)
+	- `oneOne`
+	- `oneMany`
+	- `manyMany`
 
 - `object`
 

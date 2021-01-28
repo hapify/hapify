@@ -369,6 +369,9 @@ Available properties for a field:
     -   `date` (short: `tDd`) for type `datetime` and subtype `date`
     -   `time` (short: `tDt`) for type `datetime` and subtype `time`
 -   `entity` (short: `tE`) for type `entity`
+    -   `oneOne` (short: `tEoo`) for type `entity` and subtype `oneOne`
+    -   `oneMany` (short: `tEom`) for type `entity` and subtype `oneMany`
+    -   `manyMany` (short: `tEmm`) for type `entity` and subtype `manyMany`
 -   `object` (short: `tO`) for type `object`
 -   `file` (short: `tF`) for type `file`
     -   `image` (short: `tFi`) for type `file` and subtype `image`

@@ -117,9 +117,9 @@ this block calls the map position picker component.
     <app-map-position-picker [model]="place"></app-map-position-picker>
     ```
 
-### Get related instances based on cardinality
+### Get relations based on cardinality
 
-This example creates a method to fetch related entities from a store, regarding the relation type: one-to-one, one-to-many or many-to-many.
+This example creates a method to fetch entities from a store, regarding the relation type: one-to-one, one-to-many or many-to-many.
 
 === "Long syntax"
 

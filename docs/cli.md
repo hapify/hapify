@@ -170,7 +170,7 @@ hpf init
 Alias: `hpf i`
 
 This command creates a new Hapify files structure in the current directory.
-It creates a file `hapify.json` and a folder `hapify` containing a template `models/model/hello.js.hpf`.
+It creates 2 files `hapify.json`, `hapify-models.json` and a folder `.hapify` containing a template `models/__kebab__/hello.js.hpf`.
 It will prompt a form to select or create a project.
 
 _Options_

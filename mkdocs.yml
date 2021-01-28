@@ -23,6 +23,8 @@ theme:
   palette:
     primary: deep purple
     accent: cyan
+extra_css:
+  - stylesheets/extra.css
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.inlinehilite

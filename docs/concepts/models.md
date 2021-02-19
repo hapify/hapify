@@ -63,6 +63,7 @@ Available types are:
 - `entity` (reference to another model)
 	- `oneOne`
 	- `oneMany`
+	- `manyOne`
 	- `manyMany`
 
 - `object`

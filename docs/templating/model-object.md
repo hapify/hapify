@@ -371,6 +371,7 @@ Available properties for a field:
 -   `entity` (short: `tE`) for type `entity`
     -   `oneOne` (short: `tEoo`) for type `entity` and subtype `oneOne`
     -   `oneMany` (short: `tEom`) for type `entity` and subtype `oneMany`
+    -   `manyOne` (short: `tEmo`) for type `entity` and subtype `manyOne`
     -   `manyMany` (short: `tEmm`) for type `entity` and subtype `manyMany`
 -   `object` (short: `tO`) for type `object`
 -   `file` (short: `tF`) for type `file`

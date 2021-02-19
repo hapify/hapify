@@ -368,6 +368,7 @@ Available properties for a field:
 -   `datetime` (short: `tD`) for type `datetime`
     -   `date` (short: `tDd`) for type `datetime` and subtype `date`
     -   `time` (short: `tDt`) for type `datetime` and subtype `time`
+-   `enum` (short: `tU`) for type `enum`
 -   `entity` (short: `tE`) for type `entity`
     -   `oneOne` (short: `tEoo`) for type `entity` and subtype `oneOne`
     -   `oneMany` (short: `tEom`) for type `entity` and subtype `oneMany`

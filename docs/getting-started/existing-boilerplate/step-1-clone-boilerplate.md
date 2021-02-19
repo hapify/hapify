@@ -113,3 +113,54 @@ It is referenced by the config files (`hapify.json`).
 You can move or rename this models file as long as you change the path in the config files.
 
 `.hapify` folder (can also be nammed `hapify`) is the templates folder. It contains all the templates of the boilerplate.
+
+## Optional: Store your models on Hapify Cloud
+
+By default, Hapify stores your models locally. The path is defined in the config file.
+You can store your models remotely, in order to share them across multiple repositories.
+
+To connect the CLI to Hapify Cloud, please follow [these steps](../../installation/#optional-connect-the-cli-to-hapify-cloud)
+
+### Connect your local boilerplate to a remote project
+
+Run [this command](../../reference/cli/#define-project-to-use-in-a-boilerplate-channel) to configure your local boilerplate:
+
+```bash
+hpf use
+```
+
+#### Create a project
+
+You can create a project directly from the CLI by selecting `Create a new project`.
+When prompt, enter name and description.
+
+```
+? Choose a project Create a new project
+? Enter a project name First project
+? Enter a project description My first project with Hapify
+```
+
+#### Select an existing project
+
+From the list below, select a project from you account.
+
+```
+? Choose a project (Use arrow keys)
+  Create a new project 
+  ──────────────
+❯ First project
+  Second project
+```
+
+!!! tip inline end
+    You can create a project online from you Hapify account: [https://www.hapify.io/my-projects](https://www.hapify.io/my-projects)
+
+Now the boilerplate will store and read models from Hapify Cloud.
+
+```
+? Choose a project First project
+✓ Did set project 5c893c0a74e4650010e6f683 for channel HapiJS
+✓ Did set project 5c893c0a74e4650010e6f683 for channel Angular Dashboard
+```
+
+The ID of the project is stored in config files (`hapify.json`).

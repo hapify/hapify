@@ -172,7 +172,7 @@ Now your CLI can interact with Hapify Cloud.
 
 For every boilerplate you want to connect to a remote project, run [this command](cli/#define-project-to-use-in-a-boilerplate-channel):
 
-```bash
+```shell
 hpf use
 ```
 

@@ -21,19 +21,19 @@ For each of these actions, Hapify allows you to define the following access rest
 
 -   _Guest_: user who is not logged-in.
 -   _Authenticated_: logged-in user.
--   _Owner_ : logged-in user who owns the entity (see [Field properties](#field-properties) for more details).
+-   _Owner_ : logged-in user who owns the entity (see [Field attributes](#field-attributes) for more details).
 -   _Admin_: logged-in super-admin user.
 
 Accesses are inclusive, which means the _Authenticated_ restriction necessarily includes _Owner_ and _Admin_.
 
-## Model properties
+## Fields
 
 A model contains a list of fields. Each field is defined by:
 
 - a name
 - a type
 - a sub-type (optional)
-- a set of (behavioral) properties.
+- a set of (behavioral) attributes.
 
 ### Types and sub-types
 
@@ -74,7 +74,7 @@ Available types are:
 	- `audio`
 	- `document`
 
-### Field properties
+### Field attributes
 
 - **Primary**: the field is the primary identifier.
 

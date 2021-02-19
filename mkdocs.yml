@@ -1,22 +1,37 @@
 site_name: Hapify
 nav:
-  - Get started: 'index.md'
-  - CLI: 'cli.md'
-  - Concepts:
-      - Key concepts: 'concepts/key-concepts.md'
-      - Models: 'concepts/models.md'
-  - Templating:
+  - Home: 'index.md'
+  - Getting started:
+      - Installation: 'getting-started/installation.md'
+      - Use an existing boilerplate:
+          - Introduction: 'getting-started/existing-boilerplate/introduction.md'
+          - "Step 1: Clone boilerplate": 'getting-started/existing-boilerplate/step-1-clone-boilerplate.md'
+          - "Step 2: Edit models": 'getting-started/existing-boilerplate/step-2-edit-models.md'
+          - "Step 3: Generate the code": 'getting-started/existing-boilerplate/step-3-generate.md'
+          - "Step 4: Lifecycle": 'getting-started/existing-boilerplate/step-4-lifecycle.md'
+      - Create your own boilerplate:
+          - Introduction: 'getting-started/create-boilerplate/introduction.md'
+          - "Step 1: New Channel": 'getting-started/create-boilerplate/step-1-new-channel.md'
+          - "Step 2: Add models": 'getting-started/create-boilerplate/step-2-add-models.md'
+          - "Step 3: Develop templates": 'getting-started/create-boilerplate/step-3-templates.md'
+          - "Step 4: Models validator": 'getting-started/create-boilerplate/step-4-models-validator.md'
+      - Concepts:
+          - Key concepts: 'getting-started/concepts/key-concepts.md'
+          - Models: 'getting-started/concepts/models.md'
+      - Troubleshooting: 'getting-started/troubleshooting.md'
+  - Reference:
+      - CLI: 'reference/cli.md'
       - Hapify:
-        - Syntax: 'templating/hapify/syntax.md'
-        - Samples: 'templating/hapify/code-samples.md'
+          - Syntax: 'reference/hapify/syntax.md'
+          - Samples: 'reference/hapify/code-samples.md'
       - JavaScript:
-        - Usage: 'templating/javascript/usage.md'
-        - Samples: 'templating/javascript/code-samples.md'
-      - Model object: 'templating/model-object.md'
-      - Models validator: 'templating/models-validator.md'
-  - Best practices: 'best-practices.md'
-  - Troubleshooting: 'troubleshooting.md'
+          - Usage: 'reference/javascript/usage.md'
+          - Samples: 'reference/javascript/code-samples.md'
+      - Model object: 'reference/model-object.md'
+      - Models validator: 'reference/models-validator.md'
 theme:
+  features:
+    - navigation.tabs
   name: material
   favicon: assets/icon-192x192.png
   logo: assets/logo-no-margin-white.png

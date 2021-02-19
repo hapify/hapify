@@ -121,7 +121,7 @@ The local GUI looks like:
 
 ![Hapify GUI - models edition](assets/gui-models-access.png 'Models Edition')
 
-To learn more about model management please refer to [GUI Models](concepts/models/).
+To learn more about model management please refer to [GUI Models](getting-started/concepts/models/).
 
 ## 4. Generate the code
 

@@ -24,7 +24,7 @@ Hapify lets you define the data-models that fit your project specifications. The
 
 The data-models can be edited in a local Web Console.
 
-![Hapify GUI - models edition](../assets/gui-models-access.png 'Models Edition')
+![Hapify GUI - models edition](../../assets/gui-models-access.png 'Models Edition')
 
 Note: you can import data-models provided by the Community on the [Hapify Hub](https://hub.hapify.io/).
 

@@ -1,6 +1,6 @@
 site_name: Hapify
 nav:
-  - Home: 'index.md'
+  - 'index.md'
   - Getting started:
       - Installation: 'getting-started/installation.md'
       - Use an existing boilerplate:
@@ -32,6 +32,10 @@ nav:
 theme:
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.instant
   name: material
   favicon: assets/icon-192x192.png
   logo: assets/logo-no-margin-white.png
@@ -41,6 +45,7 @@ theme:
 extra_css:
   - stylesheets/extra.css
 markdown_extensions:
+  - meta
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.superfences

@@ -1,2 +1,2 @@
-mkdocs-material==6.1.4
+mkdocs-material==6.2.8
 git+https://github.com/hapify/pymdown-lexers.git

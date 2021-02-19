@@ -292,7 +292,7 @@ In a multiple-model template.
 
 #### Root object
 
-`M` refers to the top object: the model in a single-model template or the array of models in a multiple-model template.
+`Model` or `Models` (short: `M`) refers to the top object: the model in a single-model template or the array of models in a multiple-model template.
 
 #### Filterable and testable objects
 

@@ -93,4 +93,10 @@ You can leave notes on both models and fields. Click on the chat icon and write 
 
 ![Hapify GUI - Models notes](../../assets/gui-models-fields-notes.jpg 'Models notes'){: style="max-width: 411px"}
 
+## Errors and warnings
+
+A boilerplate can validate the models you are writing.
+Those errors or warnings will show-up when editing the models.
+
+![Hapify GUI - Models error](../../assets/gui-models-error.jpg 'Models error'){: style="max-width: 464px"}
 

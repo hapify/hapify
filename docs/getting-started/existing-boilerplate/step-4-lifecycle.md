@@ -53,6 +53,3 @@ If an error occurred during this git command, this is probably due to a merge co
 
 If so, open your code editor and resolve the conflict. Once it is done, run `git am --continue` to finalize or `git am --abort` to cancel the merge.
 
-## More
-
-More best practices are coming, we are working on it.

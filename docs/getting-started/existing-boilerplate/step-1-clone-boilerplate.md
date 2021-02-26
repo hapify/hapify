@@ -114,7 +114,7 @@ You can move or rename this models file as long as you change the path in the co
 
 `.hapify` folder (can also be nammed `hapify`) is the templates folder. It contains all the templates of the boilerplate.
 
-## Optional: Store your models on Hapify Cloud
+## **Optional**: Store your models on Hapify Cloud
 
 By default, Hapify stores your models locally. The path is defined in the config file.
 You can store your models remotely, in order to share them across multiple repositories.

@@ -40,39 +40,18 @@ A model contains a list of fields. Each field is defined by:
 Available types are:
 
 - `string`
-	- `email`
-	- `password`
-	- `url`
-	- `text`
-	- `rich`
- 
+	- `email`, `password`, `url`, `text`, `rich`
 - `number`
-	- `integer`
-	- `float`
-	- `latitude`
-	- `longitude`
-
+	- `integer`, `float`, `latitude`, `longitude`
 - `boolean`
-
 - `datetime`
-	- `date`
-	- `time`
-
+	- `date`, `time`
 - `enum`
-
 - `entity` (reference to another model)
-	- `oneOne`
-	- `oneMany`
-	- `manyOne`
-	- `manyMany`
-
+	- `oneOne`, `oneMany`, `manyOne`, `manyMany`
 - `object`
-
 - `file`
-	- `image`
-	- `video`
-	- `audio`
-	- `document`
+	- `image`, `video`, `audio`, `document`
 
 ### Field attributes
 

@@ -8,7 +8,7 @@ npm install -g @hapify/cli
 
 Additionally you can check if the package is installed by running: `hpf --version`.
 
-## Optional: Connect the CLI to Hapify Cloud
+## **Optional**: Connect the CLI to Hapify Cloud
 
 The Hapify CLI can interact with Hapify Cloud for project and model storage.
 Therefore, you need to get an API key from Hapify Cloud to access these CLI features.

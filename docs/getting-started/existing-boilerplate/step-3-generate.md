@@ -17,7 +17,7 @@ This will run the generator and copy the generated files into your local boilerp
 
 Now you can start customizing and running the generated code.
 
-!!! tip inline end
+!!! tip
     The `generate` command can handle multiple boilerplates at once.
     To learn mode about the `generate` command please refer to [this article](../../../reference/cli/#generate-the-code).
 

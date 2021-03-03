@@ -83,27 +83,26 @@ Run hpf generate to generate the source code.
 The folder structure looks like this:
 
 ```
-my-project
-│
-│───boilerplate-hapijs
-│   │   hapify.json
-│   │   hapify-models.json
-│   │   Dockerfile
-│   │   package.json
-│   │   ...
-│   │   
-│   └───.hapify
-│       │   validator.js
-│       │   ...
-│ 
-└───boilerplate-ngx-dashboard
-    │   hapify.json
-    │   angular.json
-    │   package.json
-    │   ...
-    │   
-    └───.hapify
-        │   ...
+~/my-project
+├── boilerplate-hapijs
+|  ├── .hapify
+|  |  ├── routes
+|  |  └── validator.js
+|  ├── Dockerfile
+|  ├── hapify-models.json
+|  ├── hapify.json
+|  └── ...
+└── boilerplate-ngx-dashboard
+   ├── .hapify
+   |  ├── src
+   |  └── validator.js
+   ├── src
+   |  ├── app
+   |  ├── assets
+   |  ├── index.html
+   |  └── ...
+   ├── hapify.json
+   └── ...
 ```
 
 `hapify.json` is the config file. It contains the boilerplate's meta-data and the templates list.
@@ -112,7 +111,7 @@ my-project
 It is referenced by the config files (`hapify.json`).
 You can move or rename this models file as long as you change the path in the config files.
 
-`.hapify` folder (can also be nammed `hapify`) is the templates folder. It contains all the templates of the boilerplate.
+`.hapify` folder (can also be named `hapify`) is the templates folder. It contains all the templates of the boilerplate.
 
 ## **Optional**: Store your models on Hapify Cloud
 
@@ -152,7 +151,7 @@ From the list below, select a project from you account.
   Second project
 ```
 
-!!! tip inline end
+!!! tip
     You can create a project online from you Hapify account: [https://www.hapify.io/my-projects](https://www.hapify.io/my-projects)
 
 Now the boilerplate will store and read models from Hapify Cloud.

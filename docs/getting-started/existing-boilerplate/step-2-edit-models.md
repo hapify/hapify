@@ -13,7 +13,7 @@ Once started the GUI display all models.
 
 ![Hapify GUI - Models edition](../../assets/gui-models.jpg 'Models Edition')
 
-!!! tip
+!!! tip "Tip"
     For large projects, you can filter models by name, field name or reference. Use the top right bar.
     Press escape key to reset filters.
 
@@ -24,7 +24,7 @@ Click on `New model` button, enter a name and press enter.
 The new model will be populated with default fields.
 Default fields are defined in the config file of the boilerplate (`hapify.json`).
 
-!!! tip
+!!! tip "Tip"
     Once created, you can edit model's name by clicking on it.
 
 ### Import pre-defined models
@@ -60,10 +60,10 @@ And also its attributes by clicking on the gear:
 
 ![Hapify GUI - Field attributes](../../assets/gui-models-fields-attributes.jpg 'Field attributes'){: style="max-width: 420px"}
 
-!!! tip
+!!! tip "Tip"
     Once created, you can edit filed's name by clicking on it.
 
-!!! seealso
+!!! seealso "See also"
     To learn more about fields management please refer to [model's concepts](../../concepts/models/#model-properties).
 
 ### Delete a field
@@ -78,7 +78,7 @@ Expand the access managment panel by clicking on the fingerprint icon on top of 
 
 ![Hapify GUI - Access management](../../assets/gui-models-access-managment.jpg 'Access management'){: style="max-width: 410px"}
 
-!!! seealso
+!!! seealso "See also"
     To learn more about access management please refer to [model's concepts](../../concepts/models/#access-management).
     
 ## Add notes

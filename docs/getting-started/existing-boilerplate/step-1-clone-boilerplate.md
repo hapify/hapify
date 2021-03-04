@@ -151,7 +151,7 @@ From the list below, select a project from you account.
   Second project
 ```
 
-!!! tip
+!!! tip "Tip"
     You can create a project online from you Hapify account: [https://www.hapify.io/my-projects](https://www.hapify.io/my-projects)
 
 Now the boilerplate will store and read models from Hapify Cloud.

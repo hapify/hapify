@@ -11,16 +11,16 @@ hpf serve
 
 ### Add some models
 
-Create or import some models to your project.
-This is mandatory for the next step in order to validate that your templates are working.
+Create or import templates for your project.
+This step is mandatory for the next step in order to validate that your templates work.
 
-We recommend that you add models that covers the uses cases you want to handle.
+We recommend that you add the templates that will cover the use cases you want to handle.
 
-For example, if you do care about `latitude` and `longitude` and you planned to deal with it in your templates,
-then add at least one models that have those fields.
+For example, if you plan to use `latitude` and `longitude` and process them in your templates,
+Then add at least one template that has these fields.
 
-Another recurrent case is the relations between models.
-We also recommend that you add some relations between your models, even a self-reference relation.
+Another common case is the relationship between models.
+We also recommend that you add several relationships between your templates, even a self-referencing relationship.
 
-!!! seealso
-    To learn more models management please refer to [model edition](../../existing-boilerplate/step-2-edit-models).
+!!! seealso "See also"
+    To learn more about model management, please refer to [model edition](../../existing-boilerplate/step-2-edit-models).

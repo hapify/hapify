@@ -10,7 +10,7 @@ Create a new folder for your project and go to this folder:
 mkdir my-project && cd my-project
 ```
 
-!!! tip
+!!! tip "Tip"
     You can also start a channel within an existing boilerplate.
 
 

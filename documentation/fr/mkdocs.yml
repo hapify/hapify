@@ -1,0 +1,66 @@
+site_name: Hapify
+nav:
+  - 'index.md'
+  - Démarrer:
+      - Installation: 'getting-started/installation.md'
+      - Utiliser un boilerplate existant:
+          - Introduction: 'getting-started/existing-boilerplate/introduction.md'
+          - "Étape 1: Cloner une boilerplate": 'getting-started/existing-boilerplate/step-1-clone-boilerplate.md'
+          - "Étape 2: Editer les modèles de données": 'getting-started/existing-boilerplate/step-2-edit-models.md'
+          - "Étape 3: Generer le code": 'getting-started/existing-boilerplate/step-3-generate.md'
+          - "Étape 4: Cycle de vie": 'getting-started/existing-boilerplate/step-4-lifecycle.md'
+      - Créer votre propre boilerplate:
+          - Introduction: 'getting-started/create-boilerplate/introduction.md'
+          - "Étape 1: Nouveau channel": 'getting-started/create-boilerplate/step-1-new-channel.md'
+          - "Étape 2: Ajouter des modèles de données": 'getting-started/create-boilerplate/step-2-add-models.md'
+          - "Étape 3: Écrire des templates": 'getting-started/create-boilerplate/step-3-templates.md'
+          - "Étape 4: Validateur de modèles de données": 'getting-started/create-boilerplate/step-4-models-validator.md'
+      - Concepts:
+          - Concepts clés: 'getting-started/concepts/key-concepts.md'
+          - Modèles de données: 'getting-started/concepts/models.md'
+      - Dépannage: 'getting-started/troubleshooting.md'
+  - Référence:
+      - CLI: 'reference/cli.md'
+      - Hapify:
+          - Syntaxe: 'reference/hapify/syntax.md'
+          - Exemples: 'reference/hapify/code-samples.md'
+      - JavaScript:
+          - Utilisation: 'reference/javascript/usage.md'
+          - Exemples: 'reference/javascript/code-samples.md'
+      - Object modèle: 'reference/model-object.md'
+      - Validateur de modèles de données: 'reference/models-validator.md'
+theme:
+  language: fr
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.indexes
+    - navigation.instant
+  name: material
+  favicon: assets/icon-192x192.png
+  logo: assets/logo-no-margin-white.png
+
+  palette:
+    primary: deep purple
+    accent: cyan
+extra_css:
+  - stylesheets/extra.css
+markdown_extensions:
+  - meta
+  - attr_list
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.tabbed
+extra:
+  social:
+    - icon: fontawesome/solid/globe
+      link: https://www.hapify.io/
+    - icon: fontawesome/brands/github
+      link: https://github.com/hapify
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/u/hapify
+    - icon: fontawesome/brands/slack
+      link: https://hapify.slack.com/

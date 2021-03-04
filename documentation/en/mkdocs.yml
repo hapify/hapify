@@ -30,6 +30,7 @@ nav:
       - Model object: 'reference/model-object.md'
       - Models validator: 'reference/models-validator.md'
 theme:
+  language: en
   features:
     - navigation.tabs
     - navigation.tabs.sticky

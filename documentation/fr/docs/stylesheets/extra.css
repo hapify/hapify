@@ -1,0 +1,4 @@
+:root > * {
+    --md-code-hl-name-color: #00bad6;
+    --md-code-hl-operator-color: #7e56c2;
+}

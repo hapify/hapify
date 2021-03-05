@@ -1,9 +1,8 @@
-Hapify annihile le besoin d’écrire des boilerplates répétitif pour des opérations CRUD étendues, tant pour le développement back-end que front-end. Concentrez-vous uniquement sur les fonctionnalités métier au lieu de faire du travail répétitif !
+Hapify automatise l'écriture des opérations CRUD, tant pour le développement back-end que front-end.
+Concentrez-vous uniquement sur les fonctionnalités métier au lieu de faire du travail répétitif !
 
 - Hapify est un générateur de code agnostique permettant la création de tout type d'application manipulant des modèles de données, dans n'importe quel langage.
-
 - Hapify n'impose aucun paradigme ou structure de code. Vous pouvez écrire vos propres templates de code ou utiliser ceux fournis par la communauté.
-
 - Hapify utilise deux entrées : **modèles de données** et les **templates de code**.
 
 ## Templates
@@ -24,7 +23,7 @@ Les modèles de données peuvent être édités dans une console Web locale.
 
 ![Hapify GUI - models edition](../../assets/gui-models-access.png 'Models Edition')
 
-Remarque : vous pouvez importer des modèles de données fournis par la communauté via [Hapify Hub] (https://hub.hapify.io/).
+Remarque : vous pouvez importer des modèles de données fournis par la communauté via [Hapify Hub](https://hub.hapify.io/).
 
 Pour plus d'informations sur les modèles de données, vous pouvez vous référer à la [documentation sur les modèles de données](../models/).
 

@@ -15,7 +15,7 @@ Par conséquent, vous devez obtenir une clé API de Hapify Cloud pour accéder �
 
 ### 1. S'inscrire sur Hapify Cloud
 
-Si vous n'avez pas encore de compte, veuillez consulter le site [hapify.io/sign-up] (https://www.hapify.io/sign-up).
+Si vous n'avez pas encore de compte, veuillez consulter le site [hapify.io/sign-up](https://www.hapify.io/sign-up).
 
 ### 2. Obtenez votre clé API
 

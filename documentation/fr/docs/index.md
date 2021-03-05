@@ -4,14 +4,14 @@ hide:
   - toc
 ---
 
-Hapify was born out of the desire to accelerate modern development, by replacing traditionnal static boilerplates with dynamic boilerplates.
+Hapify est né de la volonté d'accélérer le développement moderne, en remplaçant les traditionnels boilerplates statiques par des boilerplates dynamiques.
 
-Hapify removes the need to write repeating boilerplates for extended CRUD operations for both back-end & front=end development.
-Focus on features instead of doing repetitive work!
+Hapify automatise l'écriture des opérations CRUD, tant pour le développement back-end que front-end.
+Concentrez-vous uniquement sur les fonctionnalités métier au lieu de faire du travail répétitif !
 
-* Hapify is an agnostic code generator allowing the creation of any kind of app.
-* Hapify takes two inputs, relational data-models and code templates.
-* Hapify does not command any paradigm or code structure. Users can define their own code templates with their preferred language.
+- Hapify est un générateur de code agnostique permettant la création de tout type d'application manipulant des modèles de données, dans n'importe quel langage.
+- Hapify n'impose aucun paradigme ou structure de code. Vous pouvez écrire vos propres templates de code ou utiliser ceux fournis par la communauté.
+- Hapify utilise deux entrées : **modèles de données** et les **templates de code**.
 
-To be more efficient, the generated code is meant to be used within a boilerplate.
-Therefore, boilerplates for Hapify embed compatible code templates. You can browse community boilerplates [here](https://hub.hapify.io).
+Pour être plus efficace, le code généré est destiné à être utilisé dans un boilerplate.
+C'est pourquoi les boilerplates d'Hapify intègrent des templates de code compatibles. Vous pouvez consulter les modèles communautaires [ici](https://hub.hapify.io).

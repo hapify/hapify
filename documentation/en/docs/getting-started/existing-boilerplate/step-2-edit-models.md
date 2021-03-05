@@ -39,7 +39,7 @@ Collection's models will be merged with existing models in case of conflict.
 
 Click on the three dots to expand this menu:
 
-![Hapify GUI - More options](../../assets/gui-models-more-options.jpg 'More options'){: style="max-width: 142px"}
+![Hapify GUI - More options](../../assets/gui-models-more-options.jpg 'More options'){: style="width: 142px"}
 
 #### Copy & paste
 
@@ -54,11 +54,11 @@ Click on `Add field` at the end of a model and enter a names.
 
 You can choose its type and sub-type:
 
-![Hapify GUI - Field type](../../assets/gui-models-fields-types.jpg 'Field type'){: style="max-width: 416px"}
+![Hapify GUI - Field type](../../assets/gui-models-fields-types.jpg 'Field type'){: style="width: 416px"}
 
 And also its attributes by clicking on the gear:
 
-![Hapify GUI - Field attributes](../../assets/gui-models-fields-attributes.jpg 'Field attributes'){: style="max-width: 420px"}
+![Hapify GUI - Field attributes](../../assets/gui-models-fields-attributes.jpg 'Field attributes'){: style="width: 420px"}
 
 !!! tip "Tip"
     Once created, you can edit filed's name by clicking on it.
@@ -70,13 +70,13 @@ And also its attributes by clicking on the gear:
 
 Click on the trash icon and select fields to remove:
 
-![Hapify GUI - Delete fields](../../assets/gui-models-fields-delete.jpg 'Delete fields'){: style="max-width: 374px"}
+![Hapify GUI - Delete fields](../../assets/gui-models-fields-delete.jpg 'Delete fields'){: style="width: 374px"}
 
 ## Edit model access
 
 Expand the access managment panel by clicking on the fingerprint icon on top of a model:
 
-![Hapify GUI - Access management](../../assets/gui-models-access-managment.jpg 'Access management'){: style="max-width: 410px"}
+![Hapify GUI - Access management](../../assets/gui-models-access-managment.jpg 'Access management'){: style="width: 410px"}
 
 !!! seealso "See also"
     To learn more about access management please refer to [model's concepts](../../concepts/models/#access-management).
@@ -87,16 +87,16 @@ You can leave notes on both models and fields. Click on the chat icon and write 
 
 **On a model:**
 
-![Hapify GUI - Models notes](../../assets/gui-models-notes.jpg 'Models notes'){: style="max-width: 381px"}
+![Hapify GUI - Models notes](../../assets/gui-models-notes.jpg 'Models notes'){: style="width: 381px"}
 
 **On a field:**
 
-![Hapify GUI - Models notes](../../assets/gui-models-fields-notes.jpg 'Models notes'){: style="max-width: 411px"}
+![Hapify GUI - Models notes](../../assets/gui-models-fields-notes.jpg 'Models notes'){: style="width: 411px"}
 
 ## Errors and warnings
 
 A boilerplate can validate the models you are writing.
 Those errors or warnings will show-up when editing the models.
 
-![Hapify GUI - Models error](../../assets/gui-models-error.jpg 'Models error'){: style="max-width: 464px"}
+![Hapify GUI - Models error](../../assets/gui-models-error.jpg 'Models error'){: style="width: 464px"}
 

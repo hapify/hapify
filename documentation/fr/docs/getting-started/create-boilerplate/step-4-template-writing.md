@@ -10,6 +10,10 @@ Pour connaitre tous les détails de la syntaxe Hapify, veuillez vous référer [
 
 Pour vous renseigner sur la syntax EJS, veuillez vous reférer à la [documentation officielle](https://ejs.co/#docs).
 
+!!! warning "Attention"
+    Toutes les fonctionnalités d'EJS sont disponibles, sauf la fonctionnalité `include`.
+    Cette fonction est volontairement désactivée afin que les templates n'aient pas accès à votre système de fichiers.
+
 ### Manipulation du modèle de données
 
 Les templates reçoivent en entrée l'[objet modèle](../../model-object/). Cet objet, injecté dans les templates, explicite le modèle de données ainsi que toutes ses propriétés et relations, de sorte qu'elles soient facilement accessibles depuis le template.

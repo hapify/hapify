@@ -1,6 +1,6 @@
 site_name: Hapify
 nav:
-  - 'index.md'
+  - Acceuil: 'index.md'
   - Démarrer:
       - Installation: 'getting-started/installation.md'
       - Utiliser un boilerplate existant:
@@ -41,7 +41,7 @@ theme:
   name: material
   favicon: assets/icon-192x192.png
   logo: assets/logo-no-margin-white.png
-
+  custom_dir: docs/overrides
   palette:
     primary: deep purple
     accent: cyan

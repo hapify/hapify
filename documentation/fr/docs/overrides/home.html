@@ -42,14 +42,20 @@
     .intro .text h2 {
         color: white;
     }
+    .intro .text h2 {
+        margin-bottom: 1rem;
+    }
+    .intro .text {
+        padding-bottom: 5rem;
+    }
     .intro .text :first-child {
         margin-top: 0;
     }
     .intro .text :last-child {
         margin-bottom: 0;
     }
-    .intro .text h2 { font-size: 1.3rem; font-weight: bold; }
-    .intro .text p { font-size: 0.9rem; }
+    .intro .text h2 { font-size: 1.6rem; font-weight: bold; }
+    .intro .text p { margin-bottom: 1.6rem }
 
     .intro .image img {
         width: 100%;
@@ -58,6 +64,9 @@
     @media screen and (max-width: 60em) {
         .intro .text {
             width: 100%;
+        }
+        .intro .text :first-child {
+            margin-top: 1.6rem;
         }
         .intro .image {
             display: none;

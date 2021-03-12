@@ -10,10 +10,10 @@ Concentrez-vous uniquement sur les fonctionnalités métier au lieu de faire du 
 Hapify fournit une syntaxe simple mais puissante pour vous aider à créer des templates dynamiques.
 Avec Hapify, vous pouvez soit
 
-- Inverser l'ingénierie de vos propres plaques chauffantes statiques
+- Convertir vos propres boilerplates en boilerplates dynamiques.
 - Utilisez des boilerplates fournis par la **[communauté](https://hub.hapify.io/)**
 
-Pour plus d'informations sur le moteur de template, vous pouvez consulter la [documentation de la syntaxe](../../templating/hapify/syntax/) et la [documentation sur les templates](../../templating/javascript/usage/).
+Pour plus d'informations sur les moteurs de template, vous pouvez consulter la [documentation de la syntaxe](../../templating/hapify/syntax/) et la [documentation sur les templates](../../templating/javascript/usage/).
 
 ## Modélisation 
 

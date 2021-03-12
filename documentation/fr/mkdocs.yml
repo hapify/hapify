@@ -3,6 +3,7 @@ nav:
   - Acceuil: 'index.md'
   - Démarrer:
       - Installation: 'getting-started/installation.md'
+      - Terminologie: 'getting-started/terminology.md'
       - Utiliser un boilerplate existant:
           - Introduction: 'getting-started/existing-boilerplate/introduction.md'
           - "Étape 1: Cloner un boilerplate": 'getting-started/existing-boilerplate/step-1-clone-boilerplate.md'

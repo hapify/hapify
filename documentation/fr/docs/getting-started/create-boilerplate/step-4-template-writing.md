@@ -44,6 +44,22 @@ Ce bloc crée une classe pour le modèle de données (en casse `pascal`) et déf
     }
     ```
 
+=== "EJS"
+
+    ```js
+    class <%= model.names.pascal %> {
+        private primaryKey = '<%= model.fields.primary.names.snake %>';
+    }
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    return `class ${model.names.pascal} {
+        private primaryKey = '${model.fields.primary.names.snake}';
+    }`;
+    ```
+
 === "Sortie"
 
     ```typescript
@@ -74,6 +90,24 @@ Dans un template de type `one model`, ce bloc importe le pilote MongoDb si le mo
     <<?>>
     ```
 
+=== "EJS"
+
+    ```js
+    <% if (model.fields.filter(f => f.type === 'entity').length > 0) { -%>
+    const mongoDb = require('mongodb');
+    <% } -%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    if (model.fields.filter(f => f.type === 'entity').length > 0) {
+        output += `const mongoDb = require('mongodb');`
+    }
+    return output;
+    ```
+
 === "Sortie"
 
     ```javascript
@@ -82,12 +116,15 @@ Dans un template de type `one model`, ce bloc importe le pilote MongoDb si le mo
 
 #### Inclure la validation de la session si l'opération nécessite une authentification
 
-Dans un template de type `one model`, si l'opération `create` nécessite au moins un utilisateur authentifié, ce bloc récupère l'utilisateur connecté.
+Dans un template de type `one model`, si l'opération `create` requiert au plus un utilisateur authentifié, ce bloc récupère l'utilisateur connecté.
+
+!!! info "Rappel"
+    `guest` est l'accès le plus permissif et `admin` le moins permissif. Par conséquent `admin < owner < authenticated < guest`.
 
 === "Hapify (long)"
 
     ```hapify
-    <<if CreateAccess gteAuth>>
+    <<if CreateAccess lteAuth>>
     const user = Session.getCurrent();
     <<endif>>
     ```
@@ -95,9 +132,27 @@ Dans un template de type `one model`, si l'opération `create` nécessite au moi
 === "Hapify (short)"
 
     ```hapify
-    <<? Ac [au>>
+    <<? Ac au]>>
     const user = Session.getCurrent();
     <<?>>
+    ```
+
+=== "EJS"
+
+    ```js
+    <% if (model.accesses.create.lteAuth) { -%>
+    const user = Session.getCurrent();
+    <% } -%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    if (model.accesses.create.lteAuth) {
+        output += `const user = Session.getCurrent();`
+    }
+    return output;
     ```
 
 === "Sortie"
@@ -127,6 +182,24 @@ ce bloc importe le composant de sélection de la position sur la carte.
     <<?>>
     ```
 
+=== "EJS"
+
+    ```js
+    <% if (model.properties.isGeolocated) { -%>
+    <app-map-position-picker [model]="<%= model.names.camel %>"></app-map-position-picker>
+    <% } -%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    if (model.properties.isGeolocated) {
+        output += `<app-map-position-picker [model]="${model.names.camel}"></app-map-position-picker>`
+    }
+    return output;
+    ```
+
 === "Sortie"
 
     ```html
@@ -135,7 +208,7 @@ ce bloc importe le composant de sélection de la position sur la carte.
 
 #### Obtenir des relations basées sur la cardinalité
 
-Cet exemple crée une méthode récupérants des entités dans un magasin, selon le type de relation : one-to-one, one-to-many ou many-to-many
+Cet exemple crée une méthode récupérant des entités dans un magasin, selon le type de relation : `one-to-one`, `one-to-many` ou `many-to-many`
 
 === "Hapify (long)"
 
@@ -143,9 +216,9 @@ Cet exemple crée une méthode récupérants des entités dans un magasin, selon
     class <<Model pascal>> extends BaseModel {
     <<for Fields entity field>>
         get<<field pascal>>() {
-        <<if field oneOne>>
+        <<if field oneOne or oneMany>>
             return this.<<field.model camel>>Store.findOne(this.properties.<<field camel>>);
-        <<elseif field oneMany or manyMany>>
+        <<elseif field manyMany>>
             return this.<<field.model camel>>Store.findMany(this.properties.<<field camel>>);
         <<endif>>
         }
@@ -159,14 +232,61 @@ Cet exemple crée une méthode récupérants des entités dans un magasin, selon
     class <<M AA>> extends BaseModel {
     <<@ F tE f>>
         get<<f AA>>() {
-        <<? f tEoo>>
+        <<? f tEoo + tEom>>
             return this.<<f.m aA>>Store.findOne(this.properties.<<f aA>>);
-        <<?? f tEom + tEmm>>
+        <<?? f tEmm>>
             return this.<<f.m aA>>Store.findMany(this.properties.<<f aA>>);
         <<?>>
         }
     <<@>>
     }
+    ```
+
+=== "EJS"
+
+    ```js
+    class <%= model.names.pascal %> extends BaseModel {
+    <% for (let field of model.fields.filter(f => f.type === 'entity')) { -%>
+        get<%= field.names.pascal %>() {
+        <% if (field.subtype === 'oneOne' || field.subtype === 'oneMany') { -%>
+            return this.<%= field.model.names.camel %>Store.findOne(this.properties.<%= field.names.camel %>);
+        <% } else if (field.subtype === 'manyMany') { -%>
+            return this.<%= field.model.names.camel %>Store.findMany(this.properties.<%= field.names.camel %>);
+        <% } -%>
+        }
+    <% } -%>
+    }
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    output += `class ${model.names.pascal} extends BaseModel {
+        ${getRelations()}
+    }`;
+    
+    function getRelations() {
+        return model.fields.filter(f => f.type === 'entity').reduce((acc, field) => {
+            return acc + getRelation(field) + '\n\t';
+        }, '');
+    }
+    
+    function getRelation(field) {
+        let method = '';
+        if (field.subtype === 'oneOne' || field.subtype === 'oneMany') {
+            method = 'findOne';
+        } else if (field.subtype === 'manyMany') {
+            method = 'findMany';
+        } else {
+            return '';
+        }
+        return `get${field.names.pascal}() {
+            return this.${field.model.names.camel}Store.${method}(this.properties.${field.names.camel});
+        }`;
+    }
+    
+    return output;
     ```
 
 === "Sortie"
@@ -193,9 +313,9 @@ Dans un template de type `one model`, ce bloc crée un tableau (en JavaScript) q
 
     ```hapify
     const hiddenFields = [
-    <<for Fields hidden f>>
-        '<<f camel>>',
-    <<endif>>
+    <<for Fields hidden field>>
+        '<<field camel>>',
+    <<endfor>>
     ];
     ```
 
@@ -205,8 +325,31 @@ Dans un template de type `one model`, ce bloc crée un tableau (en JavaScript) q
     const hiddenFields = [
     <<@ F hd f>>
         '<<f aA>>',
-    <<?>>
+    <<@>>
     ];
+    ```
+
+=== "EJS"
+
+    ```js
+    const hiddenFields = [
+    <% for (let field of model.fields.filter(f => f.hidden)) { -%>
+        '<%= field.names.camel %>',
+    <% } -%>
+    ];
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    const hiddenFieldsNames = model.fields
+        .filter(f => f.hidden)
+        .map(f => `'${f.names.camel}'`);
+    output += `const hiddenFields = [
+        ${hiddenFieldsNames.join(",\n\t")}
+    ];`;
+    return output;
     ```
 
 === "Sortie"
@@ -246,6 +389,31 @@ Dans un template de type `one model`, ce bloc définit les valeurs d'énumérati
     <<@>>
     ```
 
+=== "EJS"
+
+    ```js
+    <% for (let field of model.fields.filter(f => f.type === 'enum')) { -%>
+    const <%= field.names.camel %>Values = [
+        <% for (let e of field.enum) { -%>
+        '<%= e.names.constant %>',
+        <% } -%>
+    ];
+    <% } -%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    for (let field of model.fields.filter(f => f.type === 'enum')) {
+        const enums = field.enum.map(e => `'${e.names.constant}'`);
+        output += `const ${field.names.camel}Values = [
+        ${enums.join(',\n\t')}
+    ];`;
+    }
+    return output;
+    ```
+
 === "Sortie"
 
     ```javascript
@@ -263,13 +431,13 @@ Dans un template de type `one model`, ce bloc définit les valeurs d'énumérati
 
 #### Créer un fichier d'index comprenant tous les modèles de données
 
-Dans un template de type `all models`, cela appellera les fichiers de tous les modèles.
+Dans un template de type `all models`, ceci appellera les fichiers de tous les modèles.
 
 === "Hapify (long)"
 
     ```hapify
-    <<for Models m>>
-    require_once('./<<m kebab>>.php'),
+    <<for Models model>>
+    require_once('./<<model kebab>>.php');
     <<endfor>>
     ```
 
@@ -277,17 +445,35 @@ Dans un template de type `all models`, cela appellera les fichiers de tous les m
 
     ```hapify
     <<@ M m>>
-    require_once('./<<m a-a>>.php'),
+    require_once('./<<m a-a>>.php');
     <<@>>
+    ```
+
+=== "EJS"
+
+    ```js
+    <% for (let model of models) { -%>
+    require_once('./<%= model.names.kebab %>.php');
+    <% } -%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    for (let model of models) {
+        output += `require_once('./${model.names.kebab}.php');\n`;
+    }
+    return output;
     ```
 
 === "Sortie"
 
     ```php
-    require_once('./user.php'),
-    require_once('./place.php'),
-    require_once('./service.php'),
-    require_once('./place-category.php'),
+    require_once('./user.php');
+    require_once('./place.php');
+    require_once('./service.php');
+    require_once('./place-category.php');
     ```
 
 #### Créer un fichier d'index comprenant des modèles accessibles uniquement par les administrateurs
@@ -297,8 +483,8 @@ Si vous voulez restreindre la boucle précédente pour les modèles qui ne conti
 === "Hapify (long)"
 
     ```hapify
-    <<for Models onlyAdmin m>>
-    require_once('./<<m kebab>>.php'),
+    <<for Models onlyAdmin model>>
+    require_once('./<<model kebab>>.php');
     <<endfor>>
     ```
 
@@ -306,17 +492,35 @@ Si vous voulez restreindre la boucle précédente pour les modèles qui ne conti
 
     ```hapify
     <<@ M pOAd m>>
-    require_once('./<<m a-a>>.php'),
+    require_once('./<<m a-a>>.php');
     <<@>>
+    ```
+
+=== "EJS"
+
+    ```js
+    <% for (let model of models.filter(m => m.accesses.properties.onlyAdmin)) { -%>
+    require_once('./<%= model.names.kebab %>.php');
+    <% } -%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    for (let model of models.filter(m => m.accesses.properties.onlyAdmin)) {
+        output += `require_once('./${model.names.kebab}.php');\n`;
+    }
+    return output;
     ```
 
 === "Sortie"
 
     ```php
-    require_once('./menu.php'),
-    require_once('./menu-part.php'),
-    require_once('./menu-item.php'),
-    require_once('./order.php'),
+    require_once('./menu.php');
+    require_once('./menu-part.php');
+    require_once('./menu-item.php');
+    require_once('./order.php');
     ```
 
 #### Définir une valeur par défaut en fonction du type de données pour les champs internes
@@ -328,15 +532,15 @@ Ce template génère du PHP.
 === "Hapify (long)"
 
     ```hapify
-    <<for Fields internal f>>
-        <<if f boolean>>
-    $default<<f pascal>> = false;
-        <<elseif f string>>
-    $default<<f pascal>> = '';
-        <<elseif f number>>
-    $default<<f pascal>> = 0;
+    <<for Fields internal field>>
+        <<if field boolean>>
+    $default<<field pascal>> = false;
+        <<elseif field string>>
+    $default<<field pascal>> = '';
+        <<elseif field number>>
+    $default<<field pascal>> = 0;
         <<else>>
-    $default<<f pascal>> = NULL;
+    $default<<field pascal>> = NULL;
         <<endif>>
     <<endfor>>
     ```
@@ -357,6 +561,45 @@ Ce template génère du PHP.
     <<@>>
     ```
 
+=== "EJS"
+
+    ```js
+    <% for (let field of model.fields.filter(f => f.internal)) { -%>
+        <% if (field.type === 'boolean') { -%>
+    $default<%= field.names.pascal %> = false;
+        <% } else if (field.type === 'string') { -%>
+    $default<%= field.names.pascal %> = '';
+        <% } else if (field.type === 'number') { -%>
+    $default<%= field.names.pascal %> = 0;
+        <% } else { -%>
+    $default<%= field.names.pascal %> = NULL;
+        <% } -%>
+    <% } -%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    for (let field of model.fields.filter(f => f.internal)) {
+        output += `$default${field.names.pascal} = ${getDefaultValue(field)};\n`
+    }
+    return output;
+    
+    function getDefaultValue(field) {
+        switch (field.type) {
+            case 'boolean':
+                return 'false';
+            case 'string':
+                return "''";
+            case 'number':
+                return '0';
+            default:
+                return 'NULL';
+        }
+    }
+    ```
+
 === "Sortie"
 
     ```php
@@ -373,8 +616,8 @@ Si le modèle a une auto-dépendance, il ne sera pas inclus dans la boucle.
 === "Hapify (long)"
 
     ```hapify
-    <<for Dependencies d>>
-    import {<<d pascal>>} from '../<<d kebab>>';
+    <<for Dependencies dep>>
+    import {<<dep pascal>>} from '../<<dep kebab>>';
     <<endfor>>
     ```
 
@@ -384,6 +627,24 @@ Si le modèle a une auto-dépendance, il ne sera pas inclus dans la boucle.
     <<@ D d>>
     import {<<d AA>>} from '../<<d a-a>>';
     <<@>>
+    ```
+
+=== "EJS"
+
+    ```js
+    <% for (let dep of model.dependencies.list) { -%>
+    import {<%= dep.names.pascal %>} from '../<%= dep.names.kebab %>';
+    <% } -%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    for (let dep of model.dependencies.list) {
+        output += `import {${dep.names.pascal}} from '../${dep.names.kebab}';\n`;
+    }
+    return output;
     ```
 
 === "Sortie"
@@ -413,6 +674,24 @@ Vous pouvez également filtrer les modèles par attributs des champs. Ce bloc ex
     <<@>>
     ```
 
+=== "EJS"
+
+    ```js
+    <% for (let dep of model.dependencies.filter(f => !f.hidden)) { -%>
+    import {<%= dep.names.pascal %>} from '../<%= dep.names.kebab %>';
+    <% } -%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    for (let dep of model.dependencies.filter(f => !f.hidden)) {
+        output += `import {${dep.names.pascal}} from '../${dep.names.kebab}';\n`;
+    }
+    return output;
+    ```
+
 === "Sortie"
 
     ```typescript
@@ -430,16 +709,16 @@ La deuxième itération boucle sur toutes les relations d'entités contenues dan
 !!! note "Notes"
     Le tableau `ReferencedIn` contient tous les modèles de données qui se réfèrent au modèle de données courant à travers des champs de type entité.
     Seuls les champs de type entité faisant référence sont définis dans ces modèles de données référents.
-    Par conséquent, si vous bouclez les champs des modèles de données référents, vous ne serez pas brouillés par d'autres champs.
+    Par conséquent, si vous bouclez sur les champs des modèles de données référents, vous ne serez pas brouillés par d'autres champs.
 
 === "Hapify (long)"
 
     ```hapify
-    <<@ ReferencedIn model>>
+    <<for ReferencedIn model>>
         <<for model.fields field>>
     await db.collection('<<model pascal>>').deleteMany({ <<field snake>>: id });
         <<endfor>>
-    <<@>>
+    <<endfor>>
     ```
 
 === "Hapify (short)"
@@ -450,6 +729,28 @@ La deuxième itération boucle sur toutes les relations d'entités contenues dan
     await db.collection('<<m AA>>').deleteMany({ <<f a_a>>: id });
         <<@>>
     <<@>>
+    ```
+
+=== "EJS"
+
+    ```js
+    <% for (let referrer of model.referencedIn) { -%>
+        <% for (let field of referrer.fields) { -%>
+    await db.collection('<%= referrer.names.pascal %>').deleteMany({ <%= field.names.snake %>: id });
+       <% } -%>
+    <% } -%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    for (let referrer of model.referencedIn) {
+        for (let field of referrer.fields) {
+            output += `await db.collection('${referrer.names.pascal}').deleteMany({ ${field.names.snake}: id });\n`;
+        }
+    }
+    return output;
     ```
 
 === "Sortie"
@@ -464,3 +765,9 @@ La deuxième itération boucle sur toutes les relations d'entités contenues dan
     await db.collection('ConversationReport').deleteMany({ complainant: id });
     await db.collection('ConversationReport').deleteMany({ defendant: id });
     ```
+
+## Exclusion de fichiers générés
+
+Lors de la génération il est possible d'exclure certain fichier de la génération.
+Si le template retourne une chaine vide ou ne contenant que des espaces, alors aucun fichier ne sera généré pour ce couple template/modèle de données.
+

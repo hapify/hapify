@@ -24,6 +24,8 @@ Pour chacune de ces operations, Hapify vous permet de définir les restrictions 
 
 Les accès sont inclusifs, ce qui signifie que la restriction _Authenticated_ inclut nécessairement _Owner_ et _Admin_.
 
+_Guest_ est le plus permissif et _Admin_ le moins permissif. Par conséquent `Admin < Owner < Authenticated < Guest`.
+
 ## Champs
 
 Un modèle contient une liste de champs. Chaque champ est défini par :

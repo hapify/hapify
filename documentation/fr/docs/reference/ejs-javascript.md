@@ -1,18 +1,18 @@
-# JavaScript templates
 
-You can write templates in JavaScript: in some cases, this is more efficient. For example, to output JSON object or documentation.
+Hapify offre la possibilité d'écrire des template avec la syntax [EJS](https://ejs.co/) ou bien en JavaScript.
+Ces deux options se basent sur le même objet décrit ci-dessous.
 
-## Model object
+## Objet modèle
 
-The templates receive the [model object](../../model-object/) under the `model` (or `m`) variable.
-In the case of a multiple-model template, an array of model objects will be available under the `models` (or `m`) variable.
+Les templates reçoivent le [l'objet modèle](../../model-object/) via la variable `model` (alias `m`).
+Dans le cas d'un template de type `all models`, un tableau d'objets modèles sera disponible via la variable `models` (alias `m`).
 
-The next block is a JSON export of the model object for a very simple case. Here the `User profile` model has 3 fields including an entity reference.
-To keep this JSON as short as possible, we have removed all short codes, many recurrent properties and sub-models details.
-This JSON is a partial representation of the real injected model object, but it gives you a good overview of its structure.
+Le bloc suivant est une représentation en JSON de cet objet modèle pour un cas très simple. Ici, le modèle `User profile` possède 3 champs dont une référence à une entité.
+Pour garder ce JSON aussi court que possible, nous avons supprimé tous les alias, de nombreuses propriétés récurrentes et les détails des sous-modèles.
+Ce JSON est une représentation partielle de l'objet modèle réellemenet injecté, mais il vous donne un bon aperçu de sa structure.
 
-If you want to know the complete structure of the model object, you can refer to the [model object documentation](../../model-object/)
-or to the TypeScript interface `ExplicitModel` in the `hapify/generator` [source code](https://github.com/hapify/generator/blob/master/src/interfaces.ts).
+Si vous voulez connaître la structure complète de l'objet modèle, vous pouvez vous référer à la [documentation de l'objet modèle](../../model-object/),
+ou bien à l'interface TypeScript `ExplicitModel` dans le [code source](https://github.com/hapify/generator/blob/master/src/interfaces.ts) de `hapify/generator`.
 
 ```json
 {
@@ -327,49 +327,65 @@ or to the TypeScript interface `ExplicitModel` in the `hapify/generator` [source
 
 ## Templating
 
-Now we know the model object structure, we can start coding a JavaScript template.
+Voici des exemples de template EJS et JavaScript utilisant cet objet modèle.
 
-When running the generation, the JavaScript templates are wrapped into a function. Therefore, the code you are writing is the body of this function.
-Your code must return a string.
+### Template de type `one model`
 
-### Single-model template
+=== "EJS"
 
-=== "JavaScript"
-
-    ```javascript
-    const fields = model.fields.list;
-    const names = fields.map(field => field.names.pascal);
-    return `Fields are: ${names.join(', ')}`;
-    ```
-
-=== "Sample output"
-
-    ```
-    Fields are: Id, CreatedAt, Avatar
-    ```
-
-### Multiple-model template
-
-=== "JavaScript"
-
-    ```javascript
-    const modelsFields = [];
-    for (const model of models) {
-        const fields = model.fields.list;
-        const names = fields.map(field => field.names.camel);
-        modelsFields.push(`Fields of ${model.names.capital} are: ${names.join(', ')}`);
+    ```js
+    class <%= model.names.pascal %> {
+        private primaryKey = '<%= model.fields.primary.names.snake %>';
     }
-    return modelsFields.join('\n');
     ```
 
-=== "Sample output"
+=== "JavaScript"
 
+    ```javascript
+    return `class ${model.names.pascal} {
+        private primaryKey = '${model.fields.primary.names.snake}';
+    }`;
     ```
-    Fields of Place Category are: id, createdAt, name, description
-    Fields of Product are: id, createdAt, name, description, price, stock, disabled
-    Fields of Restaurant are: id, createdAt, name, description, category, address
+
+=== "Sortie"
+
+    ```typescript
+    class Place {
+        private primaryKey = '_id';
+    }
+    ```
+    
+!!! warning "Attention"
+    Un template JavaScript doit retourner une chaîne de caractères.
+
+### Template de type `all models`
+
+=== "EJS"
+
+    ```js
+    <% for (let model of models) { -%>
+    require_once('./<%= model.names.kebab %>.php');
+    <% } -%>
     ```
 
-### More usages
+=== "JavaScript"
 
-To read more samples, please refer to [JavaScript code samples](../code-samples/).
+    ```javascript
+    let output = '';
+    for (let model of models) {
+        output += `require_once('./${model.names.kebab}.php');\n`;
+    }
+    return output;
+    ```
+
+=== "Sortie"
+
+    ```php
+    require_once('./user.php');
+    require_once('./place.php');
+    require_once('./service.php');
+    require_once('./place-category.php');
+    ```
+
+!!! seealso "Voir aussi"
+    Pour plus d'exemples de templates, veuillez lire [cet article](../../getting-started/create-boilerplate/step-4-template-writing).

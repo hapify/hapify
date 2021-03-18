@@ -23,14 +23,11 @@ nav:
       - Dépannage: 'getting-started/troubleshooting.md'
   - Référence:
       - CLI: 'reference/cli.md'
-      - Hapify:
-          - Syntaxe: 'reference/hapify/syntax.md'
-          - Exemples: 'reference/hapify/code-samples.md'
-      - JavaScript:
-          - Utilisation: 'reference/javascript/usage.md'
-          - Exemples: 'reference/javascript/code-samples.md'
+      - Syntaxe Hapify: 'reference/hapify-syntax.md'
+      - EJS & JavaScript: 'reference/ejs-javascript.md'
       - Object modèle: 'reference/model-object.md'
-      - Validateur de modèles de données: 'reference/models-validator.md'
+  - Exemples:
+      - JavaScript: 'code-samples/javascript.md'
 theme:
   language: fr
   features:

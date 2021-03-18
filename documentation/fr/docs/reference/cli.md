@@ -2,229 +2,228 @@
 
 ## Description
 
-Hapify is a code generation tool based on relational data-models.
-It uses a dedicated templating language.
-It displays a web-based console for model definition and template writing.
+Hapify est un outil de génération de code basé sur des modèles de données relationnels.
+Il utilise un langage de templating dédié.
+Il affiche une console web pour la définition des modèles et l'écriture des templates.
 
-## Usage
+## Utilisation
 
 ### Installation
 
-You need to install this package globally to have the `hpf` command:
+Vous devez installer ce package globalement pour avoir la commande `hpf` :
 
 ```bash
 npm install -g @hapify/cli
 ```
 
-To check the installed version, run `hpf --version`.
+Pour vérifier la version installée, exécutez `hpf --version`.
 
-### Global options
+### Options globales
 
--   `-V`, `--version`: output the version number
--   `--debug`: enable debug mode (default: false)
--   `--silent`: enable silent mode (default: false)
--   `-d <path>`, `--dir <path>`: change the working directory. This path can be absolute or relative to the current path
--   `-k <secret>`, `--key <secret>`: force usage of an API key rather than the one defined in global configuration. If you want to define your API key permanently, you should use command `hpf key`
--   `-h`, `--help`: show help
+- `-V`, `--version` : affiche le numéro de version
+- `--debug` : active le mode débogage (par défaut : `false`)
+- `--silent` : active le mode silencieux (par défaut : `false`)
+- `-d <path>`, `--dir <path>` : change le répertoire de travail. Ce chemin peut être absolu ou relatif au chemin actuel.
+- `-k <secret>`, `--key <secret>` : force l'utilisation d'une clé API plutôt que celle définie dans la configuration globale. Si vous voulez définir votre clé d'API de façon permanente, vous devriez utiliser la commande `hpf key`.
+- `-h`, `--help` : affiche l'aide
 
-### Commands
+### Commandes
 
-#### Set global configuration
+#### Définir la configuration globale
 
 ```bash
 hpf config [options]
 ```
 
-This command stores your one (or more) global configuration in `~/.hapify/config.json`.
-If the file does not exist, it will be automatically created.
+Cette commande enregistre une ou plusieurs configurations globales dans `~/.hapify/config.json`.
+Si le fichier n'existe pas, il sera automatiquement créé.
 
-_Available configuration_
+_Configuration disponible_
 
--   `hpf config --apiKey <secret>`: define the API key to use for every command. This is equivalent to `hpf key <key>`.
--   `hpf config --apiUrl <url>`: override default API url.
+- `hpf config --apiKey <secret>` : définit la clé d'API à utiliser pour chaque commande. Ceci est équivalent à `hpf key <key>`.
+- `hpf config --apiUrl <url>` : remplace l'url d'API par défaut.
 
-#### Set global API key
+#### Définir la clé d'API globale
 
 ```bash
 hpf key <key>
 ```
 
-This command is an alias of `hpf config --apiKey <secret>`.
+Cette commande est un alias de `hpf config --apiKey <secret>`.
 
-#### List visible boilerplates (channels)
+####  Lister les boilerplates (channels)
 
 ```bash
 hpf list
 ```
 
-Alias: `hpf ls`
+Alias : `hpf ls`
 
-This command displays what is visible for the CLI from this directory.
-It shows the list of channels and the list of models used by those channels.
+Cette commande affiche ce qui est visible pour le CLI à partir du répertoire courant.
+Elle affiche la liste des channels et la liste des modèles de données utilisés par ces channels.
 
-The CLI looks for `hapify.json` files in order to auto-detect channels.
-It recurses over sub-directories. Default depth is `2`.
-To modify this value, use the `depth` option.
+Le CLI recherche les fichiers `hapify.json` afin de détecter automatiquement les channels.
+Il réitère sur les sous-répertoires. La profondeur par défaut est de `2`.
+Pour modifier cette valeur, utilisez l'option `depth`.
 
 ```bash
 hpf list --depth 3
 ```
 
-_Note:_
-You are not supposed to run the CLI with different model sets.
-If this is the case, the first set to be found will be used.
+!!! warning "Attention"
+    Vous n'êtes pas censé exécuter le CLI avec des ensembles de modèles de données différents.
+    Si c'est le cas, le premier ensemble trouvé sera utilisé.
 
-#### Generate the code
+#### Générer le code
 
 ```bash
 hpf generate
 ```
 
-Alias: `hpf g`
+Alias : `hpf g`
 
-This command generates all found channels from their templates and models.
-To define the search depth for channels, use this option: `--depth <n>`. Default is `2`.
+Cette commande génère tous les channels trouvés à partir de leurs templates et modèles de données.
+Pour définir la profondeur de la recherche de channels, utilisez cette option : `--depth <n>`. La valeur par défaut est `2`.
 
 ```bash
 hpf generate --depth 3
 ```
 
-Note that empty generated files will not be saved.
+!!! tip "Astuce"
+    Les fichiers générés vides ne seront pas sauvegardés.
 
-#### Export the code
+#### Exporter le code
 
 ```bash
 hpf export
 ```
 
-Alias: `hpf x`
+Alias : `hpf x`
 
-This command generates the channel from its templates and its models.
-Then it saves the generated files in a zip file.
-To run this command, you must be in the channel directory, next to the `hapify.json` file.
+Cette commande génère un channel à partir de ses templates et de ses modèles de données puis sauvegarde les fichiers générés dans un fichier zip.
+Vous devez lancer cette commande à partir du répertoire du channel, au niveau du fichier `hapify.json`.
 
-By default, the zip file has the channel name, i.e. the folder name.
-Example: `angular-admin/angular-admin.zip`.
-You can define a custom path with this option: `-o, --output <path>`.
+Par défaut, le fichier zip porte le nom du channel, c'est à dire le nom du dossier.
+Exemple : `angular-admin/angular-admin.zip`.
+Vous pouvez définir un chemin personnalisé avec cette option : `-o, --output <path>`.
 
 ```bash
 hpf export -o /path/to/file.zip
 ```
 
-Note that empty generated files will not be added to the zip.
+!!! tip "Astuce"
+    Les fichiers générés vides ne seront pas sauvegardés.
 
-#### Import the models
+#### Importez des modèles de données
 
 ```bash
 hpf import
 ```
 
-Alias: `hpf m`
+Alias : `hpf m`
 
-Use this command to import pre-defined models from the Cloud database (called presets).
-This command displays the list of available presets of models.
-Press the space bar to select a preset to import and enter to confirm.
+Utilisez cette commande pour importer des modèles de données prédéfinis depuis Hapify Cloud (appelés [presets](../getting-started/terminology.md)).
 
-_Import presets from IDs_
+_Importer des presets à partir d'IDs_
 
-Alternatively, you can import presets from their IDs (visible in [Hapify Hub](https://hub.hapify.io/))
+Vous pouvez également importer des préréglages à partir de leurs ID (visibles sur [Hapify Hub](https://hub.hapify.io/))
 
 ```bash
 hpf import --preset ab123 --preset bd456
 ```
 
-#### Clone a boilerplate and start a new project
+#### Cloner un boilerplate et démarrer un nouveau projet
 
 ```bash
 hpf new
 ```
 
-Alias: `hpf n`
+Alias : `hpf n`
 
-This command allows you to clone and configure a boilerplate.
-It will prompt a form to:
+Cette commande vous permet de cloner et de configurer un boilerplate.
+Elle vous demandera de :
 
--   select a boilerpalte
--   select or create the project to use
--   select models to import
+-   sélectionner un boilerpalte
+-   sélectionner ou créer le projet à utiliser
+-   sélectionner des modèles de données à importer
 
 _Options_
 
--   `-p <id>`, `--project <id>`: The project to use (if already existing)
--   `-b <slug>`, `--boilerplate <slug>`: The slug name of the boilerplate to clone
--   `--boilerplate-id <id>`: The ID of the boilerplate to clone
--   `--boilerplate-url [url]`: The git URLs of the boilerplates to clone
--   `--preset [id]`: IDs of presets to preload in the project
--   `--no-presets`: Do not prompt for presets
--   `--project-name <name>`: The project name to create
--   `--project-desc <description>`: The project description to create (name must be defined)
+-   `-p <id>`, `--project <id>`: Le projet à utiliser (s'il existe déjà)
+-   `-b <slug>`, `--boilerplate <slug>` : Le slug du boilerplate à cloner
+-   `--boilerplate-id <id>` : L'ID du boilerplate à cloner
+-   `--boilerplate-url [url]` : Les URL git des boilerplates à cloner
+-   `--preset [id]` : IDs des presets à précharger dans le projet
+-   `--no-presets` : Ne pas demander de presets
+-   `--project-name <name>` : Le nom du projet à créer
+-   `--project-desc <description>` : La description du projet à créer (le nom doit être défini)
 
-To browse available boilerplates, please visit [hub.hapify.io](https://hub.hapify.io).
+Pour consulter les modèles disponibles, visitez [hub.hapify.io](https://hub.hapify.io).
 
-#### Create a new boilerplate (channel)
+#### Créer un nouveau boilerplate/channel
 
 ```bash
 hpf init
 ```
 
-Alias: `hpf i`
+Alias : `hpf i`
 
-This command creates a new Hapify files structure in the current directory.
-It creates 2 files `hapify.json`, `hapify-models.json` and a folder `.hapify` containing a template `models/__kebab__/hello.js.hpf`.
-It will prompt a form to select or create a project.
+Cette commande crée une nouvelle structure de fichiers Hapify dans le répertoire courant.
+Elle crée 2 fichiers `hapify.json`, `hapify-models.json` et un dossier `.hapify` contenant un template `models/__kebab__/hello.js.hpf`.
+Elle vous demandera de sélectionner ou de créer un projet.
 
 _Options_
 
--   `--channel-name <name>`: The name of the channel to init
--   `--channel-desc <description>`: The description of the channel to init
--   `--channel-logo <url>`: The URL of the logo of the channel to init
--   `--project-name <name>`: The project name to create
--   `--project-desc <description>`: The project description to create (name must be defined)
+-   `--channel-name <name>` : Le nom du channel à initialiser
+-   `--channel-desc <description>` : La description du channel à initialiser
+-   `--channel-logo <url>` : L'URL du logo du channel à initialiser
+-   `--project-name <name>` : Le nom du projet à créer
+-   `--project-desc <description>` : La description du projet à créer
 
-#### Define project to use in a boilerplate (channel)
+#### Définir le projet à utiliser dans un boilerplate/channel
 
 ```bash
 hpf use
 ```
 
-Alias: `hpf u`
+Alias : `hpf u`
 
-Change the project used by one or more existing channels.
-It changes the project ID in file `hapify.json` for each found channels.
-It will prompt a form to select or create the project to use.
+Change le projet utilisé par un ou plusieurs channels existants.
+Change l'ID du projet dans le fichier `hapify.json` pour chaque channel trouvé.
+Elle vous demandera de sélectionner ou de créer le projet à utiliser.
 
 _Options_
 
--   `-p <id>`, `--project <id>`: The project to use (if already created)
--   `--project-name <name>`: The project name to create
--   `--project-desc <description>`: The project description to create
+-   `-p <id>`, `--project <id>` : Le projet à utiliser (s'il est déjà créé)
+-   `--project-name <name>` : Le nom du projet à créer
+-   `--project-desc <description>` : La description du projet à créer
 
-#### Patch source code with new models
+#### Appliquer un patch au code source avec de nouveaux modèles de données
 
-During the development process, you may want to add, edit or remove some models.
-To automatically apply the difference between two generations to your working branch, use this command.
+Au cours du processus de développement, vous pouvez ajouter, modifier ou supprimer certains modèles.
+Pour fusionner automatiquement la différence entre deux générations à votre branche de travail, utilisez cette commande.
 
-This command uses `git format-patch` and `git am`.
+Cette commande utilise `git format-patch` et `git am`.
 
 ```bash
 hpf patch
 ```
 
-This will prompt a form which lets you choose the source branch and commit, and then the destination branch.
+Cela vous permettra de choisir la branche source et le commit, puis la branche de destination.
 
-#### Start the console
+#### Démarrer la console
 
-Run this command to edit models and templates.
+Exécutez cette commande pour modifier les modèles de données et les templates.
 
 ```bash
 hpf serve
 ```
 
-This will start a server that hosts a web-based console for model and template edition.
+Ceci démarrera une console web pour l'édition des modèles de données et des templates.
 
 _Options_
 
--   `-p <n>`, `--port <n>`: The required port number (default between 4800 and 4820)
--   `-H <hostname>`, `--hostname <hostname>`: The required hostname (default: localhost)
--   `--no-open`: Do not open a new tab in the browser to show the console
--   `--depth <n>`: Search depth for channel discovery (default: 2)
+-   `-p <n>`, `--port <n>` : Le port requis (par défaut entre `4800` et `4820`)
+-   `-H <hostname>`, `--hostname <hostname>` : Le nom d'hôte requis (par défaut : `localhost`)
+-   `--no-open` : Ne pas ouvrir un nouvel onglet dans le navigateur pour afficher la console
+-   `--depth <n>` : Profondeur pour la recherche de channels (par défaut : `2`)

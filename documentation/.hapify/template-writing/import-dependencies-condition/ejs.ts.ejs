@@ -1,0 +1,3 @@
+<% for (let dep of model.dependencies.filter(f => !f.hidden)) { -%>
+import {<%= dep.names.pascal %>} from '../<%= dep.names.kebab %>';
+<% } -%>

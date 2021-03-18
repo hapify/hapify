@@ -1,0 +1,299 @@
+{
+  "version": "2",
+  "validatorPath": ".hapify/validator.js",
+  "project": "hapify-models.json",
+  "name": "Documentation samples",
+  "description": "A new Hapify channel",
+  "defaultFields": [
+    {
+      "name": "Id",
+      "type": "string",
+      "properties": [
+        "primary",
+        "internal"
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "path": "template-writing/cardinality/ejs.ts",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/cardinality/hapify-long.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/cardinality/hapify-short.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/cardinality/javascript.ts",
+      "engine": "js",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/condition-access/ejs.js",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/condition-access/hapify-long.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/condition-access/hapify-short.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/condition-access/javascript.js",
+      "engine": "js",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/condition-attribute/ejs.js",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/condition-attribute/hapify-long.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/condition-attribute/hapify-short.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/condition-attribute/javascript.js",
+      "engine": "js",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/condition-geo/ejs.html",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/condition-geo/hapify-long.html",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/condition-geo/hapify-short.html",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/condition-geo/javascript.html",
+      "engine": "js",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/default-value/ejs.php",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/default-value/hapify-long.php",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/default-value/hapify-short.php",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/default-value/javascript.php",
+      "engine": "js",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/import-dependencies-condition/ejs.ts",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/import-dependencies-condition/hapify-long.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/import-dependencies-condition/hapify-short.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/import-dependencies-condition/javascript.ts",
+      "engine": "js",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/import-dependencies/ejs.ts",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/import-dependencies/hapify-long.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/import-dependencies/hapify-short.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/import-dependencies/javascript.ts",
+      "engine": "js",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/iteration-enum/ejs.ts",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/iteration-enum/hapify-long.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/iteration-enum/hapify-short.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/iteration-enum/javascript.ts",
+      "engine": "js",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/iteration-hidden/ejs.ts",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/iteration-hidden/hapify-long.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/iteration-hidden/hapify-short.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/iteration-hidden/javascript.ts",
+      "engine": "js",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/referenced-in-condition/ejs.js",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/referenced-in-condition/hapify-long.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/referenced-in-condition/hapify-short.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/referenced-in-condition/javascript.js",
+      "engine": "js",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/referenced-in/ejs.js",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/referenced-in/hapify-long.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/referenced-in/hapify-short.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/referenced-in/javascript.js",
+      "engine": "js",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/require-files-admin/ejs.php",
+      "engine": "ejs",
+      "input": "all"
+    },
+    {
+      "path": "template-writing/require-files-admin/hapify-long.php",
+      "engine": "hpf",
+      "input": "all"
+    },
+    {
+      "path": "template-writing/require-files-admin/hapify-short.php",
+      "engine": "hpf",
+      "input": "all"
+    },
+    {
+      "path": "template-writing/require-files-admin/javascript.php",
+      "engine": "js",
+      "input": "all"
+    },
+    {
+      "path": "template-writing/require-files/ejs.php",
+      "engine": "ejs",
+      "input": "all"
+    },
+    {
+      "path": "template-writing/require-files/hapify-long.php",
+      "engine": "hpf",
+      "input": "all"
+    },
+    {
+      "path": "template-writing/require-files/hapify-short.php",
+      "engine": "hpf",
+      "input": "all"
+    },
+    {
+      "path": "template-writing/require-files/javascript.php",
+      "engine": "js",
+      "input": "all"
+    },
+    {
+      "path": "template-writing/simple-class/ejs.ts",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/simple-class/hapify-long.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/simple-class/hapify-short.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/simple-class/javascript.ts",
+      "engine": "js",
+      "input": "one"
+    }
+  ]
+}

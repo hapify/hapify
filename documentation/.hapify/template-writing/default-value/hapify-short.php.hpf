@@ -1,0 +1,11 @@
+<<@ F in f>>
+    <<? f tB>>
+$default<<f AA>> = false;
+    <<?? f tS>>
+$default<<f AA>> = '';
+    <<?? f tN>>
+$default<<f AA>> = 0;
+    <<??>>
+$default<<f AA>> = NULL;
+    <<?>>
+<<@>>

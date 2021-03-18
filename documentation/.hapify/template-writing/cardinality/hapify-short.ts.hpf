@@ -1,0 +1,11 @@
+class <<M AA>> extends BaseModel {
+<<@ F tE f>>
+    get<<f AA>>() {
+    <<? f tEoo + tEom>>
+        return this.<<f.m aA>>Store.findOne(this.properties.<<f aA>>);
+    <<?? f tEmm>>
+        return this.<<f.m aA>>Store.findMany(this.properties.<<f aA>>);
+    <<?>>
+    }
+<<@>>
+}

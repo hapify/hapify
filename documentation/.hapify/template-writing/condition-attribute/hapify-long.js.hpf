@@ -1,0 +1,3 @@
+<<if Fields entity>>
+const mongoDb = require('mongodb');
+<<endif>>

@@ -1,0 +1,5 @@
+const hiddenFields = [
+<% for (let field of model.fields.filter(f => f.hidden)) { -%>
+    '<%= field.names.camel %>',
+<% } -%>
+];

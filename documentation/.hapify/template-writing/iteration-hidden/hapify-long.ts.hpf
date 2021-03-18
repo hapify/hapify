@@ -1,0 +1,5 @@
+const hiddenFields = [
+<<for Fields hidden field>>
+    '<<field camel>>',
+<<endfor>>
+];

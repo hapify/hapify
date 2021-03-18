@@ -1,0 +1,3 @@
+<<if Model isGeolocated>>
+<app-map-position-picker [model]="<<Model camel>>"></app-map-position-picker>
+<<endif>>

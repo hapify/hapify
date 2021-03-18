@@ -1,0 +1,11 @@
+<% for (let field of model.fields.filter(f => f.internal)) { -%>
+    <% if (field.type === 'boolean') { -%>
+$default<%= field.names.pascal %> = false;
+    <% } else if (field.type === 'string') { -%>
+$default<%= field.names.pascal %> = '';
+    <% } else if (field.type === 'number') { -%>
+$default<%= field.names.pascal %> = 0;
+    <% } else { -%>
+$default<%= field.names.pascal %> = NULL;
+    <% } -%>
+<% } -%>

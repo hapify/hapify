@@ -1,0 +1,11 @@
+<<for Fields internal field>>
+    <<if field boolean>>
+$default<<field pascal>> = false;
+    <<elseif field string>>
+$default<<field pascal>> = '';
+    <<elseif field number>>
+$default<<field pascal>> = 0;
+    <<else>>
+$default<<field pascal>> = NULL;
+    <<endif>>
+<<endfor>>

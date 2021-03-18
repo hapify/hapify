@@ -1,0 +1,7 @@
+<% for (let field of model.fields.filter(f => f.type === 'enum')) { -%>
+const <%= field.names.camel %>Values = [
+    <% for (let e of field.enum) { -%>
+    '<%= e.names.constant %>',
+    <% } -%>
+];
+<% } -%>

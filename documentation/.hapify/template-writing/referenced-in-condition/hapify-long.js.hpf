@@ -1,0 +1,5 @@
+<<for ReferencedIn onlyGuest or noAuth model>>
+    <<for model.fields field>>
+await db.collection('<<model pascal>>').deleteMany({ <<field snake>>: id });
+    <<endfor>>
+<<endfor>>

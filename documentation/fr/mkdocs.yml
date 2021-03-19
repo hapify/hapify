@@ -1,14 +1,14 @@
 site_name: Hapify
 nav:
-  - Acceuil: 'index.md'
+  - Accueil: 'index.md'
   - Démarrer:
       - Installation: 'getting-started/installation.md'
       - Terminologie: 'getting-started/terminology.md'
       - Utiliser un boilerplate existant:
           - Introduction: 'getting-started/existing-boilerplate/introduction.md'
           - "Étape 1: Cloner un boilerplate": 'getting-started/existing-boilerplate/step-1-clone-boilerplate.md'
-          - "Étape 2: Editer les modèles de données": 'getting-started/existing-boilerplate/step-2-edit-models.md'
-          - "Étape 3: Generer le code": 'getting-started/existing-boilerplate/step-3-generate.md'
+          - "Étape 2: Éditer les modèles de données": 'getting-started/existing-boilerplate/step-2-edit-models.md'
+          - "Étape 3: Générer le code": 'getting-started/existing-boilerplate/step-3-generate.md'
           - "Étape 4: Cycle de vie": 'getting-started/existing-boilerplate/step-4-lifecycle.md'
       - Créer votre propre boilerplate:
           - Introduction: 'getting-started/create-boilerplate/introduction.md'

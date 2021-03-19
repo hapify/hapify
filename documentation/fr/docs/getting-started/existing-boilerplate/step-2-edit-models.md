@@ -1,6 +1,6 @@
 ## Exécuter la commande `serve`.
 
-À ce stade, vous disposez d'un boierplate mais pas de modèles de données dans votre projet, sauf si vous avez importé des modèles de données prédéfinis.
+À ce stade, vous disposez d'un boilerplate mais pas de modèles de données dans votre projet, sauf si vous avez importé des modèles de données prédéfinis.
 Afin de créer et de modifier les modèles de données de votre projet, exécutez cette commande pour lancer l'interface graphique locale :
 
 ```bash
@@ -46,7 +46,7 @@ Cliquez sur les trois points pour afficher ce menu :
 Lorsque vous copiez un modèle de données, il est ajouté en tant que JSON dans votre presse-papiers.
 Pour coller un modèle de données, cliquez sur `Paste from clipboard` à la fin de la liste des modèles de données.
 
-Ceci est utile pour copier/coller des modèles de données entre plusieurs projets.
+Ceci est utile pour copier-coller des modèles de données entre plusieurs projets.
 
 ## Ajouter et modifier des champs
 

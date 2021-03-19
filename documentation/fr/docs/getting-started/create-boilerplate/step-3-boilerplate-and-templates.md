@@ -45,7 +45,7 @@ Les casses disponible sont:
 
 #### Modifier le nom d'un template
 
-Cliquez sur le nom dans la partie gauche et modifiez le:
+Cliquez sur le nom dans la partie gauche et modifiez-le:
 
 ![Hapify GUI - Boilerplate template name](../../assets/gui-boilerplate-template-name.jpg 'Boilerplate template name'){: style="width: 478px"}
 
@@ -57,7 +57,7 @@ Survoler le nom dans la barre de gauche et cliquez sur l'icône "supprimer"
 
 #### Choisir le moteur de template
 
-Plusieurs moteur de templates sont disponibles. Nous
+Plusieurs moteurs de template sont disponibles. Nous
 
 ![Hapify GUI - Boilerplate template engine](../../assets/gui-boilerplate-template-engine.jpg 'Boilerplate template engine'){: style="width: 279px"}
 
@@ -76,7 +76,7 @@ Pour accéder à l'éditeur de template, survoler un template dans la liste de d
 
 ![Hapify GUI - Boilerplate template open editor](../../assets/gui-boilerplate-template-open-editor.jpg 'Boilerplate template open editor'){: style="width: 667px"}
 
-Sur la partie gauche se trouve le code du template, que vous pouvez modifier. A droite, un aperçu du rendu du template pour le modèle de données sélectionné.
+Sur la partie gauche se trouve le code du template, que vous pouvez modifier. À droite, un aperçu du rendu du template pour le modèle de données sélectionné.
 
 De même, dans la barre de navigation se trouve le chemin du template et le chemin du fichier généré.
 

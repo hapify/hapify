@@ -1,6 +1,6 @@
 ## Introduction
 
-Cette section aborde des cas d'utilisation typiques des templates. Chaque exemple de code est fournit avec les moteurs de templates suivants:
+Cette section aborde des cas d'utilisation typiques des templates. Chaque exemple de code est fourni avec les moteurs de templates suivants:
 
 - Hapify (Syntaxes longue et courte)
 - EJS
@@ -8,7 +8,7 @@ Cette section aborde des cas d'utilisation typiques des templates. Chaque exempl
 
 Pour connaitre tous les détails de la syntaxe Hapify, veuillez vous référer [ici](../../reference/hapify/syntax.md).
 
-Pour vous renseigner sur la syntax EJS, veuillez vous reférer à la [documentation officielle](https://ejs.co/#docs).
+Pour vous renseigner sur la syntaxe EJS, veuillez vous référer à la [documentation officielle](https://ejs.co/#docs).
 
 !!! warning "Attention"
     Toutes les fonctionnalités d'EJS sont disponibles, sauf la fonctionnalité `include`.
@@ -72,7 +72,7 @@ Ce bloc crée une classe pour le modèle de données (en casse `pascal`) et déf
 
 #### Inclure les dépendances en fonction des attributs du champ
 
-Dans un template de type `one model`, ce bloc importe le pilote MongoDb si le modèle de données a une relation avec un autre.
+Dans un template de type `one model`, ce bloc importe le pilote MongoDB si le modèle de données a une relation avec un autre.
 
 === "Hapify (long)"
 

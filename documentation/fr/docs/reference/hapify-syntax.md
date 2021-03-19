@@ -4,7 +4,7 @@ Nous avons conçu une syntaxe capable de manipuler [l'objet modèle](../../model
 Cette syntaxe est optimisée pour jouer avec les propriétés de cet objet modèle en utilisant des mots courts.
 Cela permet de gérer des idées complexes avec des phrases courtes.
 
-Par exemple, cette boucle en Javascript :
+Par exemple, cette boucle en JavaScript :
 
 ```javascript
 for (let field of root.fields.filter(f => f.searchable && f.type === 'entity')) {
@@ -332,7 +332,7 @@ Réécrivons la dernière condition :
 
 #### Conditions relatives au nombre d'occurrences
 
-En précisant un nombre après le `if`, on peut ajouter une condition sur le nombre minimum de d'éléments requis, ici les champs :
+En précisant un nombre après le `if`, on peut ajouter une condition sur le nombre minimum d’éléments requis, ici les champs :
 
 === "Hapify (long)"
 
@@ -564,17 +564,17 @@ Propriétés disponibles pour un modèle de données :
 
 Propriétés d'accès disponibles pour un modèle de données :
 
--   `onlyAdmin` (alias: `pOAd`) Le modèle de données ne contient que des accès restreintes à `admin`
--   `onlyOwner` (alias: `pOOw`) Le modèle de données ne contient que des accès restreintes à `owner`
--   `onlyAuth` (alias: `pOAu`) Le modèle de données ne contient que des accès restreintes à `authentifié`
--   `onlyGuest` (alias: `pOGs`) Le modèle de données ne contient que des accès restreintes à `guest`
+-   `onlyAdmin` (alias: `pOAd`) Le modèle de données ne contient que des accès restreints à `admin`
+-   `onlyOwner` (alias: `pOOw`) Le modèle de données ne contient que des accès restreints à `owner`
+-   `onlyAuth` (alias: `pOAu`) Le modèle de données ne contient que des accès restreints à `authenticated`
+-   `onlyGuest` (alias: `pOGs`) Le modèle de données ne contient que des accès restreints à `guest`
 -   `maxAdmin` (alias: `pMAd`) L'accès le plus permissif est `admin`
 -   `maxOwner` (alias: `pMOw`) L'accès le plus permissif est `owner`
--   `maxAuth` (alias: `pMAu`) L'accès le plus permissif est `authentifié`
+-   `maxAuth` (alias: `pMAu`) L'accès le plus permissif est `authenticated`
 -   `maxGuest` (alias: `pMGs`) L'accès le plus permissif est `guest`
 -   `noAdmin` (alias: `pNAd`) Aucune action n'est restreinte à `admin`
 -   `noOwner` (alias: `pNOw`) Aucune action n'est restreinte à `owner`
--   `noAuth` (alias: `pNAu`) Aucune action n'est restreinte à `authentifié`
+-   `noAuth` (alias: `pNAu`) Aucune action n'est restreinte à `authenticated`
 -   `noGuest` (alias: `pNGs`) Aucune action n'est restreinte à `guest`
 
 **Exemple**
@@ -651,7 +651,7 @@ Teste l'accès pour une action précise :
     }
     ```
 
-Teste si l'action de mise à jour est restreinte soit aux administrateur soit au propriétaire :
+Teste si l'action de mise à jour est restreinte soit aux administrateurs soit au propriétaire :
 
 === "Hapify (long)"
 
@@ -705,7 +705,7 @@ Teste si au moins une action est restreinte à un utilisateur authentifié ou mo
     
 !!! tip "En savoir plus"
     Les conditions peuvent être utilisées sur un objet ou un tableau d'objets.
-    S'il est utilisé sur un tableau, il testera la longueur du tableau filtré par la condition fournies.
+    S'il est utilisé sur un tableau, il testera la longueur du tableau filtré par la condition fournie.
     Il peut être utilisé sur n'importe quel objet contenant une méthode `filter` qui reçoit un callback retournant un booléen.
     Par exemple, dans la structure du modèle de données, `root.dependencies` est un objet qui contient une méthode `filter`.
     Ainsi, cet opérateur peut tester si un modèle a des dépendances qui ont des champs avec une condition spécifique.
@@ -790,7 +790,7 @@ Boucle sur les champs de type `entity` et recherchables du modèle de données :
     }
     ```
     
-#### Boucler sans filter
+#### Boucler sans filtrer
 
 Cette opération permet de passer en revue tous les champs :
 
@@ -884,7 +884,7 @@ Dans un template de type `one model`, ceci boucle sur les dépendances dont le c
     ```
     
 !!! warning "Attention"
-    Le filtrage de `Dependencies` ne s'effectue que sur les champs du modèles de données courant qui portent la référence.
+    Le filtrage de `Dependencies` ne s'effectue que sur les champs du modèle de données courant qui portent la référence.
     Le filtrage ne s'effectue **pas** sur les champs du modèle de données cible.
     
 #### Boucler sur les modèles de données référents
@@ -1006,7 +1006,7 @@ $fields = array(
 
 ### Itérations imbriquées
 
-#### Boucle sur les enums
+#### Boucle sur les enum
 
 Dans un template de type `one model`, ce bloc définit un type TypeScript contenant les énumérations d'un champ :
 
@@ -1098,7 +1098,7 @@ Dans un template de type `all models`, ce bloc permet de passer en revue tous le
 
 ## Entrées brutes et interpolation
 
-Cet opérateur vous permet d'écrire du Javascript pur.
+Cet opérateur vous permet d'écrire du JavaScript pur.
 
 ### Variable personnalisée
 
@@ -1153,7 +1153,7 @@ Définit une fonction personnalisée et l'appelle :
 Ce bloc permet d'écrire une condition non gérée par la syntaxe Hapify :
 
 ```hapify
-<<< if (root.fields.hidden < 3 || root.properties.mainlyInternal) { >>>
+<<< if (root.fields.hidden.length < 3 || root.properties.mainlyInternal) { >>>
 // ...
 <<< } >>>
 ```
@@ -1163,7 +1163,7 @@ Ce bloc permet d'écrire une condition non gérée par la syntaxe Hapify :
     Dans un template Hapify de type `all models`, la variable `root` pointe vers le tableau de modèles de données.
 
 !!! seealso "Voir aussi"
-    Pour connaitre en détail la structure du modèle de données, reportez vous à [l'objet modèle](../../model-object/).
+    Pour connaitre en détail la structure du modèle de données, reportez-vous à [l'objet modèle](../../model-object/).
 
 ## Erreur
 
@@ -1198,14 +1198,14 @@ Il est possible d'échapper les balises de la syntaxe Hapify avec le caractère 
     $res = 4 >> $val;
     ```
 
-## Formattage
+## Formatage
 
-Les lignes vides ou ne contenant que du méta-code de type condition ou iteration sont automatiquement supprimées suite à la génération.
+Les lignes vides ou ne contenant que du méta-code de type condition ou itération sont automatiquement supprimées suite à la génération.
 Pour forcer le générateur à garder une ligne vide, insérez un ou plusieurs espaces au début de celle-ci.
 
 !!! warning "Attention"
-    Hapify ne formatte pas le code généré car les règles de mise en forme sont spécifiques à chaque langage voire chaque framework.
-    Nous vous recommandons vivement d'utiliser le formatteur de code suite à la génération.
+    Hapify ne formate pas le code généré, car les règles de mise en forme sont spécifiques à chaque langage voire chaque framework.
+    Nous vous recommandons vivement d'utiliser un formateur de code suite à la génération.
 
 ## Mots réservés
 

@@ -1,4 +1,4 @@
-Ce document présente des examples de code afin de vous aider à jouer avec les templates Hapify.
+Ce document présente des exemples de code afin de vous aider à jouer avec les templates Hapify.
 
 ## Pré-requis
 

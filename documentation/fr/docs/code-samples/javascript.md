@@ -1,4 +1,4 @@
-Ce document présente des examples de code afin de vous aider à jouer avec les templates JavaScript.
+Ce document présente des exemples de code afin de vous aider à jouer avec les templates JavaScript.
 
 ## Pré-requis
 

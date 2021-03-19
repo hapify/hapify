@@ -41,7 +41,7 @@ Si le fichier n'existe pas, il sera automatiquement créé.
 _Configuration disponible_
 
 - `hpf config --apiKey <secret>` : définit la clé d'API à utiliser pour chaque commande. Ceci est équivalent à `hpf key <key>`.
-- `hpf config --apiUrl <url>` : remplace l'url d'API par défaut.
+- `hpf config --apiUrl <url>` : remplace l'URL d'API par défaut.
 
 #### Définir la clé d'API globale
 
@@ -103,7 +103,7 @@ Alias : `hpf x`
 Cette commande génère un channel à partir de ses templates et de ses modèles de données puis sauvegarde les fichiers générés dans un fichier zip.
 Vous devez lancer cette commande à partir du répertoire du channel, au niveau du fichier `hapify.json`.
 
-Par défaut, le fichier zip porte le nom du channel, c'est à dire le nom du dossier.
+Par défaut, le fichier zip porte le nom du channel, c’est-à-dire le nom du dossier.
 Exemple : `angular-admin/angular-admin.zip`.
 Vous pouvez définir un chemin personnalisé avec cette option : `-o, --output <path>`.
 
@@ -124,7 +124,7 @@ Alias : `hpf m`
 
 Utilisez cette commande pour importer des modèles de données prédéfinis depuis Hapify Cloud (appelés [presets](../getting-started/terminology.md)).
 
-_Importer des presets à partir d'IDs_
+_Importer des presets à partir d'ID_
 
 Vous pouvez également importer des préréglages à partir de leurs ID (visibles sur [Hapify Hub](https://hub.hapify.io/))
 
@@ -143,7 +143,7 @@ Alias : `hpf n`
 Cette commande vous permet de cloner et de configurer un boilerplate.
 Elle vous demandera de :
 
--   sélectionner un boilerpalte
+-   sélectionner un boilerplate
 -   sélectionner ou créer le projet à utiliser
 -   sélectionner des modèles de données à importer
 
@@ -153,7 +153,7 @@ _Options_
 -   `-b <slug>`, `--boilerplate <slug>` : Le slug du boilerplate à cloner
 -   `--boilerplate-id <id>` : L'ID du boilerplate à cloner
 -   `--boilerplate-url [url]` : Les URL git des boilerplates à cloner
--   `--preset [id]` : IDs des presets à précharger dans le projet
+-   `--preset [id]` : ID des presets à précharger dans le projet
 -   `--no-presets` : Ne pas demander de presets
 -   `--project-name <name>` : Le nom du projet à créer
 -   `--project-desc <description>` : La description du projet à créer (le nom doit être défini)

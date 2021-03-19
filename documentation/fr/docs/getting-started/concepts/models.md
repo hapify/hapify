@@ -6,7 +6,7 @@ La définition du modèle dans Hapify est **agnostique** et **comportementales**
 
 ## Gestion des accès
 
-Afin de supprimer le besoin d’écrire des boilerplates répétitif pour des opérations CRUD étendues, Hapify prend en charge les 6 actions de base operations :
+Hapify prend en charge ces 6 actions de base :
 
 -   _Create_
 -   _Read_
@@ -15,7 +15,7 @@ Afin de supprimer le besoin d’écrire des boilerplates répétitif pour des op
 -   _Search_
 -   _Count_
 
-Pour chacune de ces operations, Hapify vous permet de définir les restrictions d'accès suivantes :
+Pour chacune de ces opérations, Hapify vous permet de définir les restrictions d'accès suivantes :
 
 - _Guest_ : utilisateur qui n'est pas connecté.
 - _Authenticated_ : utilisateur connecté.
@@ -67,7 +67,7 @@ Les types disponibles sont :
 
 - **Embedded** : possibilité d'imbriquer des données provenant d'une entité liée. Cela peut être utilisé pour imbriquer les formulaires par exemple.
 
-- **Searchable** : possibilité d'effectuer des recherche via ce champ.
+- **Searchable** : possibilité d'effectuer des recherches via ce champ.
 
 - **Sortable** : possibilité de trier les résultats de recherche en fonction de ce champ.
 

@@ -1,4 +1,4 @@
-!!! question "Channel vs. boilerplate ?"
+!!! question "Channel vs  boilerplate ?"
     Un channel est un ensemble de templates. La plupart des boilerplates n'ont qu'un seul channel.
     Cependant, un boilerplate full-stack peut contenir deux channels, un pour les templates du front-end et un pour ceux du back-end.
 

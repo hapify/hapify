@@ -1,6 +1,6 @@
 Ce document décrit la structure de l'objet qui représente un modèle de données lors de l'écriture d'un template.
 
-Avant de lire ce document, vous devriez jeter un coup d'oeil à la section [concepts clés](../../concepts/key-concepts/).
+Avant de lire ce document, vous devriez jeter un coup d'œil à la section [concepts clés](../../concepts/key-concepts/).
 
 ### Dans les templates
 
@@ -14,14 +14,14 @@ S'il est défini comme `all`, le template sera appelé une seule fois pour tous 
 
 Si le template ne nécessite qu'un seul modèle, alors un objet `model` (alias `m`) sera disponible comme variable globale dans le template.
 Dans un template Hapify, il sera disponible sous `Model`, `M` ou encore `root`.
-Dans un template EJS ou Javascript, il sera disponible sous `model` ou `m`.
+Dans un template EJS ou JavaScript, il sera disponible sous `model` ou `m`.
 
 #### Plusieurs modèles
 
 Si le template nécessite tous les modèles, un tableau `models` (alias `m`) sera disponible comme variable globale dans le template.
 Ce tableau contient tous les modèles disponibles.
 Dans un template Hapify, il sera disponible sous `Models`, `M` ou encore `root`.
-Dans un template EJS ou Javascript, il sera disponible sous `models` ou `m`.
+Dans un template EJS ou JavaScript, il sera disponible sous `models` ou `m`.
 
 ### Structure de l'objet modèle
 
@@ -58,18 +58,18 @@ Les objets suivants seront disponibles dans le template.
     -   `restricted` - alias `rs` (array): les champs marqués comme `restricted`.
     -   `ownership` - alias `os` (array): les champs marqués comme `ownership`.
     -   `searchableLabel` - alias `sl` (array): les champs marqués comme `label` et `searchable`. Utile pour une recherche rapide par label.
-    -   `filter` - alias `f` (function): filtrer les champs avec une règle personnalisée. Equivalent de `model.fields.list.filter`.
+    -   `filter` - alias `f` (function): filtrer les champs avec une règle personnalisée. Équivalent de `model.fields.list.filter`.
     -   `references` - alias `r` - modèle non profond uniquement (array): champs de type `entity`.
         -   `filter` - alias `f` (function): filtre le tableau.
 -   `dependencies` - alias `d` - modèle non profond uniquement (object): les dépendances de ce modèle (vers d'autres modèles). Un modèle a une dépendance si l'un de ces champs est de type `entity`.
-    -   `list` - alias `l` (array): modèles de données dépendants, sauf auto-dependance. Ces modèles sont ajoutés en tant que "modèles profonds".
+    -   `list` - alias `l` (array): modèles de données dépendants, sauf auto-dépendance. Ces modèles sont ajoutés en tant que "modèles profonds".
     -   `self` - alias `s` (boolean): ce modèle de données a une auto-dépendance.
     -   `filter` - alias `f` (function): filtre les dépendances.
         -   Premier argument (function - défaut `(f) => f`): fonction de filtrage recevant le champ du référent (le champ de type `entity`).
         -   Second argument (boolean - défaut `true`): booléen indiquant si il faut exclure l'auto-dépendance.
 -   `referencedIn` - alias `ri` - modèle non profond uniquement (array): modèles qui font référence à celui-ci. Ces modèles sont ajoutés en tant que "modèles profonds". Ces modèles ne contiennent que des champs de type `entity` faisant référence au modèle courant.
     -   `filter` - alias `f` (function): filtre le tableau.
--   `properties` - alias `p` (object): les propriétés précalculées à partir des champs.
+-   `properties` - alias `p` (object): les propriétés pré-calculées à partir des champs.
     -   `fieldsCount` (number): le nombre de champs contenus dans le modèle.
     -   `hasPrimary` (boolean): a un champ primaire.
     -   `hasUnique` (boolean): a au moins un champ unique.
@@ -90,7 +90,7 @@ Les objets suivants seront disponibles dans le template.
     -   `mainlyInternal` (boolean): la majorité des champs sont internes (strictement).
     -   `isGeolocated` (boolean): contient au moins un champ latitude et un champ longitude.
     -   `isGeoSearchable` (boolean): contient au moins un champ latitude recherchable et un champ longitude recherchable.
--   `accesses` - alias `a` (object): les accès dau modèle regroupés par action ou restriction. Voir la section *Objet d'accès* pour en savoir plus sur la structure des accès.
+-   `accesses` - alias `a` (object): les accès au modèle regroupés par action ou restriction. Voir la section *Objet d'accès* pour en savoir plus sur la structure des accès.
     -   `list` - alias `l` (array): tous les accès au modèle.
     -   `admin` - alias `ad` (array): les accès limités à `admin`.
     -   `owner` - alias `ow` (array): les accès limités à `owner`.
@@ -102,7 +102,7 @@ Les objets suivants seront disponibles dans le template.
     -   `remove` - alias `d` (object): l'accès à l'action `delete`.
     -   `search` - alias `s` (object): l'accès à l'action `search`.
     -   `count` - alias `n` (object): l'accès à l'action `count`.
-    -   `filter` - alias `f` (Function): filtrer les accès avec une règle personnalisée. Equivalent de `model.accesses.list.filter`.
+    -   `filter` - alias `f` (Function): filtrer les accès avec une règle personnalisée. Équivalent de `model.accesses.list.filter`.
     -   `properties` - alias `p` (object): propriétés pré-calculées à partir des accès.
         -   `onlyAdmin` (boolean): ne contient que des accès limités à `admin`.
         -   `onlyOwner` (boolean): ne contient que des accès limités à `owner`.
@@ -184,7 +184,7 @@ Les objets suivants seront disponibles dans le template.
 
 #### Objet d'accès
 
--   `action` (string): nom de l'action. Peut être `create`, `read`, `update`, `remove`, `search` ou `count`.
+-   `action` (string): nom de l'action. Peut-être `create`, `read`, `update`, `remove`, `search` ou `count`.
 -   `admin` (boolean): l'accès est `admin`.
 -   `owner` (boolean): l'accès est `owner`.
 -   `auth` (boolean): l'accès est `authenticated`.

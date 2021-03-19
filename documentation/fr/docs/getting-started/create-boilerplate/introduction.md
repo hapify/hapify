@@ -10,7 +10,7 @@ Nous étudierons des exemples de templates courants.
 
 ## Moteurs de templates
 
-Hapify propose trois moteur de templates.
+Hapify propose trois moteurs de templates.
 Un boilerplate peut utiliser plusieurs moteurs simultanément.
 
 Ces moteurs ont accès à l'[objet modèle](../../model-object/).
@@ -30,7 +30,7 @@ Les deux variantes peuvent être utilisées dans le même template.
 
 #### Exemple
 
-Par exemple, cette boucle en Javascript :
+Par exemple, cette boucle en JavaScript :
 
 ```javascript
 for (let f of model.fields.list.filter(f => f.searchable && f.type === 'entity')) {
@@ -73,7 +73,7 @@ Cette fonction est volontairement désactivée afin que les templates n'aient pa
 
 #### Exemple
 
-Par exemple, cette boucle en Javascript :
+Par exemple, cette boucle en JavaScript :
 
 ```javascript
 for (let f of model.fields.list.filter(f => f.searchable) {

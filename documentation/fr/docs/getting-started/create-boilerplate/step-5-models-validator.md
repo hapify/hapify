@@ -11,7 +11,7 @@ Ces avertissements et erreurs seront affichés lors de la gestion des modèles :
 | --- | --- |
 | ![Validator - Warning](../../assets/validation-warning.png 'Validation warning') | ![Validator - Error](../../assets/validation-error.png 'Validation error') |
 
-## Ecrire un validateur
+## Écrire un validateur
 
 Lors de la validation du modèle, le code JavaScript est enveloppé dans une fonction. Par conséquent, le code que vous écrivez est le corps de cette fonction.
 Votre code doit renvoyer un objet comme celui-ci :

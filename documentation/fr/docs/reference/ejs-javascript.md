@@ -1,5 +1,5 @@
 
-Hapify offre la possibilité d'écrire des template avec la syntax [EJS](https://ejs.co/) ou bien en JavaScript.
+Hapify offre la possibilité d'écrire des template avec la syntaxe [EJS](https://ejs.co/) ou bien en JavaScript.
 Ces deux options se basent sur le même objet décrit ci-dessous.
 
 ## Objet modèle
@@ -9,7 +9,7 @@ Dans le cas d'un template de type `all models`, un tableau d'objets modèles ser
 
 Le bloc suivant est une représentation en JSON de cet objet modèle pour un cas très simple. Ici, le modèle `User profile` possède 3 champs dont une référence à une entité.
 Pour garder ce JSON aussi court que possible, nous avons supprimé tous les alias, de nombreuses propriétés récurrentes et les détails des sous-modèles.
-Ce JSON est une représentation partielle de l'objet modèle réellemenet injecté, mais il vous donne un bon aperçu de sa structure.
+Ce JSON est une représentation partielle de l'objet modèle réellement injecté, mais il vous donne un bon aperçu de sa structure.
 
 Si vous voulez connaître la structure complète de l'objet modèle, vous pouvez vous référer à la [documentation de l'objet modèle](../../model-object/),
 ou bien à l'interface TypeScript `ExplicitModel` dans le [code source](https://github.com/hapify/generator/blob/master/src/interfaces.ts) de `hapify/generator`.

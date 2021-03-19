@@ -19,7 +19,7 @@ Plage d'erreurs : 1000 à 1999
 Fourchette d'erreurs : 2000 à 2999
 
 - 2001 (GeneratorInternalError) : Émise lorsqu'une erreur inattendue est déclenchée.
-- 2002 (GeneratorRequestError) : Émise lorsque les routes sont appelés avec des arguments erronés.
+- 2002 (GeneratorRequestError) : Émise lorsque les routes sont appelées avec des arguments erronés.
 - 2003 (GeneratorRouteError) : Émise lorsqu'une erreur se produit pendant le traitement d'une requête (statut >= 401).
 - 2004 (GeneratorEvaluationError) : Émise lorsque l'évaluation du template JS provoque une erreur.
 - 2005 (GeneratorTimeoutError) : Émise lorsque le template JS est trop long à traiter.
@@ -32,7 +32,7 @@ Plage d'erreurs : 3000 à 3999
 
 - 3001 (ApiInternalError) : Émise lorsqu'une erreur inattendue est déclenchée.
 - 3002 (ApiError) : Émise lorsqu'une route déclenche une erreur qui ne peut être spécifiée.
-- 3003 (ApiRequestError) : Émise lorsqu'une route est appelé avec des arguments erronés.
+- 3003 (ApiRequestError) : Émise lorsqu'une route est appelée avec des arguments erronés.
 - 3010 (ApiAuthenticationError) : Émise lorsqu'il y a eu un problème d'authentification.
 - 3020 (ApiPlanError) : Émise lorsque la ressource a atteint la limite de l'abonnement.
 - 3030 (ApiForbiddenError) : Émise lorsque l'accès à la ressource est interdit.

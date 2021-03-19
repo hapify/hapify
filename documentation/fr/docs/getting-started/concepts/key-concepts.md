@@ -13,7 +13,7 @@ Avec Hapify, vous pouvez soit
 - Convertir vos propres boilerplates en boilerplates dynamiques.
 - Utilisez des boilerplates fournis par la **[communauté](https://hub.hapify.io/)**
 
-!!! seealso "En savoir plus"
+!!! seealso "Voir aussi"
     Pour plus d'informations sur les moteurs de template, vous pouvez consulter la documentation de la [syntaxe Hapify](../../reference/hapify-syntax.md) et celle des [templates EJS et JavaScript](../../reference/ejs-javascript.md).
 
 ## Modélisation 

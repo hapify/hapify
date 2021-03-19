@@ -151,7 +151,7 @@ Dans la liste ci-dessous, sélectionnez un projet depuis votre compte.
   Second project
 ```
 
-!!! tip "Astuce"
+!!! tip "À savoir"
     Vous pouvez créer un projet en ligne à partir de votre compte Hapify : [https://www.hapify.io/my-projects](https://www.hapify.io/my-projects)
 
 Le boilerplate va maintenant stocker et lire les modèles de Hapify Cloud.

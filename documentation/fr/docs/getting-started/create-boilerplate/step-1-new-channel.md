@@ -10,7 +10,7 @@ Créez un nouveau dossier pour votre projet et allez dans ce dossier :
 mkdir my-project && cd my-project
 ```
 
-!!! tip "Astuce"
+!!! tip "À savoir"
     Vous pouvez également démarrer un channel dans un boilerplate existant.
 
 Utilisez la commande `init` pour initialiser un channel dans ce dossier.

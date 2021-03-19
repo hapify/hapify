@@ -89,7 +89,7 @@ Pour définir la profondeur de la recherche de channels, utilisez cette option :
 hpf generate --depth 3
 ```
 
-!!! tip "Astuce"
+!!! tip "À savoir"
     Les fichiers générés vides ne seront pas sauvegardés.
 
 #### Exporter le code
@@ -111,7 +111,7 @@ Vous pouvez définir un chemin personnalisé avec cette option : `-o, --output <
 hpf export -o /path/to/file.zip
 ```
 
-!!! tip "Astuce"
+!!! tip "À savoir"
     Les fichiers générés vides ne seront pas sauvegardés.
 
 #### Importez des modèles de données

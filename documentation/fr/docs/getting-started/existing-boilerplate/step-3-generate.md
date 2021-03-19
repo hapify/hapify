@@ -17,7 +17,7 @@ Cela lancera le générateur et copiera les fichiers générés dans votre boile
 
 Vous pouvez maintenant commencer à personnaliser et à exécuter le code généré.
 
-!!! tip "Astuce"
+!!! tip "À savoir"
     La commande `generate` peut gérer plusieurs boilerplate à la fois.
     Pour en savoir plus sur la commande `generate`, veuillez vous référer à [cet article](../../reference/cli.md#generer-le-code).
 

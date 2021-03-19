@@ -18,7 +18,7 @@ La barre latérale gauche expose tous les templates présents dans votre dossier
 
 Cliquez sur `New path` en dessous d'un dossier puis entrez un chemin de fichier pour créer un nouveau template.
 
-!!! tip "Astuce"
+!!! tip "À savoir"
 	Vous pouvez ajouter des `/` dans le nom du template pour créer des dossiers parents: `path/to/template.ts`
 
 #### Nom de template dynamique
@@ -82,10 +82,10 @@ De même, dans la barre de navigation se trouve le chemin du template et le chem
 
 ![Hapify GUI - Boilerplate template editor](../../assets/gui-boilerplate-template-editor.jpg 'Boilerplate template editor'){: style="width: 1113px"}
 
-!!! tip "Astuce"
+!!! tip "À savoir"
     Vous pouvez modifier directement le chemin du template dans la barre de navigation.
 
-!!! tip "Astuce"
+!!! tip "À savoir"
     Il est possible de générer automatiquement les fichiers cibles lorsque vous sauvegardez votre template en cliquant sur l'icône du marteau.
 
 !!! warning "Attention"

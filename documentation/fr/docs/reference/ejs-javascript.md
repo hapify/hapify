@@ -11,7 +11,7 @@ Le bloc suivant est une représentation en JSON de cet objet modèle pour un cas
 Pour garder ce JSON aussi court que possible, nous avons supprimé tous les alias, de nombreuses propriétés récurrentes et les détails des sous-modèles.
 Ce JSON est une représentation partielle de l'objet modèle réellement injecté, mais il vous donne un bon aperçu de sa structure.
 
-!!! seealso "En savoir plus"
+!!! seealso "Voir aussi"
     Si vous voulez connaître la structure complète de l'objet modèle, vous pouvez vous référer à la [documentation de l'objet modèle](./model-object.md),
     ou bien à l'interface TypeScript `ExplicitModel` dans le [code source](https://github.com/hapify/generator/blob/master/src/interfaces.ts) de `hapify/generator`.
 

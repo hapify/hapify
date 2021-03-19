@@ -41,7 +41,7 @@ Les deux ont des avantages :
 
 Dans un même template, vous pouvez mélanger les deux syntaxes.
 
-!!! note Note
+!!! note "Note"
     Tous les exemples de codes ci-dessous sont traduits en équivalent JavaScript à titre informatif.
     Lors de la génération, la syntaxe Hapify est convertie en code JavaScript semblable.
     
@@ -703,7 +703,7 @@ Teste si au moins une action est restreinte à un utilisateur authentifié ou mo
     }
     ```
     
-!!! tip "En savoir plus"
+!!! tip "À savoir"
     Les conditions peuvent être utilisées sur un objet ou un tableau d'objets.
     S'il est utilisé sur un tableau, il testera la longueur du tableau filtré par la condition fournie.
     Il peut être utilisé sur n'importe quel objet contenant une méthode `filter` qui reçoit un callback retournant un booléen.
@@ -874,7 +874,7 @@ Dans un template de type `one model`, ceci boucle sur les dépendances dont le c
     }
     ```
     
-!!! tip "Astuce"
+!!! tip "À savoir"
     Dans le cas d'un modèle de données qui se réfère à lui-même, `Dependencies` exclue cette auto-dépendance.
     Pour l'inclure utilisez le code suivant:
     ```hapify
@@ -915,7 +915,7 @@ Dans un template de type `one model`, ceci boucle sur les modèles de données a
     }
     ```
     
-!!! tip "Astuce"
+!!! tip "À savoir"
     Le filtre est optionnel. Vous pouvez obtenir tous les modèles de données référents comme ceci :
     ```hapify
     <<for ReferencedIn referrer>>
@@ -1158,7 +1158,7 @@ Ce bloc permet d'écrire une condition non gérée par la syntaxe Hapify :
 <<< } >>>
 ```
 
-!!! tip "Astuce"
+!!! tip "À savoir"
     Dans un template Hapify de type `one model`, la variable `root` pointe vers le modèle de données.
     Dans un template Hapify de type `all models`, la variable `root` pointe vers le tableau de modèles de données.
 

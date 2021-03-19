@@ -13,7 +13,7 @@ Une fois lancée, l'interface graphique affiche tous les modèles de données.
 
 ![Hapify GUI - Models edition](../../assets/gui-models.jpg 'Models Edition')
 
-!!! tip "Astuce"
+!!! tip "À savoir"
     Pour les projets avec beaucoup de modèles de données, vous pouvez filtrer ceux-ci par nom, nom de champ ou référence. Utilisez la barre supérieure droite.
     Appuyez sur la touche d'échappement pour réinitialiser les filtres.
 
@@ -24,7 +24,7 @@ Cliquez sur le bouton `New model`, entrez un nom et appuyez sur la touche "Entr�
 Le nouveau modèle de données sera rempli avec les champs par défaut.
 Les champs par défaut sont définis dans le fichier de configuration du boilerplate (`hapify.json`).
 
-!!! tip "Astuce"
+!!! tip "À savoir"
     Une fois créé, vous pouvez modifier le nom du modèle de données en cliquant sur celui-ci.
 
 ### Importer des modèles de données prédéfinis
@@ -60,7 +60,7 @@ Et aussi ses attributs en cliquant sur l'engrenage :
 
 ![Hapify GUI - Field attributes](../../assets/gui-models-fields-attributes.jpg 'Field attributes'){: style="width: 420px"}
 
-!!! tip "Astuce"
+!!! tip "À savoir"
     Une fois créé, vous pouvez modifier le nom du champ en cliquant dessus.
 
 !!! seealso "Voir aussi"

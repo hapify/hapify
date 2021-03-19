@@ -7,7 +7,7 @@ Avant de lire cet article, nous vous recommandons de lire la documentation sur l
 ## Créer des index pour MongoDB
 
 Ce template produira un JSON contenant tous les index qui doivent être créés dans MongoDB en fonction des attributs du champ.
-Il crée un index pour les champs recherchable ou triables ou les références.
+Il crée un index pour les champs recherchables ou triables ou les références.
 Il crée également un index unique pour les champs uniques et un index texte pour les champs de type string recherchable.
 
 === "JavaScript"

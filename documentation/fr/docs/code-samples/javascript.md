@@ -2,7 +2,7 @@ Ce document présente des exemples de code afin de vous aider à jouer avec les 
 
 ## Pré-requis
 
-Avant de lire cet article, nous vous recommandons de lire la documentation sur les [templates JavaScript](../usage).
+Avant de lire cet article, nous vous recommandons de lire la documentation sur les [templates JavaScript](../reference/ejs-javascript.md).
 
 ## Créer des index pour MongoDB
 

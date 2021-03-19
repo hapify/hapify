@@ -22,4 +22,4 @@ Un autre cas fréquent est celui des relations entre les modèles de données.
 Nous vous recommandons d'ajouter plusieurs relations entre vos modèles de données, même une relation d'auto-référence.
 
 !!! seealso "Voir aussi"
-    Pour en savoir plus sur la gestion des modèles de données, veuillez vous référer à [édition des modèles de données](../../existing-boilerplate/step-2-edit-models).
+    Pour en savoir plus sur la gestion des modèles de données, veuillez vous référer à [édition des modèles de données](../existing-boilerplate/step-2-edit-models.md).

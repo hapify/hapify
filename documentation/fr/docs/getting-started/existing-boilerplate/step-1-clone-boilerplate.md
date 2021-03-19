@@ -118,11 +118,11 @@ Le dossier `.hapify` (peut aussi être nommé `hapify`) est le dossier des templ
 Par défaut, Hapify stocke vos modèles localement. Le chemin d'accès est défini dans le fichier de configuration.
 Vous pouvez stocker vos modèles en ligne, afin de les partager sur plusieurs dépôts.
 
-Pour connecter le CLI à Hapify Cloud, veuillez suivre [ces étapes](../../installation/#optional-connect-the-cli-to-hapify-cloud)
+Pour connecter le CLI à Hapify Cloud, veuillez suivre [ces étapes](../installation.md#facultatif-connecter-le-cli-a-hapify-cloud)
 
 ### Connecter votre boilerplate à un projet distant
 
-Exécutez [cette commande](../../reference/cli/#define-project-to-use-in-a-boilerplate-channel) pour configurer votre boilerplate :
+Exécutez [cette commande](../../reference/cli.md#definir-le-projet-a-utiliser-dans-un-boilerplatechannel) pour configurer votre boilerplate :
 
 ```bash
 hpf use

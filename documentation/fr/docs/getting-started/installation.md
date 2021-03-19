@@ -23,7 +23,7 @@ Une fois inscrit, ou si vous avez déjà un compte, allez sur [hapify.io/mykey](
 
 ### 3. Configurer le CLI
 
-Exécutez [cette commande](../../reference/cli/#set-global-api-key) avec votre propre clé API pour connecter le CLI à Hapify Cloud une fois pour toutes.
+Exécutez [cette commande](../reference/cli.md#definir-la-cle-dapi-globale) avec votre propre clé API pour connecter le CLI à Hapify Cloud une fois pour toutes.
 
 ```bash
 hpf key XXXXXXXXXXXX

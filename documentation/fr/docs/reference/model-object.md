@@ -1,6 +1,6 @@
 Ce document décrit la structure de l'objet qui représente un modèle de données lors de l'écriture d'un template.
 
-Avant de lire ce document, vous devriez jeter un coup d'œil à la section [concepts clés](../../concepts/key-concepts/).
+Avant de lire ce document, vous devriez jeter un coup d'œil à la section [concepts clés](../getting-started/concepts/key-concepts.md).
 
 ### Dans les templates
 

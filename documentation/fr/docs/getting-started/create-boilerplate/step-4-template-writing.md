@@ -6,7 +6,7 @@ Cette section aborde des cas d'utilisation typiques des templates. Chaque exempl
 - EJS
 - JavaScript
 
-Pour connaitre tous les détails de la syntaxe Hapify, veuillez vous référer [ici](../../reference/hapify/syntax.md).
+Pour connaitre tous les détails de la syntaxe Hapify, veuillez vous référer [ici](../../reference/hapify-syntax.md).
 
 Pour vous renseigner sur la syntaxe EJS, veuillez vous référer à la [documentation officielle](https://ejs.co/#docs).
 
@@ -16,7 +16,7 @@ Pour vous renseigner sur la syntaxe EJS, veuillez vous référer à la [document
 
 ### Manipulation du modèle de données
 
-Les templates reçoivent en entrée l'[objet modèle](../../model-object/). Cet objet, injecté dans les templates, explicite le modèle de données ainsi que toutes ses propriétés et relations, de sorte qu'elles soient facilement accessibles depuis le template.
+Les templates reçoivent en entrée l'[objet modèle](../../reference/model-object.md). Cet objet, injecté dans les templates, explicite le modèle de données ainsi que toutes ses propriétés et relations, de sorte qu'elles soient facilement accessibles depuis le template.
 
 Nous vous recommandons de connaître sa structure avant de vous lancer dans l'écriture de templates.
 

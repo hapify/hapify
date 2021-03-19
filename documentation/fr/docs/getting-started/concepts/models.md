@@ -19,7 +19,7 @@ Pour chacune de ces opérations, Hapify vous permet de définir les restrictions
 
 - _Guest_ : utilisateur qui n'est pas connecté.
 - _Authenticated_ : utilisateur connecté.
-- _Owner_ : utilisateur connecté qui est propriétaire de l'entité (voir [Attributs de champ](#field-attributes) pour plus de détails).
+- _Owner_ : utilisateur connecté qui est propriétaire de l'entité (voir [Attributs de champ](#champs) pour plus de détails).
 - _Admin_ : utilisateur super-admin connecté.
 
 Les accès sont inclusifs, ce qui signifie que la restriction _Authenticated_ inclut nécessairement _Owner_ et _Admin_.

@@ -13,7 +13,8 @@ Avec Hapify, vous pouvez soit
 - Convertir vos propres boilerplates en boilerplates dynamiques.
 - Utilisez des boilerplates fournis par la **[communauté](https://hub.hapify.io/)**
 
-Pour plus d'informations sur les moteurs de template, vous pouvez consulter la [documentation de la syntaxe](../../templating/hapify/syntax/) et la [documentation sur les templates](../../templating/javascript/usage/).
+!!! seealso "En savoir plus"
+    Pour plus d'informations sur les moteurs de template, vous pouvez consulter la documentation de la [syntaxe Hapify](../../reference/hapify-syntax.md) et celle des [templates EJS et JavaScript](../../reference/ejs-javascript.md).
 
 ## Modélisation 
 
@@ -21,11 +22,11 @@ Hapify vous permet de définir les modèles de données qui correspondent aux sp
 
 Les modèles de données peuvent être édités dans une console Web locale.
 
-![Hapify GUI - models edition](../../assets/gui-models-access.png 'Models Edition')
+![Hapify GUI - models edition](../../assets/gui-models-access.jpg 'Models Edition')
 
 Remarque : vous pouvez importer des modèles de données fournis par la communauté via [Hapify Hub](https://hub.hapify.io/).
 
-Pour plus d'informations sur les modèles de données, vous pouvez vous référer à la [documentation sur les modèles de données](../models/).
+Pour plus d'informations sur les modèles de données, vous pouvez vous référer à la [documentation sur les modèles de données](../../reference/model-object.md).
 
 ## Hapify Boilerplate
 

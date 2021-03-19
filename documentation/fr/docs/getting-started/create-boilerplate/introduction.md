@@ -13,12 +13,12 @@ Nous étudierons des exemples de templates courants.
 Hapify propose trois moteurs de templates.
 Un boilerplate peut utiliser plusieurs moteurs simultanément.
 
-Ces moteurs ont accès à l'[objet modèle](../../model-object/).
+Ces moteurs ont accès à l'[objet modèle](../../reference/model-object.md).
 Cet objet, injecté dans les templates, explicite le modèle de données ainsi que toutes ses propriétés et relations, de sorte qu'elles soient facilement accessibles depuis le template.
 
 ### Moteur de template Hapify
 
-Cette syntaxe est optimisée pour jouer avec le [objet modèle](../../model-object/) et ses propriétés en utilisant des mots courts.
+Cette syntaxe est optimisée pour jouer avec le [objet modèle](../../reference/model-object.md) et ses propriétés en utilisant des mots courts.
 Cela vous permet de gérer des idées complexes avec des phrases courtes.
 
 Cette syntaxe a deux variantes :

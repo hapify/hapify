@@ -1,6 +1,6 @@
 ## Pourquoi utiliser une syntaxe spécifique ?
 
-Nous avons conçu une syntaxe capable de manipuler [l'objet modèle](../../model-object/) injecté dans les templates.
+Nous avons conçu une syntaxe capable de manipuler [l'objet modèle](./model-object.md) injecté dans les templates.
 Cette syntaxe est optimisée pour jouer avec les propriétés de cet objet modèle en utilisant des mots courts.
 Cela permet de gérer des idées complexes avec des phrases courtes.
 
@@ -1163,7 +1163,7 @@ Ce bloc permet d'écrire une condition non gérée par la syntaxe Hapify :
     Dans un template Hapify de type `all models`, la variable `root` pointe vers le tableau de modèles de données.
 
 !!! seealso "Voir aussi"
-    Pour connaitre en détail la structure du modèle de données, reportez-vous à [l'objet modèle](../../model-object/).
+    Pour connaitre en détail la structure du modèle de données, reportez-vous à [l'objet modèle](./model-object.md).
 
 ## Erreur
 

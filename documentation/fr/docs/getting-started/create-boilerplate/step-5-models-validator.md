@@ -3,13 +3,13 @@ Pour éviter cela, vous pouvez associer un validateur de modèle de données à 
 
 ## Comment ça fonctionne ?
 
-Ce validateur est écrit en JavaScript pur. Il reçoit un modèle de données unique et renvoie des `avertissements` et des `erreurs`.
+Ce validateur est écrit en JavaScript pur. Il reçoit un modèle de données unique et renvoie des `warnings` et des `errors`.
 
 Ces avertissements et erreurs seront affichés lors de la gestion des modèles :
 
 | Avertissement | Erreur |
 | --- | --- |
-| ![Validator - Warning](../../assets/validation-warning.png 'Validation warning') | ![Validator - Error](../../assets/validation-error.png 'Validation error') |
+| ![Validator - Warning](../../assets/validation-warning.jpg 'Validation warning') | ![Validator - Error](../../assets/validation-error.jpg 'Validation error') |
 
 ## Écrire un validateur
 

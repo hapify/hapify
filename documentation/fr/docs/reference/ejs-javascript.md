@@ -4,15 +4,16 @@ Ces deux options se basent sur le même objet décrit ci-dessous.
 
 ## Objet modèle
 
-Les templates reçoivent le [l'objet modèle](../../model-object/) via la variable `model` (alias `m`).
+Les templates reçoivent le [l'objet modèle](./model-object.md) via la variable `model` (alias `m`).
 Dans le cas d'un template de type `all models`, un tableau d'objets modèles sera disponible via la variable `models` (alias `m`).
 
 Le bloc suivant est une représentation en JSON de cet objet modèle pour un cas très simple. Ici, le modèle `User profile` possède 3 champs dont une référence à une entité.
 Pour garder ce JSON aussi court que possible, nous avons supprimé tous les alias, de nombreuses propriétés récurrentes et les détails des sous-modèles.
 Ce JSON est une représentation partielle de l'objet modèle réellement injecté, mais il vous donne un bon aperçu de sa structure.
 
-Si vous voulez connaître la structure complète de l'objet modèle, vous pouvez vous référer à la [documentation de l'objet modèle](../../model-object/),
-ou bien à l'interface TypeScript `ExplicitModel` dans le [code source](https://github.com/hapify/generator/blob/master/src/interfaces.ts) de `hapify/generator`.
+!!! seealso "En savoir plus"
+    Si vous voulez connaître la structure complète de l'objet modèle, vous pouvez vous référer à la [documentation de l'objet modèle](./model-object.md),
+    ou bien à l'interface TypeScript `ExplicitModel` dans le [code source](https://github.com/hapify/generator/blob/master/src/interfaces.ts) de `hapify/generator`.
 
 ```json
 {
@@ -388,4 +389,4 @@ Voici des exemples de template EJS et JavaScript utilisant cet objet modèle.
     ```
 
 !!! seealso "Voir aussi"
-    Pour plus d'exemples de templates, veuillez lire [cet article](../../getting-started/create-boilerplate/step-4-template-writing).
+    Pour plus d'exemples de templates, veuillez lire [cet article](../getting-started/create-boilerplate/step-4-template-writing.md).

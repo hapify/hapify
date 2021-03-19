@@ -64,7 +64,7 @@ Et aussi ses attributs en cliquant sur l'engrenage :
     Une fois créé, vous pouvez modifier le nom du champ en cliquant dessus.
 
 !!! seealso "Voir aussi"
-    Pour en savoir plus sur la gestion des champs, veuillez vous référer à la description [du modèle de données](../../concepts/models/#model-properties).
+    Pour en savoir plus sur la gestion des champs, veuillez vous référer à la description [du modèle de données](../concepts/models.md#champs).
 
 ### Supprimer un champ
 
@@ -79,7 +79,7 @@ Développez le panneau de gestion des accès en cliquant sur l'icône "empreinte
 ![Hapify GUI - Access management](../../assets/gui-models-access-managment.jpg 'Access management'){: style="width: 410px"}
 
 !!! seealso "Voir aussi"
-    Pour en savoir plus sur la gestion des accès, veuillez vous référer à la description [du modèle de données](../../concepts/models/#access-management).
+    Pour en savoir plus sur la gestion des accès, veuillez vous référer à la description [du modèle de données](../concepts/models.md#gestion-des-acces).
     
 ## Ajouter des notes
 

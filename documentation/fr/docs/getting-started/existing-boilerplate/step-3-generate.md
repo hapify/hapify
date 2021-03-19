@@ -19,7 +19,7 @@ Vous pouvez maintenant commencer à personnaliser et à exécuter le code géné
 
 !!! tip "Astuce"
     La commande `generate` peut gérer plusieurs boilerplate à la fois.
-    Pour en savoir plus sur la commande `generate`, veuillez vous référer à [cet article](../../../reference/cli/#generate-the-code).
+    Pour en savoir plus sur la commande `generate`, veuillez vous référer à [cet article](../../reference/cli.md#generer-le-code).
 
 
 ## Formater le code

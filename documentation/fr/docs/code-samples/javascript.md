@@ -1,16 +1,14 @@
-# JavaScript code samples
+Ce document présente des examples de code afin de vous aider à jouer avec les templates JavaScript.
 
-This document shows code samples in order to help you play JavaScript templates.
+## Pré-requis
 
-## Pre-requisites
+Avant de lire cet article, nous vous recommandons de lire la documentation sur les [templates JavaScript](../usage).
 
-Before reading this article, we recommend that you read the documentation about [JavaScript templates](../usage).
+## Créer des index pour MongoDB
 
-## Create indexes for MongoDB
-
-This template will produce a JSON containing all indexes that should be created in MongoDB according to the field requirements.
-It creates an index for searchable or sortable fields or entity references.
-It also creates a unique index for unique fields and a text index for searchable string fields.
+Ce template produira un JSON contenant tous les index qui doivent être créés dans MongoDB en fonction des attributs du champ.
+Il crée un index pour les champs recherchable ou triables ou les références.
+Il crée également un index unique pour les champs uniques et un index texte pour les champs de type string recherchable.
 
 === "JavaScript"
 
@@ -84,7 +82,7 @@ It also creates a unique index for unique fields and a text index for searchable
     return JSON.stringify(_output, null, 2);
     ```
 
-=== "Sample output"
+=== "Sortie"
 
     ```json
     {
@@ -148,9 +146,9 @@ It also creates a unique index for unique fields and a text index for searchable
     }
     ```
 
-## Output model description as JSON
+## Générer une description du modèle de données en JSON
 
-This template will output a JSON that lists fields and resolves dependencies between models.
+Ce template produira un JSON qui liste les champs et résout les dépendances entre les modèles.
 
 === "JavaScript"
 
@@ -187,7 +185,7 @@ This template will output a JSON that lists fields and resolves dependencies bet
     return JSON.stringify(_output, null, 4);
     ```
 
-=== "Sample output"
+=== "Sortie"
 
     ```json
     [

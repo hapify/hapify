@@ -25,7 +25,7 @@ nav:
       - CLI: 'reference/cli.md'
       - Syntaxe Hapify: 'reference/hapify-syntax.md'
       - EJS & JavaScript: 'reference/ejs-javascript.md'
-      - Object modèle: 'reference/model-object.md'
+      - Objet modèle: 'reference/model-object.md'
   - Exemples:
       - JavaScript: 'code-samples/javascript.md'
 theme:

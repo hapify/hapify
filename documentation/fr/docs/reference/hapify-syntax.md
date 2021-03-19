@@ -1198,6 +1198,15 @@ Il est possible d'échapper les balises de la syntaxe Hapify avec le caractère 
     $res = 4 >> $val;
     ```
 
+## Formattage
+
+Les lignes vides ou ne contenant que du méta-code de type condition ou iteration sont automatiquement supprimées suite à la génération.
+Pour forcer le générateur à garder une ligne vide, insérez un ou plusieurs espaces au début de celle-ci.
+
+!!! warning "Attention"
+    Hapify ne formatte pas le code généré car les règles de mise en forme sont spécifiques à chaque langage voire chaque framework.
+    Nous vous recommandons vivement d'utiliser le formatteur de code suite à la génération.
+
 ## Mots réservés
 
 La liste suivante de mots ne peut pas être utilisée pour nommer des variables.

@@ -715,9 +715,9 @@ La deuxième itération boucle sur toutes les relations d'entités contenues dan
 === "Hapify (long)"
 
     ```hapify
-    <<for ReferencedIn model>>
-        <<for model.fields field>>
-    await db.collection('<<model pascal>>').deleteMany({ <<field snake>>: id });
+    <<for ReferencedIn referrer>>
+        <<for referrer.fields field>>
+    await db.collection('<<referrer pascal>>').deleteMany({ <<field snake>>: id });
         <<endfor>>
     <<endfor>>
     ```

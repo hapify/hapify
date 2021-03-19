@@ -887,6 +887,45 @@ Dans un template de type `one model`, ceci boucle sur les dépendances dont le c
     Le filtrage de `Dependencies` ne s'effectue que sur les champs du modèles de données courant qui portent la référence.
     Le filtrage ne s'effectue **pas** sur les champs du modèle de données cible.
     
+#### Boucler sur les modèles de données référents
+    
+Dans un template de type `one model`, ceci boucle sur les modèles de données ayant une dépendance envers celui-ci et qui sont géo-localisés :
+
+=== "Hapify (long)"
+
+    ```hapify
+    <<for ReferencedIn isGeolocated referrer>>
+        // ...
+    <<endfor>>
+    ```
+
+=== "Hapify (short)"
+
+    ```hapify
+    <<@ R pGeo r>>
+        // ...
+    <<@>>
+    ```
+
+=== "Équivalent JavaScript"
+
+    ```javascript
+    for (let referrer of root.referencedIn.filter(m => m.properties.isGeolocated)) {
+        out += '    // ...';
+    }
+    ```
+    
+!!! tip "Astuce"
+    Le filtre est optionnel. Vous pouvez obtenir tous les modèles de données référents comme ceci :
+    ```hapify
+    <<for ReferencedIn referrer>>
+        // ...
+    <<endfor>>
+    ```
+    
+!!! warning "Attention"
+    Seuls les champs de type entité faisant référence sont définis dans ces modèles de données référents.
+    
 #### Boucler sur les accès du modèle de données
 
 Boucle sur tous les accès restreints à un administrateur ou au propriétaire et affiche le nom de l'action :

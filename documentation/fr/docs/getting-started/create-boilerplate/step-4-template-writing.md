@@ -656,7 +656,8 @@ Si le modèle a une auto-dépendance, il ne sera pas inclus dans la boucle.
     import {MenuItem} from '../menu-item';
     ```
 
-Vous pouvez également filtrer les modèles par attributs des champs. Ce bloc exclut les modèles qui contiennent des champs cachés :
+Vous pouvez également filtrer par attributs de champ référent.
+Ce bloc exclut les modèles dont les champs référents sont cachés :
 
 === "Hapify (long)"
 

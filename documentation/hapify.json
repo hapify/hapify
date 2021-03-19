@@ -16,6 +16,21 @@
   ],
   "templates": [
     {
+      "path": "samples/hapify/model.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "samples/javascript/models.json",
+      "engine": "js",
+      "input": "all"
+    },
+    {
+      "path": "samples/javascript/mongodb-indexes.json",
+      "engine": "js",
+      "input": "all"
+    },
+    {
       "path": "template-writing/cardinality/ejs.ts",
       "engine": "ejs",
       "input": "one"

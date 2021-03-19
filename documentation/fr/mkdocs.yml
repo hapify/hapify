@@ -28,6 +28,7 @@ nav:
       - Objet modèle: 'reference/model-object.md'
   - Exemples:
       - JavaScript: 'code-samples/javascript.md'
+      - Hapify: 'code-samples/hapify.md'
 theme:
   language: fr
   features:

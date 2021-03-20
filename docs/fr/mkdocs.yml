@@ -64,3 +64,10 @@ extra:
       link: https://hub.docker.com/u/hapify
     - icon: fontawesome/brands/slack
       link: https://hapify.slack.com/
+  alternate:
+    - name: English
+      link: https://documentation.hapify.io/
+      lang: en
+    - name: Français
+      link: https://documentation.hapify.io/fr/
+      lang: fr

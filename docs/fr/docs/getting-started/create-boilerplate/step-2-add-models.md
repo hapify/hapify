@@ -3,7 +3,7 @@
 À ce stade, vous avez un channel vide et aucun modèle de données dans votre projet.
 Afin de créer un nouveau template, vous devez d'abord créer quelques modèles de données.
 
-Exécutez cette commande :
+Exécutez [cette commande](../../reference/cli.md#serve) :
 
 ```bash
 hpf serve

@@ -1,10 +1,10 @@
 
-Hapify offre la possibilité d'écrire des template avec la syntaxe [EJS](https://ejs.co/) ou bien en JavaScript.
+Hapify offre la possibilité d'écrire des template avec la syntaxe [EJS](https://ejs.co/) ou bien en JavaScript pur.
 Ces deux options se basent sur le même objet décrit ci-dessous.
 
 ## Objet modèle
 
-Les templates reçoivent le [l'objet modèle](./model-object.md) via la variable `model` (alias `m`).
+Les templates de type `one model` reçoivent [l'objet modèle](./model-object.md) via la variable `model` (alias `m`).
 Dans le cas d'un template de type `all models`, un tableau d'objets modèles sera disponible via la variable `models` (alias `m`).
 
 Le bloc suivant est une représentation en JSON de cet objet modèle pour un cas très simple. Ici, le modèle `User profile` possède 3 champs dont une référence à une entité.
@@ -358,6 +358,9 @@ Voici des exemples de template EJS et JavaScript utilisant cet objet modèle.
     
 !!! warning "Attention"
     Un template JavaScript doit retourner une chaîne de caractères.
+
+!!! tip "À savoir"
+    Les fichiers générés vides ne seront pas sauvegardés.
 
 ### Template de type `all models`
 

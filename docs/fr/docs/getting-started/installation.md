@@ -6,12 +6,12 @@ La première étape consiste à installer le CLI en utilisant NPM :
 npm install -g @hapify/cli
 ```
 
-En plus, vous pouvez vérifier si le paquet est installé en exécutant : `hpf --version`.
+Vous pouvez également vérifier si le paquet est installé en exécutant : `hpf --version`.
 
-## **Facultatif** : Connecter le CLI à Hapify Cloud
+## <a name="cloud"></a>**Facultatif** : Connecter le CLI à Hapify Cloud
 
-Le CLI Hapify peut interagir avec Hapify Cloud pour le stockage de projets et de modèles.
-Par conséquent, vous devez obtenir une clé API de Hapify Cloud pour accéder à ces fonctionnalités de la CLI.
+Le CLI Hapify peut interagir avec Hapify Cloud afin de stocker vos projets et leurs modèles.
+Pour cela, vous devez obtenir une clé API de Hapify Cloud.
 
 ### 1. S'inscrire sur Hapify Cloud
 
@@ -23,7 +23,7 @@ Une fois inscrit, ou si vous avez déjà un compte, allez sur [hapify.io/mykey](
 
 ### 3. Configurer le CLI
 
-Exécutez [cette commande](../reference/cli.md#definir-la-cle-dapi-globale) avec votre propre clé API pour connecter le CLI à Hapify Cloud une fois pour toutes.
+Exécutez [cette commande](../reference/cli.md#key) avec votre propre clé API pour connecter le CLI à Hapify Cloud.
 
 ```bash
 hpf key XXXXXXXXXXXX

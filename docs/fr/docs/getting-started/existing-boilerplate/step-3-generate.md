@@ -1,12 +1,12 @@
 ## Exécuter la commande `generate`
 
-Lorsque vos modèles seront prêts, générez le code avec cette commande :
+Lorsque vos modèles de données seront prêts, générez le code avec [cette commande](../../reference/cli.md#generate) :
 
 ```bash
 hpf generate
 ```
 
-Cela lancera le générateur et copiera les fichiers générés dans votre boilerplate localement :
+Ceci lancera le générateur et copiera les fichiers générés dans votre boilerplate localement :
 
 ```
 • Found channel HapiJS in ~/my-project/boilerplate-hapijs
@@ -15,12 +15,11 @@ Cela lancera le générateur et copiera les fichiers générés dans votre boile
 ✓ Generated 189 files for channel Angular Dashboard
 ```
 
-Vous pouvez maintenant commencer à personnaliser et à exécuter le code généré.
+Vous pouvez maintenant commencer à personnaliser et à utiliser le code généré.
 
 !!! tip "À savoir"
-    La commande `generate` peut gérer plusieurs boilerplate à la fois.
-    Pour en savoir plus sur la commande `generate`, veuillez vous référer à [cet article](../../reference/cli.md#generer-le-code).
-
+    La commande `generate` peut gérer plusieurs [boilerplates ou channels](../terminology.md) à la fois.
+    Pour en savoir plus sur la commande `generate`, veuillez vous référer à [cet article](../../reference/cli.md#generate).
 
 ## Formater le code
 

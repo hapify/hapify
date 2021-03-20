@@ -1,7 +1,7 @@
 ## Exécuter la commande `serve`.
 
-À ce stade, vous disposez d'un boilerplate mais pas de modèles de données dans votre projet, sauf si vous avez importé des modèles de données prédéfinis.
-Afin de créer et de modifier les modèles de données de votre projet, exécutez cette commande pour lancer l'interface graphique locale :
+À ce stade, vous disposez d'un boilerplate mais pas de modèles de données dans votre projet, sauf si vous avez importé des collections de modèles de données prédéfinis.
+Afin de créer et de modifier les modèles de données de votre projet, exécutez [cette commande](../../reference/cli.md#serve) pour lancer l'interface graphique locale :
 
 ```bash
 hpf serve
@@ -29,7 +29,7 @@ Les champs par défaut sont définis dans le fichier de configuration du boilerp
 
 ### Importer des modèles de données prédéfinis
 
-Cliquez sur le bouton `Import collections`, choisissez une collection et validez.
+Cliquez sur le bouton `Import collections`, choisissez une collection ([preset](../terminology.md)) et validez.
 
 ![Hapify GUI - Models import](../../assets/gui-models-import-collections.jpg 'Models import')
 
@@ -64,7 +64,7 @@ Et aussi ses attributs en cliquant sur l'engrenage :
     Une fois créé, vous pouvez modifier le nom du champ en cliquant dessus.
 
 !!! seealso "Voir aussi"
-    Pour en savoir plus sur la gestion des champs, veuillez vous référer à la description [du modèle de données](../concepts/models.md#champs).
+    Pour en savoir plus sur la gestion des champs, veuillez vous référer à la description [du modèle de données](../concepts/models.md#fields).
 
 ### Supprimer un champ
 
@@ -79,7 +79,7 @@ Développez le panneau de gestion des accès en cliquant sur l'icône "empreinte
 ![Hapify GUI - Access management](../../assets/gui-models-access-managment.jpg 'Access management'){: style="width: 410px"}
 
 !!! seealso "Voir aussi"
-    Pour en savoir plus sur la gestion des accès, veuillez vous référer à la description [du modèle de données](../concepts/models.md#gestion-des-acces).
+    Pour en savoir plus sur la gestion des accès, veuillez vous référer à la description [du modèle de données](../concepts/models.md#access).
     
 ## Ajouter des notes
 

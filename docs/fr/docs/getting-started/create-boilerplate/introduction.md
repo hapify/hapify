@@ -1,12 +1,18 @@
 ## Résumé
 
-Dans cette section, vous apprendrez comment créer votre propre boilerplate avec Hapify.
+Dans cette section, vous apprendrez comment créer votre propre [boilerplate](../terminology.md) avec Hapify.
 
-Vous pouvez démarrer un boilerplate à partir de zéro ou utiliser un boilerplate existant.
+Vous pouvez démarrer un boilerplate à partir de zéro ou utiliser un boilerplate pré-existant.
 
-Cette section se concentre sur l'écriture de templates de code.
-Comme Hapify est un moteur agnostique et n'est pas limité à un cadre spécifique, nous ne nous concentrerons pas sur la structure du boilerplate lui-même.
+Cette section se concentre sur l'écriture de [templates](../terminology.md) de code.
+Comme Hapify est un moteur agnostique et n'est pas limité à un cadre spécifique, nous ne nous concentrerons pas sur la structure du boilerplate elle-même.
 Nous étudierons des exemples de templates courants.
+
+!!! tip "À savoir"
+    Si votre boilerplate utilise `npm` ou `yarn` comme gestionnaire de paquets,
+    vous pouvez ajouter le `CLI` comme dépendance de développement :`npm install --save-dev @hapify/cli`.
+    Ajoutez également un script dans `package.json`: `"hpf": "hpf"`.
+    Ainsi vous pourrez définir une version d'Hapify pour votre boilerplate et l'utiliser avec `npm run hpf`.
 
 ## Moteurs de templates
 
@@ -18,8 +24,8 @@ Cet objet, injecté dans les templates, explicite le modèle de données ainsi q
 
 ### Moteur de template Hapify
 
-Cette syntaxe est optimisée pour jouer avec le [objet modèle](../../reference/model-object.md) et ses propriétés en utilisant des mots courts.
-Cela vous permet de gérer des idées complexes avec des phrases courtes.
+Cette syntaxe est optimisée pour jouer avec l'[objet modèle](../../reference/model-object.md) et ses propriétés en utilisant des mots courts.
+Cela vous permet de gérer des idées complexes avec des phrases simples.
 
 Cette syntaxe a deux variantes :
 
@@ -30,7 +36,7 @@ Les deux variantes peuvent être utilisées dans le même template.
 
 #### Exemple
 
-Par exemple, cette boucle en JavaScript :
+Cette boucle en JavaScript :
 
 ```javascript
 for (let f of model.fields.list.filter(f => f.searchable && f.type === 'entity')) {
@@ -57,8 +63,8 @@ Sera écrite comme ceci avec la syntaxe Hapify :
     ```
 
 !!! success "Pour"
-    - Un méta-code facile à lire
-    - Un méta-code plus court, rendant le code cible lisible
+    - Un [méta-code](../terminology.md) facile à lire
+    - Un méta-code plus court, rendant le [code cible](../terminology.md) plus lisible
     - Encore plus court avec la variante courte
 
 !!! failure "Contre"
@@ -67,13 +73,13 @@ Sera écrite comme ceci avec la syntaxe Hapify :
 
 ### Moteur EJS
 
-Vous pouvez utiliser EJS comme moteur de template.
+Vous pouvez utiliser [EJS](https://ejs.co/) comme moteur de template.
 Toutes les fonctionnalités d'EJS sont disponibles, sauf la fonctionnalité `include`.
 Cette fonction est volontairement désactivée afin que les templates n'aient pas accès à votre système de fichiers.
 
 #### Exemple
 
-Par exemple, cette boucle en JavaScript :
+Cette boucle en JavaScript :
 
 ```javascript
 for (let f of model.fields.list.filter(f => f.searchable) {
@@ -99,7 +105,7 @@ Sera écrite comme ceci avec EJS :
 
 ### Moteur JavaScript
 
-Vous pouvez écrire des templates en JavaScript pure.
+Vous pouvez écrire des templates en JavaScript pur.
 
 Ce moteur est très utile pour générer des fichiers JSON. 
 
@@ -118,7 +124,7 @@ return `class ${model.names.pascal} {
 ```
 
 !!! success "Pour"
-    - Puissant lors de la génération de fichiers de configuration tels que JSON
+    - Puissant lors de la génération de fichiers de configuration tels que le JSON
     - Très flexible
 
 !!! failure "Contre"

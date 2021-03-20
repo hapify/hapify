@@ -5,7 +5,7 @@ Pour éviter cela, vous pouvez associer un validateur de modèle de données à 
 
 Ce validateur est écrit en JavaScript pur. Il reçoit un modèle de données unique et renvoie des `warnings` et des `errors`.
 
-Ces avertissements et erreurs seront affichés lors de la gestion des modèles :
+Ces avertissements et erreurs seront affichés lors de la gestion des modèles de données :
 
 | Avertissement | Erreur |
 | --- | --- |
@@ -13,8 +13,8 @@ Ces avertissements et erreurs seront affichés lors de la gestion des modèles :
 
 ## Écrire un validateur
 
-Lors de la validation du modèle, le code JavaScript est enveloppé dans une fonction. Par conséquent, le code que vous écrivez est le corps de cette fonction.
-Votre code doit renvoyer un objet comme celui-ci :
+Lors de la validation du modèle de données, le code JavaScript est enveloppé dans une fonction. Par conséquent, le code que vous écrivez est le corps de cette fonction.
+Votre code doit retourner un objet comme celui-ci :
 
 ```javascript
 return {
@@ -69,7 +69,7 @@ Contrairement au moteur de template JavaScript, les propriétés du modèle de d
 
 ## Exemple de validateur
 
-Voici un exemple de validateur qui envoie un avertissement pour un type de champ non pris en charge, et une erreur si la clé primaire est malformée.
+Voici un exemple de validateur qui envoie un avertissement pour un type de champ non pris en charge, et une erreur si la clé primaire n'est pas conforme.
 
 ```javascript
 // Model object is injected as "model"

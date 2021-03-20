@@ -2,7 +2,7 @@
 
 Nous avons conçu une syntaxe capable de manipuler [l'objet modèle](./model-object.md) injecté dans les templates.
 Cette syntaxe est optimisée pour jouer avec les propriétés de cet objet modèle en utilisant des mots courts.
-Cela permet de gérer des idées complexes avec des phrases courtes.
+Cela permet de gérer des idées complexes avec des phrases simples.
 
 Par exemple, cette boucle en JavaScript :
 
@@ -34,7 +34,7 @@ sera écrit comme ceci avec la syntaxe Hapify :
 
 Les templates Hapify peuvent être écrits avec une syntaxe longue ou courte.
 
-Les deux ont des avantages :
+Chacune a ses avantages :
 
  - La syntaxe courte n'interfère pas avec le code cible lors de la lecture du template, grâce à un méta-code plus court.
  - La syntaxe longue est explicite et peut être lue naturellement.
@@ -302,7 +302,7 @@ Les opérateurs disponibles pour écrire les conditions sont :
     ```
 
 Les conditions peuvent également être écrites avec des opérateurs natifs.
-Réécrivons la dernière condition :
+Réécrivons cette dernière condition :
 
 === "Hapify (long)"
 

@@ -1,7 +1,13 @@
-## Hapify & Git patches
+## Hapify & Git patch
 
-Pour pouvoir utiliser correctement la commande `hpf patch`, vous devez lancer la génération sur une branche séparée.
-Par exemple, créez une branche appelée `hapify`.
+Hapify permet de régénérer le [code cible](../terminology.md) sans écraser les modifications que vous avez pu y apporter.
+Cette fonctionnalité se base sur les commandes `git format-patch` et `git am`.
+Vous pouvez ainsi utiliser Hapify tout au long de votre projet et non pas en démarrage seulement.
+
+### Préparation du dépôt
+
+Pour pouvoir utiliser correctement [la commande](../../reference/cli.md#appliquer-un-patch-au-code-source-avec-de-nouveaux-modeles-de-donnees) `hpf patch`, vous devez lancer la génération sur une branche séparée.
+Par exemple, créez une branche nommée `hapify`.
 
 ### Première génération
 
@@ -14,16 +20,16 @@ Commitez ceci. Appelons-le `Génération 1`.
 
 Fusionnez la branche `hapify` dans votre branche de travail, disons `develop`.
 
-Maintenant vous pouvez commencer à travailler sur `develop` et personnaliser le code généré.
+Maintenant vous pouvez commencer à travailler sur `develop` et personnaliser le code cible généré.
 
 ### Deuxième génération
 
-Oh non ! Vous avez oublié quelque chose dans vos modèles, les spécifications du projet ont changé, ou vous voulez modifier quelques lignes dans vos templates.
+Oh non ! Vous avez oublié quelque chose dans vos modèles de données, les spécifications du projet ont changé, ou vous voulez modifier quelques lignes dans vos templates.
 
 Si vous utilisez un formateur de code, lancez-le dans votre branche de travail (`develop` par exemple).
 
 Passez sur la branche `hapify`.
-Modifiez vos modèles et/ou templates.
+Modifiez vos modèles de données et/ou templates.
 Lancez la génération et exécutez votre formateur de code (s'il y en a un).
 
 Commitez le tout. Appelons-le `Génération 2`.
@@ -47,7 +53,7 @@ Cela devrait ressembler à ceci :
 git format-patch --stdout e5d01ec559aa79b0af8f80839e22e15f3283c752..be93268f6d404c4c7c83c55a6dcb98f4930a0c1c | git am -3 -k
 ```
 
-Si une erreur s'est produite pendant cette commande git, cela est probablement dû à un conflit de fusion.
+Si une erreur s'est produite pendant cette commande git, c'est probablement dû à un conflit de fusion.
 
 Si c'est le cas, ouvrez votre éditeur de code et résolvez le conflit. Une fois que c'est fait, lancez `git am --continue` pour finaliser ou `git am --abort` pour annuler la fusion.
 

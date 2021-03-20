@@ -6,7 +6,7 @@ Créez un nouveau dossier pour votre projet et allez dans ce dossier :
 mkdir my-project && cd my-project
 ```
 
-Utilisez la commande `new` pour cloner un boilerplate et initialiser votre projet :
+Utilisez la [commande](../../reference/cli.md#new) `new` pour cloner un boilerplate et initialiser votre projet :
 
 ```bash
 hpf new
@@ -14,7 +14,7 @@ hpf new
 
 ## Choisir un ou plusieurs boilerplates
 
-Une fois que vous avez sélectionné un projet, vous pourrez choisir un boilerplate public (disponible dans le Hub Hapify) ou entrer une URL de git personnalisée.
+Une fois que vous avez sélectionné un projet, vous pourrez choisir un boilerplate public (disponible sur le [Hub Hapify](https://hub.hapify.io/)) ou entrer une URL de git personnalisée.
 
 ```
 ? Choose a boilerplate 
@@ -26,7 +26,7 @@ Une fois que vous avez sélectionné un projet, vous pourrez choisir un boilerpl
   PHP Slim Backend 
 ```
 
-Ensuite, vous pouvez ajouter une autre boilerplate :
+Vous pouvez ajouter un autre boilerplate :
 
 ```
 ? Choose a project New one
@@ -50,8 +50,8 @@ Vous devez entrer une URL compatible avec `git clone`.
 
 ## Importer des modèles de données prédéfinis
 
-Vous pouvez importer des modèles de données prédéfinis depuis Hapify Cloud.
-Pour ce faire, sélectionnez des collections de modèles de données lorsque cela vous est demandé :
+Vous pouvez importer des collections de modèles de données prédéfinies ([presets](../terminology.md)) depuis Hapify Cloud.
+Pour ce faire, sélectionnez un ou plusieurs presets lorsque cela vous est demandé :
 
 ```
 ? Choose some presets to preload in your project 
@@ -71,7 +71,7 @@ Pour ce faire, sélectionnez des collections de modèles de données lorsque cel
 
 ## Sortie
 
-Après quelques secondes, le boilerplate sera clonée dans votre dossier actuel :
+Après quelques secondes, le boilerplate sera cloné dans votre dossier courant :
 
 ```
 ✓ Created 2 new dynamic boilerplates in ~/my-project.
@@ -113,16 +113,16 @@ Vous pouvez déplacer ou renommer ce fichier tant que vous changez le chemin dan
 
 Le dossier `.hapify` (peut aussi être nommé `hapify`) est le dossier des templates. Il contient tous les templates du boilerplate.
 
-## **Facultatif** : Stocker vos modèles sur Hapify Cloud
+## **Facultatif** : Stocker vos modèles de données sur Hapify Cloud
 
-Par défaut, Hapify stocke vos modèles localement. Le chemin d'accès est défini dans le fichier de configuration.
-Vous pouvez stocker vos modèles en ligne, afin de les partager sur plusieurs dépôts.
+Par défaut, Hapify stocke vos modèles de données localement. Le chemin d'accès est défini dans le fichier de configuration.
+Vous pouvez stocker vos modèles de données en ligne, afin de les partager sur plusieurs dépôts.
 
-Pour connecter le CLI à Hapify Cloud, veuillez suivre [ces étapes](../installation.md#facultatif-connecter-le-cli-a-hapify-cloud)
+Pour connecter le CLI à Hapify Cloud, veuillez suivre [ces étapes](../installation.md#cloud).
 
 ### Connecter votre boilerplate à un projet distant
 
-Exécutez [cette commande](../../reference/cli.md#definir-le-projet-a-utiliser-dans-un-boilerplatechannel) pour configurer votre boilerplate :
+Exécutez [cette commande](../../reference/cli.md#use) pour configurer votre boilerplate :
 
 ```bash
 hpf use
@@ -154,7 +154,7 @@ Dans la liste ci-dessous, sélectionnez un projet depuis votre compte.
 !!! tip "À savoir"
     Vous pouvez créer un projet en ligne à partir de votre compte Hapify : [https://www.hapify.io/my-projects](https://www.hapify.io/my-projects)
 
-Le boilerplate va maintenant stocker et lire les modèles de Hapify Cloud.
+Le boilerplate va maintenant stocker et lire les modèles depuis Hapify Cloud.
 
 ```
 ? Choose a project First project

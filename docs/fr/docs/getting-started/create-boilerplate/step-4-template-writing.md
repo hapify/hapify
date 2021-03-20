@@ -114,9 +114,9 @@ Dans un template de type `one model`, ce bloc importe le pilote MongoDB si le mo
     const mongoDb = require('mongodb');
     ```
 
-#### Inclure la validation de la session si l'opération nécessite une authentification
+#### Valider la session si l'opération nécessite une authentification
 
-Dans un template de type `one model`, si l'opération `create` requiert au plus un utilisateur authentifié, ce bloc récupère l'utilisateur connecté.
+Dans un template de type `one model`, si l'action `create` requiert au plus un utilisateur authentifié, ce bloc récupère l'utilisateur connecté.
 
 !!! info "Rappel"
     `guest` est l'accès le plus permissif et `admin` le moins permissif. Par conséquent `admin < owner < authenticated < guest`.
@@ -163,7 +163,7 @@ Dans un template de type `one model`, si l'opération `create` requiert au plus 
 
 #### Tester si le modèle de données est géo-localisé
 
-Dans un template de type `one model`, si le modèle de données a la propriété `isGeolocated` (c'est-à-dire si le modèle de données contient au moins un champ de latitude et un champ de longitude),
+Dans un template de type `one model`, si le modèle de données a la propriété `isGeolocated` (c'est-à-dire si le modèle de données contient au moins un champ latitude et un champ longitude),
 ce bloc importe le composant de sélection de la position sur la carte.
 
 === "Hapify (long)"
@@ -523,7 +523,7 @@ Si vous voulez restreindre la boucle précédente pour les modèles qui ne conti
     require_once('./order.php');
     ```
 
-#### Définir une valeur par défaut en fonction du type de données pour les champs internes
+#### Définir une valeur par défaut en fonction du type de données
 
 Dans un template de type `one model`, ce bloc attribue une valeur au champ en fonction de son type pour tous les champs `internal`.
 Si le type du champ est `boolean`, il attribue la valeur `false`, si le type est `string`, il attribue la valeur `''`, si le type est `number`, il attribue la valeur `0`, sinon il attribue la valeur `NULL`.

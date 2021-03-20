@@ -10,7 +10,7 @@ Il affiche une console web pour la définition des modèles et l'écriture des t
 
 ### Installation
 
-Vous devez installer ce package globalement pour avoir la commande `hpf` :
+Vous devez installer ce package globalement pour obtenir la commande `hpf` :
 
 ```bash
 npm install -g @hapify/cli
@@ -23,13 +23,13 @@ Pour vérifier la version installée, exécutez `hpf --version`.
 - `-V`, `--version` : affiche le numéro de version
 - `--debug` : active le mode débogage (par défaut : `false`)
 - `--silent` : active le mode silencieux (par défaut : `false`)
-- `-d <path>`, `--dir <path>` : change le répertoire de travail. Ce chemin peut être absolu ou relatif au chemin actuel.
+- `-d <path>`, `--dir <path>` : change le répertoire de travail. Ce chemin peut être absolu ou relatif au chemin courant.
 - `-k <secret>`, `--key <secret>` : force l'utilisation d'une clé API plutôt que celle définie dans la configuration globale. Si vous voulez définir votre clé d'API de façon permanente, vous devriez utiliser la commande `hpf key`.
 - `-h`, `--help` : affiche l'aide
 
 ### Commandes
 
-#### Définir la configuration globale
+#### <a name="config"></a>Définir la configuration globale
 
 ```bash
 hpf config [options]
@@ -43,7 +43,7 @@ _Configuration disponible_
 - `hpf config --apiKey <secret>` : définit la clé d'API à utiliser pour chaque commande. Ceci est équivalent à `hpf key <key>`.
 - `hpf config --apiUrl <url>` : remplace l'URL d'API par défaut.
 
-#### Définir la clé d'API globale
+#### <a name="key"></a>Définir la clé d'API globale
 
 ```bash
 hpf key <key>
@@ -51,7 +51,7 @@ hpf key <key>
 
 Cette commande est un alias de `hpf config --apiKey <secret>`.
 
-####  Lister les boilerplates (channels)
+####  <a name="list"></a>Lister les boilerplates (channels)
 
 ```bash
 hpf list
@@ -60,7 +60,7 @@ hpf list
 Alias : `hpf ls`
 
 Cette commande affiche ce qui est visible pour le CLI à partir du répertoire courant.
-Elle affiche la liste des channels et la liste des modèles de données utilisés par ces channels.
+Elle affiche la liste des [channels](../getting-started/terminology.md) et la liste des modèles de données utilisés par ces channels.
 
 Le CLI recherche les fichiers `hapify.json` afin de détecter automatiquement les channels.
 Il réitère sur les sous-répertoires. La profondeur par défaut est de `2`.
@@ -74,7 +74,7 @@ hpf list --depth 3
     Vous n'êtes pas censé exécuter le CLI avec des ensembles de modèles de données différents.
     Si c'est le cas, le premier ensemble trouvé sera utilisé.
 
-#### Générer le code
+#### <a name="generate"></a>Générer le code
 
 ```bash
 hpf generate
@@ -92,7 +92,7 @@ hpf generate --depth 3
 !!! tip "À savoir"
     Les fichiers générés vides ne seront pas sauvegardés.
 
-#### Exporter le code
+#### <a name="export"></a>Exporter le code
 
 ```bash
 hpf export
@@ -103,7 +103,7 @@ Alias : `hpf x`
 Cette commande génère un channel à partir de ses templates et de ses modèles de données puis sauvegarde les fichiers générés dans un fichier zip.
 Vous devez lancer cette commande à partir du répertoire du channel, au niveau du fichier `hapify.json`.
 
-Par défaut, le fichier zip porte le nom du channel, c’est-à-dire le nom du dossier.
+Par défaut, le fichier zip porte le nom du dossier du channel.
 Exemple : `angular-admin/angular-admin.zip`.
 Vous pouvez définir un chemin personnalisé avec cette option : `-o, --output <path>`.
 
@@ -114,7 +114,7 @@ hpf export -o /path/to/file.zip
 !!! tip "À savoir"
     Les fichiers générés vides ne seront pas sauvegardés.
 
-#### Importez des modèles de données
+#### <a name="import"></a>Importez des modèles de données
 
 ```bash
 hpf import
@@ -132,7 +132,7 @@ Vous pouvez également importer des préréglages à partir de leurs ID (visible
 hpf import --preset ab123 --preset bd456
 ```
 
-#### Cloner un boilerplate et démarrer un nouveau projet
+#### <a name="new"></a>Cloner un boilerplate et démarrer un nouveau projet
 
 ```bash
 hpf new
@@ -145,7 +145,7 @@ Elle vous demandera de :
 
 -   sélectionner un boilerplate
 -   sélectionner ou créer le projet à utiliser
--   sélectionner des modèles de données à importer
+-   sélectionner des [presets](../getting-started/terminology.md) de modèles de données à importer
 
 _Options_
 
@@ -158,9 +158,9 @@ _Options_
 -   `--project-name <name>` : Le nom du projet à créer
 -   `--project-desc <description>` : La description du projet à créer (le nom doit être défini)
 
-Pour consulter les modèles disponibles, visitez [hub.hapify.io](https://hub.hapify.io).
+Pour consulter les presets disponibles, visitez [hub.hapify.io](https://hub.hapify.io).
 
-#### Créer un nouveau boilerplate/channel
+#### <a name="init"></a>Créer un nouveau boilerplate/channel
 
 ```bash
 hpf init
@@ -180,7 +180,7 @@ _Options_
 -   `--project-name <name>` : Le nom du projet à créer
 -   `--project-desc <description>` : La description du projet à créer
 
-#### Définir le projet à utiliser dans un boilerplate/channel
+#### <a name="use"></a>Définir le projet à utiliser dans un boilerplate/channel
 
 ```bash
 hpf use
@@ -188,7 +188,7 @@ hpf use
 
 Alias : `hpf u`
 
-Change le projet utilisé par un ou plusieurs channels existants.
+Change le projet utilisé par un ou plusieurs [channels](../getting-started/terminology.md) existants.
 Change l'ID du projet dans le fichier `hapify.json` pour chaque channel trouvé.
 Elle vous demandera de sélectionner ou de créer le projet à utiliser.
 
@@ -198,7 +198,7 @@ _Options_
 -   `--project-name <name>` : Le nom du projet à créer
 -   `--project-desc <description>` : La description du projet à créer
 
-#### Appliquer un patch au code source avec de nouveaux modèles de données
+#### <a name="patch"></a>Appliquer un patch au code généré avec de nouveaux modèles de données
 
 Au cours du processus de développement, vous pouvez ajouter, modifier ou supprimer certains modèles.
 Pour fusionner automatiquement la différence entre deux générations à votre branche de travail, utilisez cette commande.
@@ -209,9 +209,9 @@ Cette commande utilise `git format-patch` et `git am`.
 hpf patch
 ```
 
-Cela vous permettra de choisir la branche source et le commit, puis la branche de destination.
+Elle vous permettra de choisir la branche source et le commit, puis la branche de destination.
 
-#### Démarrer la console
+#### <a name="serve"></a>Démarrer la console
 
 Exécutez cette commande pour modifier les modèles de données et les templates.
 

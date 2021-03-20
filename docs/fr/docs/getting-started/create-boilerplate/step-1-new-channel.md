@@ -1,4 +1,4 @@
-!!! question "Channel vs  boilerplate ?"
+!!! question "Channel vs boilerplate ?"
     Un channel est un ensemble de templates. La plupart des boilerplates n'ont qu'un seul channel.
     Cependant, un boilerplate full-stack peut contenir deux channels, un pour les templates du front-end et un pour ceux du back-end.
 
@@ -11,9 +11,9 @@ mkdir my-project && cd my-project
 ```
 
 !!! tip "À savoir"
-    Vous pouvez également démarrer un channel dans un boilerplate existant.
+    Vous pouvez également démarrer un channel dans un boilerplate pré-existant.
 
-Utilisez la commande `init` pour initialiser un channel dans ce dossier.
+Utilisez [la commande](../../reference/cli.md#init) `init` pour initialiser un channel dans ce dossier.
 
 ```bash
 hpf init
@@ -54,7 +54,7 @@ Voici la hiérarchie des fichiers créés :
 └── hapify.json
 ```
 
-`hapify.json` est le fichier de configuration. Il contient les méta-données de la plate-forme et la liste des templates.
+`hapify.json` est le fichier de configuration. Il contient les méta-données du channel et la liste des templates.
 
 Le fichier `hapify-models.json` contient les modèles de données de votre projet.
 Il est référencé par le fichier de configuration (`hapify.json`).

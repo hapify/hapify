@@ -1,14 +1,14 @@
 Ce document décrit la structure de l'objet qui représente un modèle de données lors de l'écriture d'un template.
 
-Avant de lire ce document, vous devriez jeter un coup d'œil à la section [concepts clés](../getting-started/concepts/key-concepts.md).
+Avant de lire ce document, vous devriez jeter un coup d'œil à la section [concepts](../getting-started/concepts/models.md).
 
 ### Dans les templates
 
 ### Injection du modèle de données
 
-L'entrée du template peut être définie comme `one` modèle ou `all` modèles.
-Au cours de la génération, s'il est défini comme `one`, le template sera appelé une fois pour chaque modèle de données. Par conséquent, il engendrera un fichier pour chaque modèle de données.
-S'il est défini comme `all`, le template sera appelé une seule fois pour tous les modèles de données. Il engendrera alors un unique fichier.
+L'entrée du template peut être définie comme `one model` ou `all models`.
+Au cours de la génération, s'il est défini comme `one model`, le template sera appelé une fois pour chaque modèle de données. Par conséquent, il engendrera un fichier pour chaque modèle de données.
+S'il est défini comme `all models`, le template sera appelé une seule fois pour tous les modèles de données. Il engendrera alors un unique fichier.
 
 #### Modèle unique
 

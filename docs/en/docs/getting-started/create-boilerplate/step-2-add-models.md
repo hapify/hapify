@@ -1,26 +1,25 @@
-## Run the `serve` command
+## Run the `serve` command.
 
-At this stage, you have an empty channel and no data-models in your project.
-In order to create new template, you need to create some models first.
+At this point, you have an empty channel and no data models in your project.
+In order to create a new template, you must first create some data models.
 
-Run this command:
+Run [this command](../../reference/cli.md#serve):
 
 ```bash
 hpf serve
 ```
 
-### Add some models
+### Add data models
 
-Create or import templates for your project.
-This step is mandatory for the next step in order to validate that your templates work.
+Create or import data models for your project.
+This step is mandatory for the following step in order to validate that your templates work.
 
-We recommend that you add the templates that will cover the use cases you want to handle.
+We recommend that you add the data models that will cover the use cases you want to handle.
 
-For example, if you plan to use `latitude` and `longitude` and process them in your templates,
-Then add at least one template that has these fields.
+For example, if you plan to handle `latitude` and `longitude` in your templates, then add at least one data model that includes these fields.
 
-Another common case is the relationship between models.
-We also recommend that you add several relationships between your templates, even a self-referencing relationship.
+Another common case is relationships between data models.
+We recommend that you add several relationships between your data models, even a self-referencing relationship.
 
 !!! seealso "See also"
-    To learn more about model management, please refer to [model edition](../../existing-boilerplate/step-2-edit-models).
+    To learn more about data model management, please refer to the section [editing data models](../existing-boilerplate/step-2-edit-models.md).

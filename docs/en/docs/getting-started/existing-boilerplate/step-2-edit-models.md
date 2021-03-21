@@ -1,89 +1,89 @@
-## Run the `serve` command
+## Run the `serve` command.
 
-At this stage, you have a fresh boilerplate but no data-models in your project, unless you have imported pre-defined models.
-In order to create or edit the models of your project, run this command to start the local GUI:
+At this point, you have a boilerplate but no data models in your project, unless you have imported collections of predefined data models.
+In order to create and modify the data models in your project, run [this command](../../reference/cli.md#serve) to launch the local GUI:
 
 ```bash
 hpf serve
 ```
 
-## Models list
+## List of data models
 
-Once started the GUI display all models.
+Once started, the GUI displays all the data models.
 
 ![Hapify GUI - Models edition](../../assets/gui-models.jpg 'Models Edition')
 
 !!! tip "Tip"
-    For large projects, you can filter models by name, field name or reference. Use the top right bar.
-    Press escape key to reset filters.
+    For projects with many data models, you can filter them by name, field name or reference. Use the top right bar.
+    Press the escape key to reset these filters.
 
-## Add and edit models
+## Add and edit data models
 
-Click on `New model` button, enter a name and press enter.
+Click on the `New model` button, enter a name and press the "Enter" key.
 
-The new model will be populated with default fields.
-Default fields are defined in the config file of the boilerplate (`hapify.json`).
+The new data model will be populated with the default fields.
+The default fields are defined in the boilerplate configuration file (`hapify.json`).
 
 !!! tip "Tip"
-    Once created, you can edit model's name by clicking on it.
+    Once created, you can change the name of the data model by clicking on it.
 
-### Import pre-defined models
+### Importing predefined data models
 
-Click on `Import collections` button, choose a collection and validate.
+Click on the `Import collections` button, choose a collection ([preset](../terminology.md)) and validate.
 
 ![Hapify GUI - Models import](../../assets/gui-models-import-collections.jpg 'Models import')
 
-Collection's models will be merged with existing models in case of conflict.
+The data models of the collection will be merged with the existing data models in case of conflict.
 
 ### Delete, clone and copy
 
-Click on the three dots to expand this menu:
+Click on the three dots to display this menu:
 
 ![Hapify GUI - More options](../../assets/gui-models-more-options.jpg 'More options'){: style="width: 142px"}
 
-#### Copy & paste
+#### Copy and paste
 
-When copying the models, it adds the models as a JSON in your clipboard.
-To paste a model, click on `Paste from clipboard` at the end of the models list.
+When you copy a data model, it is added as JSON to your clipboard.
+To paste a data model, click `Paste from clipboard` at the end of the data model list.
 
-This is useful to copy/paste models between multiple projects.
+This is useful to transfer data models between multiple projects.
 
 ## Add and edit fields
 
-Click on `Add field` at the end of a model and enter a names.
+Click on `Add field` at the end of a data model and enter a name.
 
-You can choose its type and sub-type:
+You can choose its type and subtype:
 
 ![Hapify GUI - Field type](../../assets/gui-models-fields-types.jpg 'Field type'){: style="width: 416px"}
 
-And also its attributes by clicking on the gear:
+And also its attributes by clicking on the gear :
 
 ![Hapify GUI - Field attributes](../../assets/gui-models-fields-attributes.jpg 'Field attributes'){: style="width: 420px"}
 
 !!! tip "Tip"
-    Once created, you can edit filed's name by clicking on it.
+    Once created, you can change the name of the field by clicking on it.
 
 !!! seealso "See also"
-    To learn more about fields management please refer to [model's concepts](../../concepts/models/#model-properties).
+    To learn more about field management, please refer to the [data model description](../concepts/models.md#fields).
 
 ### Delete a field
 
-Click on the trash icon and select fields to remove:
+Click on the "trash" icon and select the fields to be deleted:
 
 ![Hapify GUI - Delete fields](../../assets/gui-models-fields-delete.jpg 'Delete fields'){: style="width: 374px"}
 
-## Edit model access
+## Edit data model accesses  
 
-Expand the access managment panel by clicking on the fingerprint icon on top of a model:
+Expand the access management panel by clicking on the "fingerprint" icon at the top of a model:
 
 ![Hapify GUI - Access management](../../assets/gui-models-access-managment.jpg 'Access management'){: style="width: 410px"}
 
 !!! seealso "See also"
-    To learn more about access management please refer to [model's concepts](../../concepts/models/#access-management).
+    For more information about access management, please refer to the [data model description](../concepts/models.md#access).
     
 ## Add notes
 
-You can leave notes on both models and fields. Click on the chat icon and write a note.
+You can leave notes on the data models and their fields. Click on the "speech" icon and write a note.
 
 **On a model:**
 
@@ -95,8 +95,7 @@ You can leave notes on both models and fields. Click on the chat icon and write 
 
 ## Errors and warnings
 
-A boilerplate can validate the models you are writing.
-Those errors or warnings will show-up when editing the models.
+A boilerplate can validate the data models you are writing.
+These errors or warnings will appear when editing the data models.
 
 ![Hapify GUI - Models error](../../assets/gui-models-error.jpg 'Models error'){: style="width: 464px"}
-

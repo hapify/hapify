@@ -1,42 +1,42 @@
-# Key concepts
+Hapify automates the writing of CRUD operations for both back-end and front-end development.
+Focus only on business features instead of doing repetitive work!
 
-Hapify removes the need to write repeating boilerplates for extended CRUD operations for both back-end & front-end development. Focus on features instead of doing repetitive work!
-
-- Hapify is an agnostic code engine & tool allowing the creation of any kind of API based app, in any language
-
-- Hapify does not command any paradigm or code structure. You can write your own code templates or use the ones provided by the community.
-
-- Hapify takes two inputs; **relational data-models** and **meta-templates**.
+- Hapify is an agnostic code generator for any type of application manipulating data models, in any language.
+- Hapify works with any paradigm or code structure. You can write your own code templates or use those provided by the community.
+- Hapify takes two inputs: **data models** and **code templates**.
 
 ## Templating
 
 Hapify provides a simple but powerful syntax to help you create dynamic boilerplates.
 Using Hapify you can either:
 
-- **Reverse Engineer** your own static boilerplates
-- Use **[community boilerplates](https://hub.hapify.io/)**
+- [Convert your own boilerplates](../create-boilerplate/introduction.md) into dynamic boilerplates.
+- [Use boilerplates](../existing-boilerplate/introduction.md) provided by the **[community](https://hub.hapify.io/)**
 
-For detailed information about templating you can refer to the [syntax documentation](../../templating/hapify/syntax/) and the [templating documentation](../../templating/javascript/usage/).
+!!! seealso "See also"
+    For more information about template engines, refer to the [Hapify syntax documentation](../../reference/hapify-syntax.md) and the [EJS and JavaScript templates documentation](../../reference/ejs-javascript.md).
 
-## Modeling 
+## Data modeling 
 
-Hapify lets you define the data-models that fit your project specifications. The model definition in Hapify is **agnostic** and **featured-oriented** (behavioral), which means Hapify defines what the model **should do**, not **how it will do it**.
+Hapify lets you define the data models that fit your project specifications. The model definition in Hapify is **agnostic** and **featured-oriented** (behavioral), which means Hapify defines what the model **should do**, not **how it will do it**.
 
-The data-models can be edited in a local Web Console.
+The data models can be edited in a local web console.
 
-![Hapify GUI - models edition](../../assets/gui-models-access.png 'Models Edition')
+![Hapify GUI - models edition](../../assets/gui-models-access.jpg 'Models Edition')
 
-Note: you can import data-models provided by the Community on the [Hapify Hub](https://hub.hapify.io/).
+!!! tip "Tip"
+    You can import data models provided on the [Hapify Hub](https://hub.hapify.io/).
 
-For detailed information about data-models you can refer to the [data-models documentation](../models/).
+!!! seealso "See also"
+    For more information on data models, you can refer to [this](./models.md).
 
 ## Hapify Boilerplate
 
-A typical Hapify boilerplate is split into two parts: 
+A typical Hapify [boilerplate](../terminology.md) is divided into two parts: 
 
-- `Dynamic files`: Hapify meta-templates files, compatible with Hapify Data-Models and Hapify Engine.
-- `Static files`: All other files, which are not related to data-models: Docker files, CSS files, Libraries, Plugins, etc.
+- Dynamic files: Hapify template files, compatible with Hapify data models and the Hapify engine.
+- Static files: All other files, which are not related to data models: Docker files, CSS files, libraries, plugins, etc.
 
 ### Channel
 
-A channel is a group of templates. Most boilerplates only have one channel. However, a full-stack boilerplate may contain two channels, for the front-end and the back-end templates.
+A [channel](../terminology.md) is a set of templates. Most boilerplates have only one channel. However, a full-stack boilerplate can contain two channels, one for front-end templates and one for back-end templates.

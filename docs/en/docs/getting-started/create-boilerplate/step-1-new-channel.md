@@ -1,20 +1,19 @@
-!!! abstract "Channel vs. boilerplate ?"
-    A channel is a group of templates. Most boilerplates only have one channel.
-    However, a full-stack boilerplate may contain two channels, for the front-end and the back-end templates.
+!!! question "Channel vs boilerplate ?"
+    A channel is a set of templates. Most boilerplates have only one channel.
+    However, a full-stack boilerplate can contain two channels, one for front-end templates and one for back-end templates.
 
-## Run the `init` command
+## Run the command `init`.
 
-Create a new folder for your project and go to this folder:
+Create a new folder for your project and go to that folder:
 
 ```bash
 mkdir my-project && cd my-project
 ```
 
 !!! tip "Tip"
-    You can also start a channel within an existing boilerplate.
+    You can also start a channel in a pre-existing boilerplate.
 
-
-Use `init` command to initialize a channel in this folder.
+Use [the command](../../reference/cli.md#init) `init` to initialize a channel in this folder. 
 
 ```bash
 hpf init
@@ -23,18 +22,18 @@ hpf init
 #### Create a project
 
 You must create a new project in order to create a new channel.
-When prompt, enter name and description.
+When prompted, enter the name and description.
 
-```bash
+```
 ? Enter a project name First project
 ? Enter a project description My first project with Hapify
 ```
 
 #### Create the channel
 
-Once the project is defined, enter the channel's details.
+Once the project is defined, enter the channel details.
 
-```bash
+```
 ? Enter the channel name Typescript Backend
 ? Enter a description API for my app
 ? Enter a logo URL https://cdn.worldvectorlogo.com/logos/typescript.svg
@@ -42,7 +41,7 @@ Once the project is defined, enter the channel's details.
 Run hpf use to connect a remote project (optional)
 ```
 
-Here is the created files hierarchy:
+Here is the hierarchy of the created files:
     
 ```
 ~/my-project
@@ -55,10 +54,10 @@ Here is the created files hierarchy:
 └── hapify.json
 ```
 
-`hapify.json` is the config file. It contains the boilerplate's meta-data and the templates list.
+`hapify.json` is the configuration file. It contains the channel metadata and the list of templates.
 
-`hapify-models.json` is the models file. It contains the models of your project.
-It is referenced by the config files (`hapify.json`).
-You can move or rename this models file as long as you change the path in the config files.
+The `hapify-models.json` file contains the data models for your project.
+It is referenced by the configuration file (`hapify.json`).
+You can move or rename this file as long as you change the path in the configuration file.
 
-`.hapify` folder (can also be named `hapify`) is the templates folder. It contains all the templates of the boilerplate.
+The `.hapify` folder (can also be named `hapify`) contains all the channel templates. 

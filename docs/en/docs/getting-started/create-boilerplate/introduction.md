@@ -1,36 +1,42 @@
 ## Summary
 
-In this sections, you will learn how to create your own boilerplate with Hapify.
+In this section you will learn how to create your own [boilerplate](../terminology.md) with Hapify.
 
-You can start a boilerplate from scratch or use an existing one.
+You can start a boilerplate from scratch or use a pre-existing boilerplate.
 
-This section focuses on code template writing.
-As Hapify is language agnostic and is not restricted to a specific framework, we won't focus on the boilerplate structure itself.
-We will study common template examples.
+This section focuses on writing [templates](../terminology.md) code.
+Since Hapify is an agnostic framework engine and is not limited to a specific framework, we will not focus on the boilerplate structure itself.
+We will look at some common template examples.
 
-## Templating engines
+!!! tip "Tip"
+    If your boilerplate uses `npm` or `yarn` as a package manager,
+    you can add the `CLI` as a development dependency: `npm install --save-dev @hapify/cli`.
+    Also add a script in `package.json`: `"hpf": "hpf"`.
+    This way you can define a version of Hapify for your boilerplate and use it with `npm run hpf`.
 
-Hapify provides three templating engine.
-A boilerplate can mix all of them.
+## Template engines
 
-These engines has access to the [model object](../../model-object/).
-This object, injected in the templates, explicits the data-model and all its properties and relations, so they can be accessed easily from the template.
+Hapify offers three template engines.
+A boilerplate can use several engines simultaneously.
 
-### Hapify engine
+These engines have access to the [model object](../../reference/model-object.md).
+This object, injected into the templates, makes the data model and all its properties and relationships explicit, so that they are easily accessible within the template.
 
-This syntax is optimized to play with the [model object](../../model-object/) and its properties with short words.
-This allows you to manage complex ideas with short sentences.
+### Hapify template engine
+
+This syntax is optimized to play with the [model object](../../reference/model-object.md) and its properties using short words.
+This allows you to handle complex ideas with simple sentences.
 
 This syntax has two variants:
 
-- **long**: human readable
-- **short**: based on short codes
-    
-Both variants can be used within the same template.
+- **long** : easy to read
+- **short** : based on abbreviations
+ 
+Both variants can be used in the same template.
 
 #### Example
 
-For example, this loop in Javascript:
+This loop in JavaScript:
 
 ```javascript
 for (let f of model.fields.list.filter(f => f.searchable && f.type === 'entity')) {
@@ -38,7 +44,7 @@ for (let f of model.fields.list.filter(f => f.searchable && f.type === 'entity')
 }
 ```
 
-Will be written like this with Hapify syntax:
+Will be written like this with the Hapify syntax:
 
 === "Long syntax"
 
@@ -57,23 +63,23 @@ Will be written like this with Hapify syntax:
     ```
 
 !!! success "Pros"
-    - Easy to read syntax
-    - Shorter meta-code, making the target code readable
-    - Even shorter with the short variants
+    - An easy-to-read [meta-code](../terminology.md)
+    - A shorter meta-code, making the [target code](../terminology.md) more readable
+    - Even shorter with the short variant
 
 !!! failure "Cons"
-    - Another syntax to learn, even if simple
-    - The syntax may not handle some specific conditions
+    - Another syntax to learn, although it is simple
+    - The syntax may not handle specific conditions
 
 ### EJS engine
 
-You can use EJS as templating engine.
-All features of EJS are available except the `include` feature.
-This feature is disabled on purpose so the templates has no access to your file system.
+You can use [EJS](https://ejs.co/) as a template engine.
+All EJS features are available, except the `include` feature.
+This feature is intentionally disabled so that templates do not have access to your file system.
 
 #### Example
 
-For example, this loop in Javascript:
+This loop in JavaScript:
 
 ```javascript
 for (let f of model.fields.list.filter(f => f.searchable) {
@@ -90,18 +96,18 @@ Will be written like this with EJS:
 ```
 
 !!! success "Pros"
-    - Well known template engine
-    - Handle complex conditions and interpolation
+    - A well-known template engine
+    - Handles complex conditions and interpolation properly
     - More flexibility
 
 !!! failure "Cons"
     - Long meta-code, making the target code less readable
 
 ### JavaScript engine
-
-You can write templates in vanilla JavaScript.
-
-This engine is very useful to generate JSON files. 
+ 
+You can write templates in pure JavaScript.
+ 
+This engine is very useful to generate JSON files.
 
 #### Example
 
@@ -118,8 +124,8 @@ return `class ${model.names.pascal} {
 ```
 
 !!! success "Pros"
-    - Powerful when generating config files such as JSON
-    - Very flexibile
+    - Powerful when generating configuration files such as JSON
+    - Very flexible
 
 !!! failure "Cons"
-    - Hard to differentiate meta-code from target code.
+    - It is hard to differentiate the meta-code from the target code

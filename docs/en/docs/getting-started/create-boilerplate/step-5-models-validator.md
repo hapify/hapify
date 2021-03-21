@@ -1,22 +1,20 @@
-# Model validator
+Your templates cannot handle any combination of fields and attributes.
+To prevent this, you can associate a data model validator to your templates.
 
-Your templates cannot handle any combination of model and field properties.
-To prevent this, you can associate a model validator to your templates.
+## How does it work?
 
-## How it works
+This validator is written in pure JavaScript. It receives a single data model and returns `warnings` and `errors`.
 
-This validator is written in pure JavaScript. It receives a single model and returns `warnings` and `errors`.
+These warnings and errors will be displayed during data model management:
 
-Those warnings and errors will be shown when managing models:
-
-| Warning | Error |
+| Warnings | Errors |
 | --- | --- |
-| ![Validator - Warning](../assets/validation-warning.png 'Validation warning') | ![Validator - Error](../assets/validation-error.png 'Validation error') |
+| ![Validator - Warning](../../assets/validation-warning.jpg 'Validation warning') | ![Validator - Error](../../assets/validation-error.jpg 'Validation error') |
 
 ## Write a validator
 
-When running the model validation, the JavaScript code is wrapped into a function. Therefore, the code you are writing is the body of this function.
-You code must return an object like this:
+When validating the data model, the JavaScript code is wrapped into a function. Therefore, the code you are writing is the body of that function.
+Your code must return an object like this:
 
 ```javascript
 return {
@@ -25,10 +23,10 @@ return {
 }
 ```
 
-### Access model properties
+### Accessing the data model properties
 
-In the validator script, the model is available under the `model` variable.
-The `model` variable has this structure:
+In the validator script, the data model is available under the `model` variable.
+The `model` variable is structured like this:
 
 ```json
 {
@@ -67,11 +65,11 @@ The `model` variable has this structure:
 }
 ```
 
-Unlike JavaScript template, the model properties are not pre-computed and you don't have access to the model dependencies.
+Unlike the JavaScript template engine, the data model properties are not pre-computed and you do not have access to the data model dependencies.
 
-## Validator sample
+## Example of validator
 
-Here is a validator sample that sends a warning for unsupported field type, and an error if primary key is malformed.
+Here is an example of a validator that sends a warning for an unsupported field type, and an error if the primary key is not compliant.
 
 ```javascript
 // Model object is injected as "model"

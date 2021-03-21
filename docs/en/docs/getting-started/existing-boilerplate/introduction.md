@@ -1,13 +1,13 @@
 ## Summary
 
-In this sections, you will learn how to start a project from an pre-packaged boilerplate and generate code from your models definition.
+In this section, you will learn how to start a project from an existing boilerplate and how to generate code from your data models.
 
-If you want to create code tempates for your own boilerplate, please refer to [this tutorial](../create-boilerplate/introduction.md).
+If you want to create code templates for your boilerplate, please refer to [this tutorial](../create-boilerplate/introduction.md).
 
-We assume you already have installed the CLI before reading this tutorial. If you didn't, please refere to the [installation guide](../installation.md).
+We assume that you have already installed the CLI before reading this tutorial. If not, please refer to the [installation guide](../installation.md).
 
-## Tutorial quick overview
+## Quick tutorial overview
 
 ![Hapify CLI - Terminal sample](../../assets/get-started.gif 'Terminal sample')
 
-Let's generate!
+Let's generate !

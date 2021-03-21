@@ -1,34 +1,34 @@
 site_name: Hapify
 nav:
-  - 'index.md'
+  - Home: 'index.md'
   - Getting started:
       - Installation: 'getting-started/installation.md'
+      - Terminology: 'getting-started/terminology.md'
       - Use an existing boilerplate:
           - Introduction: 'getting-started/existing-boilerplate/introduction.md'
-          - "Step 1: Clone boilerplate": 'getting-started/existing-boilerplate/step-1-clone-boilerplate.md'
-          - "Step 2: Edit models": 'getting-started/existing-boilerplate/step-2-edit-models.md'
+          - "Step 1: Clone a boilerplate": 'getting-started/existing-boilerplate/step-1-clone-boilerplate.md'
+          - "Step 2: Edit the data models": 'getting-started/existing-boilerplate/step-2-edit-models.md'
           - "Step 3: Generate the code": 'getting-started/existing-boilerplate/step-3-generate.md'
-          - "Step 4: Lifecycle": 'getting-started/existing-boilerplate/step-4-lifecycle.md'
+          - "Step 4: Life Cycle": 'getting-started/existing-boilerplate/step-4-lifecycle.md'
       - Create your own boilerplate:
           - Introduction: 'getting-started/create-boilerplate/introduction.md'
-          - "Step 1: New Channel": 'getting-started/create-boilerplate/step-1-new-channel.md'
-          - "Step 2: Add models": 'getting-started/create-boilerplate/step-2-add-models.md'
-          - "Step 3: Develop templates": 'getting-started/create-boilerplate/step-3-templates.md'
-          - "Step 4: Models validator": 'getting-started/create-boilerplate/step-4-models-validator.md'
+          - "Step 1: New channel": 'getting-started/create-boilerplate/step-1-new-channel.md'
+          - "Step 2: Add data models": 'getting-started/create-boilerplate/step-2-add-models.md'
+          - "Step 3: Add templates": 'getting-started/create-boilerplate/step-3-boilerplate-and-templates.md'
+          - "Step 4: Write the templates": 'getting-started/create-boilerplate/step-4-template-writing.md'
+          - "Step 5: Data Model Validator": 'getting-started/create-boilerplate/step-5-models-validator.md'
       - Concepts:
           - Key concepts: 'getting-started/concepts/key-concepts.md'
-          - Models: 'getting-started/concepts/models.md'
+          - Data models: 'getting-started/concepts/models.md'
       - Troubleshooting: 'getting-started/troubleshooting.md'
   - Reference:
       - CLI: 'reference/cli.md'
-      - Hapify:
-          - Syntax: 'reference/hapify/syntax.md'
-          - Samples: 'reference/hapify/code-samples.md'
-      - JavaScript:
-          - Usage: 'reference/javascript/usage.md'
-          - Samples: 'reference/javascript/code-samples.md'
+      - Hapify Syntax: 'reference/hapify-syntax.md'
+      - EJS & JavaScript: 'reference/ejs-javascript.md'
       - Model object: 'reference/model-object.md'
-      - Models validator: 'reference/models-validator.md'
+  - Examples:
+      - JavaScript: 'code-samples/javascript.md'
+      - Hapify: 'code-samples/hapify.md'
 theme:
   language: en
   features:
@@ -40,6 +40,7 @@ theme:
   name: material
   favicon: assets/icon-192x192.png
   logo: assets/logo-no-margin-white.png
+  custom_dir: docs/overrides
   palette:
     primary: deep purple
     accent: cyan
@@ -63,3 +64,10 @@ extra:
       link: https://hub.docker.com/u/hapify
     - icon: fontawesome/brands/slack
       link: https://hapify.slack.com/
+  alternate:
+    - name: English
+      link: https://documentation.hapify.io/
+      lang: en
+    - name: Français
+      link: https://documentation.hapify.io/fr/
+      lang: fr

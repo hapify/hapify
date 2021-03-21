@@ -1,15 +1,13 @@
-# JavaScript code samples
+This document provides code examples to help you play with JavaScript templates.
 
-This document shows code samples in order to help you play JavaScript templates.
+## Prerequisites
 
-## Pre-requisites
+Before reading this article, we recommend that you read the documentation about [JavaScript templates](../reference/ejs-javascript.md).
 
-Before reading this article, we recommend that you read the documentation about [JavaScript templates](../usage).
+## Creating indexes for MongoDB
 
-## Create indexes for MongoDB
-
-This template will produce a JSON containing all indexes that should be created in MongoDB according to the field requirements.
-It creates an index for searchable or sortable fields or entity references.
+This template will produce a JSON containing all the indexes that must be created in MongoDB based on the field attributes.
+It creates an index for searchable, sortable fields or references.
 It also creates a unique index for unique fields and a text index for searchable string fields.
 
 === "JavaScript"
@@ -84,7 +82,7 @@ It also creates a unique index for unique fields and a text index for searchable
     return JSON.stringify(_output, null, 2);
     ```
 
-=== "Sample output"
+=== "Output"
 
     ```json
     {
@@ -148,9 +146,9 @@ It also creates a unique index for unique fields and a text index for searchable
     }
     ```
 
-## Output model description as JSON
+## Generate a JSON description of the data model
 
-This template will output a JSON that lists fields and resolves dependencies between models.
+This template will produce a JSON that lists the fields and resolves the dependencies between the models.
 
 === "JavaScript"
 
@@ -187,7 +185,7 @@ This template will output a JSON that lists fields and resolves dependencies bet
     return JSON.stringify(_output, null, 4);
     ```
 
-=== "Sample output"
+=== "Output"
 
     ```json
     [

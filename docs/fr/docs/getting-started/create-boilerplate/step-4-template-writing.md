@@ -208,7 +208,7 @@ ce bloc importe le composant de sélection de la position sur la carte.
 
 #### Obtenir des relations basées sur la cardinalité
 
-Cet exemple crée une méthode récupérant des entités dans un magasin, selon le type de relation : `one-to-one`, `one-to-many` ou `many-to-many`
+Cet exemple crée une méthode récupérant des entités dans un magasin, selon le type de relation : `one-to-one`, `one-to-many` ou `many-to-many`.
 
 === "Hapify (long)"
 
@@ -363,7 +363,7 @@ Dans un template de type `one model`, ce bloc crée un tableau (en JavaScript) q
 
 #### Créer un tableau contenant toutes les valeurs possibles d'une énumération
 
-Dans un template de type `one model`, ce bloc définit les valeurs d'énumération sous forme de tableaux (en casse `constant`) :
+Dans un template de type `one model`, ce bloc définit les valeurs d'énumération sous forme de tableaux (en casse `constant`).
 
 === "Hapify (long)"
 
@@ -611,7 +611,7 @@ Ce template génère du PHP.
 #### Importer toutes les dépendances
 
 Dans un template de type `one model`, ce bloc importe d'autres modèles de données pointés par des champs de type entité.
-Si le modèle a une auto-dépendance, il ne sera pas inclus dans la boucle.
+Si le modèle de données a une auto-dépendance, il ne sera pas inclus dans la boucle.
 
 === "Hapify (long)"
 
@@ -657,7 +657,7 @@ Si le modèle a une auto-dépendance, il ne sera pas inclus dans la boucle.
     ```
 
 Vous pouvez également filtrer par attributs de champ référent.
-Ce bloc exclut les modèles dont les champs référents sont cachés :
+Ce bloc exclut les modèles de données dont les champs référents sont cachés :
 
 === "Hapify (long)"
 
@@ -707,7 +707,7 @@ Dans un template de type `one model`, ce bloc énumère tous les modèles de don
 La première itération boucle sur tous les modèles de données qui ont une dépendance à celui-ci.
 La deuxième itération boucle sur toutes les relations d'entités contenues dans ces modèles de données dépendants.
 
-!!! note "Notes"
+!!! note "Note"
     Le tableau `ReferencedIn` contient tous les modèles de données qui se réfèrent au modèle de données courant à travers des champs de type entité.
     Seuls les champs de type entité faisant référence sont définis dans ces modèles de données référents.
     Par conséquent, si vous bouclez sur les champs des modèles de données référents, vous ne serez pas brouillés par d'autres champs.
@@ -769,6 +769,6 @@ La deuxième itération boucle sur toutes les relations d'entités contenues dan
 
 ## Exclusion de fichiers générés
 
-Lors de la génération il est possible d'exclure certain fichier de la génération.
+Il est possible d'exclure certain fichier de la génération.
 Si le template retourne une chaine vide ou ne contenant que des espaces, alors aucun fichier ne sera généré pour ce couple template/modèle de données.
 

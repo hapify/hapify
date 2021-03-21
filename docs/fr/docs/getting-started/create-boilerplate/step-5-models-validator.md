@@ -23,9 +23,9 @@ return {
 }
 ```
 
-### Accéder aux propriétés du modèle
+### Accéder aux propriétés du modèle de données
 
-Dans le script du validateur, le modèle est disponible sous la variable `model`.
+Dans le script du validateur, le modèle de données est disponible sous la variable `model`.
 La variable `model` est structurée comme ceci :
 
 ```json

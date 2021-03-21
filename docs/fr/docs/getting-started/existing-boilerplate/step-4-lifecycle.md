@@ -6,7 +6,7 @@ Vous pouvez ainsi utiliser Hapify tout au long de votre projet et non pas en dé
 
 ### Préparation du dépôt
 
-Pour pouvoir utiliser correctement [la commande](../../reference/cli.md#appliquer-un-patch-au-code-source-avec-de-nouveaux-modeles-de-donnees) `hpf patch`, vous devez lancer la génération sur une branche séparée.
+Pour pouvoir utiliser correctement [la commande](../../reference/cli.md#patch) `hpf patch`, vous devez lancer la génération sur une branche séparée.
 Par exemple, créez une branche nommée `hapify`.
 
 ### Première génération
@@ -20,7 +20,7 @@ Commitez ceci. Appelons-le `Génération 1`.
 
 Fusionnez la branche `hapify` dans votre branche de travail, disons `develop`.
 
-Maintenant vous pouvez commencer à travailler sur `develop` et personnaliser le code cible généré.
+Maintenant vous pouvez commencer à travailler sur `develop` et personnaliser le code généré.
 
 ### Deuxième génération
 

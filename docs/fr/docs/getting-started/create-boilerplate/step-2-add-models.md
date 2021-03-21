@@ -11,10 +11,10 @@ hpf serve
 
 ### Ajouter des modèles de données
 
-Créez ou importez des templates pour votre projet.
+Créez ou importez des modèles de données pour votre projet.
 Cette étape est obligatoire pour l'étape suivante afin de valider que vos templates fonctionnent.
 
-Nous vous recommandons d'ajouter les templates qui couvriront les cas d'utilisation que vous souhaitez traiter.
+Nous vous recommandons d'ajouter les modèles de données qui couvriront les cas d'utilisation que vous souhaitez traiter.
 
 Par exemple, si vous prévoyez de traiter la `latitude` et la `longitude` dans vos templates, ajoutez alors au moins un modèle de données qui comporte ces champs.
 

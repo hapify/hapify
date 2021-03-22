@@ -1,10 +1,10 @@
-## Pourquoi utiliser une syntaxe spécifique ?
+## Why use a specific syntax?
 
-Nous avons conçu une syntaxe capable de manipuler [l'objet modèle](./model-object.md) injecté dans les templates.
-Cette syntaxe est optimisée pour jouer avec les propriétés de cet objet modèle en utilisant des mots courts.
-Cela permet de gérer des idées complexes avec des phrases simples.
+We have designed a syntax able to manipulate the [model object](./model-object.md) injected in the templates.
+This syntax is optimized to play with the properties of this model object using short words.
+This allows to handle complex ideas with simple sentences.
 
-Par exemple, cette boucle en JavaScript :
+For example, this loop in JavaScript :
 
 ```javascript
 for (let field of root.fields.filter(f => f.searchable && f.type === 'entity')) {
@@ -12,7 +12,7 @@ for (let field of root.fields.filter(f => f.searchable && f.type === 'entity')) 
 }
 ```
 
-sera écrit comme ceci avec la syntaxe Hapify :
+will be written like this with the Hapify syntax:
 
 === "Hapify (long)"
 
@@ -30,38 +30,38 @@ sera écrit comme ceci avec la syntaxe Hapify :
     <<@>>
     ```
     
-### Syntaxes longue et courte
+### Long and short syntaxes
 
-Les templates Hapify peuvent être écrits avec une syntaxe longue ou courte.
+Hapify templates can be written with a long or a short syntax.
 
-Chacune a ses avantages :
+Both have their advantages:
 
- - La syntaxe courte n'interfère pas avec le code cible lors de la lecture du template, grâce à un méta-code plus court.
- - La syntaxe longue est explicite et peut être lue naturellement.
+ - The short syntax does not interfere with the target code when reading the template, thanks to a shorter meta-code.
+ - The long syntax is explicit and can be read easily.
 
-Dans un même template, vous pouvez mélanger les deux syntaxes.
+In the same template, you can mix both syntaxes.
 
 !!! note "Note"
-    Tous les exemples de codes ci-dessous sont traduits en équivalent JavaScript à titre informatif.
-    Lors de la génération, la syntaxe Hapify est convertie en code JavaScript semblable.
+    All code examples below are translated into JavaScript equivalent for your information.
+    During generation, the Hapify syntax is converted to similar JavaScript code.
     
-## Balises
+## Tags
 
-Les blocs de syntaxe Hapify sont enveloppés par deux balises :
+Hapify syntax blocks are wrapped by two tags:
 
-- ouverture : `<<`.
-- fermeture : `>>`.
+- opening: `<<`.
+- closing: `>>`.
 
-### Échappement
+### Escaping
 
-Généralement utilisées pour les opérations binaires, ces balises peuvent être échappées.
-Les balises échappées `\<\<` (et `\>\>`) sont remplacées par `<<` (et `>>`) lors de la génération.
+Generally used for binary operations, these tags can be escaped.
+The escaped tags ``<<` (and ``>>`) are replaced by `<<` (and `>>`) during generation.
 
-## Noms
+## Names
 
-### Noms du modèle de données
+### Data model names
 
-Dans un template de type `one model` :
+In a template of type `one model` :
 
 === "Hapify (long)"
 
@@ -77,23 +77,23 @@ Dans un template de type `one model` :
     const <<M aA>> = new <<M AA>>();
     ```
     
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     out += `// Create a new ${root.names.lower}
     const ${root.names.camel} = new ${root.names.pascal}();`;
     ```
 
-Pour un modèle de données nommé `user group`, le résultat sera le suivant :
+For a data model named `user group`, the result will be as follows:
 
 ```javascript
 // Create a new user group
 const userGroup = new UserGroup();
 ```
 
-### Noms des champs
+### Field names
 
-Lister tous les champs d'un modèle de données :
+List all fields of a data model:
 
 === "Hapify (long)"
 
@@ -117,7 +117,7 @@ Lister tous les champs d'un modèle de données :
     );
     ```
     
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     out += `<?php
@@ -126,7 +126,7 @@ Lister tous les champs d'un modèle de données :
     );`;
     ```
 
-Pour un modèle de données avec les champs `name`, `created at` et `role` :
+For a data model with `name`, `created at` and `role` fields:
 
 ```php
 <?php
@@ -137,24 +137,24 @@ $fields = array(
 );
 ```
 
-### Casses
+### Cases
 
-Les casses disponibles sont :
+The available cases are:
 
--   `camel` (alias : `aA`) pour `camelCase`
--   `pascal` (alias : `AA`) pour `PascalCase`
--   `lower` (alias : `a`) pour `lower case`
--   `capital` (alias : `A`) pour `Capital Case`
--   `kebab` (alias : `a-a`) pour `kebab-case`
--   `header` (alias : `A-A`) pour `Header-Case`
--   `snake` (alias : `a_a`) pour `snake_case`
--   `constant` (alias : `A_A`) pour `CONSTANT_CASE`
--   `compact` (alias : `aa`) pour `compactcase`
--   `raw` (alias : `R`) (raw) pour le nom original
+-   `camel` (alias : `aA`) for `camelCase`
+-   `pascal` (alias : `AA`) for `PascalCase`
+-   `lower` (alias : `a`) for `lower case`
+-   `capital` (alias : `A`) for `Capital Case`
+-   `kebab` (alias : `a-a`) for `kebab-case`
+-   `header` (alias : `A-A`) for `Header-Case`
+-   `snake` (alias : `a_a`) for `snake_case`
+-   `constant` (alias : `A_A`) for `CONSTANT_CASE`
+-   `compact` (alias : `aa`) for `compactcase`
+-   `raw` (alias : `R`) (raw) for the original name
 
 ## Conditions
 
-### Condition simple
+### Simple condition
 
 === "Hapify (long)"
 
@@ -174,7 +174,7 @@ Les casses disponibles sont :
     <<?>>
     ```
     
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     out += `const utils = require('utils');`;
@@ -183,22 +183,22 @@ Les casses disponibles sont :
     }
     ```
 
-Pour un modèle de données qui contient au moins un champ de type `entity`, le résultat sera le suivant :
+For a data model that contains at least one field of type `entity`, the result will be as follows:
 
 ```javascript
 const utils = require('utils');
 const mongoDb = require('mongodb');
 ```
 
-Pour un modèle qui ne contient pas de champ de type `entity`, le résultat sera le suivant :
+For a data model that does not contain a field of type `entity`, the result will be as follows:
 
 ```javascript
 const utils = require('utils');
 ```
 
-#### Sans filtre
+#### Without filter
 
-Le filtrage des champs est optionnel.
+Field filtering is optional.
 
 === "Hapify (long)"
 
@@ -216,7 +216,7 @@ Le filtrage des champs est optionnel.
     <<?>>
     ```
     
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     if (root.fields.list.length > 0) {
@@ -224,7 +224,7 @@ Le filtrage des champs est optionnel.
     }
     ```
 
-### Conditions alternatives
+### Alternative conditions
 
 === "Hapify (long)"
 
@@ -250,7 +250,7 @@ Le filtrage des champs est optionnel.
     <<?>>
     ```
     
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     if (root.fields.filter(f => f.type === 'entity').length > 0) {
@@ -262,18 +262,18 @@ Le filtrage des champs est optionnel.
     }
     ```
 
-### Conditions complexes
+### Complex conditions
 
-#### Opérateurs
+#### Operators
 
-Les opérateurs disponibles pour écrire les conditions sont :
+The operators available for conditions are :
 
--   `and` - alias `*` ou `&&`
--   `or` - alias `+` ou `||`
--   `and not` - alias `andNot`, `/` ou `&& !`
--   `or not` - alias `orNot`, `-` ou `|| !`
+-   `and` - alias `*` or `&&`
+-   `or` - alias `+` or `||`
+-   `and not` - alias `andNot`, `/` or `&& !`
+-   `or not` - alias `orNot`, `-` or `|| !`
 
-**Exemple**
+**Example**
 
 === "Hapify (long)"
 
@@ -293,7 +293,7 @@ Les opérateurs disponibles pour écrire les conditions sont :
     <<?>>
     ```
     
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     for (let field of root.fields.filter(f => (f.type === 'entity' && f.hidden) || (f.unique && !f.multiple))) {
@@ -301,8 +301,8 @@ Les opérateurs disponibles pour écrire les conditions sont :
     }
     ```
 
-Les conditions peuvent également être écrites avec des opérateurs natifs.
-Réécrivons cette dernière condition :
+Conditions can also be written with native operators.
+Let's rewrite this last condition:
 
 === "Hapify (long)"
 
@@ -322,7 +322,7 @@ Réécrivons cette dernière condition :
     <<?>>
     ```
     
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     for (let field of root.fields.filter(f => (f.type === 'entity' && f.hidden) || (f.unique && !f.multiple))) {
@@ -330,9 +330,9 @@ Réécrivons cette dernière condition :
     }
     ```
 
-#### Conditions relatives au nombre d'occurrences
+#### Conditions on the number of occurrences
 
-En précisant un nombre après le `if`, on peut ajouter une condition sur le nombre minimum d’éléments requis, ici les champs :
+By specifying a number after the `if`, we can add a condition on the minimum number of required elements. In this case, the fields :
 
 === "Hapify (long)"
 
@@ -358,7 +358,7 @@ En précisant un nombre après le `if`, on peut ajouter une condition sur le nom
     <<?>>
     ```
     
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     if (root.fields.filter(f => f.hidden).length >= 4) {
@@ -370,11 +370,11 @@ En précisant un nombre après le `if`, on peut ajouter une condition sur le nom
     }
     ```
 
-### Conditions sur les modèles de données
+### Conditions on the data models
 
-#### Tester un seul modèle de données
+#### Test a single data model
 
-Dans un template de type `one model` :
+In a template of type `one model`:
 
 === "Hapify (long)"
 
@@ -394,7 +394,7 @@ Dans un template de type `one model` :
     <<?>>
     ```
     
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     if (root.properties.isGeolocated) {
@@ -402,9 +402,9 @@ Dans un template de type `one model` :
     }
     ```
 
-#### Tester une liste de modèles de données
+#### Test a list of data models
 
-Dans un template de type `all models` :
+In a template of type `all models` :
 
 === "Hapify (long)"
 
@@ -424,7 +424,7 @@ Dans un template de type `all models` :
     <<?>>
     ```
     
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     if (root.filter(m => !m.accesses.properties.onlyGuest).length > 0) {
@@ -432,76 +432,76 @@ Dans un template de type `all models` :
     }
     ```
 
-### Objets et filtres disponibles
+### Available objects and filters
 
-#### Objet racine
+#### Root object
 
-`Model` ou `Models` (abrégé : `M`) font référence à l'objet principal :
+`Model` or `Models` ( short: `M`) refer to the main object:
 
--   le modèle de données dans un template de type `one model`
--   le tableau de modèles de données dans un template de type `all models`
+- the data model in a template of type `one model`
+- the array of data models in a template of type `all models`.
 
-#### Objets filtrables et testables
+#### Filterable and testable objects
 
-Dans le cas d'un template de type `one model` :
+In the case of a template of type `one model`:
 
--   `Fields` (alias: `F`) est la liste des champs
--   `Dependencies` (alias: `D`) est la liste des dépendances (liste de modèles de données)
--   `ReferencedIn` (alias: `RefModels`, `R`) est la liste des modèles de données qui dépendent de celui-ci
--   `PrimaryField` (alias: `P`) est le champ primaire du modèle
--   `Accesses` (alias: `A`) est la liste des accès
--   `CreateAccess` (alias: `Ac`) est l'accès à l'action de création
--   `ReadAccess` (alias: `Ar`) est l'accès à l'action de lecture
--   `UpdateAccess` (alias: `Au`) est l'accès à l'action de mise à jour
--   `RemoveAccess` (alias: `Ad`) est l'accès à l'action de suppression
--   `SearchAccess` (alias: `As`) est l'accès à l'action de recherche
--   `CountAccess` (alias: `An`) est l'accès à l'action de comptage
+-   `Fields` (alias: `F`) is the list of fields
+-   `Dependencies` (alias: `D`) is the list of dependencies (list of data models)
+-   `ReferencedIn` (alias: `RefModels`, `R`) is the list of data models that depend on it
+-   `PrimaryField` (alias: `P`) is the primary field of the model
+-   `Accesses` (alias: `A`) is the list of accesses
+-   `CreateAccess` (alias: `Ac`) is the access to the create action
+-   `ReadAccess` (alias: `Ar`) is the access to the read action
+-   `UpdateAccess` (alias: `Au`) is the access to the update action
+-   `RemoveAccess` (alias: `Ad`) is the access to the delete action
+-   `SearchAccess` (alias: `As`) is the access to the search action
+-   `CountAccess` (alias: `An`) is the access to the count action
 
-#### Filtrage sur les attributs de champ
+#### Filtering on field attributes
 
-Attributs disponibles pour un champ :
+Available attributes for a field:
 
--   `primary` (alias: `pr`) pour le booléen `primary`
--   `unique` (alias: `un`) pour le booléen `unique`
--   `label` (alias: `lb`) pour le booléen `label`
--   `nullable` (alias: `nu`) pour le booléen `nullable`
--   `multiple` (alias: `ml`) pour le booléen `multiple`
--   `embedded` (alias: `em`) pour le booléen `embedded`
--   `searchable` (alias: `se`) pour le booléen `searchable`
--   `sortable` (alias: `so`) pour le booléen `sortable`
--   `hidden` (alias: `hd`) pour le booléen `hidden`
--   `internal` (alias: `in`) pour le booléen `internal`
--   `restricted` (alias: `rs`) pour le booléen `restricted`
--   `ownership` (alias: `os`) pour le booléen `ownership`
--   `string` (alias: `tS`) pour le type `string`
-    -   `email` (alias: `tSe`) pour le type `string` et le sous-type `email`
-    -   `password` (alias: `tSp`) pour le type `string` et le sous-type `password`
-    -   `url` (alias: `tSu`) pour le type `string` et le sous-type `url`
-    -   `text` (alias: `tSt`) pour le type `string` et le sous-type `text`
-    -   `richText` (alias: `rich`, `tSr`) pour le type `string` et le sous-type `rich`
--   `number` (alias: `tN`) pour le type `number`
-    -   `integer` (alias: `tNi`) pour le type `number` et le sous-type `integer`
-    -   `float` (alias: `tNf`) pour le type `number` et le sous-type `float`
-    -   `latitude` (alias: `tNt`) pour le type `number` et le sous-type `latitude`
-    -   `longitude` (alias: `tNg`) pour le type `number` et le sous-type `longitude`
--   `boolean` (alias: `tB`) pour le type `boolean`
--   `datetime` (alias: `tD`) pour le type `datetime`
-    -   `date` (alias: `tDd`) pour le type `datetime` et le sous-type `date`
-    -   `time` (alias: `tDt`) pour le type `datetime` et le sous-type `time`
--   `enum` (alias: `tU`) pour le type `enum`
--   `entity` (alias: `tE`) pour le type `entity`
-    -   `oneOne` (alias: `tEoo`) pour le type `entity` et le sous-type `oneOne`
-    -   `oneMany` (alias: `tEom`) pour le type `entity` et le sous-type `oneMany`
-    -   `manyOne` (alias: `tEmo`) pour le type `entity` et le sous-type `manyOne`
-    -   `manyMany` (alias: `tEmm`) pour le type `entity` et le sous-type `manyMany`
--   `object` (alias: `tO`) pour le type `object`
--   `file` (alias: `tF`) pour le type `file`
-    -   `image` (alias: `tFi`) pour le type `file` et le sous-type `image`
-    -   `video` (alias: `tFv`) pour le type `file` et le sous-type `video`
-    -   `audio` (alias: `tFa`) pour le type `file` et le sous-type `audio`
-    -   `document` (alias: `tFd`) pour le type `file` et le sous-type `document`
+-   `primary` (short: `pr`) for boolean `primary`
+-   `unique` (short: `un`) for boolean `unique`
+-   `label` (short: `lb`) for boolean `label`
+-   `nullable` (short: `nu`) for boolean `nullable`
+-   `multiple` (short: `ml`) for boolean `multiple`
+-   `embedded` (short: `em`) for boolean `embedded`
+-   `searchable` (short: `se`) for boolean `searchable`
+-   `sortable` (short: `so`) for boolean `sortable`
+-   `hidden` (short: `hd`) for boolean `hidden`
+-   `internal` (short: `in`) for boolean `internal`
+-   `restricted` (short: `rs`) for boolean `restricted`
+-   `ownership` (short: `os`) for boolean `ownership`
+-   `string` (short: `tS`) for type `string`
+    -   `email` (short: `tSe`) for type `string` and subtype `email`
+    -   `password` (short: `tSp`) for type `string` and subtype `password`
+    -   `url` (short: `tSu`) for type `string` and subtype `url`
+    -   `text` (short: `tSt`) for type `string` and subtype `text`
+    -   `richText` (alias: `rich`, short: `tSr`) for type `string` and subtype `rich`
+-   `number` (short: `tN`) for type `number`
+    -   `integer` (short: `tNi`) for type `number` and subtype `integer`
+    -   `float` (short: `tNf`) for type `number` and subtype `float`
+    -   `latitude` (short: `tNt`) for type `number` and subtype `latitude`
+    -   `longitude` (short: `tNg`) for type `number` and subtype `longitude`
+-   `boolean` (short: `tB`) for type `boolean`
+-   `datetime` (short: `tD`) for type `datetime`
+    -   `date` (short: `tDd`) for type `datetime` and subtype `date`
+    -   `time` (short: `tDt`) for type `datetime` and subtype `time`
+-   `enum` (short: `tU`) for type `enum`
+-   `entity` (short: `tE`) for type `entity`
+    -   `oneOne` (short: `tEoo`) for type `entity` and subtype `oneOne`
+    -   `oneMany` (short: `tEom`) for type `entity` and subtype `oneMany`
+    -   `manyOne` (short: `tEmo`) for type `entity` and subtype `manyOne`
+    -   `manyMany` (short: `tEmm`) for type `entity` and subtype `manyMany`
+-   `object` (short: `tO`) for type `object`
+-   `file` (short: `tF`) for type `file`
+    -   `image` (short: `tFi`) for type `file` and subtype `image`
+    -   `video` (short: `tFv`) for type `file` and subtype `video`
+    -   `audio` (short: `tFa`) for type `file` and subtype `audio`
+    -   `document` (short: `tFd`) for type `file` and subtype `document`
 
-**Exemple**
+**Example**
 
 === "Hapify (long)"
 
@@ -519,7 +519,7 @@ Attributs disponibles pour un champ :
     <<?>>
     ```
     
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     if (root.fields.filter(f => (f.restricted || f.internal) && !f.number).length > 0) {
@@ -527,16 +527,16 @@ Attributs disponibles pour un champ :
     }
     ```
 
-#### Filtrage sur les propriétés du modèle de données
+#### Filtering on data model properties
 
-Propriétés disponibles pour un modèle de données :
+Properties available for a data model:
 
--   `mainlyHidden` (alias: `pMHd`) la majorité des champs sont `hidden` (strictement)
--   `mainlyInternal` (alias: `pMIn`) la majorité des champs sont `internal` (strictement)
--   `isGeolocated` (alias: `pGeo`) Le modèle de données contient au moins un champ `latitude` et un champ `longitude`.
--   `isGeoSearchable` (alias: `pGSe`) Le modèle de données contient au moins un champ `latitude` et un champ `longitude` recherchables.
+-   `mainlyHidden` (short: `pMHd`) most of the fields are hidden (strictly)
+-   `mainlyInternal` (short: `pMIn`) most of the fields are internal (strictly)
+-   `isGeolocated` (short: `pGeo`) the model contains at least one `latitude` field and one `longitude` field
+-   `isGeoSearchable` (short: `pGSe`) the model contains at least one searchable `latitude` field and one searchable `longitude` field
 
-**Exemple**
+**Example**
 
 === "Hapify (long)"
 
@@ -554,7 +554,7 @@ Propriétés disponibles pour un modèle de données :
     <<?>>
     ```
     
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     if (root.properties.isGeolocated) {
@@ -562,22 +562,22 @@ Propriétés disponibles pour un modèle de données :
     }
     ```
 
-Propriétés d'accès disponibles pour un modèle de données :
+Access properties available for a data model:
 
--   `onlyAdmin` (alias: `pOAd`) Le modèle de données ne contient que des accès restreints à `admin`
--   `onlyOwner` (alias: `pOOw`) Le modèle de données ne contient que des accès restreints à `owner`
--   `onlyAuth` (alias: `pOAu`) Le modèle de données ne contient que des accès restreints à `authenticated`
--   `onlyGuest` (alias: `pOGs`) Le modèle de données ne contient que des accès restreints à `guest`
--   `maxAdmin` (alias: `pMAd`) L'accès le plus permissif est `admin`
--   `maxOwner` (alias: `pMOw`) L'accès le plus permissif est `owner`
--   `maxAuth` (alias: `pMAu`) L'accès le plus permissif est `authenticated`
--   `maxGuest` (alias: `pMGs`) L'accès le plus permissif est `guest`
--   `noAdmin` (alias: `pNAd`) Aucune action n'est restreinte à `admin`
--   `noOwner` (alias: `pNOw`) Aucune action n'est restreinte à `owner`
--   `noAuth` (alias: `pNAu`) Aucune action n'est restreinte à `authenticated`
--   `noGuest` (alias: `pNGs`) Aucune action n'est restreinte à `guest`
+-   `onlyAdmin` (short: `pOAd`) the model only contains actions restricted to `admin`
+-   `onlyOwner` (short: `pOOw`) the model only contains actions restricted to `owner`
+-   `onlyAuth` (short: `pOAu`) the model only contains actions restricted to `authenticated`
+-   `onlyGuest` (short: `pOGs`) the model only contains actions restricted to `guest`
+-   `maxAdmin` (short: `pMAd`) the most permissive access is `admin`
+-   `maxOwner` (short: `pMOw`) the most permissive access is `owner`
+-   `maxAuth` (short: `pMAu`) the most permissive access is `authenticated`
+-   `maxGuest` (short: `pMGs`) the most permissive access is `guest`
+-   `noAdmin` (short: `pNAd`) there is no action restricted to `admin`
+-   `noOwner` (short: `pNOw`) there is no action restricted to `owner`
+-   `noAuth` (short: `pNAu`) there is no action restricted to `authenticated`
+-   `noGuest` (short: `pNGs`) there is no action restricted to `guest`
 
-**Exemple**
+**Example**
 
 === "Hapify (long)"
 
@@ -595,7 +595,7 @@ Propriétés d'accès disponibles pour un modèle de données :
     <<?>>
     ```
     
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     if (root.accesses.properties.onlyAdmin) {
@@ -603,29 +603,29 @@ Propriétés d'accès disponibles pour un modèle de données :
     }
     ```
 
-#### Filtrage sur les accès aux modèles de données
+#### Filtering on data model access
 
 !!! info "Reminder"
-    `guest` est l'accès le plus permissif et `admin` le moins permissif. Par conséquent `admin < owner < authenticated < guest`.
+    `guest` is the most permissive access and `admin` the least permissive. Therefore `admin < owner < authenticated < guest`.
 
-Filtres disponibles pour l'accès à une action :
+Filters available for action access:
 
--   `admin` (alias: `ad`) l'accès est `admin`
--   `owner` (alias: `ow`) l'accès est `owner`
--   `auth` (alias: `au`) l'accès est `auth`
--   `guest` (alias: `gs`) l'accès est `guest`
--   `gteAdmin` (alias: `[ad`) l'accès est supérieur ou égal à `admin`
--   `gteOwner` (alias: `[ow`) l'accès est supérieur ou égal à `owner`
--   `gteAuth` (alias: `[au`) l'accès est supérieur ou égal à `auth`
--   `gteGuest` (alias: `[gs`) l'accès est supérieur ou égal à `guest`
--   `lteAdmin` (alias: `ad]`) l'accès est inférieur ou égal à `admin`
--   `lteOwner` (alias: `ow]`) l'accès est inférieur ou égal à `owner`
--   `lteAuth` (alias: `au]`) l'accès est inférieur ou égal à `auth`
--   `lteGuest` (alias: `gs]`) l'accès est inférieur ou égal à `guest`
+-   `admin` (short: `ad`) the access is `admin`
+-   `owner` (short: `ow`) the access is `owner`
+-   `auth` (short: `au`) the access is `auth`
+-   `guest` (short: `gs`) the access is `guest`
+-   `gteAdmin` (short: `[ad`) the access is greater or equal than `admin`
+-   `gteOwner` (short: `[ow`) the access is greater or equal than `owner`
+-   `gteAuth` (short: `[au`) the access is greater or equal than `auth`
+-   `gteGuest` (short: `[gs`) the access is greater or equal than `guest`
+-   `lteAdmin` (short: `ad]`) the access is less or equal than `admin`
+-   `lteOwner` (short: `ow]`) the access is less or equal than `owner`
+-   `lteAuth` (short: `au]`) the access is less or equal than `auth`
+-   `lteGuest` (short: `gs]`) the access is less or equal than `guest`
 
 **Exemples**
 
-Teste l'accès pour une action précise :
+Tests access for a specific action:
 
 === "Hapify (long)"
 
@@ -643,7 +643,7 @@ Teste l'accès pour une action précise :
     <<?>>
     ```
 
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     if (root.accesses.read.guest) {
@@ -651,7 +651,7 @@ Teste l'accès pour une action précise :
     }
     ```
 
-Teste si l'action de mise à jour est restreinte soit aux administrateurs soit au propriétaire :
+Checks if the update action is restricted to either the administrators or the owner:
 
 === "Hapify (long)"
 
@@ -669,7 +669,7 @@ Teste si l'action de mise à jour est restreinte soit aux administrateurs soit a
     <<?>>
     ```
 
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     if (root.accesses.update.admin || root.accesses.update.owner) {
@@ -677,7 +677,7 @@ Teste si l'action de mise à jour est restreinte soit aux administrateurs soit a
     }
     ```
     
-Teste si au moins une action est restreinte à un utilisateur authentifié ou moins :
+Tests whether at least one action is restricted to one or fewer authenticated users:
 
 === "Hapify (long)"
 
@@ -695,7 +695,7 @@ Teste si au moins une action est restreinte à un utilisateur authentifié ou mo
     <<?>>
     ```
 
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     if (root.accesses.filter(a => a.lteAuth).length > 0) {
@@ -704,19 +704,19 @@ Teste si au moins une action est restreinte à un utilisateur authentifié ou mo
     ```
     
 !!! tip "Tip"
-    Les conditions peuvent être utilisées sur un objet ou un tableau d'objets.
-    S'il est utilisé sur un tableau, il testera la longueur du tableau filtré par la condition fournie.
-    Il peut être utilisé sur n'importe quel objet contenant une méthode `filter` qui reçoit un callback retournant un booléen.
-    Par exemple, dans la structure du modèle de données, `root.dependencies` est un objet qui contient une méthode `filter`.
-    Ainsi, cet opérateur peut tester si un modèle a des dépendances qui ont des champs avec une condition spécifique.
+    Conditions can be applied to an object or an array of objects.
+    If applied to an array, it will test the length of the array filtered by the provided condition.
+    It can be used on any object containing a `filter` method that receives a callback returning a boolean.
+    For example, in the data model structure, `root.dependencies` is an object that contains a `filter` method.
+    Thus, this operator can test whether a model has dependencies that have fields with a specific condition.
 
-## Itérations
+## Iterations
 
-Les itérations utilisent les mêmes filtres et opérateurs que les conditions.
+Iterations use the same filters and operators as conditions.
 
-### Itération simple
+### Simple iteration
 
-Boucle sur tous les champs d'un modèle de données qui ne sont pas cachés et les assigne à la variable `field` :
+Loops over all the fields in a data model that are not hidden and assigns them to the `field` variable:
 
 === "Hapify (long)"
 
@@ -740,7 +740,7 @@ Boucle sur tous les champs d'un modèle de données qui ne sont pas cachés et l
     );
     ```
 
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     out += `<?php
@@ -754,7 +754,7 @@ Boucle sur tous les champs d'un modèle de données qui ne sont pas cachés et l
     );`;
     ```
 
-Exemple pour un modèle de données avec les champs `name`, `created at` et `role`, dont `role` est caché :
+Example for a data model with fields `name`, `created at` and `role`, where `role` is hidden:
 
 ```php
 <?php
@@ -764,7 +764,7 @@ $fields = array(
 );
 ```
 
-Boucle sur les champs de type `entity` et recherchables du modèle de données :
+Loops over the `entity` and searchable fields of the data model:
 
 === "Hapify (long)"
 
@@ -782,7 +782,7 @@ Boucle sur les champs de type `entity` et recherchables du modèle de données :
     <<@>>
     ```
 
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     for (let field of root.fields.filter(f => f.searchable && f.type === 'entity')) {
@@ -790,9 +790,9 @@ Boucle sur les champs de type `entity` et recherchables du modèle de données :
     }
     ```
     
-#### Boucler sans filtrer
+#### Loop without filtering
 
-Cette opération permet de passer en revue tous les champs :
+This operation allows you to loop through all the fields:
 
 === "Hapify (long)"
 
@@ -810,7 +810,7 @@ Cette opération permet de passer en revue tous les champs :
     <<@>>
     ```
 
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     for (let field of root.fields.list) {
@@ -818,9 +818,9 @@ Cette opération permet de passer en revue tous les champs :
     }
     ```
     
-#### Boucler sur les modèles de données
+#### Loop through data models
 
-Dans un template de type `all models`, ceci boucle sur tous les modèles de données qui sont géo-localisés :
+In a template of type `all models`, this loops through all the data models that are geo-located:
 
 === "Hapify (long)"
 
@@ -838,7 +838,7 @@ Dans un template de type `all models`, ceci boucle sur tous les modèles de donn
     <<@>>
     ```
 
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     for (let model of root.filter(i => i.properties.isGeolocated)) {
@@ -846,9 +846,9 @@ Dans un template de type `all models`, ceci boucle sur tous les modèles de donn
     }
     ```
     
-#### Boucler sur les dépendances
+#### Loop through dependencies.
     
-Dans un template de type `one model`, ceci boucle sur les dépendances dont le champ référent est recherchable :
+In a template of type `one model`, this loops through the dependencies whose referent field is searchable:
 
 === "Hapify (long)"
 
@@ -866,7 +866,7 @@ Dans un template de type `one model`, ceci boucle sur les dépendances dont le c
     <<@>>
     ```
 
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     for (let dep of root.dependencies.filter(f => f.searchable)) {
@@ -875,8 +875,8 @@ Dans un template de type `one model`, ceci boucle sur les dépendances dont le c
     ```
     
 !!! tip "Tip"
-    Dans le cas d'un modèle de données qui se réfère à lui-même, `Dependencies` exclue cette auto-dépendance.
-    Pour l'inclure utilisez le code suivant:
+    In the case of a self-referencing data model, `Dependencies` excludes this self-dependency.
+    To include it use the following code:
     ```hapify
     <<< for (let dep of root.dependencies.filter(f => f, false)) { >>>
         // ...
@@ -884,12 +884,12 @@ Dans un template de type `one model`, ceci boucle sur les dépendances dont le c
     ```
     
 !!! warning "Warning"
-    Le filtrage de `Dependencies` ne s'effectue que sur les champs du modèle de données courant qui portent la référence.
-    Le filtrage ne s'effectue **pas** sur les champs du modèle de données cible.
+    Filtering of `Dependencies` is performed only on the fields of the current data model that carry the reference.
+    Filtering is **not** performed on the fields of the target data model.
     
-#### Boucler sur les modèles de données référents
+#### Loop through referring data models
     
-Dans un template de type `one model`, ceci boucle sur les modèles de données ayant une dépendance envers celui-ci et qui sont géo-localisés :
+In a template of type `one model`, this loops through the data models that have a dependency on it and that are geo-located:
 
 === "Hapify (long)"
 
@@ -907,7 +907,7 @@ Dans un template de type `one model`, ceci boucle sur les modèles de données a
     <<@>>
     ```
 
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     for (let referrer of root.referencedIn.filter(m => m.properties.isGeolocated)) {
@@ -916,7 +916,7 @@ Dans un template de type `one model`, ceci boucle sur les modèles de données a
     ```
     
 !!! tip "Tip"
-    Le filtre est optionnel. Vous pouvez obtenir tous les modèles de données référents comme ceci :
+    The filter is optional. You can get all the referring data models like this:
     ```hapify
     <<for ReferencedIn referrer>>
         // ...
@@ -924,11 +924,11 @@ Dans un template de type `one model`, ceci boucle sur les modèles de données a
     ```
     
 !!! warning "Warning"
-    Seuls les champs de type entité faisant référence sont définis dans ces modèles de données référents.
+    Only referenced entity fields are defined in these referring data models.
     
-#### Boucler sur les accès du modèle de données
+#### Loop through the accesses of the data model
 
-Boucle sur tous les accès restreints à un administrateur ou au propriétaire et affiche le nom de l'action :
+Loops through all accesses restricted to an administrator or owner and displays the name of the action:
 
 === "Hapify (long)"
 
@@ -946,7 +946,7 @@ Boucle sur tous les accès restreints à un administrateur ou au propriétaire e
     <<@>>
     ```
 
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     for (let access of root.accesses.filter(a => a.admin || a.owner)) {
@@ -954,9 +954,9 @@ Boucle sur tous les accès restreints à un administrateur ou au propriétaire e
     }
     ```
 
-### Itération raccourcie
+### Shortened iteration
 
-Boucle sur les 2 premiers champs d'un modèle de données :
+Loop through the first 2 fields of a data model :
 
 === "Hapify (long)"
 
@@ -980,7 +980,7 @@ Boucle sur les 2 premiers champs d'un modèle de données :
     );
     ```
 
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     out += `<?php
@@ -994,7 +994,7 @@ Boucle sur les 2 premiers champs d'un modèle de données :
     );`;
     ```
 
-Pour un modèle de données avec les champs `name`, `email` et `role` :
+For a data model with fields `name`, `email` and `role`:
 
 ```php
 <?php
@@ -1004,11 +1004,11 @@ $fields = array(
 );
 ```
 
-### Itérations imbriquées
+### Nested iterations
 
-#### Boucle sur les enum
+#### Loop through the enums
 
-Dans un template de type `one model`, ce bloc définit un type TypeScript contenant les énumérations d'un champ :
+In a template of type `one model`, this block defines a TypeScript type containing the enums of a field:
 
 === "Hapify (long)"
 
@@ -1026,7 +1026,7 @@ Dans un template de type `one model`, ce bloc définit un type TypeScript conten
     <<@>>
     ```
 
-=== "Équivalent JavaScript"
+=== "JavaScript equivalent"
 
     ```javascript
     for (let field of root.fields.filter(f => f.type === 'enum')) {
@@ -1034,15 +1034,15 @@ Dans un template de type `one model`, ce bloc définit un type TypeScript conten
     }
     ```
 
-=== "Sortie"
+=== "Output"
 
     ```javascript
     type Role = | 'admin' | 'user' | 'customer';
     ```
 
-#### Boucler sur les champs de tous les modèles de données
+#### Loop through the fields of all data models
 
-Dans un template de type `all models`, ce bloc permet de passer en revue tous les champs de tous les modèles de données :
+In a template of type `all models`, this block loops through all the fields of all the data models:
 
 === "Hapify (long)"
 
@@ -1072,7 +1072,7 @@ Dans un template de type `all models`, ce bloc permet de passer en revue tous le
     }
     ```
 
-=== "Sortie"
+=== "Output"
 
     ```javascript
     const models = {
@@ -1096,13 +1096,13 @@ Dans un template de type `all models`, ce bloc permet de passer en revue tous le
     }
     ```
 
-## Entrées brutes et interpolation
+## Raw input and interpolation
 
-Cet opérateur vous permet d'écrire du JavaScript pur.
+This operator allows you to write pure JavaScript.
 
-### Variable personnalisée
+### Custom variable
 
-Définit une variable personnalisée et l'ajoute à la sortie :
+Defines a custom variable and adds it to the output:
 
 ```hapify
 <<< const length = root.fields.length; >>>
@@ -1110,9 +1110,9 @@ Définit une variable personnalisée et l'ajoute à la sortie :
 // This model has <<=length>> fields
 ```
 
-### Fonction personnalisée
+### Custom function
 
-Définit une fonction personnalisée et l'appelle :
+Defines a custom function and calls it:
 
 === "Hapify (long)"
 
@@ -1140,7 +1140,7 @@ Définit une fonction personnalisée et l'appelle :
     <<@>>
     ```
 
-=== "Sortie"
+=== "Output"
 
     ```
     id
@@ -1148,9 +1148,9 @@ Définit une fonction personnalisée et l'appelle :
     place:category
     ```
 
-### Condition ou itération personnalisée
+### Custom condition or iteration
 
-Ce bloc permet d'écrire une condition non gérée par la syntaxe Hapify :
+This block allows you to write a condition that is not handled by the Hapify syntax:
 
 ```hapify
 <<< if (root.fields.hidden.length < 3 || root.properties.mainlyInternal) { >>>
@@ -1159,28 +1159,28 @@ Ce bloc permet d'écrire une condition non gérée par la syntaxe Hapify :
 ```
 
 !!! tip "Tip"
-    Dans un template Hapify de type `one model`, la variable `root` pointe vers le modèle de données.
-    Dans un template Hapify de type `all models`, la variable `root` pointe vers le tableau de modèles de données.
+    In a Hapify template of type `one model`, the `root` variable refers to the data model.
+    In a Hapify template of type `all models`, the `root` variable refers to the array of data models.
 
 !!! seealso "See also"
-    Pour connaitre en détail la structure du modèle de données, reportez-vous à [l'objet modèle](./model-object.md).
+    For detailed information on the structure of the data model, see [the model object](./model-object.md).
 
-## Erreur
+## Error
 
-N'écrivez pas ceci : `#!hapify <<= JSON.stringify(root) >>`.
-L'objet `root` a des propriétés récursives. Par conséquent, cette commande conduira à une boucle infinie.
+Do not write this: `#!hapify <<= JSON.stringify(root) >>`.
+The `root` object has recursive properties. Therefore, this command will lead to an infinite loop.
 
-## Commentaires
+## Comments
 
-Cette syntaxe écrit un commentaire dans le template sans aucune sortie dans le fichier généré.
+This syntax writes a comment to the template without any output to the generated file.
 
 ```hapify
 <<# This is just a comment>>
 ```
 
-## Échappement
+## Escaping
 
-Il est possible d'échapper les balises de la syntaxe Hapify avec le caractère `\` :
+It is possible to escape the tags of the Hapify syntax with the character `\`:
 
 === "Hapify"
 
@@ -1190,7 +1190,7 @@ Il est possible d'échapper les balises de la syntaxe Hapify avec le caractère 
     $res = 4 \>\> $val;
     ```
 
-=== "Sortie"
+=== "Output"
 
     ```php
     $val = 4;
@@ -1198,17 +1198,17 @@ Il est possible d'échapper les balises de la syntaxe Hapify avec le caractère 
     $res = 4 >> $val;
     ```
 
-## Formatage
+## Formatting
 
-Les lignes vides ou ne contenant que du méta-code de type condition ou itération sont automatiquement supprimées suite à la génération.
-Pour forcer le générateur à garder une ligne vide, insérez un ou plusieurs espaces au début de celle-ci.
+Empty lines and lines containing only condition or iteration meta-code are automatically deleted after generation.
+To force the generator to keep an empty line, insert one or more spaces at the beginning of it.
 
 !!! warning "Warning"
-    Hapify ne formate pas le code généré, car les règles de mise en forme sont spécifiques à chaque langage voire chaque framework.
-    Nous vous recommandons vivement d'utiliser un formateur de code suite à la génération.
+    Hapify does not format the generated code, since the formatting rules are specific to each language or framework.
+    We strongly recommend you to use a code formatter after the generation.
 
-## Mots réservés
+## Reserved words
 
-La liste suivante de mots ne peut pas être utilisée pour nommer des variables.
+The following list of words cannot be used to name variables.
 
 `A`, `Ac`, `Accesses`, `Ad`, `An`, `Ar`, `As`, `Au`, `CountAccess`, `CreateAccess`, `D`, `Dependencies`, `F`, `Fields`, `M`, `Model`, `Models`, `P`, `PrimaryField`, `R`, `ReadAccess`, `RefModels`, `ReferencedIn`, `RemoveAccess`, `SearchAccess`, `UpdateAccess`, `ad`, `admin`, `and`, `andNot`, `au`, `audio`, `auth`, `boolean`, `date`, `datetime`, `document`, `else`, `elseif`, `em`, `email`, `embedded`, `endfor`, `endif`, `entity`, `enum`, `file`, `float`, `for`, `gs`, `gteAdmin`, `gteAuth`, `gteGuest`, `gteOwner`, `guest`, `hd`, `hidden`, `if`, `image`, `in`, `integer`, `internal`, `isGeoSearchable`, `isGeolocated`, `label`, `latitude`, `lb`, `longitude`, `lteAdmin`, `lteAuth`, `lteGuest`, `lteOwner`, `mainlyHidden`, `mainlyInternal`, `manyMany`, `manyOne`, `maxAdmin`, `maxAuth`, `maxGuest`, `maxOwner`, `ml`, `multiple`, `noAdmin`, `noAuth`, `noGuest`, `noOwner`, `not`, `nu`, `nullable`, `number`, `object`, `oneMany`, `oneOne`, `onlyAdmin`, `onlyAuth`, `onlyGuest`, `onlyOwner`, `or`, `orNot`, `os`, `out`, `ow`, `owner`, `ownership`, `pGSe`, `pGeo`, `pMAd`, `pMAu`, `pMGs`, `pMHd`, `pMIn`, `pMOw`, `pNAd`, `pNAu`, `pNGs`, `pNOw`, `pOAd`, `pOAu`, `pOGs`, `pOOw`, `password`, `pr`, `primary`, `restricted`, `rich`, `richText`, `root`, `rs`, `se`, `searchable`, `so`, `sortable`, `string`, `tB`, `tD`, `tDd`, `tDt`, `tE`, `tEmm`, `tEom`, `tEoo`, `tF`, `tFa`, `tFd`, `tFi`, `tFv`, `tN`, `tNf`, `tNg`, `tNi`, `tNt`, `tO`, `tS`, `tSe`, `tSp`, `tSr`, `tSt`, `tSu`, `tU`, `text`, `time`, `un`, `unique`, `url`, `video`.

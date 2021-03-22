@@ -1,19 +1,19 @@
 
-Hapify offre la possibilité d'écrire des template avec la syntaxe [EJS](https://ejs.co/) ou bien en JavaScript pur.
-Ces deux options se basent sur le même objet décrit ci-dessous.
+Hapify offers the possibility to write templates with the [EJS](https://ejs.co/) syntax or in pure JavaScript.
+Both options are based on the same object described below.
 
-## Objet modèle
+## Model object
 
-Les templates de type `one model` reçoivent [l'objet modèle](./model-object.md) via la variable `model` (alias `m`).
-Dans le cas d'un template de type `all models`, un tableau d'objets modèles sera disponible via la variable `models` (alias `m`).
+Templates of type `one model` receive [the model object](./model-object.md) via the `model` variable (alias `m`).
+In the case of a template of type `all models`, an array of model objects will be available via the `models` variable (alias `m`).
 
-Le bloc suivant est une représentation en JSON de cet objet modèle pour un cas très simple. Ici, le modèle `User profile` possède 3 champs dont une référence à une entité.
-Pour garder ce JSON aussi court que possible, nous avons supprimé tous les alias, de nombreuses propriétés récurrentes et les détails des sous-modèles.
-Ce JSON est une représentation partielle de l'objet modèle réellement injecté, mais il vous donne un bon aperçu de sa structure.
+The following block is a JSON representation of this model object for a very simple case. Here, the `User profile` model has 3 fields including a reference to an entity.
+To keep this JSON as short as possible, we have removed all aliases, many recurring properties and sub-model details.
+This JSON is a partial representation of the actual injected model object, but it gives you a good overview of its structure.
 
 !!! seealso "See also"
-    Si vous voulez connaître la structure complète de l'objet modèle, vous pouvez vous référer à la [documentation de l'objet modèle](./model-object.md),
-    ou bien à l'interface TypeScript `ExplicitModel` dans le [code source](https://github.com/hapify/generator/blob/master/src/interfaces.ts) de `hapify/generator`.
+    If you want to know the complete structure of the model object, you can refer to the [model object documentation](./model-object.md),
+    or to the TypeScript interface `ExplicitModel` in the [source code](https://github.com/hapify/generator/blob/master/src/interfaces.ts) of `hapify/generator`.
 
 ```json
 {
@@ -328,9 +328,9 @@ Ce JSON est une représentation partielle de l'objet modèle réellement inject�
 
 ## Templating
 
-Voici des exemples de template EJS et JavaScript utilisant cet objet modèle.
+Here are examples of EJS and JavaScript templates using this model object.
 
-### Template de type `one model`
+### Template of type `one model
 
 === "EJS"
 
@@ -348,7 +348,7 @@ Voici des exemples de template EJS et JavaScript utilisant cet objet modèle.
     }`;
     ```
 
-=== "Sortie"
+=== "Output"
 
     ```typescript
     class Place {
@@ -357,12 +357,12 @@ Voici des exemples de template EJS et JavaScript utilisant cet objet modèle.
     ```
     
 !!! warning "Warning"
-    Un template JavaScript doit retourner une chaîne de caractères.
+    A JavaScript template must return a string.
 
 !!! tip "Tip"
-    Les fichiers générés vides ne seront pas sauvegardés.
+    Empty generated files will not be saved.
 
-### Template de type `all models`
+### Template of type `all models`
 
 === "EJS"
 
@@ -382,7 +382,7 @@ Voici des exemples de template EJS et JavaScript utilisant cet objet modèle.
     return output;
     ```
 
-=== "Sortie"
+=== "Output"
 
     ```php
     require_once('./user.php');
@@ -392,4 +392,4 @@ Voici des exemples de template EJS et JavaScript utilisant cet objet modèle.
     ```
 
 !!! seealso "See also"
-    Pour plus d'exemples de templates, veuillez lire [cet article](../getting-started/create-boilerplate/step-4-template-writing.md).
+    For more examples, please read [this article](../getting-started/create-boilerplate/step-4-template-writing.md).

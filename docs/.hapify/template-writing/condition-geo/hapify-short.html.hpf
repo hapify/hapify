@@ -1,0 +1,3 @@
+<<? M pGeo>>
+<app-map-position-picker [model]="<<M aA>>"></app-map-position-picker>
+<<?>>

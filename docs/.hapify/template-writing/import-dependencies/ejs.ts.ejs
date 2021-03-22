@@ -1,0 +1,3 @@
+<% for (let dep of model.dependencies.list) { -%>
+import {<%= dep.names.pascal %>} from '../<%= dep.names.kebab %>';
+<% } -%>

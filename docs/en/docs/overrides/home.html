@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block tabs %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+<style>
+    .md-main {
+        background: linear-gradient(0deg,#3424af 1%,#7e56c2);
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+    }
+    .md-main__inner {
+        margin: 0;
+        height: auto;
+        width: 61rem;
+    }
+    .md-content {
+        display: flex;
+        align-items: stretch;
+    }
+    .md-content__inner {
+        margin: 0;
+        padding: 0 .6rem;
+        display: flex;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .intro {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .intro .text,
+    .intro .image {
+        width: 40%;
+    }
+
+    .intro .text,
+    .intro .text h2 {
+        color: white;
+    }
+    .intro .text h2 {
+        margin-bottom: 1rem;
+    }
+    .intro .text {
+        padding-bottom: 5rem;
+    }
+    .intro .text :first-child {
+        margin-top: 0;
+    }
+    .intro .text :last-child {
+        margin-bottom: 0;
+    }
+    .intro .text h2 { font-size: 1.6rem; font-weight: bold; }
+    .intro .text p { margin-bottom: 1.6rem }
+
+    .intro .image img {
+        width: 100%;
+    }
+
+    @media screen and (max-width: 60em) {
+        .intro .text {
+            width: 100%;
+        }
+        .intro .text :first-child {
+            margin-top: 1.6rem;
+        }
+        .intro .image {
+            display: none;
+        }
+    }
+
+</style>
+<div class="intro">
+    <div class="text">
+        <h2>Template engine for CRUD operations</h2>
+        <p>
+            Hapify automates the writing of CRUD operations for back-end and front-end development.<br>
+            Focus only on business features instead of doing repetitive work!
+        </p>
+        <p>
+            <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | e }}" class="md-button md-button--primary">
+                Quick start
+            </a>
+        </p>
+    </div>
+    <div class="image">
+        <img src="assets/data-modelisation-hapify.svg" alt="Data models">
+    </div>
+</div>
+{% endblock %}
+{% block footer %}{% endblock %}

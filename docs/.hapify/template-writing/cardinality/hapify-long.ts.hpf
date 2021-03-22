@@ -1,0 +1,11 @@
+class <<Model pascal>> extends BaseModel {
+<<for Fields entity field>>
+    get<<field pascal>>() {
+    <<if field oneOne or oneMany>>
+        return this.<<field.model camel>>Store.findOne(this.properties.<<field camel>>);
+    <<elseif field manyMany>>
+        return this.<<field.model camel>>Store.findMany(this.properties.<<field camel>>);
+    <<endif>>
+    }
+<<endfor>>
+}

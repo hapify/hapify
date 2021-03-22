@@ -1,0 +1,3 @@
+class <<M AA>> {
+    private primaryKey = '<<P a_a>>';
+}

@@ -1,0 +1,5 @@
+<% for (let referrer of model.referencedIn) { -%>
+    <% for (let field of referrer.fields) { -%>
+await db.collection('<%= referrer.names.pascal %>').deleteMany({ <%= field.names.snake %>: id });
+   <% } -%>
+<% } -%>

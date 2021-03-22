@@ -1,0 +1,3 @@
+<<if CreateAccess lteAuth>>
+const user = Session.getCurrent();
+<<endif>>

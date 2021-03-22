@@ -1,0 +1,60 @@
+<<# Import dependencies >>
+<<for Dependencies not (hidden and internal) dep>>
+import {<<dep pascal>>} from './<<dep pascal>>';
+<<endfor>>
+ 
+<<# Declare interfaces for enum fields >>
+<<for Fields enum field>>
+export type <<Model pascal>><<field pascal>>Enum =<<for field.enum e>> | '<<e snake>>'<<endfor>>;
+<<endfor>>
+ 
+export class <<Model pascal>> {
+ 
+    <<for Fields not primary field>>
+        <<if field entity>>
+    private <<field camel>>: number<<if field multiple>>[]<<endif>>;
+        <<elseif field enum>>
+    public <<field camel>>: <<Model pascal>><<field pascal>>Enum;
+        <<elseif field datetime>>
+    public <<field camel>>: Date;
+        <<else>>
+    public <<field camel>>: <<=field.type>>;
+        <<endif>>
+    <<endfor>>
+ 
+    constructor(private <<PrimaryField camel>>: number) {}
+ 
+    <<# Getter for primary field >>
+    getId(): number {
+        return this.<<PrimaryField camel>>
+    }
+ 
+    getLabel(): string {
+        <<if Fields label>>
+        return `<<=labels()>>`;
+        <<else>>
+        return this.getId().toString();
+        <<endif>>
+    }
+    
+    <<# Getter for each entity >>
+    <<for Fields entity field>>
+ 
+    get<<field pascal>>(): <<field.model pascal>><<if field multiple>>[]<<endif>> {
+        <<if field multiple>>
+        return this.<<field camel>>.map(id => new <<field.model pascal>>(id));
+        <<else>>
+        return new <<field.model pascal>>(this.<<field camel>>);
+        <<endif>>
+    }
+    <<endfor>>
+
+}
+
+<<<
+function labels() {
+    return root.fields.label
+        .map(label => "${this."+label.names.snake+"}")
+        .join(' ');
+}
+>>>

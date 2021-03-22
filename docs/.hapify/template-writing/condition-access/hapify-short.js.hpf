@@ -1,0 +1,6 @@
+<<? Ac au]>>
+const user = Session.getCurrent();
+<<?>>
+$val = 4;
+$res = $val \<\< 3;
+$res = 4 \>\> $val;

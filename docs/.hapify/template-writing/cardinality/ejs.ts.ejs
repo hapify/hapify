@@ -1,0 +1,11 @@
+class <%= model.names.pascal %> extends BaseModel {
+<% for (let field of model.fields.filter(f => f.type === 'entity')) { -%>
+    get<%= field.names.pascal %>() {
+    <% if (field.subtype === 'oneOne' || field.subtype === 'oneMany') { -%>
+        return this.<%= field.model.names.camel %>Store.findOne(this.properties.<%= field.names.camel %>);
+    <% } else if (field.subtype === 'manyMany') { -%>
+        return this.<%= field.model.names.camel %>Store.findMany(this.properties.<%= field.names.camel %>);
+    <% } -%>
+    }
+<% } -%>
+}

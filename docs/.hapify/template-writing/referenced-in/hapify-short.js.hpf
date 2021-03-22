@@ -1,0 +1,5 @@
+<<@ R m>>
+    <<@ m.f f>>
+await db.collection('<<m AA>>').deleteMany({ <<f a_a>>: id });
+    <<@>>
+<<@>>

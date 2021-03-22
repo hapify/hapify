@@ -1,0 +1,624 @@
+{
+  "version": "2",
+  "name": "Documentation samples",
+  "models": [
+    {
+      "id": "ad1a0011-7873-8ac9-8cf5-8ab3b7daf486",
+      "name": "Bookmark",
+      "accesses": {
+        "create": "auth",
+        "read": "owner",
+        "update": "admin",
+        "remove": "owner",
+        "search": "owner",
+        "count": "owner"
+      },
+      "fields": [
+        {
+          "name": "Id",
+          "type": "string",
+          "properties": [
+            "primary",
+            "internal"
+          ]
+        },
+        {
+          "name": "owner",
+          "type": "entity",
+          "subtype": "oneMany",
+          "value": "6f865f5c-7a62-c4e2-94c7-7702089939cc",
+          "properties": [
+            "unique",
+            "searchable",
+            "internal",
+            "ownership"
+          ],
+          "notes": "Current user when creating the bookmark"
+        },
+        {
+          "name": "place",
+          "type": "entity",
+          "subtype": "oneMany",
+          "value": "9b55c10f-1b3d-9d93-3e94-397d5a75d8ff",
+          "properties": [
+            "unique",
+            "searchable"
+          ]
+        }
+      ],
+      "notes": "A user can only list its own bookmarks"
+    },
+    {
+      "id": "287c113d-18bd-8c92-b946-311378f9b7b2",
+      "name": "Conversation",
+      "accesses": {
+        "create": "auth",
+        "read": "owner",
+        "update": "admin",
+        "remove": "owner",
+        "search": "owner",
+        "count": "owner"
+      },
+      "fields": [
+        {
+          "name": "Id",
+          "type": "string",
+          "properties": [
+            "primary",
+            "internal"
+          ]
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "properties": [
+            "label",
+            "nullable"
+          ]
+        },
+        {
+          "name": "participants",
+          "type": "entity",
+          "value": "6f865f5c-7a62-c4e2-94c7-7702089939cc",
+          "properties": [
+            "multiple",
+            "embedded",
+            "searchable",
+            "internal",
+            "ownership"
+          ]
+        },
+        {
+          "name": "last message",
+          "type": "entity",
+          "value": "97a30417-5220-739a-cf13-481579ce09c9",
+          "properties": [
+            "nullable",
+            "embedded",
+            "searchable",
+            "sortable",
+            "internal"
+          ],
+          "notes": "Set when a new message is created within this conversation"
+        },
+        {
+          "name": "closed",
+          "type": "boolean",
+          "properties": [
+            "searchable",
+            "internal"
+          ]
+        },
+        {
+          "name": "closed by",
+          "type": "entity",
+          "value": "6f865f5c-7a62-c4e2-94c7-7702089939cc",
+          "properties": [
+            "nullable",
+            "searchable",
+            "internal"
+          ]
+        },
+        {
+          "name": "closed at",
+          "type": "datetime",
+          "properties": [
+            "nullable",
+            "sortable",
+            "internal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "8f2ae69d-4c39-5577-18f4-9bb78fc1a9b6",
+      "name": "Conversation Report",
+      "accesses": {
+        "create": "auth",
+        "read": "owner",
+        "update": "admin",
+        "remove": "admin",
+        "search": "owner",
+        "count": "owner"
+      },
+      "fields": [
+        {
+          "name": "Id",
+          "type": "string",
+          "properties": [
+            "primary",
+            "internal"
+          ]
+        },
+        {
+          "name": "complaint",
+          "type": "string",
+          "subtype": "text",
+          "properties": [
+            "label",
+            "searchable",
+            "sortable"
+          ]
+        },
+        {
+          "name": "complainant",
+          "type": "entity",
+          "value": "6f865f5c-7a62-c4e2-94c7-7702089939cc",
+          "properties": [
+            "searchable",
+            "internal",
+            "ownership"
+          ],
+          "notes": "Current user when creating the report"
+        },
+        {
+          "name": "conversation",
+          "type": "entity",
+          "value": "287c113d-18bd-8c92-b946-311378f9b7b2",
+          "properties": [
+            "searchable"
+          ],
+          "notes": "Current user when must be a conversation participant"
+        },
+        {
+          "name": "defendant",
+          "type": "entity",
+          "value": "6f865f5c-7a62-c4e2-94c7-7702089939cc",
+          "properties": [
+            "searchable",
+            "internal"
+          ],
+          "notes": "Other user of the conversation"
+        },
+        {
+          "name": "handled",
+          "type": "boolean",
+          "properties": [
+            "searchable",
+            "restricted"
+          ],
+          "notes": "Flag for admins"
+        },
+        {
+          "name": "handled at",
+          "type": "datetime",
+          "properties": [
+            "searchable",
+            "sortable",
+            "internal"
+          ]
+        },
+        {
+          "name": "moderator notes",
+          "type": "string",
+          "subtype": "text",
+          "properties": [
+            "nullable",
+            "restricted"
+          ],
+          "notes": "Notes for admins"
+        },
+        {
+          "name": "admissible",
+          "type": "boolean",
+          "properties": [
+            "nullable",
+            "searchable",
+            "restricted"
+          ],
+          "notes": "Flag for admins"
+        }
+      ]
+    },
+    {
+      "id": "97a30417-5220-739a-cf13-481579ce09c9",
+      "name": "Message",
+      "accesses": {
+        "create": "auth",
+        "read": "admin",
+        "update": "admin",
+        "remove": "admin",
+        "search": "auth",
+        "count": "auth"
+      },
+      "fields": [
+        {
+          "name": "Id",
+          "type": "string",
+          "properties": [
+            "primary",
+            "internal"
+          ]
+        },
+        {
+          "name": "content",
+          "type": "string",
+          "subtype": "text",
+          "properties": [
+            "label",
+            "searchable"
+          ]
+        },
+        {
+          "name": "conversation",
+          "type": "entity",
+          "value": "287c113d-18bd-8c92-b946-311378f9b7b2",
+          "properties": [
+            "searchable"
+          ],
+          "notes": "Current user when must be a conversation participant.\nConversation must not be closed"
+        },
+        {
+          "name": "sender",
+          "type": "entity",
+          "value": "6f865f5c-7a62-c4e2-94c7-7702089939cc",
+          "properties": [
+            "searchable",
+            "internal"
+          ],
+          "notes": "Current user when creating the message"
+        },
+        {
+          "name": "recipient",
+          "type": "entity",
+          "value": "6f865f5c-7a62-c4e2-94c7-7702089939cc",
+          "properties": [
+            "searchable",
+            "internal"
+          ],
+          "notes": "Other user of the conversation"
+        },
+        {
+          "name": "read by recipient",
+          "type": "boolean",
+          "properties": [
+            "searchable",
+            "internal"
+          ]
+        },
+        {
+          "name": "read by recipient at",
+          "type": "datetime",
+          "properties": [
+            "nullable",
+            "searchable",
+            "sortable",
+            "internal"
+          ]
+        },
+        {
+          "name": "notified recipient",
+          "type": "boolean",
+          "properties": [
+            "searchable",
+            "internal"
+          ]
+        },
+        {
+          "name": "notified recipient at",
+          "type": "datetime",
+          "properties": [
+            "nullable",
+            "searchable",
+            "sortable",
+            "internal"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "9b55c10f-1b3d-9d93-3e94-397d5a75d8ff",
+      "name": "Place",
+      "accesses": {
+        "create": "auth",
+        "read": "guest",
+        "update": "owner",
+        "remove": "owner",
+        "search": "guest",
+        "count": "guest"
+      },
+      "fields": [
+        {
+          "name": "Id",
+          "type": "string",
+          "properties": [
+            "primary",
+            "internal"
+          ]
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "properties": [
+            "label",
+            "searchable",
+            "sortable"
+          ]
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "subtype": "rich",
+          "properties": [
+            "nullable"
+          ]
+        },
+        {
+          "name": "categories",
+          "type": "entity",
+          "value": "9aa270ee-2267-0c0c-1441-5159b1c2d70f",
+          "properties": [
+            "multiple",
+            "embedded",
+            "searchable"
+          ]
+        },
+        {
+          "name": "address 1",
+          "type": "string",
+          "properties": []
+        },
+        {
+          "name": "address 2",
+          "type": "string",
+          "properties": [
+            "nullable"
+          ]
+        },
+        {
+          "name": "latitude",
+          "type": "number",
+          "subtype": "latitude",
+          "properties": [
+            "searchable",
+            "sortable",
+            "internal"
+          ],
+          "notes": "inferred by address"
+        },
+        {
+          "name": "longitude",
+          "type": "number",
+          "subtype": "longitude",
+          "properties": [
+            "searchable",
+            "sortable",
+            "internal"
+          ],
+          "notes": "inferred by address"
+        },
+        {
+          "name": "phone",
+          "type": "string",
+          "properties": [
+            "nullable"
+          ]
+        },
+        {
+          "name": "website url",
+          "type": "string",
+          "subtype": "url",
+          "properties": [
+            "nullable"
+          ]
+        },
+        {
+          "name": "services",
+          "type": "entity",
+          "value": "13001aef-997f-69a0-fbed-88e3bf275dbb",
+          "properties": [
+            "nullable",
+            "multiple",
+            "searchable"
+          ]
+        },
+        {
+          "name": "timetable",
+          "type": "string",
+          "subtype": "text",
+          "properties": [
+            "nullable"
+          ]
+        },
+        {
+          "name": "owner",
+          "type": "entity",
+          "value": "6f865f5c-7a62-c4e2-94c7-7702089939cc",
+          "properties": [
+            "searchable",
+            "internal",
+            "ownership"
+          ],
+          "notes": "Current user when creating the place"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "properties": [
+            "searchable",
+            "restricted"
+          ],
+          "notes": "Value restricted to admins"
+        }
+      ]
+    },
+    {
+      "id": "9aa270ee-2267-0c0c-1441-5159b1c2d70f",
+      "name": "Place category",
+      "accesses": {
+        "create": "admin",
+        "read": "guest",
+        "update": "admin",
+        "remove": "admin",
+        "search": "guest",
+        "count": "guest"
+      },
+      "fields": [
+        {
+          "name": "Id",
+          "type": "string",
+          "properties": [
+            "primary",
+            "internal"
+          ]
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "properties": [
+            "label",
+            "searchable",
+            "sortable"
+          ]
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "subtype": "text",
+          "properties": [
+            "nullable"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "13001aef-997f-69a0-fbed-88e3bf275dbb",
+      "name": "Service",
+      "accesses": {
+        "create": "admin",
+        "read": "guest",
+        "update": "admin",
+        "remove": "admin",
+        "search": "guest",
+        "count": "guest"
+      },
+      "fields": [
+        {
+          "name": "Id",
+          "type": "string",
+          "properties": [
+            "primary",
+            "internal"
+          ]
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "properties": [
+            "unique",
+            "label",
+            "searchable",
+            "sortable"
+          ]
+        },
+        {
+          "name": "description",
+          "type": "string",
+          "subtype": "text",
+          "properties": [
+            "nullable"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6f865f5c-7a62-c4e2-94c7-7702089939cc",
+      "name": "User",
+      "accesses": {
+        "create": "guest",
+        "read": "owner",
+        "update": "owner",
+        "remove": "owner",
+        "search": "admin",
+        "count": "admin"
+      },
+      "fields": [
+        {
+          "name": "Id",
+          "type": "string",
+          "properties": [
+            "primary",
+            "internal",
+            "ownership"
+          ]
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "properties": [
+            "label",
+            "searchable",
+            "sortable"
+          ]
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "subtype": "email",
+          "properties": [
+            "unique",
+            "searchable",
+            "sortable"
+          ]
+        },
+        {
+          "name": "password",
+          "type": "string",
+          "subtype": "password",
+          "properties": [
+            "hidden"
+          ]
+        },
+        {
+          "name": "role",
+          "type": "enum",
+          "value": [
+            "admin",
+            "user"
+          ],
+          "properties": [
+            "searchable",
+            "restricted"
+          ]
+        },
+        {
+          "name": "banned",
+          "type": "boolean",
+          "properties": [
+            "searchable",
+            "restricted"
+          ],
+          "notes": "Allow admins to disable this user"
+        },
+        {
+          "name": "last connected at",
+          "type": "datetime",
+          "properties": [
+            "nullable",
+            "internal"
+          ]
+        }
+      ]
+    }
+  ]
+}

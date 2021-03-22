@@ -1,0 +1,7 @@
+<<for Fields enum field>>
+const <<field camel>>Values = [
+    <<for field.enum e>>
+    '<<e constant>>',
+    <<endfor>>
+];
+<<endfor>>

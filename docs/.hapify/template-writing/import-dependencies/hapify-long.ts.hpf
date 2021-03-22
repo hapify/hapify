@@ -1,0 +1,3 @@
+<<for Dependencies dep>>
+import {<<dep pascal>>} from '../<<dep kebab>>';
+<<endfor>>

@@ -27,7 +27,7 @@ Nous vous recommandons d'ajouter plusieurs relations entre vos modèles de donn�
 ## Champs par défaut
 
 Vous pouvez définir des champs par défaut qui seront ajoutés à tout nouveau modèle de données.
-Ce champ ne sont pas contraignants, l'utilisateur pourra les modifier ou les supprimer s'il le souhaite.
+Ces champs ne sont pas contraignants, l'utilisateur pourra les modifier ou les supprimer s'il le souhaite.
 Ceci est utile pour définir la clé primaire de vos modèles de données par exemple.
 
 Les champs par défaut sont définis dans le fichier `hapify.json`:

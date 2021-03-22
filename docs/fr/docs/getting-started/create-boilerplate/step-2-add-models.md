@@ -23,3 +23,43 @@ Nous vous recommandons d'ajouter plusieurs relations entre vos modèles de donn�
 
 !!! seealso "Voir aussi"
     Pour en savoir plus sur la gestion des modèles de données, veuillez vous référer à [édition des modèles de données](../existing-boilerplate/step-2-edit-models.md).
+
+## Champs par défaut
+
+Vous pouvez définir des champs par défaut qui seront ajoutés à tout nouveau modèle de données.
+Ce champ ne sont pas contraignants, l'utilisateur pourra les modifier ou les supprimer s'il le souhaite.
+Ceci est utile pour définir la clé primaire de vos modèles de données par exemple.
+
+Les champs par défaut sont définis dans le fichier `hapify.json`:
+
+```json
+{
+  "defaultFields": [
+    {
+      "name": "Id",
+      "type": "string",
+      "properties": ["primary", "internal"]
+    }
+  ]
+}
+```
+
+Pour obtenir ces champs par défaut, vous pouvez créer un modèle de données qui ne contient que les champs par défaut voulus.
+Ouvrez ensuite le fichier `hapify-models.json`, et copiez les champs du modèle de données en question:
+
+```json
+{
+  "fields": [
+    {
+      "name": "id",
+      "type": "number",
+      "properties": ["primary", "internal"]
+    }
+  ]
+}
+```
+
+Enfin, collez cela dans le fichier `hapify.json` à l'entrée `defaultFields`.
+
+!!! warning "Attention"
+    Les modifications du fichier `hapify.json` ne sont pas prises en compte à la volée. Vous devez relancer la commande `hpf serve`.

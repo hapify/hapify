@@ -23,3 +23,43 @@ We recommend that you add several relationships between your data models, even a
 
 !!! seealso "See also"
     To learn more about data model management, please refer to the section [editing data models](../existing-boilerplate/step-2-edit-models.md).
+
+## Default fields
+
+You can define default fields that will be added to any new data model.
+These fields are not binding, the user can modify or delete them if he/she wants.
+This is useful to define the primary key of your data models for example.
+
+The default fields are defined in the `hapify.json` file:
+
+```json
+{
+  "defaultFields": [
+    {
+      "name": "Id",
+      "type": "string",
+      "properties": ["primary", "internal"]
+    }
+  ]
+}
+```
+
+To get these default fields, you can create a data model that contains only the desired default fields.
+Then open the `hapify-models.json` file, and copy the fields from that data model:
+
+```json
+{
+  "fields": [
+    {
+      "name": "id",
+      "type": "number",
+      "properties": ["primary", "internal"]
+    }
+  ]
+}
+```
+
+Finally, paste this into the `hapify.json` file at the `defaultFields` line.
+
+!!! warning "Warning"
+    Changes to the `hapify.json` file are not reflected on the fly. You must rerun the `hpf serve` command.

@@ -3,7 +3,6 @@
   "validatorPath": ".hapify/validator.js",
   "project": "hapify-models.json",
   "name": "Documentation samples",
-  "description": "",
   "defaultFields": [
     {
       "name": "Id",

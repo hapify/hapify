@@ -18,7 +18,7 @@ Ceci lancera le générateur et copiera les fichiers générés dans votre boile
 Vous pouvez maintenant commencer à personnaliser et à utiliser le code généré.
 
 !!! tip "À savoir"
-    La commande `generate` peut gérer plusieurs [boilerplates ou channels](../terminology.md) à la fois.
+    La commande `generate` peut gérer plusieurs [boilerplates ou channels](../concepts/terminology.md) à la fois.
     Pour en savoir plus sur la commande `generate`, veuillez vous référer à [cet article](../../reference/cli.md#generate).
 
 ## Formater le code

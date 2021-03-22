@@ -3,7 +3,6 @@ nav:
   - Accueil: 'index.md'
   - Démarrer:
       - Installation: 'getting-started/installation.md'
-      - Terminologie: 'getting-started/terminology.md'
       - Utiliser un boilerplate existant:
           - Introduction: 'getting-started/existing-boilerplate/introduction.md'
           - "Étape 1: Cloner un boilerplate": 'getting-started/existing-boilerplate/step-1-clone-boilerplate.md'
@@ -18,6 +17,7 @@ nav:
           - "Étape 4: Rédiger les templates": 'getting-started/create-boilerplate/step-4-template-writing.md'
           - "Étape 5: Validateur de modèles de données": 'getting-started/create-boilerplate/step-5-models-validator.md'
       - Concepts:
+          - Terminologie: 'getting-started/concepts/terminology.md'
           - Concepts clés: 'getting-started/concepts/key-concepts.md'
           - Modèles de données: 'getting-started/concepts/models.md'
       - Dépannage: 'getting-started/troubleshooting.md'

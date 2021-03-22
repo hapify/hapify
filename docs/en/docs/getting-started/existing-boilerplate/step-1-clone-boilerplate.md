@@ -50,7 +50,7 @@ You must enter a URL compatible with `git clone`.
 
 ## Importing predefined data models
 
-You can import collections of predefined data models ([presets](../terminology.md)) from Hapify Cloud.
+You can import collections of predefined data models ([presets](../concepts/terminology.md)) from Hapify Cloud.
 To do so, select one or more presets when prompted:
 
 ```

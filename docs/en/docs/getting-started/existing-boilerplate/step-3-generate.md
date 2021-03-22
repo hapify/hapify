@@ -18,7 +18,7 @@ This will launch the generator and copy the generated files to your boilerplate 
 You can now start customizing and using the generated code.
 
 !!! tip "Tip"
-    The `generate` command can handle multiple [boilerplates or channels](../terminology.md) at once.
+    The `generate` command can handle multiple [boilerplates or channels](../concepts/terminology.md) at once.
     To learn more about the `generate` command, please refer to [this article](../../reference/cli.md#generate).
 
 ## Format the code

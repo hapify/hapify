@@ -1,6 +1,6 @@
 ## Hapify & Git patch
 
-Hapify allows you to regenerate the [target code](../terminology.md) without overwriting any changes you may have made.
+Hapify allows you to regenerate the [target code](../concepts/terminology.md) without overwriting any changes you may have made.
 This feature is based on the `git format-patch` and `git am` commands.
 This way you can use Hapify throughout your project, not just at startup.
 

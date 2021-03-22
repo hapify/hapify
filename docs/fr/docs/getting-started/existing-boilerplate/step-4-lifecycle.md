@@ -1,6 +1,6 @@
 ## Hapify & Git patch
 
-Hapify permet de régénérer le [code cible](../terminology.md) sans écraser les modifications que vous avez pu y apporter.
+Hapify permet de régénérer le [code cible](../concepts/terminology.md) sans écraser les modifications que vous avez pu y apporter.
 Cette fonctionnalité se base sur les commandes `git format-patch` et `git am`.
 Vous pouvez ainsi utiliser Hapify tout au long de votre projet et non pas en démarrage seulement.
 

@@ -58,7 +58,7 @@ hpf list
 Alias : `hpf ls`
 
 Cette commande affiche ce qui est visible pour le CLI à partir du répertoire courant.
-Elle affiche la liste des [channels](../getting-started/terminology.md) et la liste des modèles de données utilisés par ces channels.
+Elle affiche la liste des [channels](../getting-started/concepts/terminology.md) et la liste des modèles de données utilisés par ces channels.
 
 Le CLI recherche les fichiers `hapify.json` afin de détecter automatiquement les channels.
 Il réitère sur les sous-répertoires. La profondeur par défaut est de `2`.
@@ -120,7 +120,7 @@ hpf import
 
 Alias : `hpf m`
 
-Utilisez cette commande pour importer des modèles de données prédéfinis depuis Hapify Cloud (appelés [presets](../getting-started/terminology.md)).
+Utilisez cette commande pour importer des modèles de données prédéfinis depuis Hapify Cloud (appelés [presets](../getting-started/concepts/terminology.md)).
 
 _Importer des presets à partir d'ID_
 
@@ -143,7 +143,7 @@ Elle vous demandera de :
 
 -   sélectionner un boilerplate
 -   sélectionner ou créer le projet à utiliser
--   sélectionner des [presets](../getting-started/terminology.md) de modèles de données à importer
+-   sélectionner des [presets](../getting-started/concepts/terminology.md) de modèles de données à importer
 
 _Options_
 
@@ -186,7 +186,7 @@ hpf use
 
 Alias : `hpf u`
 
-Change le projet utilisé par un ou plusieurs [channels](../getting-started/terminology.md) existants.
+Change le projet utilisé par un ou plusieurs [channels](../getting-started/concepts/terminology.md) existants.
 Change l'ID du projet dans le fichier `hapify.json` pour chaque channel trouvé.
 Elle vous demandera de sélectionner ou de créer le projet à utiliser.
 

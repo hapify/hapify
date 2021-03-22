@@ -29,7 +29,7 @@ Les champs par défaut sont définis dans le fichier de configuration du boilerp
 
 ### Importer des modèles de données prédéfinis
 
-Cliquez sur le bouton `Import collections`, choisissez une collection ([preset](../terminology.md)) et validez.
+Cliquez sur le bouton `Import collections`, choisissez une collection ([preset](../concepts/terminology.md)) et validez.
 
 ![Hapify GUI - Models import](../../assets/gui-models-import-collections.jpg 'Models import')
 

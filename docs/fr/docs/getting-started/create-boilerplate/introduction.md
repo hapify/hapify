@@ -1,10 +1,10 @@
 ## Résumé
 
-Dans cette section, vous apprendrez comment créer votre propre [boilerplate](../terminology.md) avec Hapify.
+Dans cette section, vous apprendrez comment créer votre propre [boilerplate](../concepts/terminology.md) avec Hapify.
 
 Vous pouvez démarrer un boilerplate à partir de zéro ou utiliser un boilerplate pré-existant.
 
-Cette section se concentre sur l'écriture de [templates](../terminology.md) de code.
+Cette section se concentre sur l'écriture de [templates](../concepts/terminology.md) de code.
 Comme Hapify est un moteur agnostique et n'est pas limité à un cadre spécifique, nous ne nous concentrerons pas sur la structure du boilerplate elle-même.
 Nous étudierons des exemples de templates courants.
 
@@ -63,8 +63,8 @@ Sera écrite comme ceci avec la syntaxe Hapify :
     ```
 
 !!! success "Pour"
-    - Un [méta-code](../terminology.md) facile à lire
-    - Un méta-code plus court, rendant le [code cible](../terminology.md) plus lisible
+    - Un [méta-code](../concepts/terminology.md) facile à lire
+    - Un méta-code plus court, rendant le [code cible](../concepts/terminology.md) plus lisible
     - Encore plus court avec la variante courte
 
 !!! failure "Contre"

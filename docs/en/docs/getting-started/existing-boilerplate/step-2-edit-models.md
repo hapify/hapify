@@ -29,7 +29,7 @@ The default fields are defined in the boilerplate configuration file (`hapify.js
 
 ### Importing predefined data models
 
-Click on the `Import collections` button, choose a collection ([preset](../terminology.md)) and validate.
+Click on the `Import collections` button, choose a collection ([preset](../concepts/terminology.md)) and validate.
 
 ![Hapify GUI - Models import](../../assets/gui-models-import-collections.jpg 'Models import')
 

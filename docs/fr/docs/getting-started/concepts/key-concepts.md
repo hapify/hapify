@@ -32,11 +32,11 @@ Les modèles de données sont gérés dans une console Web locale.
 
 ## Hapify Boilerplate
 
-Un [boilerplate](../terminology.md) Hapify typique est divisée en deux parties : 
+Un [boilerplate](../concepts/terminology.md) Hapify typique est divisée en deux parties : 
 
 - Les fichiers dynamiques : Fichiers des templates Hapify, compatibles avec les modèles de données Hapify et le moteur Hapify.
 - Fichiers statiques : Tous les autres fichiers, qui ne sont pas liés aux modèles de données : Fichiers Docker, fichiers CSS, bibliothèques, plugins, etc.
 
 ### Channel
 
-Un [channel](../terminology.md) est un ensemble de templates. La plupart des boilerplates n'ont qu'un seul channel. Cependant, un boilerplate full-stack peut contenir deux channels, un pour les templates du front-end et un pour ceux du back-end par exemple.
+Un [channel](../concepts/terminology.md) est un ensemble de templates. La plupart des boilerplates n'ont qu'un seul channel. Cependant, un boilerplate full-stack peut contenir deux channels, un pour les templates du front-end et un pour ceux du back-end par exemple.

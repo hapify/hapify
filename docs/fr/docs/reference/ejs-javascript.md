@@ -1,5 +1,5 @@
 
-Hapify offre la possibilité d'écrire des template avec la syntaxe [EJS](https://ejs.co/) ou bien en JavaScript pur.
+Hapify offre la possibilité d'écrire des templates avec la syntaxe [EJS](https://ejs.co/) ou bien en JavaScript pur.
 Ces deux options se basent sur le même objet décrit ci-dessous.
 
 ## Objet modèle

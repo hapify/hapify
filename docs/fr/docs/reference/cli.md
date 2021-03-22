@@ -1,10 +1,8 @@
-# Hapify CLI
-
 ## Description
 
 Hapify est un outil de génération de code basé sur des modèles de données relationnels.
 Il utilise un langage de templating dédié.
-Il affiche une console web pour la définition des modèles et l'écriture des templates.
+Il affiche une console web pour la définition des modèles de données et l'écriture des templates.
 
 ## Utilisation
 

@@ -190,7 +190,7 @@ const utils = require('utils');
 const mongoDb = require('mongodb');
 ```
 
-Pour un modèle qui ne contient pas de champ de type `entity`, le résultat sera le suivant :
+Pour un modèle de données qui ne contient pas de champ de type `entity`, le résultat sera le suivant :
 
 ```javascript
 const utils = require('utils');

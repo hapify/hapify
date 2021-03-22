@@ -12,4 +12,5 @@ Hapify utilise des termes spécifiques pour décrire ses concepts.
 - **projet**: Application définie par une liste de modèles de données.
 - **code cible**: Code source généré par la rencontre d'un template et d'un ou plusieurs modèles de données. C'est le code source utilisé par l'application finale.
 - **méta-code**: Code source du template. Ce code va décrire comment générer le code cible à partir d'un ou plusieurs modèles de données.
-- **presets**: Collections de modèles de données prédéfinies pouvant être importées au démarrage d'un projet.
+- **preset**: Collection de modèles de données prédéfinie pouvant être importée au démarrage d'un projet.
+- **action**: Opération pouvant être effectuée sur une entité: _Create_, _Read_, _Update_, _Delete_, _Search_, _Count_.

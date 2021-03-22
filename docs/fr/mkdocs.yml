@@ -66,8 +66,8 @@ extra:
       link: https://hapify.slack.com/
   alternate:
     - name: English
-      link: https://documentation.hapify.io/
+      link: https://docs.hapify.io/
       lang: en
     - name: Français
-      link: https://documentation.hapify.io/fr/
+      link: https://docs.hapify.io/fr/
       lang: fr

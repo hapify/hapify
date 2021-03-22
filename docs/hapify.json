@@ -3,7 +3,7 @@
   "validatorPath": ".hapify/validator.js",
   "project": "hapify-models.json",
   "name": "Documentation samples",
-  "description": "A new Hapify channel",
+  "description": "",
   "defaultFields": [
     {
       "name": "Id",

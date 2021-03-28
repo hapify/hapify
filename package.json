@@ -1,0 +1,45 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "setup": "lerna run setup",
+    "teardown": "lerna run teardown",
+    "build": "lerna run build",
+    "lint": "prettier --write '**/*.{ts,js}'",
+    "semantic-release": "semantic-release",
+    "test": "lerna run --parallel test"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
+    "eslint": "^7.23.0",
+    "husky": "^5.2.0",
+    "lerna": "^4.0.0",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
+    "semantic-release": "^17.4.2"
+  },
+  "dependencies": {},
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "pretty-quick --staged --pattern '**/*.{ts,js}'"
+    }
+  },
+  "workspaces": [
+    "./packages/*"
+  ],
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "prettier": {
+    "printWidth": 160,
+    "tabWidth": 4,
+    "useTabs": true,
+    "parser": "typescript",
+    "singleQuote": true,
+    "semi": true
+  }
+}

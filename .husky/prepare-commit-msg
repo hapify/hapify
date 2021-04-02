@@ -1,0 +1,9 @@
+#!/bin/sh
+. "$(dirname $0)/_/husky.sh"
+
+if [ -z ${2+x} ]
+then
+    exec < /dev/tty && npx tractr-commit --hook || true
+fi
+
+pretty-quick --staged --pattern '**/*.{ts,js}'

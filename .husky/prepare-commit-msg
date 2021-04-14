@@ -3,7 +3,7 @@
 
 if [ -z ${2+x} ]
 then
-    exec < /dev/tty && npx tractr-commit --hook || true
+    exec < /dev/tty && node commit.js --hook || true
 fi
 
-pretty-quick --staged --pattern '**/*.{ts,js}'
+npx pretty-quick --staged --pattern '**/*.{ts,js}'

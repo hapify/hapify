@@ -9,7 +9,7 @@ jobs:
       matrix:
         node: [15.x]
         os: [ubuntu-latest]
-        scope: [tractr]
+        scope: [hapify]
     name:
       install on node ${{ matrix.node }} and ${{ matrix.os }} at ${{
       matrix.scope }}

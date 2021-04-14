@@ -12,7 +12,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rimraf dist && tsc -p .",
-    "clean": "rimraf dist && rimraf node_modules",
+    "clean": "rimraf dist node_modules coverage .nyc_output",
     "lint": "prettier --write '**/*.{ts,js}'",
     "test": "nyc mocha",
     "update": "npm-check -u"

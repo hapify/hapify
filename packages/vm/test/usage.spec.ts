@@ -1,7 +1,7 @@
 import { expect, fail } from '@hapi/code';
 import 'mocha';
 
-import { HapifyVM } from '../index';
+import { HapifyVM } from '../src';
 
 describe('usage', () => {
   it('normal', () => {

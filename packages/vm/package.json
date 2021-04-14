@@ -13,7 +13,15 @@
   "scripts": {
     "build": "rimraf dist && tsc -p .",
     "clean": "rimraf dist node_modules coverage .nyc_output",
-    "lint": "prettier --write '**/*.{ts,js}'",
+    "prepublishOnly": "npm run build",
+    "lint": "npm run lint:tsc && npm run lint:prettier && npm run lint:eslint",
+    "lint:eslint": "eslint \"{src,test}/**/*.{ts,js}\"",
+    "lint:eslint:fix": "npm run lint:eslint -- --fix",
+    "lint:fix": "npm run lint:tsc:fix && npm run lint:prettier:fix && npm run lint:eslint:fix",
+    "lint:prettier": "prettier --check \"src/**/*.{ts,js}\" ",
+    "lint:prettier:fix": "prettier --write \"src/**/*.{ts,js}\"",
+    "lint:tsc": "tsc --noEmit",
+    "lint:tsc:fix": "npm run lint:tsc",
     "test": "nyc mocha",
     "update": "npm-check -u"
   },

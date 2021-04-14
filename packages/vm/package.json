@@ -9,7 +9,8 @@
     "teardown": "rimraf node_modules",
     "update": "npm-check -u",
     "test": "nyc mocha",
-    "build": "rimraf dist && tsc -p ."
+    "build": "rimraf dist && tsc -p .",
+    "lint": "prettier --write '**/*.{ts,js}'"
   },
   "repository": {
     "type": "git",

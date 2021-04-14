@@ -5,7 +5,7 @@
     "setup": "lerna run setup",
     "teardown": "lerna run teardown",
     "build": "lerna run build",
-    "lint": "prettier --write '**/*.{ts,js}'",
+    "lint": "lerna run lint",
     "semantic-release": "semantic-release",
     "test": "lerna run --parallel test"
   },

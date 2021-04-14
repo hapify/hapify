@@ -13,6 +13,13 @@ interface HapifyVMOptions {
   eval: boolean;
 }
 
+export {
+  EvaluationError,
+  IntegrityError,
+  OutputError,
+  TimeoutError
+}
+
 export class HapifyVM {
   /** Default options */
   private defaultOptions: HapifyVMOptions = {

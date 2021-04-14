@@ -6,22 +6,16 @@
     "hapify",
     "vm"
   ],
-  "homepage": "https://github.com/hapify/vm#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com:hapify/vm.git"
-  },
   "license": "MIT",
   "author": "Edouard Demotes-Mainard <edouard@tractr.net>",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "setup": "npm install",
-    "teardown": "rimraf node_modules",
-    "update": "npm-check -u",
-    "test": "nyc mocha",
     "build": "rimraf dist && tsc -p .",
-    "lint": "prettier --write '**/*.{ts,js}'"
+    "clean": "rimraf dist && rimraf node_modules",
+    "lint": "prettier --write '**/*.{ts,js}'",
+    "test": "nyc mocha",
+    "update": "npm-check -u"
   },
   "dependencies": {
     "vm2": "^3.9.2"
@@ -29,11 +23,7 @@
   "devDependencies": {
     "@hapi/code": "^8.0.2",
     "@types/mocha": "^8.2.0",
-    "@types/node": "^14.14.22",
-    "mocha": "^8.2.1",
-    "npm-check": "^5.9.2",
-    "nyc": "^15.1.0",
-    "rimraf": "^3.0.2"
+    "mocha": "^8.2.1"
   },
   "engines": {
     "node": ">=9"

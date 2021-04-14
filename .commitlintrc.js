@@ -1,50 +1,52 @@
-
 const types = {
   feat: {
-    description: "A new feature",
-    title: "Features"
+    description: 'A new feature',
+    title: 'Features',
   },
   fix: {
-    description: "A bug fix",
-    title: "Bug Fixes"
+    description: 'A bug fix',
+    title: 'Bug Fixes',
   },
   docs: {
-    description: "Documentation only changes",
-    title: "Documentation"
+    description: 'Documentation only changes',
+    title: 'Documentation',
   },
   style: {
-    description: "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)",
-    title: "Styles"
+    description:
+      'Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)',
+    title: 'Styles',
   },
   refactor: {
-    description: "A code change that neither fixes a bug nor adds a feature",
-    title: "Code Refactoring"
+    description: 'A code change that neither fixes a bug nor adds a feature',
+    title: 'Code Refactoring',
   },
   perf: {
-    description: "A code change that improves performance",
-    title: "Performance Improvements"
+    description: 'A code change that improves performance',
+    title: 'Performance Improvements',
   },
   test: {
-    description: "Adding missing tests or correcting existing tests",
-    title: "Tests"
+    description: 'Adding missing tests or correcting existing tests',
+    title: 'Tests',
   },
   build: {
-    description: "Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)",
-    title: "Builds"
+    description:
+      'Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)',
+    title: 'Builds',
   },
   ci: {
-    description: "Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)",
-    title: "Continuous Integrations"
+    description:
+      'Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)',
+    title: 'Continuous Integrations',
   },
   chore: {
     description: "Other changes that don't modify src or test files",
-    title: "Chores"
+    title: 'Chores',
   },
   revert: {
-    description: "Reverts a previous commit",
-    title: "Reverts"
-  }
-}
+    description: 'Reverts a previous commit',
+    title: 'Reverts',
+  },
+};
 
 module.exports = {
   extends: ['@commitlint/config-conventional'],

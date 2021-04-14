@@ -1,4 +1,4 @@
-<img align="center" width="300" src="https://github.com/hapify/hapify/blob/master/images/Hapify_logo_white.png" alt="Hapify Logo">
+![Logo](images/Hapify_logo_white.png)
 
 - [Howdy, developer!](https://github.com/hapify/hapify#howdy-developer)
 - [Good reasons to check out Hapify](https://github.com/hapify/hapify#5-reasons-to-check-out-hapify)
@@ -20,7 +20,7 @@ Hapify was born out of the desire to **accelerate modern development**, by repla
 
 | 1. Dynamic Templating | 2. Data modeling | 3. Code Engine |
 | --- | --- | --- |
-| <img align="center" width="600" src="https://github.com/hapify/hapify/blob/master/images/1.adaptative-template-hapify.png"> | <img align="center" width="600" src="https://github.com/hapify/hapify/blob/master/images/2.data-modelisation-hapify.png"> | <img align="center" width="600" src="https://github.com/hapify/hapify/blob/master/images/3.code-engine-hapify.png"> |
+| ![Adaptative template](images/1.adaptative-template-hapify.png) | ![Data models](images/2.data-modelisation-hapify.png) | ![Code engine](images/3.code-engine-hapify.png) |
 
 
 ## 5 reasons to check out Hapify

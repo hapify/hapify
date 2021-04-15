@@ -4,8 +4,6 @@
 
 This package parses templates written with the Hapify Syntax.
 
-[![Build Status](https://api.travis-ci.com/hapify/syntax.svg?branch=master)](https://api.travis-ci.com/hapify/syntax) [![codecov](https://codecov.io/gh/hapify/syntax/branch/master/graph/badge.svg)](https://codecov.io/gh/hapify/syntax)
-
 ## Usage
 
 ```typescript

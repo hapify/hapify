@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@hapi/hoek": "^9.1.1",
-    "@hapify/vm": "^0.3.6",
+    "@hapify/vm": "^1.0.1",
     "escape-string-regexp": "^4.0.0",
     "line-column": "^1.0.2"
   },

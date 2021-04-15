@@ -1,16 +1,21 @@
 import { expect, fail } from '@hapi/code';
 import 'mocha';
 
-import { EvaluationError, HapifyVM, IntegrityError, OutputError, TimeoutError } from '../src';
+import {
+  EvaluationError,
+  HapifyVM,
+  IntegrityError,
+  OutputError,
+  TimeoutError,
+} from '../src';
 
 describe('usage', () => {
-
   it('errors are defined', () => {
     expect(EvaluationError).to.exist();
     expect(IntegrityError).to.exist();
     expect(OutputError).to.exist();
     expect(TimeoutError).to.exist();
-  })
+  });
 
   it('normal', () => {
     expect(
@@ -41,7 +46,9 @@ describe('usage', () => {
   });
 
   it('return non string but allowed', () => {
-    expect(new HapifyVM({ allowAnyOutput: true }).run('return 1', {})).to.equal(1);
+    expect(new HapifyVM({ allowAnyOutput: true }).run('return 1', {})).to.equal(
+      1,
+    );
   });
 
   it('timeout', () => {

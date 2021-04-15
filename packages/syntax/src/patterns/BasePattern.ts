@@ -1,6 +1,6 @@
 import LineColumn from 'line-column';
 
-import { Action, PatternFactory, ReplacementCallback } from '../interfaces';
+import { Action, PatternFactory, ReplacementCallback } from '../Interfaces';
 
 /** Abstract base pattern */
 export class BasePattern {

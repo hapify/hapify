@@ -1,4 +1,4 @@
-import { BasePattern } from './base';
+import { BasePattern } from './BasePattern';
 
 /** Comment pattern */
 const RegEx = /<<#([\s\S]+?)>>/g;

@@ -1,8 +1,8 @@
 import EscapeStringRegexp from 'escape-string-regexp';
 
 import { ParsingError } from '../errors/ParsingError';
-import { Replacement } from '../interfaces';
-import { BasePattern } from './base';
+import { Replacement } from '../Interfaces';
+import { BasePattern } from './BasePattern';
 
 const Cases: Replacement[] = [
 	{ search: ['aA', 'camel'], replace: 'camel' },

@@ -1,8 +1,8 @@
 import EscapeStringRegexp from 'escape-string-regexp';
 
 import { InternalError } from '../errors/InternalError';
-import { Replacement } from '../interfaces';
-import { BasePattern } from './base';
+import { Replacement } from '../Interfaces';
+import { BasePattern } from './BasePattern';
 
 /** if () { pattern */
 const IfPattern = /<<(\?|if)(\d+)?\s+([a-zA-Z_.]+)(\s+[a-zA-Z()[\]!+*\-/\s]+)?\s*>>/g;

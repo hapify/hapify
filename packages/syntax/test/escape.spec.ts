@@ -3,8 +3,8 @@ import { readFileSync, readJSONSync } from 'fs-extra';
 
 import 'mocha';
 import { HapifySyntax } from '../src';
-import { EscapePattern } from '../src/patterns/escape';
-import { EscapeBackSlashesPattern } from '../src/patterns/escape-back-slashes';
+import { EscapeBackSlashesPattern } from '../src/patterns/EscapeBackSlashesPattern';
+import { EscapePattern } from '../src/patterns/EscapePattern';
 
 const Model = readJSONSync('./models/video.json');
 

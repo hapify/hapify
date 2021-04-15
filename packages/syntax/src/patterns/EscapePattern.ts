@@ -1,4 +1,4 @@
-import { BasePattern } from './base';
+import { BasePattern } from './BasePattern';
 
 /** Start pattern and replacer */
 const Start = {

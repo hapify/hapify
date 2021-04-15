@@ -1,4 +1,4 @@
-import { BasePattern } from './base';
+import { BasePattern } from './BasePattern';
 
 /** Escape quotes pattern */
 export class EscapeQuotesPattern extends BasePattern {

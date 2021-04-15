@@ -3,7 +3,7 @@ import { readFileSync, readJSONSync } from 'fs-extra';
 
 import 'mocha';
 import { HapifySyntax } from '../src';
-import { CommentPattern } from '../src/patterns/comment';
+import { CommentPattern } from '../src/patterns/CommentPattern';
 
 const Model = readJSONSync('./models/video.json');
 

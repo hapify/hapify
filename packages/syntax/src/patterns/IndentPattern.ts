@@ -1,4 +1,4 @@
-import { BasePattern } from './base';
+import { BasePattern } from './BasePattern';
 
 const IndentToRemove = /^ +<<(#|<|\?\?|\?|@|if|for|else|elseif|endif|endfor)([\s\S]*?)>>/gm;
 const IndentReplace = '<<$1$2>>';

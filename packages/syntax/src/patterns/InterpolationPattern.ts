@@ -1,4 +1,4 @@
-import { BasePattern } from './base';
+import { BasePattern } from './BasePattern';
 
 /** Interpolation pattern */
 const RegEx = /<<=([\s\S]+?)>>/g;

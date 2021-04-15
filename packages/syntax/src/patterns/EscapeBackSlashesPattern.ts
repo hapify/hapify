@@ -1,4 +1,4 @@
-import { BasePattern } from './base';
+import { BasePattern } from './BasePattern';
 
 /** Escape back-slashes pattern */
 export class EscapeBackSlashesPattern extends BasePattern {

@@ -1,4 +1,4 @@
-import { ConditionalPattern } from './conditional';
+import { ConditionalPattern } from './ConditionalPattern';
 
 /** for() { pattern */
 const ForPattern = /<<(@|for)(\d+)?\s+([a-zA-Z_.]+)(\s+[a-zA-Z()!+*\-/\s]+)?\s+([a-zA-Z_]+)\s*>>/g;

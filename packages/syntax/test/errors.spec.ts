@@ -3,10 +3,7 @@ import { OutputError } from '@hapify/vm';
 import { readFileSync, readJSONSync } from 'fs-extra';
 import 'mocha';
 
-import { ArgumentsError , EvaluationError , HapifySyntax , TimeoutError } from '../src';
-
-
-
+import { ArgumentsError, EvaluationError, HapifySyntax, TimeoutError } from '../src';
 
 const Model = readJSONSync('./models/video.json');
 

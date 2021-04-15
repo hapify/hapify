@@ -7,17 +7,17 @@ import { EvaluationError } from './errors/EvaluationError';
 import { InternalError } from './errors/InternalError';
 import { ParsingError } from './errors/ParsingError';
 import { TimeoutError } from './errors/TimeoutError';
-import { Action, ModelInput, Options, PatternFactory } from './interfaces';
-import { CommentPattern } from './patterns/comment';
-import { ConditionalPattern } from './patterns/conditional';
-import { EscapePattern } from './patterns/escape';
-import { EscapeBackSlashesPattern } from './patterns/escape-back-slashes';
-import { EscapeQuotesPattern } from './patterns/escape-quotes';
-import { EvaluatePattern } from './patterns/evaluate';
-import { IndentPattern } from './patterns/indent';
-import { InterpolationPattern } from './patterns/interpolation';
-import { IterationPattern } from './patterns/iteration';
-import { NameInterpolationPattern } from './patterns/name-interpolation';
+import { Action, ModelInput, Options, PatternFactory } from './Interfaces';
+import { CommentPattern } from './patterns/CommentPattern';
+import { ConditionalPattern } from './patterns/ConditionalPattern';
+import { EscapeBackSlashesPattern } from './patterns/EscapeBackSlashesPattern';
+import { EscapePattern } from './patterns/EscapePattern';
+import { EscapeQuotesPattern } from './patterns/EscapeQuotesPattern';
+import { EvaluatePattern } from './patterns/EvaluatePattern';
+import { IndentPattern } from './patterns/IndentPattern';
+import { InterpolationPattern } from './patterns/InterpolationPattern';
+import { IterationPattern } from './patterns/IterationPattern';
+import { NameInterpolationPattern } from './patterns/NameInterpolationPattern';
 
 /** Ordered patterns */
 const PatternsStack = [

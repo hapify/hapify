@@ -1,0 +1,78 @@
+'use strict';
+
+<<? F nullable>>
+ ...
+<<?? F nu*(in+rs)>>
+ ...
+<<??>>
+ ...
+<<?>>
+
+<<?34 F nullable or internal>>
+ ...
+<<??76 Ac [ad/gs]>>
+ ...
+<<?>>
+
+<<if F nullable-pr>>
+ ...
+<<elseif F primary>>
+ ...
+<<else>>
+ ...
+<<endif>>
+
+<<if34 F nullable>>
+ ...
+<<elseif76 F primary>>
+ ...
+<<endif>>
+
+<<@ F nu f>>
+ @
+<<@>>
+
+<<@30 F nu f>>
+ @
+<<@>>
+
+<<for R /nu/pr/os/ml+ml r>>
+ @
+<<endfor>>
+
+<<for34 F -nu f>>
+ @
+<<endfor>>
+
+<<if2 R>>
+<<elseif51 R>>
+<<??66 R>>
+<<?>>
+
+<<< ifar = root >>>
+<<ifar camel>>
+<<ifar R>>
+
+<<='yes'>>
+
+<<# comment >>
+<<#
+Multi line comments
+>>
+
+<<<
+// Multiline evaluation
+>>>
+
+<<m.f aA>>
+<<M AA>>
+<<f a>>
+<<f A>>
+<<f a-a>>
+<<f A-A>>
+<<f a_a>>
+<<f A_A>>
+<<f aa>>
+<<f R>>
+
+method: Pres.GetEntity('<<M a_a>>', 'params.<<P a_a>>'), assign: '<<M a_a>>' }

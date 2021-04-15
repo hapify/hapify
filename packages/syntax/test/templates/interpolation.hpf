@@ -1,0 +1,3 @@
+This is the snake <<=root.names.snake>>.
+This is the kebab <<=`${root.names.kebab}`>>.
+This model contains <<=root.f.l.length>> fields.

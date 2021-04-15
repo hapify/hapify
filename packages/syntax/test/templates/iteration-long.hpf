@@ -1,0 +1,19 @@
+Iteration testing.
+
+<<for Fields primary and internal f>>
+This model has one primary internal field<<endfor>>
+
+<<for Fields not nullable field>>
+This model has not nullable fields<<endfor>>
+
+<<for F field>>
+This model has fields<<endfor>>
+
+<<for2 Fields not nullable f>>
+This model has at least 2 not nullable fields<<endfor>>
+
+<<for Fields enum f>>
+<<f aA>>:<<@ f.enum e>> '<<e kebab>>'<<@>>
+<<@>>
+
+End

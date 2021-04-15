@@ -1,0 +1,34 @@
+<<M camel>>
+
+<<@1 F f>>
+    f loop 1
+<<@>>
+
+
+    <<@ F f>>
+    f loop 2
+    <<@>>
+
+    <<for2 F f>>
+    f loop 3
+    <<endfor>>
+
+    <<?5 F>>
+        F5
+    <<?? F>>
+        F
+    <<??>>
+        else
+    <<?>>
+
+    <<if5 F>>
+        F5
+    <<elseif F>>
+        F
+    <<else>>
+        else
+    <<endif>>
+
+    <<#comment>>
+    <<<'eval'>>>
+    <<Model camel>>

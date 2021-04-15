@@ -1,0 +1,11 @@
+Conditional testing.
+This model has a primary internal field
+This model has no hidden or nullable fields
+This model has at least two sortable fields
+This model has at least 2 sortable fields
+This has something else
+Big condition
+At least 2 primary or label
+This model has some fields
+This model has some enum
+End

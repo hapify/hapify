@@ -1,0 +1,20 @@
+Iteration testing.
+This model has one primary internal field
+This model has not nullable fields
+This model has not nullable fields
+This model has not nullable fields
+This model has not nullable fields
+This model has not nullable fields
+This model has not nullable fields
+This model has not nullable fields
+This model has fields
+This model has fields
+This model has fields
+This model has fields
+This model has fields
+This model has fields
+This model has fields
+This model has at least 2 not nullable fields
+This model has at least 2 not nullable fields
+type: 'advertising' 'movie' 'user-asset'
+End

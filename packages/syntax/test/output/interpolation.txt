@@ -1,0 +1,3 @@
+This is the snake youtube_video.
+This is the kebab youtube-video.
+This model contains 6 fields.

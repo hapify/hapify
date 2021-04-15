@@ -51,7 +51,9 @@ describe('possible attacks', () => {
 
   it('try to use console', () => {
     const script = 'console.log("hi")';
-    expect(() => new HapifyVM().run(script, {})).to.throw("Cannot read property 'log' of undefined");
+    expect(() => new HapifyVM().run(script, {})).to.throw(
+      "Cannot read property 'log' of undefined",
+    );
   });
 
   it('return fake string', () => {

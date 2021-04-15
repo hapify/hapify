@@ -28,8 +28,8 @@ export class HapifyVM {
 
   /** Built-in objects to remove from sandbox */
   private forbiddenObjects: { [key: string]: any } = {
-    console: undefined
-  }
+    console: undefined,
+  };
 
   /** RegEx used to extract error's line & column */
   private stackRegex = /vm\.js:([0-9]+):([0-9]+)/m;

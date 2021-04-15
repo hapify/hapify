@@ -6,7 +6,6 @@ coverage/
 .idea
 .vscode
 
-.gitignore
 .prettierignore
 
 .mocharc.json

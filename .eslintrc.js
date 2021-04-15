@@ -24,6 +24,9 @@ module.exports = {
   rules: {
     'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
 
+    // Not compatible with Hapify templates
+    'no-template-curly-in-string': 'off',
+
     // Not compatible with nestjs
     'no-useless-constructor': 'off',
     'class-methods-use-this': 'off',

@@ -1,0 +1,11 @@
+This is the camel <<M aA>>.
+This is the pascal <<M AA>>.
+This is the lower <<M a >>.
+This is the capital <<M  A>>.
+This is the kebab <<M a-a>>.
+This is the header <<M A-A>>.
+This is the snake <<M a_a>>.
+This is the constant <<M A_A>>.
+This is the compact <<M aa>>.
+This is the raw <<M R>>.
+This should not be detected <<Ma>>.

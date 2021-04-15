@@ -1,10 +1,10 @@
 {
-  "name": "@hapify/vm",
-  "version": "1.0.1",
-  "description": "Sandbox for JavaScript code",
+  "name": "@hapify/syntax",
+  "version": "0.9.1",
+  "description": "Templating syntax optimized for Hapify models handling.",
   "keywords": [
     "hapify",
-    "vm"
+    "syntax"
   ],
   "license": "MIT",
   "author": "Edouard Demotes-Mainard <edouard@tractr.net>",
@@ -23,15 +23,22 @@
     "lint:tsc": "tsc --noEmit",
     "lint:tsc:fix": "npm run lint:tsc",
     "test": "nyc mocha",
-    "update": "npm-check -u"
-  },
-  "dependencies": {
-    "vm2": "^3.9.2"
+    "update": "npm-check -u",
+    "convert-to-long": "ts-node utils/convert-to-long.ts"
   },
   "devDependencies": {
     "@hapi/code": "^8.0.2",
+    "@types/fs-extra": "^9.0.11",
+    "@types/line-column": "^1.0.0",
     "@types/mocha": "^8.2.0",
+    "fs-extra": "^9.1.0",
     "mocha": "^8.2.1"
+  },
+  "dependencies": {
+    "@hapi/hoek": "^9.1.1",
+    "@hapify/vm": "^1.0.1",
+    "escape-string-regexp": "^4.0.0",
+    "line-column": "^1.0.2"
   },
   "engines": {
     "node": ">=9"

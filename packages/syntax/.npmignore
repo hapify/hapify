@@ -1,5 +1,6 @@
 src/
 test/
+utils/
 coverage/
 .nyc_output/
 

@@ -1,0 +1,8 @@
+{
+  "printWidth": 160,
+  "tabWidth": 4,
+  "useTabs": true,
+  "parser": "typescript",
+  "singleQuote": true,
+  "semi": true
+}

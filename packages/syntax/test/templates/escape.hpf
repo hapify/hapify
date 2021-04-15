@@ -1,0 +1,19 @@
+Escaped text
+
+This \<\<should\>\> be escaped.
+ - This \<\<should\>\> be escaped \<\<also\>\>.
+ - This <\<\<should>\>\> be escaped.
+
+<<< out += 'This is a slash:\\'; >>>
+
+This should not be escaped: Path\To\Module::Class
+
+This should not be escaped: Path\To\<<M AA>>
+
+This \<\<should\>\> be escaped.
+
+This should show two \\ slashes
+This should show three \\\ slashes
+This should show four \\\\ slashes
+
+This is the last one \

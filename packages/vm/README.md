@@ -4,8 +4,6 @@
 
 This repository provides a secured sandbox to execute unsafe JavaScript code
 
-[![Release and Deploy](https://github.com/hapify/hapify/actions/workflows/deploy.yml/badge.svg)](https://github.com/hapify/hapify/actions/workflows/deploy.yml)
-
 ## Usage
 
 ### Basic usage

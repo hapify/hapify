@@ -1,0 +1,49 @@
+Conditional testing.
+
+<<if Fields primary and internal >>
+This model has a primary internal field
+<<endif>>
+
+<<if  Fields  not (hidden or nullable)  >>
+This model has no hidden or nullable fields
+<<endif>>
+
+<<if2 Fields sortable>>
+This model has at least two sortable fields
+<<endif>>
+
+<<if4 Fields sortable>>
+This model has at least 4 sortable fields
+<<elseif2 Fields sortable>>
+This model has at least 2 sortable fields
+<<endif>>
+
+<<if4 Fields sortable>>
+This model has at least 4 sortable fields
+<<elseif3 Fields sortable>>
+This model has at least 3 sortable fields
+<<else>>
+This has something else
+<<endif>>
+
+<<if Fields unique >>
+This model has a unique field
+<<endif>>
+
+<<if Fields label andNot primary andNot unique and not nullable andNot multiple and searchable and sortable andNot hidden andNot internal >>
+Big condition
+<<endif>>
+
+<<if2 Fields primary or label >>
+At least 2 primary or label
+<<endif>>
+
+<<if Fields  >>
+This model has some fields
+<<endif>>
+
+<<? F enum >>
+This model has some enum
+<<?>>
+
+End

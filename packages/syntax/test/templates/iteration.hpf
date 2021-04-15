@@ -1,0 +1,19 @@
+Iteration testing.
+
+<<@ F pr*in f>>
+This model has one primary internal field<<@>>
+
+<<@ F !nu field>>
+This model has not nullable fields<<@>>
+
+<<@ F field>>
+This model has fields<<@>>
+
+<<@2 F !nu f>>
+This model has at least 2 not nullable fields<<@>>
+
+<<@ F tU f>>
+<<f aA>>:<<@ f.e e>> '<<e a-a>>'<<@>>
+<<@>>
+
+End

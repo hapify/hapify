@@ -1,0 +1,11 @@
+This is the camel youtubeVideo.
+This is the pascal YoutubeVideo.
+This is the lower youtube video.
+This is the capital Youtube Video.
+This is the kebab youtube-video.
+This is the header Youtube-Video.
+This is the snake youtube_video.
+This is the constant YOUTUBE_VIDEO.
+This is the compact youtubevideo.
+This is the raw Youtube video.
+This should not be detected <<Ma>>.

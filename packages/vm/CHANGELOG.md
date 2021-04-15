@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# @hapify/vm [1.1.0](https://github.com/hapify/hapify/compare/@hapify/vm@1.0.1...@hapify/vm@1.1.0) (2021-04-15)
+
+
+### Features
+
+* import syntax module ([#13](https://github.com/hapify/hapify/issues/13)) ([ec40ec2](https://github.com/hapify/hapify/commit/ec40ec22fc8171512c1e7c8fd7e3f159a6097098))
+
 ## @hapify/vm [1.0.1](https://github.com/hapify/hapify/compare/@hapify/vm@1.0.0...@hapify/vm@1.0.1) (2021-04-15)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@hapify/vm",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Sandbox for JavaScript code",
   "keywords": [
     "hapify",

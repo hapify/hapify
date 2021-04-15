@@ -1,18 +1,17 @@
-import * as Fs from 'fs';
-
 import { expect } from '@hapi/code';
+import { readFileSync, readJSONSync } from 'fs-extra';
 
 import 'mocha';
 import { HapifySyntax } from '../src';
 import { NameInterpolationPattern } from '../src/patterns/name-interpolation';
 
-const Model = require('./models/video.json');
+const Model = readJSONSync('./models/video.json');
 
-const Input = Fs.readFileSync(`${__dirname}/templates/name-interpolation-long.hpf`, 'utf8');
-const Output = Fs.readFileSync(`${__dirname}/output/name-interpolation.txt`, 'utf8');
+const Input = readFileSync(`${__dirname}/templates/name-interpolation-long.hpf`, 'utf8');
+const Output = readFileSync(`${__dirname}/output/name-interpolation.txt`, 'utf8');
 
 describe('name interpolation long', () => {
-	it('run', async () => {
+	it('run', () => {
 		// Test input validity
 		expect(Input).to.be.a.string();
 		expect(Output).to.be.a.string();
@@ -21,7 +20,7 @@ describe('name interpolation long', () => {
 		expect(HapifySyntax.run(Input, Model)).to.equal(Output);
 	});
 
-	it('unit', async () => {
+	it('unit', () => {
 		// Names
 		expect(NameInterpolationPattern.execute('<<Model camel>>')).to.equal('${root.names.camel}');
 		expect(NameInterpolationPattern.execute('<<Model pascal>>')).to.equal('${root.names.pascal}');

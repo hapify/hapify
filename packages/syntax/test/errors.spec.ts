@@ -1,27 +1,27 @@
-import * as Fs from 'fs';
-
 import { expect, fail } from '@hapi/code';
-
-import 'mocha';
 import { OutputError } from '@hapify/vm';
+import { readFileSync, readJSONSync } from 'fs-extra';
+import 'mocha';
 
-import { HapifySyntax } from '../src';
-import { ArgumentsError, EvaluationError, TimeoutError } from '../src/errors';
+import { ArgumentsError , EvaluationError , HapifySyntax , TimeoutError } from '../src';
 
-const Model = require('./models/video.json');
 
-const Simple = Fs.readFileSync(`${__dirname}/templates/simple.hpf`, 'utf8');
-const InputConditional = Fs.readFileSync(`${__dirname}/templates/error-conditional.hpf`, 'utf8');
-const InputIteration = Fs.readFileSync(`${__dirname}/templates/error-iteration.hpf`, 'utf8');
-const InputInterpolation = Fs.readFileSync(`${__dirname}/templates/error-interpolation.hpf`, 'utf8');
-const InputTimeout = Fs.readFileSync(`${__dirname}/templates/error-timeout.hpf`, 'utf8');
-const InputRequire = Fs.readFileSync(`${__dirname}/templates/error-require.hpf`, 'utf8');
-const InputImport = Fs.readFileSync(`${__dirname}/templates/error-import.hpf`, 'utf8');
-const InputGlobal = Fs.readFileSync(`${__dirname}/templates/error-global.hpf`, 'utf8');
-const InputReturn = Fs.readFileSync(`${__dirname}/templates/error-return.hpf`, 'utf8');
+
+
+const Model = readJSONSync('./models/video.json');
+
+const Simple = readFileSync(`${__dirname}/templates/simple.hpf`, 'utf8');
+const InputConditional = readFileSync(`${__dirname}/templates/error-conditional.hpf`, 'utf8');
+const InputIteration = readFileSync(`${__dirname}/templates/error-iteration.hpf`, 'utf8');
+const InputInterpolation = readFileSync(`${__dirname}/templates/error-interpolation.hpf`, 'utf8');
+const InputTimeout = readFileSync(`${__dirname}/templates/error-timeout.hpf`, 'utf8');
+const InputRequire = readFileSync(`${__dirname}/templates/error-require.hpf`, 'utf8');
+const InputImport = readFileSync(`${__dirname}/templates/error-import.hpf`, 'utf8');
+const InputGlobal = readFileSync(`${__dirname}/templates/error-global.hpf`, 'utf8');
+const InputReturn = readFileSync(`${__dirname}/templates/error-return.hpf`, 'utf8');
 
 describe('errors', () => {
-	it('run', async () => {
+	it('run', () => {
 		// Test input validity
 		expect(Simple).to.be.a.string();
 		expect(Model).to.be.an.object();
@@ -45,7 +45,7 @@ describe('errors', () => {
 		expect(HapifySyntax.run(Simple, Model)).to.be.a.string();
 	});
 
-	it('Check reverse lineColumn error for conditional', async () => {
+	it('Check reverse lineColumn error for conditional', () => {
 		// Test input validity
 		expect(InputConditional).to.be.a.string();
 		expect(Model).to.be.an.object();
@@ -62,7 +62,7 @@ describe('errors', () => {
 		}
 	});
 
-	it('Check reverse lineColumn error for iteration', async () => {
+	it('Check reverse lineColumn error for iteration', () => {
 		// Test input validity
 		expect(InputIteration).to.be.a.string();
 		expect(Model).to.be.an.object();
@@ -79,7 +79,7 @@ describe('errors', () => {
 		}
 	});
 
-	it('Check reverse lineColumn error for name interpolation', async () => {
+	it('Check reverse lineColumn error for name interpolation', () => {
 		// Test input validity
 		expect(InputInterpolation).to.be.a.string();
 		expect(Model).to.be.an.object();
@@ -96,7 +96,7 @@ describe('errors', () => {
 		}
 	});
 
-	it('Do not returns string', async () => {
+	it('Do not returns string', () => {
 		// Test input validity
 		expect(InputReturn).to.be.a.string();
 		expect(Model).to.be.an.object();
@@ -109,7 +109,7 @@ describe('errors', () => {
 		}
 	});
 
-	it('Trigger a timeout', async () => {
+	it('Trigger a timeout', () => {
 		// Test input validity
 		expect(InputTimeout).to.be.a.string();
 		expect(Model).to.be.an.object();
@@ -135,7 +135,7 @@ describe('errors', () => {
 		}
 	}).slow(4000);
 
-	it('Cannot use require', async () => {
+	it('Cannot use require', () => {
 		// Test input validity
 		expect(InputRequire).to.be.a.string();
 		expect(Model).to.be.an.object();
@@ -152,7 +152,7 @@ describe('errors', () => {
 		}
 	});
 
-	it('Cannot use import', async () => {
+	it('Cannot use import', () => {
 		// Test input validity
 		expect(InputImport).to.be.a.string();
 		expect(Model).to.be.an.object();
@@ -166,7 +166,7 @@ describe('errors', () => {
 		}
 	});
 
-	it('Cannot use global objects', async () => {
+	it('Cannot use global objects', () => {
 		// Test input validity
 		expect(InputGlobal).to.be.a.string();
 		expect(Model).to.be.an.object();

@@ -1,15 +1,14 @@
-import * as Fs from 'fs';
-
 import { expect } from '@hapi/code';
+import { readFileSync, readJSONSync } from 'fs-extra';
 
 import 'mocha';
 import { HapifySyntax } from '../src';
 import { IterationPattern } from '../src/patterns/iteration';
 
-const Model = require('./models/video.json');
+const Model = readJSONSync('./models/video.json');
 
-const Input = Fs.readFileSync(`${__dirname}/templates/iteration-long.hpf`, 'utf8');
-const Output = Fs.readFileSync(`${__dirname}/output/iteration.txt`, 'utf8');
+const Input = readFileSync(`${__dirname}/templates/iteration-long.hpf`, 'utf8');
+const Output = readFileSync(`${__dirname}/output/iteration.txt`, 'utf8');
 
 const Condition = (test: string, length = 0, v = 'f', array = 'fields.list') =>
 	(length
@@ -19,7 +18,7 @@ const Condition = (test: string, length = 0, v = 'f', array = 'fields.list') =>
 const IterationPatternExecute = (template: string): string => IterationPattern.execute(template).replace(/ /g, '');
 
 describe('iteration long', () => {
-	it('run', async () => {
+	it('run', () => {
 		// Test input validity
 		expect(Input).to.be.a.string();
 		expect(Output).to.be.a.string();
@@ -28,7 +27,7 @@ describe('iteration long', () => {
 		expect(HapifySyntax.run(Input, Model)).to.equal(Output);
 	});
 
-	it('unit', async () => {
+	it('unit', () => {
 		// Start with not
 		expect(IterationPatternExecute('<<for Fields -se*so f>>')).to.equal(Condition('!i.searchable && i.sortable'));
 		expect(IterationPatternExecute('<<for Fields /se*so f>>')).to.equal(Condition('!i.searchable && i.sortable'));

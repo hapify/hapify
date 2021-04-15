@@ -1,17 +1,16 @@
-import * as Fs from 'fs';
-
 import { expect } from '@hapi/code';
+import { readFileSync, readJSONSync } from 'fs-extra';
 
 import 'mocha';
 import { HapifySyntax } from '../src';
 
-const Model = require('./models/video.json');
+const Model = readJSONSync('./models/video.json');
 
-const Input = Fs.readFileSync(`${__dirname}/templates/indent.hpf`, 'utf8');
-const Output = Fs.readFileSync(`${__dirname}/output/indent.txt`, 'utf8');
+const Input = readFileSync(`${__dirname}/templates/indent.hpf`, 'utf8');
+const Output = readFileSync(`${__dirname}/output/indent.txt`, 'utf8');
 
 describe('indentation', () => {
-	it('run', async () => {
+	it('run', () => {
 		// Test input validity
 		expect(Input).to.be.a.string();
 		expect(Output).to.be.a.string();

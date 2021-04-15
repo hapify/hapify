@@ -1,18 +1,17 @@
-import * as Fs from 'fs';
-
 import { expect } from '@hapi/code';
+import { readFileSync, readJSONSync } from 'fs-extra';
 
 import 'mocha';
 import { HapifySyntax } from '../src';
 import { ConditionalPattern } from '../src/patterns/conditional';
 
-const Model = require('./models/video.json');
+const Model = readJSONSync('./models/video.json');
 
-const Input = Fs.readFileSync(`${__dirname}/templates/conditional.hpf`, 'utf8');
-const Output = Fs.readFileSync(`${__dirname}/output/conditional.txt`, 'utf8');
+const Input = readFileSync(`${__dirname}/templates/conditional.hpf`, 'utf8');
+const Output = readFileSync(`${__dirname}/output/conditional.txt`, 'utf8');
 
 describe('conditional', () => {
-	it('run', async () => {
+	it('run', () => {
 		// Test input validity
 		expect(Input).to.be.a.string();
 		expect(Output).to.be.a.string();
@@ -21,7 +20,7 @@ describe('conditional', () => {
 		expect(HapifySyntax.run(Input, Model)).to.equal(Output);
 	});
 
-	it('unit', async () => {
+	it('unit', () => {
 		const condition = (test: string, length = 0) =>
 			`\`;\nif ((root.fields.list.filter && root.fields.list.filter((i) => ${test}).length > ${length}) || (!(root.fields.list.filter) && ((i) => ${test})(root.fields.list))) {\nout += \``;
 		const conditionElse = (test: string, length = 0) =>
@@ -154,7 +153,7 @@ describe('conditional', () => {
 		expect(ConditionalPattern.execute('<<? M pNGs>>')).to.equal(conditionModel('i.accesses.properties.noGuest'));
 	}).slow(200);
 
-	it('fixes', async () => {
+	it('fixes', () => {
 		// Condition greater than 9
 		expect(ConditionalPattern.execute('<<?14 F !se>>')).to.not.equal('<<?14 F !se>>');
 		expect(ConditionalPattern.execute('<<??14 F !se>>')).to.not.equal('<<??14 F !se>>');

@@ -1,11 +1,10 @@
 import LineColumn from 'line-column';
 
-import { HapifySyntax } from '../index';
-import { ReplacementCallback } from '../interfaces';
+import { Action, PatternFactory, ReplacementCallback } from '../interfaces';
 
 /** Abstract base pattern */
 export class BasePattern {
-	constructor(private parent: HapifySyntax) {}
+	constructor(private factory: PatternFactory) {}
 
 	/** Parser method */
 	execute(): void {
@@ -28,16 +27,16 @@ out += \``;
 	protected replace(regexp: RegExp | string, replace: string | ReplacementCallback): this {
 		let patternOffset = 0;
 
-		this.parent.template = this.parent.template.replace(regexp, (...params: string[]) => {
+		this.factory.template = this.factory.template.replace(regexp, (...params: string[]) => {
 			const match = params[0];
 			const offset = Number(params[params.length - 2]);
 
-			const replaceString = typeof replace === 'function' ? replace.apply(null, params) : match.replace(regexp, replace);
+			const replaceString = typeof replace === 'function' ? replace(...params) : match.replace(regexp, replace);
 
 			// Save the impact of this replacement
-			this.parent.actions.push({
+			this.factory.actions.push({
 				index: patternOffset + offset,
-				lineColumn: LineColumn(this.parent.template).fromIndex(patternOffset + offset),
+				lineColumn: LineColumn(this.factory.template).fromIndex(patternOffset + offset),
 				before: match.length,
 				after: replaceString.length,
 			});
@@ -53,7 +52,7 @@ out += \``;
 	/** Static parser method used for testing purpose */
 	static execute(template: string): string {
 		// Create a fake parent
-		const parent = { template, actions: [] } as HapifySyntax;
+		const parent = { template, actions: [] as Action[] };
 		// Init an instance
 		const pattern = new this(parent);
 		// Execute the pattern and return the modified template

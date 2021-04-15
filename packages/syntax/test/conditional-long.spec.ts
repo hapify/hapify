@@ -1,15 +1,14 @@
-import * as Fs from 'fs';
-
 import { expect } from '@hapi/code';
+import { readFileSync, readJSONSync } from 'fs-extra';
 
 import 'mocha';
 import { HapifySyntax } from '../src';
 import { ConditionalPattern } from '../src/patterns/conditional';
 
-const Model = require('./models/video.json');
+const Model = readJSONSync('./models/video.json');
 
-const Input = Fs.readFileSync(`${__dirname}/templates/conditional-long.hpf`, 'utf8');
-const Output = Fs.readFileSync(`${__dirname}/output/conditional.txt`, 'utf8');
+const Input = readFileSync(`${__dirname}/templates/conditional-long.hpf`, 'utf8');
+const Output = readFileSync(`${__dirname}/output/conditional.txt`, 'utf8');
 
 const Condition = (test: string, length = 0) =>
 	`\`;\nif ((root.fields.list.filter && root.fields.list.filter((i) => ${test}).length > ${length}) || (!(root.fields.list.filter) && ((i) => ${test})(root.fields.list))) {\nout += \``.replace(
@@ -36,7 +35,7 @@ const ConditionAccessesActions = (test: string, action: string, length = 0) =>
 const ConditionalPatternExecute = (template: string): string => ConditionalPattern.execute(template).replace(/ /g, '');
 
 describe('conditional long', () => {
-	it('run', async () => {
+	it('run', () => {
 		// Test input validity
 		expect(Input).to.be.a.string();
 		expect(Output).to.be.a.string();
@@ -45,7 +44,7 @@ describe('conditional long', () => {
 		expect(HapifySyntax.run(Input, Model)).to.equal(Output);
 	});
 
-	it('unit', async () => {
+	it('unit', () => {
 		// Start with not
 		const notSe = Condition('!i.searchable', 3);
 		expect(ConditionalPatternExecute('<<if4 Fields not se>>')).to.equal(notSe);
@@ -168,11 +167,11 @@ describe('conditional long', () => {
 		expect(ConditionalPatternExecute('<<if Model noGuest>>')).to.equal(conditionModel('i.accesses.properties.noGuest'));
 	}).slow(200);
 
-	it('collisions', async () => {
+	it('collisions', () => {
 		expect(ConditionalPatternExecute('<<if F in+integer >>')).to.equal(Condition(`i.internal || (i.type === 'number' && i.subtype === 'integer')`));
 	});
 
-	it('fix', async () => {
+	it('fix', () => {
 		expect(() => HapifySyntax.run('<<if R>>yes<<endif>>', Model)).to.not.throw();
 	});
 });

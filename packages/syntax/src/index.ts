@@ -2,8 +2,12 @@ import * as Hoek from '@hapi/hoek';
 import { HapifyVM, EvaluationError as VMEvaluationError } from '@hapify/vm';
 import LineColumn from 'line-column';
 
-import { ArgumentsError, EvaluationError, TimeoutError } from './errors';
-import { Action, ModelInput, Options } from './interfaces';
+import { ArgumentsError } from './errors/ArgumentsError';
+import { EvaluationError } from './errors/EvaluationError';
+import { InternalError } from './errors/InternalError';
+import { ParsingError } from './errors/ParsingError';
+import { TimeoutError } from './errors/TimeoutError';
+import { Action, ModelInput, Options, PatternFactory } from './interfaces';
 import { CommentPattern } from './patterns/comment';
 import { ConditionalPattern } from './patterns/conditional';
 import { EscapePattern } from './patterns/escape';
@@ -33,8 +37,10 @@ const DefaultOptions: Options = {
 	timeout: 1000,
 };
 
+export { ArgumentsError, EvaluationError, InternalError, ParsingError, TimeoutError };
+
 /** @type {HapifySyntax} Syntax parser */
-export class HapifySyntax {
+export class HapifySyntax implements PatternFactory {
 	private options: Options;
 
 	/** Stores the original input */
@@ -139,14 +145,15 @@ export class HapifySyntax {
 	private postProcess(code: string): string {
 		// Removes double empty lines
 		const doubleLine = /\r?\n\r?\n/g;
-		while (code.match(doubleLine)) {
-			code = code.replace(doubleLine, '\n');
+		let output = code;
+		while (output.match(doubleLine)) {
+			output = output.replace(doubleLine, '\n');
 		}
 
 		const doubleLineWithSpace = /\r?\n *\r?\n/g;
-		code = code.replace(doubleLineWithSpace, '\n\n');
-		code = code.replace(doubleLineWithSpace, '\n\n');
+		output = output.replace(doubleLineWithSpace, '\n\n');
+		output = output.replace(doubleLineWithSpace, '\n\n');
 
-		return code;
+		return output;
 	}
 }

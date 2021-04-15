@@ -1,6 +1,6 @@
 import EscapeStringRegexp from 'escape-string-regexp';
 
-import { InternalError } from '../errors';
+import { InternalError } from '../errors/InternalError';
 import { Replacement } from '../interfaces';
 import { BasePattern } from './base';
 
@@ -165,15 +165,15 @@ export class ConditionalPattern extends BasePattern {
 	}
 
 	/** Convert the condition short code to tester method */
-	protected tester(condition: string): string {
+	protected tester(conditionBody: string): string {
 		const noCondition = '((i) => i)';
 
 		// Quick exit
-		if (typeof condition === 'undefined') {
+		if (typeof conditionBody === 'undefined') {
 			return noCondition;
 		}
 
-		const trimmed = condition.trim();
+		const trimmed = conditionBody.trim();
 
 		if (trimmed.length === 0) {
 			return noCondition;
@@ -214,7 +214,7 @@ export class ConditionalPattern extends BasePattern {
 		if (['Au', 'UpdateAccess'].includes(variable)) return 'root.accesses.update';
 		if (['Ad', 'RemoveAccess'].includes(variable)) return 'root.accesses.remove';
 		if (['As', 'SearchAccess'].includes(variable)) return 'root.accesses.search';
-		else if (['An', 'CountAccess'].includes(variable)) return 'root.accesses.count';
+		if (['An', 'CountAccess'].includes(variable)) return 'root.accesses.count';
 
 		return variable;
 	}

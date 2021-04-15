@@ -16,3 +16,7 @@ export interface Action {
 	before: number;
 	after: number;
 }
+export interface PatternFactory {
+	actions: Action[];
+	template: string;
+}

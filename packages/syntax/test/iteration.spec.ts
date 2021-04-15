@@ -1,18 +1,17 @@
-import * as Fs from 'fs';
-
 import { expect } from '@hapi/code';
+import { readFileSync, readJSONSync } from 'fs-extra';
 
 import 'mocha';
 import { HapifySyntax } from '../src';
 import { IterationPattern } from '../src/patterns/iteration';
 
-const Model = require('./models/video.json');
+const Model = readJSONSync('./models/video.json');
 
-const Input = Fs.readFileSync(`${__dirname}/templates/iteration.hpf`, 'utf8');
-const Output = Fs.readFileSync(`${__dirname}/output/iteration.txt`, 'utf8');
+const Input = readFileSync(`${__dirname}/templates/iteration.hpf`, 'utf8');
+const Output = readFileSync(`${__dirname}/output/iteration.txt`, 'utf8');
 
 describe('iteration', () => {
-	it('run', async () => {
+	it('run', () => {
 		// Test input validity
 		expect(Input).to.be.a.string();
 		expect(Output).to.be.a.string();
@@ -21,7 +20,7 @@ describe('iteration', () => {
 		expect(HapifySyntax.run(Input, Model)).to.equal(Output);
 	});
 
-	it('unit', async () => {
+	it('unit', () => {
 		const condition = (test: string, length = 0, v = 'f', array = 'fields.list') =>
 			length
 				? `\`;\nfor (const ${v} of root.${array}.filter((i) => ${test}).slice(0, ${length})) {\nout += \``
@@ -84,7 +83,7 @@ describe('iteration', () => {
 		expect(IterationPattern.execute('<<@ m.f f>>')).to.equal('`;\nfor (const f of m.f.filter((i) => i)) {\nout += `');
 	});
 
-	it('fixes', async () => {
+	it('fixes', () => {
 		// Condition greater than 9
 		expect(IterationPattern.execute('<<@14 F !se f>>')).to.not.equal('<<@14 F !se f>>');
 	});

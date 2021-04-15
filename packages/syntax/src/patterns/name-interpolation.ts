@@ -1,6 +1,6 @@
 import EscapeStringRegexp from 'escape-string-regexp';
 
-import { ParsingError } from '../errors';
+import { ParsingError } from '../errors/ParsingError';
 import { Replacement } from '../interfaces';
 import { BasePattern } from './base';
 

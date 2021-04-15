@@ -4,7 +4,7 @@ import { readFileSync, readJSONSync } from 'fs-extra';
 import 'mocha';
 import { HapifySyntax } from '../src';
 
-const Model = readJSONSync('./models/video.json');
+const Model = readJSONSync(`${__dirname}/models/video.json`);
 
 const Input = readFileSync(`${__dirname}/templates/indent.hpf`, 'utf8');
 const Output = readFileSync(`${__dirname}/output/indent.txt`, 'utf8');

@@ -5,7 +5,7 @@ import 'mocha';
 
 import { ArgumentsError, EvaluationError, HapifySyntax, TimeoutError } from '../src';
 
-const Model = readJSONSync('./models/video.json');
+const Model = readJSONSync(`${__dirname}/models/video.json`);
 
 const Simple = readFileSync(`${__dirname}/templates/simple.hpf`, 'utf8');
 const InputConditional = readFileSync(`${__dirname}/templates/error-conditional.hpf`, 'utf8');

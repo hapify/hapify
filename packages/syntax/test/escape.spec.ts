@@ -6,7 +6,7 @@ import { HapifySyntax } from '../src';
 import { EscapeBackSlashesPattern } from '../src/patterns/EscapeBackSlashesPattern';
 import { EscapePattern } from '../src/patterns/EscapePattern';
 
-const Model = readJSONSync('./models/video.json');
+const Model = readJSONSync(`${__dirname}/models/video.json`);
 
 const Input = readFileSync(`${__dirname}/templates/escape.hpf`, 'utf8');
 const Output = readFileSync(`${__dirname}/output/escape.txt`, 'utf8');

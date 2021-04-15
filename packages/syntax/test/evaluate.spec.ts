@@ -5,7 +5,7 @@ import 'mocha';
 import { HapifySyntax } from '../src';
 import { EvaluatePattern } from '../src/patterns/EvaluatePattern';
 
-const Model = readJSONSync('./models/video.json');
+const Model = readJSONSync(`${__dirname}/models/video.json`);
 
 const Input = readFileSync(`${__dirname}/templates/evaluate.hpf`, 'utf8');
 const Output = readFileSync(`${__dirname}/output/evaluate.txt`, 'utf8');

@@ -5,7 +5,7 @@ import 'mocha';
 import { HapifySyntax } from '../src';
 import { InterpolationPattern } from '../src/patterns/InterpolationPattern';
 
-const Model = readJSONSync('./models/video.json');
+const Model = readJSONSync(`${__dirname}/models/video.json`);
 
 const Input = readFileSync(`${__dirname}/templates/interpolation.hpf`, { encoding: 'utf8' });
 const Output = readFileSync(`${__dirname}/output/interpolation.txt`, { encoding: 'utf8' });

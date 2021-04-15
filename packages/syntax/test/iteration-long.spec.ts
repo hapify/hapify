@@ -5,7 +5,7 @@ import 'mocha';
 import { HapifySyntax } from '../src';
 import { IterationPattern } from '../src/patterns/IterationPattern';
 
-const Model = readJSONSync('./models/video.json');
+const Model = readJSONSync(`${__dirname}/models/video.json`);
 
 const Input = readFileSync(`${__dirname}/templates/iteration-long.hpf`, 'utf8');
 const Output = readFileSync(`${__dirname}/output/iteration.txt`, 'utf8');

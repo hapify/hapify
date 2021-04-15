@@ -11,5 +11,4 @@ coverage/
 
 .mocharc.json
 .nycrc.json
-.travis.yml
 tsconfig.json

@@ -26,7 +26,7 @@ describe('possible attacks', () => {
   it('global values', () => {
     const script = 'return JSON.stringify(Object.keys(global));';
     const result = JSON.parse(new HapifyVM().run(script, {}));
-    expect(result).to.equal(['VMError', 'Buffer']);
+    expect(result).to.equal(['VMError', 'Buffer', 'console']);
   });
   it('process deep accesses', () => {
     const script =
@@ -43,16 +43,17 @@ describe('possible attacks', () => {
     );
   });
 
-  it('alter console 1', () => {
+  it('alter console', () => {
     const script = 'console = undefined; return "";';
     new HapifyVM().run(script, {});
     expect(console).to.not.be.undefined();
   });
-  it('alter console 2', () => {
-    const script = 'console.log = function() { return "trojan" }; return "";';
-    new HapifyVM().run(script, {});
-    // eslint-disable-next-line no-console
-    expect(console.log()).to.not.be.a.string();
+
+  it('try to use console', () => {
+    const script = 'console.log("hi")';
+    expect(() => new HapifyVM().run(script, {})).to.throw(
+      "Cannot read property 'log' of undefined",
+    );
   });
 
   it('return fake string', () => {

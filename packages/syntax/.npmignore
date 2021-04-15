@@ -12,10 +12,4 @@ coverage/
 
 .mocharc.json
 .nycrc.json
-tslint.json
-.travis.yml
-.prettierrc
-commitlint.config.js
 tsconfig.json
-
-ERRORS.md

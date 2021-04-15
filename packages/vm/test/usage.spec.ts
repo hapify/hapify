@@ -1,9 +1,17 @@
 import { expect, fail } from '@hapi/code';
 import 'mocha';
 
-import { HapifyVM } from '../src';
+import { EvaluationError, HapifyVM, IntegrityError, OutputError, TimeoutError } from '../src';
 
 describe('usage', () => {
+
+  it('errors are defined', () => {
+    expect(EvaluationError).to.exist();
+    expect(IntegrityError).to.exist();
+    expect(OutputError).to.exist();
+    expect(TimeoutError).to.exist();
+  })
+
   it('normal', () => {
     expect(
       new HapifyVM().run('return new Date().toString();', {}),
@@ -33,9 +41,7 @@ describe('usage', () => {
   });
 
   it('return non string but allowed', () => {
-    expect(new HapifyVM({ allowAnyOutput: true }).run('return 1', {})).to.equal(
-      <any>1,
-    );
+    expect(new HapifyVM({ allowAnyOutput: true }).run('return 1', {})).to.equal(1);
   });
 
   it('timeout', () => {
@@ -73,9 +79,7 @@ describe('usage', () => {
       expect(e.name).to.equal('VmEvaluationError');
       expect(e.code).to.equal(6002);
       expect(e.message).to.equal("Unexpected token ')'");
-      expect(e.details).to.be.a.string();
-      expect(e.lineNumber).to.be.a.number();
-      expect(e.columnNumber).to.be.a.number();
+      // details, lineNumber & columnNumber may not be defined, depending node version
     }
   });
 });

@@ -13,12 +13,7 @@ interface HapifyVMOptions {
   eval: boolean;
 }
 
-export {
-  EvaluationError,
-  IntegrityError,
-  OutputError,
-  TimeoutError
-}
+export { EvaluationError, IntegrityError, OutputError, TimeoutError };
 
 export class HapifyVM {
   /** Default options */
@@ -63,7 +58,7 @@ export class HapifyVM {
     const wrappedContent = this.wrap(content);
 
     try {
-      result = vm.run(wrappedContent);
+      result = vm.run(wrappedContent, 'vm.js');
     } catch (error) {
       // Check error
       if (

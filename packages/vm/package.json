@@ -18,7 +18,7 @@
     "lint:eslint": "eslint \"{src,test}/**/*.{ts,js}\"",
     "lint:eslint:fix": "npm run lint:eslint -- --fix",
     "lint:fix": "npm run lint:tsc:fix && npm run lint:prettier:fix && npm run lint:eslint:fix",
-    "lint:prettier": "prettier --check \"{src,test}/**/*.{ts,js}\" ",
+    "lint:prettier": "prettier --check \"{src,test}/**/*.{ts,js}\"",
     "lint:prettier:fix": "prettier --write \"{src,test}/**/*.{ts,js}\"",
     "lint:tsc": "tsc --noEmit",
     "lint:tsc:fix": "npm run lint:tsc",

@@ -1,16 +1,19 @@
 import * as Fs from 'fs';
+
 import { expect } from '@hapi/code';
+
 import 'mocha';
 import { HapifySyntax } from '../src';
 import { IterationPattern } from '../src/patterns/iteration';
 
 const Model = require('./models/video.json');
+
 const Input = Fs.readFileSync(`${__dirname}/templates/iteration.hpf`, 'utf8');
 const Output = Fs.readFileSync(`${__dirname}/output/iteration.txt`, 'utf8');
 
 describe('iteration', () => {
 	it('run', async () => {
-		//Test input validity
+		// Test input validity
 		expect(Input).to.be.a.string();
 		expect(Output).to.be.a.string();
 		expect(Model).to.be.an.object();
@@ -24,7 +27,7 @@ describe('iteration', () => {
 				? `\`;\nfor (const ${v} of root.${array}.filter((i) => ${test}).slice(0, ${length})) {\nout += \``
 				: `\`;\nfor (const ${v} of root.${array}.filter((i) => ${test})) {\nout += \``;
 
-		//Start with not
+		// Start with not
 		expect(IterationPattern.execute('<<@ F -se*so f>>')).to.equal(condition('!i.searchable && i.sortable'));
 		expect(IterationPattern.execute('<<@ F /se*so f>>')).to.equal(condition('!i.searchable && i.sortable'));
 		expect(IterationPattern.execute('<<@ F !se*so f>>')).to.equal(condition('!i.searchable && i.sortable'));

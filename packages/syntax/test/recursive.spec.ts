@@ -1,4 +1,5 @@
 import { expect } from '@hapi/code';
+
 import 'mocha';
 import { HapifySyntax } from '../src';
 

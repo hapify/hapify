@@ -1,10 +1,13 @@
 import * as Fs from 'fs';
+
 import { expect } from '@hapi/code';
+
 import 'mocha';
 import { HapifySyntax } from '../src';
 import { IterationPattern } from '../src/patterns/iteration';
 
 const Model = require('./models/video.json');
+
 const Input = Fs.readFileSync(`${__dirname}/templates/iteration-long.hpf`, 'utf8');
 const Output = Fs.readFileSync(`${__dirname}/output/iteration.txt`, 'utf8');
 
@@ -17,7 +20,7 @@ const IterationPatternExecute = (template: string): string => IterationPattern.e
 
 describe('iteration long', () => {
 	it('run', async () => {
-		//Test input validity
+		// Test input validity
 		expect(Input).to.be.a.string();
 		expect(Output).to.be.a.string();
 		expect(Model).to.be.an.object();
@@ -26,7 +29,7 @@ describe('iteration long', () => {
 	});
 
 	it('unit', async () => {
-		//Start with not
+		// Start with not
 		expect(IterationPatternExecute('<<for Fields -se*so f>>')).to.equal(Condition('!i.searchable && i.sortable'));
 		expect(IterationPatternExecute('<<for Fields /se*so f>>')).to.equal(Condition('!i.searchable && i.sortable'));
 		expect(IterationPatternExecute('<<for Fields !se*so f>>')).to.equal(Condition('!i.searchable && i.sortable'));

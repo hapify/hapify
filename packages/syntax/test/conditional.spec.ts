@@ -1,16 +1,19 @@
 import * as Fs from 'fs';
+
 import { expect } from '@hapi/code';
+
 import 'mocha';
 import { HapifySyntax } from '../src';
 import { ConditionalPattern } from '../src/patterns/conditional';
 
 const Model = require('./models/video.json');
+
 const Input = Fs.readFileSync(`${__dirname}/templates/conditional.hpf`, 'utf8');
 const Output = Fs.readFileSync(`${__dirname}/output/conditional.txt`, 'utf8');
 
 describe('conditional', () => {
 	it('run', async () => {
-		//Test input validity
+		// Test input validity
 		expect(Input).to.be.a.string();
 		expect(Output).to.be.a.string();
 		expect(Model).to.be.an.object();
@@ -30,7 +33,7 @@ describe('conditional', () => {
 		const conditionAccessesActions = (test: string, action: string, length = 0) =>
 			`\`;\nif ((root.accesses.${action}.filter && root.accesses.${action}.filter((i) => ${test}).length > ${length}) || (!(root.accesses.${action}.filter) && ((i) => ${test})(root.accesses.${action}))) {\nout += \``;
 
-		//Start with not
+		// Start with not
 		const notSe = condition('!i.searchable', 3);
 		expect(ConditionalPattern.execute('<<?4 F !se>>')).to.equal(notSe);
 		expect(ConditionalPattern.execute('<<?4 F -se  >>')).to.equal(notSe);

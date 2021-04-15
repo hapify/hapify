@@ -1,10 +1,13 @@
 import * as Fs from 'fs';
+
 import { expect } from '@hapi/code';
+
 import 'mocha';
 import { HapifySyntax } from '../src';
 import { ConditionalPattern } from '../src/patterns/conditional';
 
 const Model = require('./models/video.json');
+
 const Input = Fs.readFileSync(`${__dirname}/templates/conditional-long.hpf`, 'utf8');
 const Output = Fs.readFileSync(`${__dirname}/output/conditional.txt`, 'utf8');
 
@@ -34,7 +37,7 @@ const ConditionalPatternExecute = (template: string): string => ConditionalPatte
 
 describe('conditional long', () => {
 	it('run', async () => {
-		//Test input validity
+		// Test input validity
 		expect(Input).to.be.a.string();
 		expect(Output).to.be.a.string();
 		expect(Model).to.be.an.object();
@@ -43,7 +46,7 @@ describe('conditional long', () => {
 	});
 
 	it('unit', async () => {
-		//Start with not
+		// Start with not
 		const notSe = Condition('!i.searchable', 3);
 		expect(ConditionalPatternExecute('<<if4 Fields not se>>')).to.equal(notSe);
 		expect(ConditionalPatternExecute('<<if4 Fields orNot se  >>')).to.equal(notSe);

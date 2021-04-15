@@ -1,18 +1,19 @@
-import { EvaluationError as VMEvaluationError, HapifyVM } from '@hapify/vm';
-import LineColumn from 'line-column';
 import * as Hoek from '@hapi/hoek';
+import { HapifyVM, EvaluationError as VMEvaluationError } from '@hapify/vm';
+import LineColumn from 'line-column';
+
 import { ArgumentsError, EvaluationError, TimeoutError } from './errors';
+import { Action, ModelInput, Options } from './interfaces';
+import { CommentPattern } from './patterns/comment';
+import { ConditionalPattern } from './patterns/conditional';
+import { EscapePattern } from './patterns/escape';
 import { EscapeBackSlashesPattern } from './patterns/escape-back-slashes';
 import { EscapeQuotesPattern } from './patterns/escape-quotes';
-import { CommentPattern } from './patterns/comment';
-import { NameInterpolationPattern } from './patterns/name-interpolation';
-import { InterpolationPattern } from './patterns/interpolation';
-import { ConditionalPattern } from './patterns/conditional';
-import { IterationPattern } from './patterns/iteration';
 import { EvaluatePattern } from './patterns/evaluate';
-import { EscapePattern } from './patterns/escape';
-import { Action, ModelInput, Options } from './interfaces';
 import { IndentPattern } from './patterns/indent';
+import { InterpolationPattern } from './patterns/interpolation';
+import { IterationPattern } from './patterns/iteration';
+import { NameInterpolationPattern } from './patterns/name-interpolation';
 
 /** Ordered patterns */
 const PatternsStack = [
@@ -35,10 +36,12 @@ const DefaultOptions: Options = {
 /** @type {HapifySyntax} Syntax parser */
 export class HapifySyntax {
 	private options: Options;
+
 	/** Stores the original input */
 	private original: string;
 
 	public actions: Action[] = [];
+
 	private patterns = PatternsStack.map((Pattern) => new Pattern(this));
 
 	/** Constructor */

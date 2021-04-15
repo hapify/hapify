@@ -1,7 +1,9 @@
-import { BasePattern } from './base';
+import EscapeStringRegexp from 'escape-string-regexp';
+
 import { InternalError } from '../errors';
 import { Replacement } from '../interfaces';
-import EscapeStringRegexp from 'escape-string-regexp';
+import { BasePattern } from './base';
+
 
 /** if () { pattern */
 const IfPattern = /<<(\?|if)(\d+)?\s+([a-zA-Z_.]+)(\s+[a-zA-Z()[\]!+*\-/\s]+)?\s*>>/g;
@@ -202,17 +204,17 @@ export class ConditionalPattern extends BasePattern {
 	/** Convert the input variable to the real variable */
 	protected variable(variable: string): string {
 		if (['M', 'Models', 'Model'].includes(variable)) return 'root';
-		else if (['F', 'Fields'].includes(variable)) return 'root.fields.list';
-		else if (['D', 'Dependencies'].includes(variable)) return 'root.dependencies';
-		else if (['R', 'ReferencedIn', 'RefModels'].includes(variable)) return 'root.referencedIn';
-		else if (['P', 'PrimaryField'].includes(variable)) return 'root.fields.primary';
+		if (['F', 'Fields'].includes(variable)) return 'root.fields.list';
+		if (['D', 'Dependencies'].includes(variable)) return 'root.dependencies';
+		if (['R', 'ReferencedIn', 'RefModels'].includes(variable)) return 'root.referencedIn';
+		if (['P', 'PrimaryField'].includes(variable)) return 'root.fields.primary';
 		// Accesses
-		else if (['A', 'Accesses'].includes(variable)) return 'root.accesses.list';
-		else if (['Ac', 'CreateAccess'].includes(variable)) return 'root.accesses.create';
-		else if (['Ar', 'ReadAccess'].includes(variable)) return 'root.accesses.read';
-		else if (['Au', 'UpdateAccess'].includes(variable)) return 'root.accesses.update';
-		else if (['Ad', 'RemoveAccess'].includes(variable)) return 'root.accesses.remove';
-		else if (['As', 'SearchAccess'].includes(variable)) return 'root.accesses.search';
+		if (['A', 'Accesses'].includes(variable)) return 'root.accesses.list';
+		if (['Ac', 'CreateAccess'].includes(variable)) return 'root.accesses.create';
+		if (['Ar', 'ReadAccess'].includes(variable)) return 'root.accesses.read';
+		if (['Au', 'UpdateAccess'].includes(variable)) return 'root.accesses.update';
+		if (['Ad', 'RemoveAccess'].includes(variable)) return 'root.accesses.remove';
+		if (['As', 'SearchAccess'].includes(variable)) return 'root.accesses.search';
 		else if (['An', 'CountAccess'].includes(variable)) return 'root.accesses.count';
 
 		return variable;

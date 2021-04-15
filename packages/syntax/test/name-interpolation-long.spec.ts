@@ -1,16 +1,19 @@
 import * as Fs from 'fs';
+
 import { expect } from '@hapi/code';
+
 import 'mocha';
 import { HapifySyntax } from '../src';
 import { NameInterpolationPattern } from '../src/patterns/name-interpolation';
 
 const Model = require('./models/video.json');
+
 const Input = Fs.readFileSync(`${__dirname}/templates/name-interpolation-long.hpf`, 'utf8');
 const Output = Fs.readFileSync(`${__dirname}/output/name-interpolation.txt`, 'utf8');
 
 describe('name interpolation long', () => {
 	it('run', async () => {
-		//Test input validity
+		// Test input validity
 		expect(Input).to.be.a.string();
 		expect(Output).to.be.a.string();
 		expect(Model).to.be.an.object();

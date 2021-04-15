@@ -1,0 +1,39 @@
+{
+  "name": "@hapify/vm",
+  "version": "0.3.6",
+  "description": "Sandbox for JavaScript code",
+  "keywords": [
+    "hapify",
+    "vm"
+  ],
+  "license": "MIT",
+  "author": "Edouard Demotes-Mainard <edouard@tractr.net>",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rimraf dist && tsc -p .",
+    "clean": "rimraf dist node_modules coverage .nyc_output",
+    "prepublishOnly": "npm run build",
+    "lint": "npm run lint:tsc && npm run lint:prettier && npm run lint:eslint",
+    "lint:eslint": "eslint \"{src,test}/**/*.{ts,js}\"",
+    "lint:eslint:fix": "npm run lint:eslint -- --fix",
+    "lint:fix": "npm run lint:tsc:fix && npm run lint:prettier:fix && npm run lint:eslint:fix",
+    "lint:prettier": "prettier --check \"{src,test}/**/*.{ts,js}\" ",
+    "lint:prettier:fix": "prettier --write \"{src,test}/**/*.{ts,js}\"",
+    "lint:tsc": "tsc --noEmit",
+    "lint:tsc:fix": "npm run lint:tsc",
+    "test": "nyc mocha",
+    "update": "npm-check -u"
+  },
+  "dependencies": {
+    "vm2": "^3.9.2"
+  },
+  "devDependencies": {
+    "@hapi/code": "^8.0.2",
+    "@types/mocha": "^8.2.0",
+    "mocha": "^8.2.1"
+  },
+  "engines": {
+    "node": ">=9"
+  }
+}

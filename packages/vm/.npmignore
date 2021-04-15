@@ -1,0 +1,15 @@
+src/
+test/
+coverage/
+.nyc_output/
+
+.idea
+.vscode
+
+.gitignore
+.prettierignore
+
+.mocharc.json
+.nycrc.json
+.travis.yml
+tsconfig.json

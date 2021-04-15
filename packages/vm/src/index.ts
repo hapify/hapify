@@ -27,9 +27,9 @@ export class HapifyVM {
   private options: HapifyVMOptions;
 
   /** Built-in objects to remove from sandbox */
-  private forbiddenObjects: {
-    console: undefined;
-  };
+  private forbiddenObjects: { [key: string]: any } = {
+    console: undefined
+  }
 
   /** RegEx used to extract error's line & column */
   private stackRegex = /vm\.js:([0-9]+):([0-9]+)/m;

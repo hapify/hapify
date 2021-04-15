@@ -4,7 +4,6 @@ import { InternalError } from '../errors';
 import { Replacement } from '../interfaces';
 import { BasePattern } from './base';
 
-
 /** if () { pattern */
 const IfPattern = /<<(\?|if)(\d+)?\s+([a-zA-Z_.]+)(\s+[a-zA-Z()[\]!+*\-/\s]+)?\s*>>/g;
 /** else if () { pattern */

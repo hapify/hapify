@@ -4,7 +4,6 @@ import { ParsingError } from '../errors';
 import { Replacement } from '../interfaces';
 import { BasePattern } from './base';
 
-
 const Cases: Replacement[] = [
 	{ search: ['aA', 'camel'], replace: 'camel' },
 	{ search: ['AA', 'pascal'], replace: 'pascal' },

@@ -1,37 +1,45 @@
-import { ExplicitModel, GenerationContext, GeneratorWorker, Template } from '../../interfaces';
-import { EvaluationError } from '../../errors';
+import { EvaluationError } from '../../errors/EvaluationError';
+import {
+  ExplicitModel,
+  GenerationContext,
+  GeneratorWorker,
+  Template,
+} from '../../interfaces';
 
 export abstract class BaseGenerator implements GeneratorWorker {
-	async one(model: ExplicitModel, template: Template): Promise<string> {
-		try {
-			return this.eval(template.content, {
-				model: model,
-				m: model,
-			});
-		} catch (error) {
-			throw this.appendFileName(error, template);
-		}
-	}
+  one(model: ExplicitModel, template: Template): string {
+    try {
+      return this.eval(template.content, {
+        model,
+        m: model,
+      });
+    } catch (error) {
+      throw this.appendFileName(error, template);
+    }
+  }
 
-	async all(models: ExplicitModel[], template: Template): Promise<string> {
-		try {
-			return this.eval(template.content, {
-				models: models,
-				m: models,
-			});
-		} catch (error) {
-			throw this.appendFileName(error, template);
-		}
-	}
+  all(models: ExplicitModel[], template: Template): string {
+    try {
+      return this.eval(template.content, {
+        models,
+        m: models,
+      });
+    } catch (error) {
+      throw this.appendFileName(error, template);
+    }
+  }
 
-	/** Append file name to error details if applicable */
-	protected appendFileName(error: Error, template: Template): Error {
-		if (typeof (<EvaluationError>error).lineNumber !== 'undefined') {
-			// Append file name
-			(<EvaluationError>error).details += `\nFile: ${template.path}`;
-		}
-		return error;
-	}
+  /** Append file name to error details if applicable */
+  protected appendFileName(error: Error, template: Template): Error {
+    if (this.errorIsEvaluationError(error)) {
+      error.details += `\nFile: ${template.path}`;
+    }
+    return error;
+  }
 
-	protected abstract eval(content: string, context: GenerationContext): string;
+  private errorIsEvaluationError(error: Error): error is EvaluationError {
+    return typeof (<EvaluationError>error).lineNumber !== 'undefined';
+  }
+
+  protected abstract eval(content: string, context: GenerationContext): string;
 }

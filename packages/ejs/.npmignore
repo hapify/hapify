@@ -1,18 +1,14 @@
 src/
+test/
 coverage/
 .nyc_output/
 
 .idea
 .vscode
 
-.gitignore
 .prettierignore
 
 .mocharc.json
 .nycrc.json
-tslint.json
-.travis.yml
-.prettierrc
-commitlint.config.js
 tsconfig.json
 

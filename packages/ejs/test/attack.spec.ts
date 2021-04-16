@@ -1,7 +1,7 @@
 import { expect, fail } from '@hapi/code';
 import 'mocha';
 
-import { HapifyEJS } from '../index';
+import { HapifyEJS } from '../src';
 
 describe('possible attacks', () => {
 	it('process accesses', async () => {

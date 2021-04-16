@@ -1,4 +1,4 @@
-import { NumberedError } from '../interfaces';
+import { NumberedError } from '../Interfaces';
 
 export class InternalError extends Error implements NumberedError {
   code = 2001;

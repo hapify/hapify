@@ -28,11 +28,11 @@ import {
   NumberedError,
   StringVariationType,
   Template,
-} from '../interfaces';
-import { StringVariants } from '../string';
-import { EJSGenerator } from './workers/ejs-generator';
-import { HpfGenerator } from './workers/hpf-generator';
-import { JavascriptGenerator } from './workers/javascript-generator';
+} from '../Interfaces';
+import { StringVariants } from '../StringVariants';
+import { EJSGenerator } from './workers/EJSGenerator';
+import { HpfGenerator } from './workers/HpfGenerator';
+import { JavascriptGenerator } from './workers/JavascriptGenerator';
 
 /** Define the cache structure */
 interface Cache {

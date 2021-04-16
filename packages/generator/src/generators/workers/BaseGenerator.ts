@@ -4,7 +4,7 @@ import {
   GenerationContext,
   GeneratorWorker,
   Template,
-} from '../../interfaces';
+} from '../../Interfaces';
 
 export abstract class BaseGenerator implements GeneratorWorker {
   one(model: ExplicitModel, template: Template): string {

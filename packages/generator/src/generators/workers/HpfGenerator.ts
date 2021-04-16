@@ -1,8 +1,8 @@
 import { HapifySyntax } from '@hapify/syntax';
 
-import { Config } from '../../config';
-import { GenerationContext } from '../../interfaces';
-import { BaseGenerator } from './base-generator';
+import { Config } from '../../Config';
+import { GenerationContext } from '../../Interfaces';
+import { BaseGenerator } from './BaseGenerator';
 
 const HpfOptions = { timeout: Config.Generator.timeout };
 

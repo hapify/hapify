@@ -1,10 +1,10 @@
 import { HapifyVM, EvaluationError as VmEvaluationError } from '@hapify/vm';
 
-import { Config } from '../../config';
+import { Config } from '../../Config';
 import { EvaluationError } from '../../errors/EvaluationError';
 import { TimeoutError } from '../../errors/TimeoutError';
-import { GenerationContext } from '../../interfaces';
-import { BaseGenerator } from './base-generator';
+import { GenerationContext } from '../../Interfaces';
+import { BaseGenerator } from './BaseGenerator';
 
 export class JavascriptGenerator extends BaseGenerator {
   protected eval(content: string, context: GenerationContext): string {

@@ -6,7 +6,7 @@ import { expect, fail } from '@hapi/code';
 import { EvaluationError } from '@hapify/syntax';
 
 import { Generator } from '../src';
-import { Model, Template } from '../src/interfaces';
+import { Model, Template } from '../src/Interfaces';
 
 const path = (file: string): string => `${process.cwd()}/test/files/${file}`;
 const get = (file: string): string =>

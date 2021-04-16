@@ -1,4 +1,4 @@
-import { Generator as Service } from './generators/generator';
+import { Generator as Service } from './generators/Generator';
 
 export const Generator = new Service();
 export { InternalError } from './errors/InternalError';

@@ -14,7 +14,7 @@ import {
   Model,
   StringVariations,
   Template,
-} from '../src/interfaces';
+} from '../src/Interfaces';
 
 const getModels = (
   fieldsOverrides: Partial<Field>[] = [{}],

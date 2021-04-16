@@ -1,6 +1,6 @@
 {
   "name": "@hapify/ejs",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Sandbox for EJS templates",
   "keywords": [
     "hapify",
@@ -33,7 +33,7 @@
     "mocha": "^8.2.1"
   },
   "dependencies": {
-    "@hapify/vm": "1.1.0",
+    "@hapify/vm": "1.2.0",
     "pkg-dir": "^5.0.0"
   },
   "engines": {

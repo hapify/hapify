@@ -1,6 +1,6 @@
 {
   "name": "@hapify/generator",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "description": "Generator for Hapify templates",
   "keywords": [
     "hapify",
@@ -32,9 +32,9 @@
     "mocha": "^8.2.1"
   },
   "dependencies": {
-    "@hapify/ejs": "1.0.0",
-    "@hapify/syntax": "1.0.0",
-    "@hapify/vm": "1.1.0",
+    "@hapify/ejs": "1.1.0",
+    "@hapify/syntax": "1.1.0",
+    "@hapify/vm": "1.2.0",
     "case": "^1.6.3"
   },
   "engines": {

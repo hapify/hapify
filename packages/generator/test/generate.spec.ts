@@ -60,26 +60,34 @@ describe('generate', () => {
       (f: any) => f.path === 'src/routes/index.js',
     );
     expect(indexFile).to.exists();
-    expect(ignoreSpaces(indexFile.content)).to.equal(ignoreSpaces(get('output/index.js')));
+    expect(ignoreSpaces(indexFile.content)).to.equal(
+      ignoreSpaces(get('output/index.js')),
+    );
 
     // Test user create
     const userFile = response.find(
       (f: any) => f.path === 'src/routes/user/create.js',
     );
     expect(userFile).to.exists();
-    expect(ignoreSpaces(userFile.content)).to.equal(ignoreSpaces(get('output/user/create.js')));
+    expect(ignoreSpaces(userFile.content)).to.equal(
+      ignoreSpaces(get('output/user/create.js')),
+    );
 
     // Test bookmark create
     const bookmarkFile = response.find(
       (f: any) => f.path === 'src/routes/bookmark/create.js',
     );
     expect(bookmarkFile).to.exists();
-    expect(ignoreSpaces(bookmarkFile.content)).to.equal(ignoreSpaces(get('output/bookmark/create.js')));
+    expect(ignoreSpaces(bookmarkFile.content)).to.equal(
+      ignoreSpaces(get('output/bookmark/create.js')),
+    );
 
     // Test model list
     const listFile = response.find((f: any) => f.path === 'src/list.json');
     expect(listFile).to.exists();
-    expect(ignoreSpaces(listFile.content)).to.equal(ignoreSpaces(get('output/list.json')));
+    expect(ignoreSpaces(listFile.content)).to.equal(
+      ignoreSpaces(get('output/list.json')),
+    );
   }).slow(1000);
 
   it('generate one file for one model', async () => {
@@ -94,7 +102,9 @@ describe('generate', () => {
     // Test bookmark create
     expect(response[0].path).to.be.a.string();
     expect(response[0].content).to.be.a.string();
-    expect(ignoreSpaces(response[0].content)).to.equal(ignoreSpaces(get('output/bookmark/create.js')));
+    expect(ignoreSpaces(response[0].content)).to.equal(
+      ignoreSpaces(get('output/bookmark/create.js')),
+    );
   });
 
   it('generate files without fields', async () => {

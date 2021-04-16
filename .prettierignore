@@ -2,3 +2,5 @@ node_modules/
 dist/
 lib/
 docs/
+
+packages/generator/test/files/

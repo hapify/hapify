@@ -8,6 +8,7 @@
   ],
   "license": "MIT",
   "author": "Edouard Demotes-Mainard <edouard@tractr.net>",
+  "homepage": "https://github.com/hapify/hapify",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

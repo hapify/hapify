@@ -29,8 +29,7 @@ let _output = {
 	'common_error-format': 'Wrong format',
 	'common_error-min': 'This field need to be greater than {{ min }}',
 	'common_error-max': 'This field need to be lower than {{ max }}.',
-	'common_error-duplicate':
-		'An instance of that model already have that values.'
+	'common_error-duplicate': 'An instance of that model already have that values.',
 };
 
 /**
@@ -42,7 +41,7 @@ let _output = {
 function __fields(model) {
 	const modelKey = model.names.kebab;
 	return model.fields.list
-		.filter(f => !((f.hidden && f.internal) || f.primary))
+		.filter((f) => !((f.hidden && f.internal) || f.primary))
 		.reduce((p, f) => {
 			const key = f.names.kebab;
 			p[`${modelKey}_${key}`] = `${f.names.capital}`;
@@ -58,10 +57,10 @@ function __fields(model) {
  */
 function __referenced_in(model) {
 	const output = {};
-	model.referencedIn.map(r => {
+	model.referencedIn.map((r) => {
 		r.fields
-			.filter(f => f.searchable)
-			.map(f => {
+			.filter((f) => f.searchable)
+			.map((f) => {
 				const key = `${model.names.snake}_${r.names.snake}-as-${f.names.snake}`;
 				output[key] = `${r.names.capital} as ${f.names.capital}`;
 			});
@@ -96,12 +95,10 @@ function __filter(model) {
  */
 function __select(model) {
 	const output = {
-		[`${model.names.kebab}_common_select-placeholder`]: `Select ${model.names.lower}`
+		[`${model.names.kebab}_common_select-placeholder`]: `Select ${model.names.lower}`,
 	};
 	if (model.p.hasSearchableLabel) {
-		output[
-			`${model.names.kebab}_common_search-placeholder`
-		] = `Search ${model.names.lower}`;
+		output[`${model.names.kebab}_common_search-placeholder`] = `Search ${model.names.lower}`;
 	}
 	return output;
 }
@@ -118,7 +115,7 @@ function __model(model) {
 	return Object.assign(
 		{
 			[`${modelKey}_common_name`]: model.names.capital,
-			[`${modelKey}_common_not-found`]: `No ${modelWords} found`
+			[`${modelKey}_common_not-found`]: `No ${modelWords} found`,
 		},
 		__filter(model),
 		__fields(model),
@@ -130,12 +127,12 @@ function __model(model) {
 //--------------------------------------------------
 //  Output
 //--------------------------------------------------
-models.map(model => {
+models.map((model) => {
 	const keysUnordered = Object.assign(_output, __model(model));
 
 	_output = Object.keys(keysUnordered)
 		.sort()
-		.reduce(function(keysOrdered, key) {
+		.reduce(function (keysOrdered, key) {
 			keysOrdered[key] = keysUnordered[key];
 
 			return keysOrdered;

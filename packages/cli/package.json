@@ -12,7 +12,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "bin": {
-    "hpf": "dist/index.js"
+    "hpf": "bin/index.js"
   },
   "preferGlobal": true,
   "scripts": {

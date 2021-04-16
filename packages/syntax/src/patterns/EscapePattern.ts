@@ -2,19 +2,19 @@ import { BasePattern } from './BasePattern';
 
 /** Start pattern and replacer */
 const Start = {
-	find: /\\<\\</g,
-	replace: '<<',
+  find: /\\<\\</g,
+  replace: '<<',
 };
 /** end pattern and replacer */
 const End = {
-	find: /\\>\\>/g,
-	replace: '>>',
+  find: /\\>\\>/g,
+  replace: '>>',
 };
 
 /** Escape pattern */
 export class EscapePattern extends BasePattern {
-	/** Parser method */
-	execute(): void {
-		this.replace(Start.find, Start.replace).replace(End.find, End.replace);
-	}
+  /** Parser method */
+  execute(): void {
+    this.replace(Start.find, Start.replace).replace(End.find, End.replace);
+  }
 }

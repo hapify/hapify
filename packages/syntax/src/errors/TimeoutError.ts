@@ -1,7 +1,7 @@
 import { NumberedError } from '../Interfaces';
 
 export class TimeoutError extends Error implements NumberedError {
-	name = 'SyntaxTimeoutError';
+  name = 'SyntaxTimeoutError';
 
-	code = 1005;
+  code = 1005;
 }

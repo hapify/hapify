@@ -12,7 +12,7 @@
   "scripts": {
     "build": "lerna run build",
     "bootstrap": "lerna bootstrap",
-    "clean": "lerna run --parallel clean",
+    "clean": "lerna run --parallel clean && rimraf node_modules",
     "lint": "lerna run --parallel lint",
     "lint:fix": "lerna run --parallel lint:fix",
     "postinstall": "is-ci || husky install",

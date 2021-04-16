@@ -1,0 +1,51 @@
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {Router} from '@angular/router';
+import {Subscription as RxJsSubscription} from 'rxjs/Subscription';
+import {ErrorService} from '@app/services';
+import {<<M AA>>} from '../../<<M a-a>>';
+import {<<M AA>>Service} from '../../<<M a-a>>.service';
+
+@Component({
+  selector: 'hpf-<<M a-a>>-edit',
+  templateUrl: './<<M a-a>>-edit.component.html'
+})
+export class <<M AA>>EditComponent implements OnInit, OnDestroy {
+
+  /** @type {<<M AA>>} The <<M a>> */
+  <<M aA>>: <<M AA>>;
+  /** @type {RxJsSubscription} The id subscription */
+  private idSubscription: RxJsSubscription;
+
+  /**
+   * Constructor
+   * @param {ActivatedRoute} route
+   * @param {Router} router
+   * @param {ErrorService} errorService
+   * @param {<<M AA>>Service} <<M aA>>Service
+   */
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private errorService: ErrorService,
+              private <<M aA>>Service: <<M AA>>Service) {}
+
+  /** Init */
+  ngOnInit() {
+    // Get the <<M a>> after reading the id
+    this.idSubscription = this.route.params.subscribe(params => {
+      this.<<M aA>>Service.get(params['id'])
+        .then((<<M aA>>: <<M AA>>) => {
+          this.<<M aA>> = <<M aA>>;
+        })
+        .catch((error) => this.errorService.handle(error));
+    });
+  }
+  /** Destroy */
+  ngOnDestroy() {
+    this.idSubscription.unsubscribe();
+  }
+  /** @param {<<M AA>>} <<M aA>> Called when the <<M a>> is saved*/
+  onSave(<<M aA>>: <<M AA>>): void {
+    this.router.navigateByUrl(`/<<M a-a>>/${<<M aA>>.getId()}`);
+  }
+}

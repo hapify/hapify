@@ -1,0 +1,50 @@
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {SharedModule} from '@app/shared';
+import {TranslateModuleLoad} from '@app/translate-import';
+
+import {ModelsRoutingModule} from './models-routing.module';
+<<@ M m>>
+import {<<m AA>>Service,
+        <<m AA>>FormComponent,
+        <<m AA>>DetailsComponent,
+        <<m AA>>FiltersComponent,
+        <<m AA>>TableComponent,
+        <<m AA>>SelectComponent} from './<<m a-a>>';
+import {<<m AA>>Component} from './<<m a-a>>/<<m a-a>>/<<m a-a>>.component';
+import {<<m AA>>CreateComponent} from './<<m a-a>>/views/<<m a-a>>-create/<<m a-a>>-create.component';
+import {<<m AA>>ReadComponent} from './<<m a-a>>/views/<<m a-a>>-read/<<m a-a>>-read.component';
+import {<<m AA>>EditComponent} from './<<m a-a>>/views/<<m a-a>>-edit/<<m a-a>>-edit.component';
+import {<<m AA>>ListComponent} from './<<m a-a>>/views/<<m a-a>>-list/<<m a-a>>-list.component';
+<<@>>
+
+
+@NgModule({
+  imports: [
+    CommonModule,
+    SharedModule,
+    TranslateModuleLoad(),
+    ModelsRoutingModule
+  ],
+  declarations: [
+<<@ M m>>
+    <<m AA>>Component,
+    <<m AA>>FormComponent,
+    <<m AA>>DetailsComponent,
+    <<m AA>>CreateComponent,
+    <<m AA>>ReadComponent,
+    <<m AA>>EditComponent,
+    <<m AA>>ListComponent,
+    <<m AA>>FiltersComponent,
+    <<m AA>>TableComponent,
+    <<m AA>>SelectComponent,
+<<@>>
+  ],
+  providers: [
+<<@ M m>>
+    <<m AA>>Service,
+<<@>>
+  ]
+})
+export class ModelsModule {
+}

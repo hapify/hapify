@@ -1,0 +1,91 @@
+{
+  "name": "@hapify/cli",
+  "version": "0.9.2",
+  "description": "Command Line Interface for Hapify",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "hpf": "dist/index.js"
+  },
+  "preferGlobal": true,
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "update": "npm-check -u",
+    "test": "nyc mocha",
+    "mocha": "mocha",
+    "lint": "prettier --write '**/*.ts'",
+    "build": "rm -rf dist && tsc -p . && cp -r node_modules/@hapify/gui/dist/hapify-gui dist/html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:hapify/cli.git"
+  },
+  "keywords": [
+    "hapify",
+    "cli"
+  ],
+  "author": "Edouard Demotes-Mainard <edouard@tractr.net>",
+  "license": "MIT",
+  "homepage": "https://www.hapify.io",
+  "dependencies": {
+    "@hapi/hapi": "^20.1.0",
+    "@hapi/hoek": "^9.1.1",
+    "@hapi/inert": "^6.0.3",
+    "@hapify/generator": "^0.8.0",
+    "@hapify/vm": "^0.3.6",
+    "axios": "^0.21.1",
+    "case": "^1.6.3",
+    "chalk": "^4.1.0",
+    "commander": "^6.2.0",
+    "detect-port": "^1.2.3",
+    "fs-extra": "^9.1.0",
+    "inquirer": "^7.3.3",
+    "joi": "^17.3.0",
+    "jsonwebtoken": "^8.5.1",
+    "jszip": "^3.5.0",
+    "md5": "^2.3.0",
+    "open": "^7.3.1",
+    "pkg-dir": "^5.0.0",
+    "querystring": "^0.2.0",
+    "randomstring": "^1.1.5",
+    "reflect-metadata": "^0.1.12",
+    "simple-git": "^2.31.0",
+    "typedi": "^0.8.0",
+    "ws": "^7.4.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@hapi/code": "^8.0.2",
+    "@hapify/gui": "^0.8.0",
+    "@types/detect-port": "^1.3.0",
+    "@types/fs-extra": "^9.0.6",
+    "@types/hapi__hapi": "^20.0.5",
+    "@types/hapi__inert": "^5.2.2",
+    "@types/http-server": "^0.10.1",
+    "@types/inquirer": "^7.3.1",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/md5": "^2.2.1",
+    "@types/mocha": "^8.2.0",
+    "@types/node": "^14.14.22",
+    "@types/randomstring": "^1.1.6",
+    "@types/ws": "^7.4.0",
+    "husky": "^4.3.8",
+    "mocha": "^8.2.1",
+    "npm-check": "^5.9.2",
+    "nyc": "^15.0.1",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "pretty-quick --staged --pattern \"**/*.ts\""
+    }
+  }
+}

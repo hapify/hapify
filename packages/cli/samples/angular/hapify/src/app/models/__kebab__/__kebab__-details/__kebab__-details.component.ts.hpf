@@ -1,0 +1,49 @@
+import {Component, EventEmitter, Input, Output, OnInit} from '@angular/core';
+import {ErrorService} from '@app/services';
+import {<<M AA>>} from '../<<M a-a>>';
+import {<<M AA>>Service} from '../<<M a-a>>.service';
+
+@Component({
+  selector: 'hpf-<<M a-a>>-details',
+  templateUrl: './<<M a-a>>-details.component.html'
+})
+export class <<M AA>>DetailsComponent implements OnInit {
+
+  /** @type {<<M AA>>} The <<M a>> to inject view */
+  @Input() <<M aA>>: <<M AA>>;
+  /** @type {EventEmitter<void>} Called the delete button is clicked */
+  @Output() delete = new EventEmitter<void>();
+  /** @type {boolean} Enable the deletion button */
+  @Input() deletable = true;
+  /** @type {boolean} Toggle delete button display */
+  deletionUnlocked = false;
+  /** @type {boolean} Denotes if deltion in progress */
+  deleting = false;
+
+  /**
+   * Constructor
+   * @param {<<M AA>>Service} <<M aA>>Service
+   * @param {ErrorService} errorService
+   */
+  constructor(private <<M aA>>Service: <<M AA>>Service,
+              private errorService: ErrorService) {}
+
+  /** Init */
+  ngOnInit() {}
+  /**
+   * Triggered when the lock is moved
+   */
+  onDeletionUnlock(checked: boolean): void {
+    this.deletionUnlocked = checked;
+  }
+  /** Called on deletion */
+  onDeleteClick(): void {
+    this.deleting = true;
+    this.<<M aA>>Service.remove(this.<<M aA>>.getId())
+      .then(() => {
+        this.delete.next();
+      })
+      .catch((error) => this.errorService.handle(error))
+      .then(() => this.deleting = false);
+  }
+}

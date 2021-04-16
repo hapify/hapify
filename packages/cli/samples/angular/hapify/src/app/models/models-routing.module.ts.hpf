@@ -1,0 +1,49 @@
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+<<@ M m>>
+import {<<m AA>>Component} from './<<m a-a>>/<<m a-a>>/<<m a-a>>.component';
+import {<<m AA>>CreateComponent} from './<<m a-a>>/views/<<m a-a>>-create/<<m a-a>>-create.component';
+import {<<m AA>>ReadComponent} from './<<m a-a>>/views/<<m a-a>>-read/<<m a-a>>-read.component';
+import {<<m AA>>EditComponent} from './<<m a-a>>/views/<<m a-a>>-edit/<<m a-a>>-edit.component';
+import {<<m AA>>ListComponent} from './<<m a-a>>/views/<<m a-a>>-list/<<m a-a>>-list.component';
+<<@>>
+import { IsAdminGuard } from '@app/guards';
+ 
+const routes: Routes = [
+<<@ M m>>
+  {
+    path: '<<m a-a>>',
+    component: <<m AA>>Component,
+    canActivate: [IsAdminGuard],
+    children: [
+      {
+        path: '',
+        component: <<m AA>>ListComponent,
+        data: { title: 'List <<m a>>' }
+      },
+      {
+        path: 'create',
+        component: <<m AA>>CreateComponent,
+        data: { title: 'Create <<m a>>' }
+      },
+      {
+        path: 'edit/:id',
+        component: <<m AA>>EditComponent,
+        data: { title: 'Edit <<m a>>' }
+      },
+      {
+        path: ':id',
+        component: <<m AA>>ReadComponent,
+        data: { title: 'Read <<m a>>' }
+      },
+    ]
+  },
+<<@>>
+];
+ 
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class ModelsRoutingModule {
+}

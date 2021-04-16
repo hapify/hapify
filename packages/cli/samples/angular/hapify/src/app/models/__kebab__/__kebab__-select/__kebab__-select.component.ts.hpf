@@ -1,0 +1,40 @@
+import {Component} from '@angular/core';
+import {EntitySelectComponent} from '@app/abstracts';
+import {ErrorService} from '@app/services';
+import {<<M AA>>SearchParams} from '../<<M a-a>>-search-params';
+import {<<M AA>>Service} from '../<<M a-a>>.service';
+import {<<M AA>>} from '../<<M a-a>>';
+
+@Component({
+  selector: 'hpf-<<M a-a>>-select',
+  templateUrl: '../../../abstracts/entity-select/entity-select.component.html'
+})
+export class <<M AA>>SelectComponent extends EntitySelectComponent< <<M AA>>> {
+
+  /**
+   * Constructor
+   * @param {<<M AA>>Service} <<M aA>>Service
+   * @param {ErrorService} errorService
+   */
+  constructor(private <<M aA>>Service: <<M AA>>Service,
+              protected errorService: ErrorService) {
+    super(errorService);
+  }
+  /** @inheritDoc */
+  protected async getList(): Promise< <<M AA>>[]> {
+      const params = new <<M AA>>SearchParams({
+          _limit: this.resultsLimit,
+          _page: this.currentPage
+      });
+<<? F se*lb>>
+      if (this.filterEnabled && this.filterValue) {
+        params.props.<<@1 F se*lb f>><<f a_a>><<@>> = this.filterValue;
+      }
+<<?>>
+      return (await this.<<M aA>>Service.list(params.toObject())).items;
+  }
+  /** @inheritDoc */
+  protected async getOne(id: string): Promise< <<M AA>>> {
+      return await this.<<M aA>>Service.get(id);
+  }
+}

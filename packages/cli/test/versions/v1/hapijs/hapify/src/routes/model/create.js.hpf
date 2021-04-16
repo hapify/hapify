@@ -1,0 +1,142 @@
+'use strict';
+ 
+/**
+ * Create <<M a>>.
+ * Returns the created <<M a>>.
+ */
+ 
+const Joi = require('joi');
+const Boom = require('boom');
+<<? F tE/in>>
+const MongoDB = require('mongodb');
+<<?>>
+ 
+// Validation schema for payload
+const schema = Joi.object({
+<<@ F !in f>>
+    <<f a_a>>: <<=joiValidator(f)>>,
+<<@>>
+});
+ 
+/**
+ * Export route to create <<M a>>
+ */
+module.exports = {
+    method: 'POST',
+    path: '/<<M a-a>>',
+    config: {
+        validate: { payload: schema },
+        description: 'Route to create <<M a>>',
+        tags: ['<<M a-a>>', 'create']
+    },
+    handler: async (request, h) => {
+ 
+        // Get <<M a>> from payload
+        const payload = request.payload;
+
+<<? F in/pr>>
+ 
+        // Init internal fields
+    <<@ F in/pr i>>
+        payload.<<i a_a>> = <<=defaultValue(i)>>;
+    <<@>>
+<<?>>
+
+<<? F tE/in>>
+ 
+        // Convert reference fields
+    <<@ F tE/in r>>
+        <<? r ml>>
+        payload.<<r a_a>> = request.payload.<<r a_a>> instanceof Array ?
+            request.payload.<<r a_a>>.map((i) => new MongoDB.ObjectId(i)) : null;
+        <<??>>
+        payload.<<r a_a>> = typeof request.payload.<<r a_a>> === 'string' ?
+            new MongoDB.ObjectId(request.payload.<<r a_a>>) : null;
+        <<?>>
+    <<@>>
+<<?>>
+ 
+        // @hook create:before-insert:<<M a-a>>
+ 
+        // Insertion options
+        const options = { w: 'majority' };
+ 
+        // Insert <<M a>> into database
+<<? F un>>
+        let result;
+        try {
+            result = await request.server.db.collection('<<M a_a>>')
+                .insertOne(payload, options);
+        }
+        catch (e) {
+            // Handle duplicated key for unique indexes
+            return e.name === 'MongoError' && e.code === 11000 ?
+                Boom.conflict('Duplicate key') :
+                Boom.boomify(e);
+        }
+<<??>>
+        const result = await request.server.db.collection('<<M a_a>>')
+            .insertOne(payload, options);
+<<?>>
+ 
+        if (result.insertedCount === 0) {
+            return Boom.internal('Insert error');
+        }
+ 
+        const <<M aA>> = result.ops[0];
+
+<<? F hd>>
+ 
+        // Delete private properties
+    <<@ F hd p>>
+        delete <<M aA>>.<<p a_a>>;
+    <<@>>
+<<?>>
+ 
+        return h.response(<<M aA>>).code(201);
+    }
+};
+ 
+<<< 
+function defaultValue(f) {
+    let v = "null";
+    
+    if (f.multiple) v = "[]";
+    else if (f.nullable) v = "null";
+    else if (f.type === "boolean") v = "false";
+    else if (f.type === "string") v = "'-'";
+    else if (f.type === "number") v = "0";
+    else if (f.type === "datetime") v = "Date.now()";
+    
+    return v;
+}
+function joiValidator(f) {
+    let out = "Joi.";
+    
+    if (f.type === "boolean") out += "boolean()";
+    else if (f.type === "string") {
+        out +=  "string()";
+        if (f.subtype === "email") out += ".email()";
+        else if (f.subtype === "password") out += ".min(6)";
+        out +=  ".trim()";
+    }
+    else if (f.type === "number" || f.type === "datetime") {
+        out +=  "number()";
+        if (f.subtype === "latitude") out += ".min(-90).max(90)";
+        else if (f.subtype === "longitude") out += ".min(-180).max(180)";
+    }
+    else if (f.type === "entity") out +=  "string().length(24).hex()";
+    else out +=  "any()";
+    
+    /* Multiple and nullable */
+    if (f.multiple) {
+        out = `Joi.array().items(${out})`;
+        
+        out += f.nullable ? ".min(0)" : ".min(1).required()";
+    } else {
+        out += f.nullable ? ".allow(null)" : ".required()";
+    }
+    
+    return out;
+}
+>>>

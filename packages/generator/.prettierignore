@@ -1,3 +1,3 @@
-node_modules
-dist
-test/files
+node_modules/
+dist/
+test/files/

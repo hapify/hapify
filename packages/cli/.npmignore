@@ -1,20 +1,17 @@
-.nyc_output/
-coverage/
 src/
-samples/
 test/
+coverage/
+.nyc_output/
+samples/
 dist/html/ws.json
 
 .idea
 .vscode
 
-.gitignore
+.prettierignore
+
 .mocharc.json
 .nycrc.json
-.prettierignore
-.prettierrc
-.travis.yml
-commitlint.config.js
 ERRORS.md
 ROADMAP.md
 tsconfig.json

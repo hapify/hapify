@@ -4,38 +4,38 @@ import 'mocha';
 import { HapifyEJS } from '../src';
 
 describe('possible attacks', () => {
-  it('process accesses', async () => {
+  it('process accesses', () => {
     const script = '<% process.exit(); %>';
     expect(() => new HapifyEJS().run(script, {})).to.throw(
       'process is not defined',
     );
   });
-  it('require accesses 1', async () => {
+  it('require accesses 1', () => {
     const script = '<% require("http"); %>';
     expect(() => new HapifyEJS().run(script, {})).to.throw(
       'require is not defined',
     );
   });
-  it('require accesses 2', async () => {
+  it('require accesses 2', () => {
     const script =
       '<% models.constructor.constructor("return process.mainModule.require")()("http") %>';
     expect(() => new HapifyEJS().run(script, { models: {} })).to.throw(
       'process is not defined',
     );
   });
-  it('global values', async () => {
+  it('global values', () => {
     const script = '<% return JSON.stringify(Object.keys(global)); %>';
     const result = JSON.parse(new HapifyEJS().run(script, {}));
-    expect(result).to.equal(['VMError', 'Buffer', 'context']);
+    expect(result).to.equal(['VMError', 'Buffer', 'context', 'console']);
   });
-  it('process deep accesses', async () => {
+  it('process deep accesses', () => {
     const script =
       '<% models.constructor.constructor("return { process }")().exit() %>';
     expect(() => new HapifyEJS().run(script, { models: {} })).to.throw(
       'process is not defined',
     );
   });
-  it('process deep accesses with this', async () => {
+  it('process deep accesses with this', () => {
     const script =
       '<% this.constructor.constructor("return { process }")().exit() %>';
     expect(() => new HapifyEJS().run(script, {})).to.throw(
@@ -43,19 +43,20 @@ describe('possible attacks', () => {
     );
   });
 
-  it('alter console 1', async () => {
+  it('alter console', () => {
     const script = '<% console = undefined; return ""; %>';
     new HapifyEJS().run(script, {});
     expect(console).to.not.be.undefined();
   });
-  it('alter console 2', async () => {
-    const script =
-      '<% console.log = function() { return "trojan" }; return ""; %>';
-    new HapifyEJS().run(script, {});
-    expect(console.log()).to.not.be.a.string();
+
+  it('try to use console', () => {
+    const script = '<% console.log("hi") %>';
+    expect(() => new HapifyEJS().run(script, {})).to.throw(
+      "Cannot read property 'log' of undefined",
+    );
   });
 
-  it('return fake string', async () => {
+  it('return fake string', () => {
     const script =
       '<% return { toString: function() { /* Bad function */ } }; %>';
     expect(() => new HapifyEJS().run(script, {})).to.throw(
@@ -63,12 +64,12 @@ describe('possible attacks', () => {
     );
   });
 
-  it('throw evil error 1', async () => {
+  it('throw evil error 1', () => {
     const script =
       '<% throw { message: { toString: function() { /* Bad function */ } } }; %>';
     expect(() => new HapifyEJS().run(script, {})).to.throw('Invalid error');
   });
-  it('throw evil error 2', async () => {
+  it('throw evil error 2', () => {
     const script =
       '<% throw { stack: { toString: function() { /* Bad function */ } } }; %>';
     try {

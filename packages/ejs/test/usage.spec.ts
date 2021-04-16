@@ -1,10 +1,13 @@
 import { expect, fail } from '@hapi/code';
 import 'mocha';
 
-import { HapifyEJS } from '../index';
+import { EjsEvaluationError, HapifyEJS } from '../src';
 
 describe('usage', () => {
-  it('condition', async () => {
+  it('errors are defined', () => {
+    expect(EjsEvaluationError).to.exist();
+  });
+  it('condition', () => {
     expect(
       new HapifyEJS().run(
         'Valid is <% if (valid) { %>TRUE<% } else { %>FALSE<% } %>.',
@@ -12,7 +15,7 @@ describe('usage', () => {
       ),
     ).to.equal('Valid is TRUE.');
   });
-  it('context access', async () => {
+  it('context access', () => {
     expect(new HapifyEJS().run('<%= value %>', { value: 'TheValue' })).to.equal(
       'TheValue',
     );
@@ -20,21 +23,21 @@ describe('usage', () => {
       new HapifyEJS().run('<%= value.prop %>', { value: { prop: 'TheValue' } }),
     ).to.equal('TheValue');
   });
-  it('no return', async () => {
+  it('no return', () => {
     expect(new HapifyEJS().run('<% /* nothing */ %>', {})).to.equal('');
   });
 
-  it('convert number to string', async () => {
+  it('convert number to string', () => {
     expect(new HapifyEJS().run('<%= 12 %>', {})).to.equal('12');
   });
 
-  it('convert object to string', async () => {
+  it('convert object to string', () => {
     expect(new HapifyEJS().run('<%- { value: 12 } %>', {})).to.equal(
       '[object Object]',
     );
   });
 
-  it('timeout', async () => {
+  it('timeout', () => {
     try {
       new HapifyEJS({ timeout: 50 }).run('<% while(true) {} %>', {});
       fail('Should throw an error');
@@ -45,7 +48,7 @@ describe('usage', () => {
     }
   }).slow(200);
 
-  it('evaluation error 1', async () => {
+  it('evaluation error 1', () => {
     try {
       new HapifyEJS({ timeout: 200 }).run(
         '<%= "test" %>\n\n<% /* comment */ a(); %>\n<%= "test" %>',
@@ -61,7 +64,7 @@ describe('usage', () => {
     }
   });
 
-  it('evaluation error 2', async () => {
+  it('evaluation error 2', () => {
     try {
       new HapifyEJS({ timeout: 200 }).run('<% function f() { return 3; %>', {});
       fail('Should throw an error');
@@ -78,35 +81,35 @@ describe('usage', () => {
 
 describe('ejs tags', () => {
   const context = { value: 'TheValue' };
-  it('scriplet', async () => {
+  it('scriplet', () => {
     expect(new HapifyEJS().run('This is <% /* */ %>', context)).to.equal(
       'This is ',
     );
   });
-  it('whitespace slurping', async () => {
+  it('whitespace slurping', () => {
     expect(
       new HapifyEJS().run('This is    <%_ _%>   <%= value %> ', context),
     ).to.equal('This isTheValue ');
   });
-  it('html escaped', async () => {
+  it('html escaped', () => {
     expect(new HapifyEJS().run('This is <%= value %>', context)).to.equal(
       'This is TheValue',
     );
   });
-  it('uescaped', async () => {
+  it('uescaped', () => {
     expect(new HapifyEJS().run('This is <%- value %>', context)).to.equal(
       'This is TheValue',
     );
   });
-  it('comment', async () => {
+  it('comment', () => {
     expect(new HapifyEJS().run('This is <%# comment %>', context)).to.equal(
       'This is ',
     );
   });
-  it('literal opening tag', async () => {
+  it('literal opening tag', () => {
     expect(new HapifyEJS().run('This is <%%', context)).to.equal('This is <%');
   });
-  it('trim next line', async () => {
+  it('trim next line', () => {
     expect(
       new HapifyEJS().run('This is <% -%>\n<%- value %>', context),
     ).to.equal('This is TheValue');

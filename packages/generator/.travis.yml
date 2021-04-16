@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - 13
+install:
+  - npm install
+  - npm install codecov -g
+after_success:
+  - cat ./coverage/lcov.info | codecov

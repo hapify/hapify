@@ -1,0 +1,11 @@
+'use strict';
+ 
+/**
+ * Export all routes.
+ */
+ 
+module.exports = {
+<% for (const model of moodels) { %>
+    <%= model.names.pascal%>: require('./<%= model.names.kebab %>'),
+<% } %>
+};

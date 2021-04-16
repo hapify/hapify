@@ -26,7 +26,7 @@ module.exports = {
     'no-plusplus': 'off',
     'no-await-in-loop': 'off',
     'no-continue': 'off',
-    'no-param-reassign': ['error', { 'props': false }],
+    'no-param-reassign': ['error', { props: false }],
 
     // Not compatible with Hapify templates
     'no-template-curly-in-string': 'off',

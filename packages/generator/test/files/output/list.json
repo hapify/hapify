@@ -1,0 +1,14 @@
+{
+  "models": [
+    "Bookmark",
+    "Category",
+    "City",
+    "Image",
+    "Offer",
+    "Place",
+    "Record",
+    "Service",
+    "StaticContent",
+    "User"
+  ]
+}

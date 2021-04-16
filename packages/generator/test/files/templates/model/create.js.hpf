@@ -1,0 +1,213 @@
+'use strict';
+ 
+/**
+ * Create <<M a>>.
+ * Returns the created <<M a>>.
+<<? F enum>>
+ * This model has enum:
+<<for F enum f>>
+ * - <<f camel>>:<<for f.enum e>> <<e snake>><<endfor>>
+<<endfor>>
+<<?>>
+ */
+ 
+const Joi = require('joi');
+const Boom = require('boom');
+<<? F tE/in>>
+const MongoDB = require('mongodb');
+<<?>>
+ 
+// Validation schema for payload
+const schemaObjectPublic = {
+<<@ F /rs/in f>>
+    <<f a_a>>: <<=joiValidator(f)>>,
+<<@>>
+};
+<<? F rs>>
+const schemaObjectAdmin = Object.assign({
+    <<@ F rs f>>
+    <<f a_a>>: <<=joiValidator(f)>>,
+    <<@>>
+}, schemaObjectPublic);
+<<??>>
+const schemaObjectAdmin = schemaObjectPublic;
+<<?>>
+ 
+/**
+ * Define handler
+ */
+const handler = async (request, h) => {
+ 
+    // Get <<M a>> from payload
+    const payload = request.payload;
+
+<<? F in/pr>>
+ 
+    // Init internal fields
+    <<@ F in/pr i>>
+    payload.<<i a_a>> = <<=defaultValue(i)>>;
+    <<@>>
+<<?>>
+
+<<? F rs/tE>>
+ 
+    // Init restricted fields
+    <<@ F rs/tE r>>
+    payload.<<r a_a>> = typeof request.payload.<<r a_a>> !== 'undefined' ?
+        request.payload.<<r a_a>> : <<=defaultValue(r)>>;
+    <<@>>
+<<?>>
+
+<<? F tE/in>>
+ 
+    // Convert reference fields
+    <<@ F tE/in r>>
+    // Relationship: <<? r tEoo>>one-to-one<<?? r tEom>>one-to-many<<?? r tEmm>>many-to-many<<??>>default<<?>>
+        <<? r tEom>>
+    payload.<<r a_a>> = request.payload.<<r a_a>> instanceof Array ?
+        request.payload.<<r a_a>>.map((i) => new MongoDB.ObjectId(i)) : <<? r os>>[request.auth.credentials._id]<<??>>null<<?>>;
+        <<??>>
+    payload.<<r a_a>> = typeof request.payload.<<r a_a>> === 'string' ?
+        new MongoDB.ObjectId(request.payload.<<r a_a>>) : <<? r os>>request.auth.credentials._id<<??>>null<<?>>;
+        <<?>>
+    <<@>>
+<<?>>
+
+<<@ F tSp/in p>>
+ 
+    // Hash <<p a>>
+    if (typeof payload.<<p a_a>> !== 'undefined') {
+        payload.<<p a_a>> = request.server.utils.Hash.bcrypt(payload.<<p a_a>>);
+    }
+<<@>>
+ 
+    // @hook create:before-insert:<<M a-a>>
+ 
+    // Insertion options
+    const options = { w: 'majority' };
+ 
+    // Insert <<M a>> into database
+<<? F un>>
+    let result;
+    try {
+        result = await request.server.db.collection('<<M a_a>>')
+            .insertOne(payload, options);
+    }
+    catch (e) {
+        // Handle duplicated key for unique indexes
+        return e.name === 'MongoError' && e.code === 11000 ?
+            Boom.conflict('Duplicate key') :
+            Boom.boomify(e);
+    }
+<<??>>
+    const result = await request.server.db.collection('<<M a_a>>')
+        .insertOne(payload, options);
+<<?>>
+ 
+    if (result.insertedCount === 0) {
+        return Boom.internal('Insert error');
+    }
+ 
+    const <<M aA>> = result.ops[0];
+ 
+    // @hook create:after-insert:<<M a-a>>
+
+<<? F hd>>
+ 
+    // Delete hidden properties
+    <<@ F hd p>>
+    delete <<M aA>>.<<p a_a>>;
+    <<@>>
+<<?>>
+ 
+    return h.response(<<M aA>>).code(201);
+};
+ 
+/**
+ * Export route to create <<M a>>
+ */
+module.exports = [
+    {
+        method: 'POST',
+        path: '/admin/<<M a-a>>',
+        config: {
+            validate: { payload: Joi.object(schemaObjectAdmin) },
+            description: 'Route to create <<M a>> as admin',
+            tags: ['admin', '<<M a-a>>', 'create'],
+            auth: {
+                strategy: 'session',
+                scope: 'role-admin'
+            }
+        },
+        handler
+    },
+<<? Ac [ow>>
+    {
+        method: 'POST',
+        path: '/<<M a-a>>',
+        config: {
+            validate: { payload: Joi.object(schemaObjectPublic) },
+            description: 'Route to create <<M a>>',
+            tags: ['<<M a-a>>', 'create'],
+    <<? Ac !gs>>
+            auth: {
+                strategy: 'session',
+                scope: 'role-user'
+            }
+    <<?>>
+        },
+        handler
+    }
+<<?>>
+];
+ 
+<<< 
+function defaultValue(f) {
+    let v = "null";
+    
+    if (f.ownership) {
+        v = f.multiple ? "[request.auth.credentials._id]" : "request.auth.credentials._id";
+    }
+    else if (f.multiple) v = "[]";
+    else if (f.type === "boolean") v = "false";
+    else if ((f.type === "string" || f.type === "enum") && f.names.snake === 'role') v = "'user'";
+    else if (f.type === "string") v = "''";
+    else if (f.type === "number") v = "0";
+    else if (f.type === "datetime") v = "Date.now()";
+    
+    return v;
+}
+function joiValidator(f) {
+    let out = "Joi.";
+    
+    if (f.type === "boolean") out += "boolean()";
+    else if (f.type === "string") {
+        out +=  "string()";
+        if (f.subtype === "email") out += ".email().lowercase()";
+        else if (f.subtype === "password") out += ".min(6)";
+        out +=  ".trim()";
+    }
+    else if (f.type === "enum") {
+        const list = f.enum.map(e => `'${e.names.snake}'`).join(', ');
+        out +=  `string().trim().valid([${list}])`;
+    }
+    else if (f.type === "number" || f.type === "datetime") {
+        out +=  "number()";
+        if (f.subtype === "latitude") out += ".min(-90).max(90)";
+        else if (f.subtype === "longitude") out += ".min(-180).max(180)";
+    }
+    else if (f.type === "entity") out +=  "string().length(24).hex()";
+    else out +=  "any()";
+    
+    /* Multiple and nullable */
+    if (f.multiple) {
+        out = `Joi.array().items(${out})`;
+        
+        out += f.nullable ? ".min(0)" : ".min(1).required()";
+    } else {
+        out += f.nullable ? ".allow(null)" : ".required()";
+    }
+    
+    return out;
+}
+>>>

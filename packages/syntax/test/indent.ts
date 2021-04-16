@@ -10,12 +10,12 @@ const Input = readFileSync(`${__dirname}/templates/indent.hpf`, 'utf8');
 const Output = readFileSync(`${__dirname}/output/indent.txt`, 'utf8');
 
 describe('indentation', () => {
-	it('run', () => {
-		// Test input validity
-		expect(Input).to.be.a.string();
-		expect(Output).to.be.a.string();
-		expect(Model).to.be.an.object();
+  it('run', () => {
+    // Test input validity
+    expect(Input).to.be.a.string();
+    expect(Output).to.be.a.string();
+    expect(Model).to.be.an.object();
 
-		expect(HapifySyntax.run(Input, Model)).to.equal(Output);
-	});
+    expect(HapifySyntax.run(Input, Model)).to.equal(Output);
+  });
 });

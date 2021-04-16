@@ -23,6 +23,10 @@ module.exports = {
   plugins: ['import', 'json-files', '@typescript-eslint/eslint-plugin'],
   rules: {
     'no-console': ['error', { allow: ['info', 'warn', 'error'] }],
+    'no-plusplus': 'off',
+    'no-await-in-loop': 'off',
+    'no-continue': 'off',
+    'no-param-reassign': ['error', { props: false }],
 
     // Not compatible with Hapify templates
     'no-template-curly-in-string': 'off',
@@ -58,6 +62,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-member-access': 'off',
     '@typescript-eslint/no-unsafe-return': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    '@typescript-eslint/unbound-method': 'off',
 
     // Declare rules for imports matter
     'sort-imports': [

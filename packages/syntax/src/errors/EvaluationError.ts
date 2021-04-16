@@ -1,13 +1,13 @@
 import { NumberedError } from '../Interfaces';
 
 export class EvaluationError extends Error implements NumberedError {
-	code = 1004;
+  code = 1004;
 
-	name = 'SyntaxEvaluationError';
+  name = 'SyntaxEvaluationError';
 
-	lineNumber: number = null;
+  lineNumber: number = null;
 
-	columnNumber: number = null;
+  columnNumber: number = null;
 
-	details: string = null;
+  details: string = null;
 }

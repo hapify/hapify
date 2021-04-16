@@ -1,0 +1,11 @@
+'use strict';
+ 
+/**
+ * Export all routes.
+ */
+ 
+module.exports = {
+<<@ S m>>
+    <<m AA>>: require('./<<m a-a>>'),
+<<@>>
+};

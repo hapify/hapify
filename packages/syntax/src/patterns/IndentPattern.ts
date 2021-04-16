@@ -5,8 +5,8 @@ const IndentReplace = '<<$1$2>>';
 
 /** Escape pattern */
 export class IndentPattern extends BasePattern {
-	/** Parser method */
-	execute(): void {
-		this.replace(IndentToRemove, IndentReplace);
-	}
+  /** Parser method */
+  execute(): void {
+    this.replace(IndentToRemove, IndentReplace);
+  }
 }

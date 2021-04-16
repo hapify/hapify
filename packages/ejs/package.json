@@ -9,11 +9,7 @@
   ],
   "license": "MIT",
   "author": "Edouard Demotes-Mainard <edouard@tractr.net>",
-  "homepage": "https://github.com/hapify/hapify#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com:hapify/hapify.git"
-  },
+  "homepage": "https://github.com/hapify/hapify",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {

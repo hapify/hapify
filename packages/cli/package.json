@@ -16,7 +16,7 @@
   },
   "preferGlobal": true,
   "scripts": {
-    "build": "rm -rf dist && tsc -p . && cp -r node_modules/@hapify/gui/dist/hapify-gui dist/html",
+    "build": "rm -rf dist && tsc -p . && cp -r ../../node_modules/@hapify/gui/dist/hapify-gui dist/html",
     "start": "ts-node src/index.ts",
     "clean": "rimraf dist node_modules coverage .nyc_output",
     "prepublishOnly": "npm run build",

@@ -20,15 +20,17 @@ export async function AskPreset(cmd: Command): Promise<string[]> {
         value: p.id,
       }));
 
-      qPresets = ((await Inquirer.prompt([
-        {
-          name: 'presets',
-          message: 'Choose some presets to preload in your project',
-          type: 'checkbox',
-          choices: list,
-          when: () => list.length > 0,
-        },
-      ]))).presets;
+      qPresets = (
+        await Inquirer.prompt([
+          {
+            name: 'presets',
+            message: 'Choose some presets to preload in your project',
+            type: 'checkbox',
+            choices: list,
+            when: () => list.length > 0,
+          },
+        ])
+      ).presets;
     }
   }
 
@@ -48,17 +50,16 @@ export async function ApplyPreset(qPresets: string[]): Promise<boolean> {
     if (models.length) {
       logger.warning('Project already contains models. Ignore presets import.');
       return false;
-    } 
-      // Get and apply presets
-      for (const id of qPresets) {
-        const preset = await presetsCollection.get(id);
-        const results = await presets.apply(preset.models);
-        await modelsCollection.add(results.created);
-        await modelsCollection.update(results.updated);
-      }
-      // Save models
-      await modelsCollection.save();
-      return true;
-    
+    }
+    // Get and apply presets
+    for (const id of qPresets) {
+      const preset = await presetsCollection.get(id);
+      const results = await presets.apply(preset.models);
+      await modelsCollection.add(results.created);
+      await modelsCollection.update(results.updated);
+    }
+    // Save models
+    await modelsCollection.save();
+    return true;
   }
 }

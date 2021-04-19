@@ -5,7 +5,6 @@ import { IV1ApiModel } from '../../../interface/legacy/v1/Api';
 import { VersionedObjectParser } from '../../../interface/Version';
 import { ConverterService } from '../../Converter';
 
-
 export class ApiModelV1Parser implements VersionedObjectParser<IApiModel> {
   private converterService: ConverterService;
 

@@ -4,7 +4,6 @@ import * as Path from 'path';
 import * as Fs from 'fs-extra';
 import { Service } from 'typedi';
 
-
 import { IGlobalConfig } from '../interface/Config';
 import { GlobalConfigSchema } from '../interface/schema/Config';
 

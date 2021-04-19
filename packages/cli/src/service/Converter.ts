@@ -38,7 +38,7 @@ export class ConverterService {
     field: { [key in CompactFieldBooleanProperty]: boolean },
   ): CompactFieldBooleanProperty[] {
     return this.booleanFieldPropertiesNames
-      .map((property) => field[property] ? property : null)
+      .map((property) => (field[property] ? property : null))
       .filter((p) => !!p);
   }
 

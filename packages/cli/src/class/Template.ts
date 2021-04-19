@@ -116,7 +116,7 @@ export class Template
     const stringService: StringService = Container.get(StringService);
 
     const types = stringService.types();
-    let {path} = template;
+    let { path } = template;
     for (const type of types) {
       path = path.replace(new RegExp(`{${type}}`, 'g'), `__${type}__`);
     }
@@ -131,7 +131,7 @@ export class Template
 
     const variants = stringService.variants('model');
     const keys = Object.keys(variants) as (keyof IStringVariants)[];
-    let {path} = template;
+    let { path } = template;
     for (const key of keys) {
       path = path.replace(new RegExp(`{${key}}`, 'g'), variants[key]);
     }

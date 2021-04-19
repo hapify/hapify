@@ -31,14 +31,14 @@ export class ProjectFileStorageService extends SingleSaveFileStorage<IStorablePr
       description: content.description || undefined,
       models: content.models.map(
         (model): IStorableCompactModel => ({
-            id: model.id,
-            name: model.name,
-            accesses: model.accesses,
-            fields: model.fields.map((f) =>
-              this.converterService.convertFieldToCompactFormat(f),
-            ),
-            notes: model.notes || undefined,
-          }),
+          id: model.id,
+          name: model.name,
+          accesses: model.accesses,
+          fields: model.fields.map((f) =>
+            this.converterService.convertFieldToCompactFormat(f),
+          ),
+          notes: model.notes || undefined,
+        }),
       ),
     };
     return JSON.stringify(compact, null, 2);
@@ -53,14 +53,14 @@ export class ProjectFileStorageService extends SingleSaveFileStorage<IStorablePr
         name: compact.name,
         description: compact.description,
         models: compact.models.map((model) => ({
-            id: model.id,
-            name: model.name,
-            accesses: model.accesses,
-            fields: model.fields.map((f) =>
-              this.converterService.convertFieldFromCompactFormat(f),
-            ),
-            notes: model.notes || null,
-          })),
+          id: model.id,
+          name: model.name,
+          accesses: model.accesses,
+          fields: model.fields.map((f) =>
+            this.converterService.convertFieldFromCompactFormat(f),
+          ),
+          notes: model.notes || null,
+        })),
       };
     } catch (error) {
       throw new Error(

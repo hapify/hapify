@@ -20,7 +20,7 @@ export class LoggerService {
   handle(error: Error): this {
     let message = '✖ ';
     if ((<RichError>error).data) {
-      const {data} = <RichError>error;
+      const { data } = <RichError>error;
       message += `[${data.type}:${data.code}] `;
       message += data.details ? data.details : error.message;
     } else {

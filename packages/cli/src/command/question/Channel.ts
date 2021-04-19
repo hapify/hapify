@@ -12,7 +12,7 @@ export async function DescribeChannel(
 ) {
   // Get description from user
   // If the name is passed, bypass all questions
-  const answer = (await Inquirer.prompt([
+  const answer = await Inquirer.prompt([
     {
       name: 'name',
       message: 'Enter the channel name',
@@ -31,7 +31,7 @@ export async function DescribeChannel(
       when: () => !cmd.channelLogo && !cmd.channelName,
       default: null,
     },
-  ]));
+  ]);
 
   qChannelDescription.name = cmd.channelName || answer.name;
   qChannelDescription.description = cmd.channelDesc || answer.description;

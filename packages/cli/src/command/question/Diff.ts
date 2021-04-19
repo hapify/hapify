@@ -17,15 +17,17 @@ export interface DiffQuery {
 export async function AskDiff(cmd: Command, qDiff: DiffQuery, git: SimpleGit) {
   const branches = await git.branchLocal();
 
-  qDiff.source = ((await Inquirer.prompt([
-    {
-      name: 'source',
-      message: 'Choose a source branch',
-      type: 'list',
-      choices: branches.all,
-      default: 'hapify',
-    },
-  ]))).source;
+  qDiff.source = (
+    await Inquirer.prompt([
+      {
+        name: 'source',
+        message: 'Choose a source branch',
+        type: 'list',
+        choices: branches.all,
+        default: 'hapify',
+      },
+    ])
+  ).source;
 
   const commits = (
     await git.log([qDiff.source, '-n', '20', '--'])
@@ -75,15 +77,17 @@ export async function AskDiff(cmd: Command, qDiff: DiffQuery, git: SimpleGit) {
   ])) as { to?: string; toHash?: string };
   qDiff.to = toAnswer.toHash || toAnswer.to;
 
-  qDiff.destination = ((await Inquirer.prompt([
-    {
-      name: 'destination',
-      message: 'Choose a destination branch',
-      type: 'list',
-      choices: branches.all,
-      default: 'develop',
-    },
-  ]))).destination;
+  qDiff.destination = (
+    await Inquirer.prompt([
+      {
+        name: 'destination',
+        message: 'Choose a destination branch',
+        type: 'list',
+        choices: branches.all,
+        default: 'develop',
+      },
+    ])
+  ).destination;
 }
 export async function ApplyDiff(
   qDiff: DiffQuery,
@@ -91,14 +95,14 @@ export async function ApplyDiff(
 ): Promise<string> {
   const options = Container.get(OptionsService);
   const command = `git format-patch --stdout ${qDiff.from}..${qDiff.to} | git am -3 -k`;
-  const {confirm} = (await Inquirer.prompt([
+  const { confirm } = await Inquirer.prompt([
     {
       name: 'confirm',
       message: `Confirm run command: "${command}" on branch ${qDiff.destination}`,
       type: 'confirm',
       default: false,
     },
-  ]));
+  ]);
 
   if (confirm) {
     await git.checkout(qDiff.destination);

@@ -9,7 +9,6 @@ import { Service } from 'typedi';
 import { OptionsService } from './Options';
 import { WebSocketServerService } from './WebSocketServer';
 
-
 const RootDir = pkgDir.sync(__dirname);
 
 @Service()
@@ -91,7 +90,7 @@ export class HttpServerService {
 
     // Create catch-all fallback
     this.server.ext('onPreResponse', (request: any, h: any) => {
-      const {response} = request;
+      const { response } = request;
       if (response.isBoom && response.output.statusCode === 404) {
         return h.file('index.html').code(200);
       }

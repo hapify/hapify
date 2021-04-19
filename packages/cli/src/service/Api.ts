@@ -47,14 +47,14 @@ export class RichAxiosError implements AxiosError {
   isAxiosError = true;
 
   toJSON: () => object = () => ({
-      // Standard
-      message: this.message,
-      name: this.name,
-      stack: this.stack,
-      // Axios
-      config: this.config,
-      code: this.code,
-    });
+    // Standard
+    message: this.message,
+    name: this.name,
+    stack: this.stack,
+    // Axios
+    config: this.config,
+    code: this.code,
+  });
 }
 
 @Service()

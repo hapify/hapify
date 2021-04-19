@@ -47,7 +47,7 @@ export class InfoService {
           await this.authenticatedApiService.get<ILimits>('generator/limits')
         ).data;
       } else {
-        this._limits = { ...InternalConfig.limits};
+        this._limits = { ...InternalConfig.limits };
       }
     }
     return this._limits;

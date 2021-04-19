@@ -90,7 +90,7 @@ export async function NewCommand(cmd: Command) {
   if (projectIsLocal) {
     await AskLocalProject(cmd, qProject);
     // Get the the first channel's project and change its name
-    const {project} = (await channelsService.channels())[0];
+    const { project } = (await channelsService.channels())[0];
     project.setNameAndDescription(qProject.name, qProject.description);
     await project.save();
   } else {

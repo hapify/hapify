@@ -27,7 +27,7 @@ export class OptionsService {
 
   /** Returns the remote config and override defaults with global config (if any) */
   remoteConfig(): IRemoteConfig {
-    const configs = { ...RemoteConfig};
+    const configs = { ...RemoteConfig };
     configs.uri = this.apiUrl();
     return configs;
   }

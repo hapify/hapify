@@ -58,7 +58,7 @@ async function addBoilerplate(
   list: { name: string; value: string }[],
   qBoilerplate: BoilerplateQuery,
 ) {
-  const answer = (await Inquirer.prompt([
+  const answer = await Inquirer.prompt([
     {
       name: 'url',
       message: 'Choose a boilerplate',
@@ -82,7 +82,7 @@ async function addBoilerplate(
       type: 'confirm',
       default: false,
     },
-  ]));
+  ]);
 
   // Create if first one
   if (!qBoilerplate.urls) {

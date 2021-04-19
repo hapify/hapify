@@ -33,7 +33,6 @@ import { TemplatePreviewHandlerService } from './websocket-handlers/TemplatePrev
 import { ValidateModelHandlerService } from './websocket-handlers/ValidateModelHandler';
 import { GetPresetsHandlerService } from './websocket-handlers/GetPresetsHandler';
 
-
 interface TokenData {
   name: string;
 }
@@ -151,9 +150,7 @@ export class WebSocketServerService {
 
         try {
           // Decode and verify message
-          const parsed = WebSocketMessageSchema.validate(
-            JSON.parse(message),
-          ) ;
+          const parsed = WebSocketMessageSchema.validate(JSON.parse(message));
           if (parsed.error) {
             (parsed.error as any).data = {
               code: 4002,

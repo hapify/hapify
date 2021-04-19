@@ -15,9 +15,9 @@ import {
 // Export types
 export { Access, Engine, FieldSubType, FieldType, Input };
 
-export type IStringVariants = StringVariations
-export type IGeneratorResult = GeneratorResult
-export type IAccesses = Accesses
+export type IStringVariants = StringVariations;
+export type IGeneratorResult = GeneratorResult;
+export type IAccesses = Accesses;
 export interface IModel extends Model {
   /** The model's notes */
   notes?: string;
@@ -28,4 +28,4 @@ export interface IField extends Field {
   /** The field's notes */
   notes?: string;
 }
-export type ITemplate = Template
+export type ITemplate = Template;

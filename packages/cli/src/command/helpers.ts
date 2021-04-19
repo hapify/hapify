@@ -1,12 +1,17 @@
 import chalk from 'chalk';
 import { Container } from 'typedi';
-import { LoggerService } from '../service/Logger';
+
 import { Channel } from '../class/Channel';
+import { LoggerService } from '../service/Logger';
 
 // Common methods
 export const logChannel = (channel: Channel) => {
-	const logger = Container.get(LoggerService);
-	logger.info(`Found channel ${chalk.yellow(channel.name)} in ${chalk.blueBright(channel.path)}`);
+  const logger = Container.get(LoggerService);
+  logger.info(
+    `Found channel ${chalk.yellow(channel.name)} in ${chalk.blueBright(
+      channel.path,
+    )}`,
+  );
 };
 export const cChannel = chalk.yellow;
 export const cModel = chalk.magentaBright;

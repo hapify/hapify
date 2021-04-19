@@ -1,64 +1,70 @@
 import { Container } from 'typedi';
-import { ISerializable, IStorable } from '../interface/Storage';
+
 import { IPreset } from '../interface/Objects';
-import { Preset } from './Preset';
+import { ISerializable, IStorable } from '../interface/Storage';
 import { PresetsApiStorageService } from '../service/storage/api/Presets';
+import { Preset } from './Preset';
 
-export class PresetsCollection implements IStorable, ISerializable<IPreset[], Preset[]> {
-	get storageService(): PresetsApiStorageService {
-		return this._storageService;
-	}
+export class PresetsCollection
+  implements IStorable, ISerializable<IPreset[], Preset[]> {
+  get storageService(): PresetsApiStorageService {
+    return this._storageService;
+  }
 
-	set storageService(value: PresetsApiStorageService) {
-		this._storageService = value;
-	}
-	/** The list of preset instances */
-	private presets: Preset[] = [];
-	/** Presets storage */
-	private _storageService: PresetsApiStorageService;
+  set storageService(value: PresetsApiStorageService) {
+    this._storageService = value;
+  }
 
-	private constructor() {
-		this._storageService = Container.get(PresetsApiStorageService);
-	}
+  /** The list of preset instances */
+  private presets: Preset[] = [];
 
-	/** Returns a singleton for this config */
-	public static async getInstance() {
-		const key = 'PresetsCollectionSingleton';
-		let instance = Container.has(key) ? Container.get<PresetsCollection>(key) : null;
-		if (!instance) {
-			// Create and load a new collection
-			instance = new PresetsCollection();
-			await instance.load();
-			Container.set(key, instance);
-		}
-		return instance;
-	}
+  /** Presets storage */
+  private _storageService: PresetsApiStorageService;
 
-	/** Load the presets */
-	async load(): Promise<void> {
-		this.fromObject(await this._storageService.list());
-	}
+  private constructor() {
+    this._storageService = Container.get(PresetsApiStorageService);
+  }
 
-	async save(): Promise<void> {
-		// Nothing to save
-	}
+  /** Returns a singleton for this config */
+  public static async getInstance() {
+    const key = 'PresetsCollectionSingleton';
+    let instance = Container.has(key)
+      ? Container.get<PresetsCollection>(key)
+      : null;
+    if (!instance) {
+      // Create and load a new collection
+      instance = new PresetsCollection();
+      await instance.load();
+      Container.set(key, instance);
+    }
+    return instance;
+  }
 
-	/** Returns the list of presets */
-	async list(): Promise<Preset[]> {
-		return this.presets;
-	}
+  /** Load the presets */
+  async load(): Promise<void> {
+    this.fromObject(await this._storageService.list());
+  }
 
-	/** Returns one preset */
-	async get(id: string): Promise<Preset> {
-		return this.presets.find((p) => p.id === id);
-	}
+  async save(): Promise<void> {
+    // Nothing to save
+  }
 
-	public fromObject(object: IPreset[]): Preset[] {
-		this.presets = object.map((p) => new Preset(p));
-		return this.presets;
-	}
+  /** Returns the list of presets */
+  async list(): Promise<Preset[]> {
+    return this.presets;
+  }
 
-	public toObject(): IPreset[] {
-		return this.presets.map((p) => p.toObject());
-	}
+  /** Returns one preset */
+  async get(id: string): Promise<Preset> {
+    return this.presets.find((p) => p.id === id);
+  }
+
+  public fromObject(object: IPreset[]): Preset[] {
+    this.presets = object.map((p) => new Preset(p));
+    return this.presets;
+  }
+
+  public toObject(): IPreset[] {
+    return this.presets.map((p) => p.toObject());
+  }
 }

@@ -1,146 +1,164 @@
-import { Service } from 'typedi';
 import * as Path from 'path';
+
+import { Server } from '@hapi/hapi';
+import DetectPort from 'detect-port';
+import Open from 'open';
+import pkgDir from 'pkg-dir';
+import { Service } from 'typedi';
+
 import { OptionsService } from './Options';
 import { WebSocketServerService } from './WebSocketServer';
-import { Server } from '@hapi/hapi';
-import pkgDir from 'pkg-dir';
-import Open from 'open';
-import DetectPort from 'detect-port';
+
 
 const RootDir = pkgDir.sync(__dirname);
 
 @Service()
 export class HttpServerService {
-	/** WebApp root */
-	private rootPath: string = Path.join(RootDir, 'dist', 'html');
+  /** WebApp root */
+  private rootPath: string = Path.join(RootDir, 'dist', 'html');
 
-	/** Start port number */
-	private _minPort: number = 4800;
-	/** Start port getter */
-	get minPort(): number {
-		return this._minPort;
-	}
+  /** Start port number */
+  private _minPort = 4800;
 
-	/** Maximum port number */
-	private _maxPort: number = 4820;
-	/** Maximum port getter */
-	get maxPort(): number {
-		return this._maxPort;
-	}
+  /** Start port getter */
+  get minPort(): number {
+    return this._minPort;
+  }
 
-	/** Current port number */
-	private _port: number = this._minPort;
-	/** Current port getter */
-	get port(): number {
-		return this._port;
-	}
+  /** Maximum port number */
+  private _maxPort = 4820;
 
-	/** The server instance */
-	private server: Server;
-	/** Denotes if the server is started */
-	private serverStarted: boolean;
+  /** Maximum port getter */
+  get maxPort(): number {
+    return this._maxPort;
+  }
 
-	constructor(private optionsService: OptionsService, private webSocketServerService: WebSocketServerService) {}
+  /** Current port number */
+  private _port: number = this._minPort;
 
-	/**
-	 * Starts the http server
-	 * Check if running before starting
-	 */
-	public async serve(): Promise<void> {
-		if (this.started()) return;
+  /** Current port getter */
+  get port(): number {
+    return this._port;
+  }
 
-		// Choose port
-		this._port = this.optionsService.port() ? this.optionsService.port() : await this.findAvailablePort();
+  /** The server instance */
+  private server: Server;
 
-		// Create server
-		this.server = new Server({
-			port: this._port,
-			routes: {
-				cors: { credentials: true },
-				files: {
-					relativeTo: this.rootPath,
-				},
-			},
-		});
+  /** Denotes if the server is started */
+  private serverStarted: boolean;
 
-		// Create static files handler
-		await this.server.register(require('@hapi/inert'));
-		this.server.route({
-			method: 'GET',
-			path: '/{param*}',
-			handler: {
-				directory: {
-					path: '.',
-					redirectToSlash: true,
-					index: true,
-				},
-			},
-		});
+  constructor(
+    private optionsService: OptionsService,
+    private webSocketServerService: WebSocketServerService,
+  ) {}
 
-		// Create catch-all fallback
-		this.server.ext('onPreResponse', (request: any, h: any) => {
-			const response = request.response;
-			if (response.isBoom && response.output.statusCode === 404) {
-				return h.file('index.html').code(200);
-			}
-			return h.continue;
-		});
+  /**
+   * Starts the http server
+   * Check if running before starting
+   */
+  public async serve(): Promise<void> {
+    if (this.started()) return;
 
-		// Start server
-		await this.server.start();
-		this.serverStarted = true;
+    // Choose port
+    this._port = this.optionsService.port()
+      ? this.optionsService.port()
+      : await this.findAvailablePort();
 
-		// Bind events
-		this.server.listener.on('close', async () => {
-			await this.webSocketServerService.stop();
-		});
+    // Create server
+    this.server = new Server({
+      port: this._port,
+      routes: {
+        cors: { credentials: true },
+        files: {
+          relativeTo: this.rootPath,
+        },
+      },
+    });
 
-		await this.webSocketServerService.serve(this.server.listener);
-	}
+    // Create static files handler
+    await this.server.register(require('@hapi/inert'));
+    this.server.route({
+      method: 'GET',
+      path: '/{param*}',
+      handler: {
+        directory: {
+          path: '.',
+          redirectToSlash: true,
+          index: true,
+        },
+      },
+    });
 
-	/**
-	 * Stops the http server
-	 * Check if running before stop
-	 */
-	public async stop(): Promise<void> {
-		if (!this.started()) return;
-		this.serverStarted = false;
-		// Stop self server
-		await this.server.stop();
-		this.server = null;
-	}
+    // Create catch-all fallback
+    this.server.ext('onPreResponse', (request: any, h: any) => {
+      const {response} = request;
+      if (response.isBoom && response.output.statusCode === 404) {
+        return h.file('index.html').code(200);
+      }
+      return h.continue;
+    });
 
-	/** Denotes if the HTTP server is running */
-	public started(): boolean {
-		return this.server && this.serverStarted;
-	}
+    // Start server
+    await this.server.start();
+    this.serverStarted = true;
 
-	/**
-	 * Open the browser for the current server
-	 * Do not open if not started
-	 */
-	public async open(): Promise<void> {
-		const url = this.url();
-		if (url) {
-			await Open(url);
-		}
-	}
+    // Bind events
+    this.server.listener.on('close', async () => {
+      await this.webSocketServerService.stop();
+    });
 
-	/**
-	 * Get the URL of the current session
-	 * Returns null if not started
-	 */
-	public url(): string | null {
-		return this.started() ? `http://${this.optionsService.hostname()}:${this._port}` : null;
-	}
+    await this.webSocketServerService.serve(this.server.listener);
+  }
 
-	/** Test ports and returns the first one available */
-	private async findAvailablePort(increment: number = 0): Promise<number> {
-		if (this._port > this._maxPort) {
-			throw new Error(`Reached maximum port number ${this._maxPort} to start HTTP server`);
-		}
-		const requiredPort = this._port + increment;
-		const possiblePort = await DetectPort(requiredPort);
-		return requiredPort !== possiblePort ? this.findAvailablePort(increment + 1) : requiredPort;
-	}
+  /**
+   * Stops the http server
+   * Check if running before stop
+   */
+  public async stop(): Promise<void> {
+    if (!this.started()) return;
+    this.serverStarted = false;
+    // Stop self server
+    await this.server.stop();
+    this.server = null;
+  }
+
+  /** Denotes if the HTTP server is running */
+  public started(): boolean {
+    return this.server && this.serverStarted;
+  }
+
+  /**
+   * Open the browser for the current server
+   * Do not open if not started
+   */
+  public async open(): Promise<void> {
+    const url = this.url();
+    if (url) {
+      await Open(url);
+    }
+  }
+
+  /**
+   * Get the URL of the current session
+   * Returns null if not started
+   */
+  public url(): string | null {
+    return this.started()
+      ? `http://${this.optionsService.hostname()}:${this._port}`
+      : null;
+  }
+
+  /** Test ports and returns the first one available */
+  private async findAvailablePort(increment = 0): Promise<number> {
+    if (this._port > this._maxPort) {
+      throw new Error(
+        `Reached maximum port number ${this._maxPort} to start HTTP server`,
+      );
+    }
+    const requiredPort = this._port + increment;
+    const possiblePort = await DetectPort(requiredPort);
+    return requiredPort !== possiblePort
+      ? this.findAvailablePort(increment + 1)
+      : requiredPort;
+  }
 }

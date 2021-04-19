@@ -1,68 +1,73 @@
 import { Container } from 'typedi';
-import { ISerializable, IStorable } from '../interface/Storage';
+
 import { IProject } from '../interface/Objects';
-import { Project } from './Project';
+import { ISerializable, IStorable } from '../interface/Storage';
 import { ProjectsApiStorageService } from '../service/storage/api/Projects';
+import { Project } from './Project';
 
-export class ProjectsCollection implements IStorable, ISerializable<IProject[], Project[]> {
-	/** The list of project instances */
-	private projects: Project[] = [];
-	/** Projects storage */
-	private storageService: ProjectsApiStorageService;
+export class ProjectsCollection
+  implements IStorable, ISerializable<IProject[], Project[]> {
+  /** The list of project instances */
+  private projects: Project[] = [];
 
-	private constructor() {
-		this.storageService = Container.get(ProjectsApiStorageService);
-	}
+  /** Projects storage */
+  private storageService: ProjectsApiStorageService;
 
-	/** Returns a singleton for this config */
-	public static async getInstance() {
-		const key = 'ProjectsCollectionSingleton';
-		let instance = Container.has(key) ? Container.get<ProjectsCollection>(key) : null;
-		if (!instance) {
-			// Create and load a new collection
-			instance = new ProjectsCollection();
-			await instance.load();
-			Container.set(key, instance);
-		}
-		return instance;
-	}
+  private constructor() {
+    this.storageService = Container.get(ProjectsApiStorageService);
+  }
 
-	/** Load the projects */
-	async load(): Promise<void> {
-		this.fromObject(await this.storageService.list());
-	}
+  /** Returns a singleton for this config */
+  public static async getInstance() {
+    const key = 'ProjectsCollectionSingleton';
+    let instance = Container.has(key)
+      ? Container.get<ProjectsCollection>(key)
+      : null;
+    if (!instance) {
+      // Create and load a new collection
+      instance = new ProjectsCollection();
+      await instance.load();
+      Container.set(key, instance);
+    }
+    return instance;
+  }
 
-	async save(): Promise<void> {
-		for (const project of this.projects) {
-			await project.save();
-		}
-	}
+  /** Load the projects */
+  async load(): Promise<void> {
+    this.fromObject(await this.storageService.list());
+  }
 
-	/** Returns the list of projects */
-	async list(): Promise<Project[]> {
-		return this.projects;
-	}
+  async save(): Promise<void> {
+    for (const project of this.projects) {
+      await project.save();
+    }
+  }
 
-	/** Returns one project */
-	async get(id: string): Promise<Project> {
-		return this.projects.find((p) => p.id === id);
-	}
+  /** Returns the list of projects */
+  async list(): Promise<Project[]> {
+    return this.projects;
+  }
 
-	/** Create new project */
-	async add(name: string, description: string): Promise<Project> {
-		const object = await this.storageService.create({
-			name,
-			description: description.length ? description : null,
-		});
-		return new Project(object);
-	}
+  /** Returns one project */
+  async get(id: string): Promise<Project> {
+    return this.projects.find((p) => p.id === id);
+  }
 
-	public fromObject(object: IProject[]): Project[] {
-		this.projects = object.map((p) => new Project(p));
-		return this.projects;
-	}
+  /** Create new project */
+  async add(name: string, description: string): Promise<Project> {
+    const object = await this.storageService.create({
+      name,
+      description: description.length ? description : null,
+    });
+    return new Project(object);
+  }
 
-	public toObject(): IProject[] {
-		return this.projects.map((p) => p.toObject());
-	}
+  public fromObject(object: IProject[]): Project[] {
+    this.projects = object.map((p) => new Project(p));
+    return this.projects;
+  }
+
+  public toObject(): IProject[] {
+    return this.projects.map((p) => p.toObject());
+  }
 }

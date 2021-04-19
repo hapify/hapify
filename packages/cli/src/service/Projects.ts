@@ -1,12 +1,13 @@
 import { Service } from 'typedi';
+
 import { ProjectsCollection } from '../class/ProjectsCollection';
 
 @Service()
 export class ProjectsService {
-	constructor() {}
+  constructor() {}
 
-	/** Returns the projects collection */
-	async collection(): Promise<ProjectsCollection> {
-		return await ProjectsCollection.getInstance();
-	}
+  /** Returns the projects collection */
+  async collection(): Promise<ProjectsCollection> {
+    return await ProjectsCollection.getInstance();
+  }
 }

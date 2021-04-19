@@ -1,66 +1,71 @@
-import { ISerializable, IStorable } from '../interface/Storage';
 import { Container } from 'typedi';
+
 import { IBoilerplate } from '../interface/Objects';
-import { Boilerplate } from './Boilerplate';
+import { ISerializable, IStorable } from '../interface/Storage';
 import { BoilerplatesApiStorageService } from '../service/storage/api/Boilerplates';
+import { Boilerplate } from './Boilerplate';
 
-export class BoilerplatesCollection implements IStorable, ISerializable<IBoilerplate[], Boilerplate[]> {
-	/** The list of boilerplate instances */
-	private boilerplates: Boilerplate[] = [];
-	/** Boilerplates storage */
-	private storageService: BoilerplatesApiStorageService;
+export class BoilerplatesCollection
+  implements IStorable, ISerializable<IBoilerplate[], Boilerplate[]> {
+  /** The list of boilerplate instances */
+  private boilerplates: Boilerplate[] = [];
 
-	private constructor() {
-		this.storageService = Container.get(BoilerplatesApiStorageService);
-	}
+  /** Boilerplates storage */
+  private storageService: BoilerplatesApiStorageService;
 
-	/** Returns a singleton for this config */
-	public static async getInstance() {
-		const key = 'BoilerplatesCollectionSingleton';
-		let instance = Container.has(key) ? Container.get<BoilerplatesCollection>(key) : null;
-		if (!instance) {
-			// Create and load a new collection
-			instance = new BoilerplatesCollection();
-			await instance.load();
-			Container.set(key, instance);
-		}
-		return instance;
-	}
+  private constructor() {
+    this.storageService = Container.get(BoilerplatesApiStorageService);
+  }
 
-	/** Load the boilerplates */
-	async load(): Promise<void> {
-		this.fromObject(await this.storageService.list());
-	}
+  /** Returns a singleton for this config */
+  public static async getInstance() {
+    const key = 'BoilerplatesCollectionSingleton';
+    let instance = Container.has(key)
+      ? Container.get<BoilerplatesCollection>(key)
+      : null;
+    if (!instance) {
+      // Create and load a new collection
+      instance = new BoilerplatesCollection();
+      await instance.load();
+      Container.set(key, instance);
+    }
+    return instance;
+  }
 
-	async save(): Promise<void> {
-		// Nothing to save
-	}
+  /** Load the boilerplates */
+  async load(): Promise<void> {
+    this.fromObject(await this.storageService.list());
+  }
 
-	/** Returns the list of boilerplates */
-	async list(): Promise<Boilerplate[]> {
-		return this.boilerplates;
-	}
+  async save(): Promise<void> {
+    // Nothing to save
+  }
 
-	/** Returns one boilerplate */
-	async get(id: string): Promise<Boilerplate> {
-		return this.boilerplates.find((p) => p.id === id);
-	}
+  /** Returns the list of boilerplates */
+  async list(): Promise<Boilerplate[]> {
+    return this.boilerplates;
+  }
 
-	/** Returns one boilerplate by its slug */
-	async getBySlug(slug: string): Promise<Boilerplate> {
-		const data = await this.storageService.list({
-			_limit: 1,
-			slug,
-		});
-		return data.length ? new Boilerplate(data[0]) : null;
-	}
+  /** Returns one boilerplate */
+  async get(id: string): Promise<Boilerplate> {
+    return this.boilerplates.find((p) => p.id === id);
+  }
 
-	public fromObject(object: IBoilerplate[]): Boilerplate[] {
-		this.boilerplates = object.map((p) => new Boilerplate(p));
-		return this.boilerplates;
-	}
+  /** Returns one boilerplate by its slug */
+  async getBySlug(slug: string): Promise<Boilerplate> {
+    const data = await this.storageService.list({
+      _limit: 1,
+      slug,
+    });
+    return data.length ? new Boilerplate(data[0]) : null;
+  }
 
-	public toObject(): IBoilerplate[] {
-		return this.boilerplates.map((p) => p.toObject());
-	}
+  public fromObject(object: IBoilerplate[]): Boilerplate[] {
+    this.boilerplates = object.map((p) => new Boilerplate(p));
+    return this.boilerplates;
+  }
+
+  public toObject(): IBoilerplate[] {
+    return this.boilerplates.map((p) => p.toObject());
+  }
 }

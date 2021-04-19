@@ -1,94 +1,97 @@
-import { Service } from 'typedi';
-import commander from 'commander';
 import * as Path from 'path';
-import { GlobalConfigService } from './GlobalConfig';
+
+import commander from 'commander';
+import { Service } from 'typedi';
+
 import { RemoteConfig } from '../config/Remote';
 import { IRemoteConfig } from '../interface/Config';
+import { GlobalConfigService } from './GlobalConfig';
 
 @Service()
 export class OptionsService {
-	private program: commander.Command;
-	private command: commander.Command;
+  private program: commander.Command;
 
-	constructor(private globalConfigService: GlobalConfigService) {}
+  private command: commander.Command;
 
-	/** Set program entity */
-	setProgram(program: commander.Command): void {
-		this.program = program;
-	}
+  constructor(private globalConfigService: GlobalConfigService) {}
 
-	/** Set command entity */
-	setCommand(command: commander.Command): void {
-		this.command = command;
-	}
+  /** Set program entity */
+  setProgram(program: commander.Command): void {
+    this.program = program;
+  }
 
-	/** Returns the remote config and override defaults with global config (if any) */
-	remoteConfig(): IRemoteConfig {
-		const configs = Object.assign({}, RemoteConfig);
-		configs.uri = this.apiUrl();
-		return configs;
-	}
+  /** Set command entity */
+  setCommand(command: commander.Command): void {
+    this.command = command;
+  }
 
-	/** Return the working directory computed with the --dir option */
-	dir(): string {
-		if (this.program.dir) {
-			if (Path.isAbsolute(this.program.dir)) {
-				return this.program.dir;
-			}
-			return Path.resolve(process.cwd(), this.program.dir);
-		}
-		return process.cwd();
-	}
+  /** Returns the remote config and override defaults with global config (if any) */
+  remoteConfig(): IRemoteConfig {
+    const configs = { ...RemoteConfig};
+    configs.uri = this.apiUrl();
+    return configs;
+  }
 
-	/** Return the API Key to use (explicit or global) */
-	apiKey(): string {
-		const key = this.program.key || this.globalConfigService.getData().apiKey;
-		if (!key) {
-			throw new Error(
-				'Please define an API Key using command "hpf key" or the option "--key".\nTo get your api key, please visit https://www.hapify.io/my-key'
-			);
-		}
-		return key;
-	}
+  /** Return the working directory computed with the --dir option */
+  dir(): string {
+    if (this.program.dir) {
+      if (Path.isAbsolute(this.program.dir)) {
+        return this.program.dir;
+      }
+      return Path.resolve(process.cwd(), this.program.dir);
+    }
+    return process.cwd();
+  }
 
-	/** Return the API URL to use or default URL */
-	apiUrl(): string {
-		const url = this.globalConfigService.getData().apiUrl;
-		return url || RemoteConfig.uri;
-	}
+  /** Return the API Key to use (explicit or global) */
+  apiKey(): string {
+    const key = this.program.key || this.globalConfigService.getData().apiKey;
+    if (!key) {
+      throw new Error(
+        'Please define an API Key using command "hpf key" or the option "--key".\nTo get your api key, please visit https://www.hapify.io/my-key',
+      );
+    }
+    return key;
+  }
 
-	/** Denotes if the debug mode is enabled */
-	debug(): boolean {
-		return !!this.program.debug;
-	}
+  /** Return the API URL to use or default URL */
+  apiUrl(): string {
+    const url = this.globalConfigService.getData().apiUrl;
+    return url || RemoteConfig.uri;
+  }
 
-	/** Denotes if the silent mode is enabled */
-	silent(): boolean {
-		return !!this.program.silent;
-	}
+  /** Denotes if the debug mode is enabled */
+  debug(): boolean {
+    return !!this.program.debug;
+  }
 
-	/** Get the depth for recursive search */
-	depth(): number {
-		return Number(this.command.depth);
-	}
+  /** Denotes if the silent mode is enabled */
+  silent(): boolean {
+    return !!this.program.silent;
+  }
 
-	/** Get the output file path */
-	output(): string {
-		return this.command.output;
-	}
+  /** Get the depth for recursive search */
+  depth(): number {
+    return Number(this.command.depth);
+  }
 
-	/** Get the required http port */
-	port(): number {
-		return Number(this.command.port);
-	}
+  /** Get the output file path */
+  output(): string {
+    return this.command.output;
+  }
 
-	/** Get the required http hostname */
-	hostname(): string {
-		return this.command.hostname;
-	}
+  /** Get the required http port */
+  port(): number {
+    return Number(this.command.port);
+  }
 
-	/** Denotes if a new tab should be opened */
-	open(): boolean {
-		return this.command.open !== false;
-	}
+  /** Get the required http hostname */
+  hostname(): string {
+    return this.command.hostname;
+  }
+
+  /** Denotes if a new tab should be opened */
+  open(): boolean {
+    return this.command.open !== false;
+  }
 }

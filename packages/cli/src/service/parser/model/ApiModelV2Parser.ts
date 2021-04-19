@@ -1,8 +1,8 @@
-import { VersionedObjectParser } from '../../../interface/Version';
 import { IApiModel } from '../../../interface/Api';
+import { VersionedObjectParser } from '../../../interface/Version';
 
 export class ApiModelV2Parser implements VersionedObjectParser<IApiModel> {
-	convert(input: IApiModel): IApiModel {
-		return input;
-	}
+  convert(input: IApiModel): IApiModel {
+    return input;
+  }
 }

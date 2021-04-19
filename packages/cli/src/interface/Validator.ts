@@ -1,4 +1,4 @@
 export interface Validator {
-	errors: string[];
-	warnings: string[];
+  errors: string[];
+  warnings: string[];
 }

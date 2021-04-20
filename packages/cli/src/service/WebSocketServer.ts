@@ -7,7 +7,7 @@ import * as Jwt from 'jsonwebtoken';
 import pkgDir from 'pkg-dir';
 import * as RandomString from 'randomstring';
 import { Container, Service } from 'typedi';
-import WebSocket from 'ws';
+import { AddressInfo, OPEN, Server, ServerOptions } from 'ws';
 
 import { TransformValidationMessage } from '../interface/schema/ValidatorResult';
 import {
@@ -43,7 +43,7 @@ export class WebSocketServerService {
   private baseUri = '/websocket';
 
   /** The server instance */
-  private server: WebSocket.Server;
+  private server: Server;
 
   /** Denotes if the server is started */
   private serverStarted: boolean;
@@ -90,7 +90,7 @@ export class WebSocketServerService {
   public serve(httpServer: http.Server): void {
     if (this.started()) return;
     // Choose port
-    const options: WebSocket.ServerOptions = {
+    const options: ServerOptions = {
       server: httpServer,
       path: this.baseUri,
       verifyClient: (info, cb) => {
@@ -119,7 +119,7 @@ export class WebSocketServerService {
         }
       },
     };
-    this.server = new WebSocket.Server(options);
+    this.server = new Server(options);
 
     this.server.on('connection', (wsClient: any) => {
       // Create unique id for this connection
@@ -257,7 +257,7 @@ export class WebSocketServerService {
       );
     }
     for (const client of this.server.clients) {
-      if (client.readyState === WebSocket.OPEN) {
+      if (client.readyState === OPEN) {
         client.send(JSON.stringify({ id: 'broadcast', type, data }));
       }
     }
@@ -275,7 +275,7 @@ export class WebSocketServerService {
 
   /** Create and store token */
   private createToken(): void {
-    const wsAddress = <WebSocket.AddressInfo>this.server.address();
+    const wsAddress = <AddressInfo>this.server.address();
     const token = Jwt.sign({ name: this.randomName }, this.randomSecret, {
       expiresIn: this.tokenExpires,
     });

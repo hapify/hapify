@@ -80,6 +80,7 @@ describe('serve command', () => {
   //	ERRORS
   // =======================================================================================
   it('wrong message', async () => {
+    // eslint-disable-next-line @typescript-eslint/await-thenable
     await expect(
       SingleUseWebSocketClient(authJson.url, {
         id: 'get:wrong' as any,
@@ -89,6 +90,7 @@ describe('serve command', () => {
   });
 
   it('no token', async () => {
+    // eslint-disable-next-line @typescript-eslint/await-thenable
     await expect(
       SingleUseWebSocketClient(authJson.url.split('token=')[0], {
         id: 'get:info',
@@ -98,6 +100,7 @@ describe('serve command', () => {
   });
 
   it('wrong token', async () => {
+    // eslint-disable-next-line @typescript-eslint/await-thenable
     await expect(
       SingleUseWebSocketClient(`${authJson.url}abcdef`, {
         id: 'get:info',

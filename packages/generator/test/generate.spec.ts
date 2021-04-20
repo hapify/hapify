@@ -156,6 +156,7 @@ describe('generate', () => {
   });
 
   it('generate with malformed models', async () => {
+    // eslint-disable-next-line @typescript-eslint/await-thenable
     await expect(
       Generator.run(
         templates,
@@ -219,6 +220,7 @@ describe('generate', () => {
   });
 
   it('generate with timeout hpf template', async () => {
+    // eslint-disable-next-line @typescript-eslint/await-thenable
     const error: any = await expect(
       Generator.run(
         [{ ...templates[1], content: '<<< while(true) {} >>>' }],
@@ -229,6 +231,7 @@ describe('generate', () => {
   }).slow(4000);
 
   it('generate with timeout js template', async () => {
+    // eslint-disable-next-line @typescript-eslint/await-thenable
     const error: any = await expect(
       Generator.run([{ ...templates[2], content: 'while(true) {}' }], models),
     ).to.reject('Template processing timed out (1000ms)');
@@ -236,6 +239,7 @@ describe('generate', () => {
   }).slow(4000);
 
   it('globals are undefined', async () => {
+    // eslint-disable-next-line @typescript-eslint/await-thenable
     await expect(
       Generator.run(
         [

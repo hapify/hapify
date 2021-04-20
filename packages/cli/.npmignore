@@ -1,0 +1,17 @@
+src/
+test/
+coverage/
+.nyc_output/
+samples/
+dist/html/ws.json
+
+.idea
+.vscode
+
+.prettierignore
+
+.mocharc.json
+.nycrc.json
+ERRORS.md
+ROADMAP.md
+tsconfig.json

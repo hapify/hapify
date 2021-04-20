@@ -1,0 +1,61 @@
+<div class="<<M a-a>>-list-container">
+    <nz-card class="table-container">
+        <nz-table   #table
+                    [nzData]="items"
+                    [nzShowSizeChanger]="true"
+                    [nzFrontPagination]="false"
+                    [nzLoading]="refreshing"
+                    [nzLoadingDelay]="refreshingDelay"
+                    [nzTotal]="total"
+                    [nzNoResult]="notFound"
+                    [(nzPageIndex)]="pageIndex"
+                    [(nzPageSize)]="searchParams.props._limit"
+                    (nzPageIndexChange)="update()"
+                    (nzPageSizeChange)="update(true)">
+
+                   <thead [nzSingleSort]="true" (nzSortChange)="sort($event)">
+                        <tr>
+<<@ F /hd/pr/(tE/em) f>>
+                            <th *ngIf="columns.includes('<<f a_a>>')"<<? f so>> nzShowSort nzSortKey="<<f a_a>>"<<?>>>{{ '<<M a-a>>_<<f a-a>>' | translate }}</th>
+<<@>>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of table.data" (click)="onClick(row)">
+<<@ F /hd/pr/(tE/em) f>>
+                            <td *ngIf="columns.includes('<<f a_a>>')">
+    <<? f tE>>
+        <<? f ml>>
+                              <div>
+                                  <div *ngFor="let item of row.props.<<f a_a>>">
+                                      {{ item.getLabel() }}
+                                  </div>
+                              </div>
+        <<??>>
+                              {{ row.<<f aA>>Exists() ? row.props.<<f a_a>>.getLabel() : '' }}
+        <<?>>
+    <<?? f tD>>
+                              {{ row.props.<<f a_a>> | date:'medium' }}
+    <<?? f tB>>
+                              {{ (row.props.<<f a_a>> ? 'common_true' : 'common_false') | translate }}
+    <<?? f tSt>>
+                              <div [innerHTML]="row.props.<<f a_a>> | nl2br"></div>
+    <<?? f tSr>>
+                              <div [innerHTML]="row.props.<<f a_a>>"></div>
+    <<?? f tO>>
+                              <small>
+                                  <pre>{{ row.props.<<f a_a>> | json }}</pre>
+                              </small>
+    <<??>>
+                              {{ row.props.<<f a_a>> }}
+    <<?>>
+                            </td>
+<<@>>
+                        </tr>
+                    </tbody>
+        </nz-table>
+    </nz-card>
+    <ng-template #notFound>
+        <nz-empty [nzNotFoundContent]="'<<M a-a>>_common_not-found' | translate "></nz-empty>
+    </ng-template>
+</div>

@@ -1,0 +1,98 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 my-3 my-lg-5">
+                <form nz-form
+                      class="<<M a-a>>-form w-100"
+                      [formGroup]="form"
+                      (ngSubmit)="onSubmit()">
+<<@ F !in f>>
+                    <!-- <<f A>> -->
+                    <nz-form-item>
+                    <nz-form-label>{{ '<<M a-a>>_<<f a-a>>' | translate }}</nz-form-label>
+                    <nz-form-control>
+    <<? f tE>>
+                        <hpf-<<f.m a-a>>-select
+                            [controlName]="'<<f a_a>>'"
+                            [formGroup]="form"
+                            [(model)]="<<M aA>>.props.<<f a_a>>"
+        <<? f ml>>
+                            [multiple]="true"
+        <<?>>
+        <<? f nu>>
+                            [nullable]="true"
+        <<?>>
+        <<? f.m.f se*lb >>
+                            [filterEnabled]="true"
+                            [placeholder]="'<<f.m a-a>>_common_search-placeholder' | translate"
+        <<??>>
+                            [placeholder]="'<<f.m a-a>>_common_select-placeholder' | translate"
+        <<?>>
+                            [emptyLabel]="'common_empty' | translate">
+                        </hpf-<<f.m a-a>>-select>
+
+    <<?? f tS>>
+
+            <<? f tSt>>
+                        <textarea class="w-100"
+                                  nz-input
+                                  [nzAutosize]="{ minRows: 3, maxRows: 12 }"
+                                  [placeholder]="'common_value-string' | translate"
+                                  formControlName="<<f a_a>>"></textarea>
+            <<?? f tSr>>
+                        <editor [init]="tinyMceConfig()" formControlName="<<f a_a>>"></editor>
+            <<??>>
+                        <input nz-input
+                               class="w-100"
+                               type="<<? f tSp>>password<<?? f tSe>>email<<??>>text<<?>>"<<? f tSp>>
+                               autocomplete="new-password"<<?>>
+                               [placeholder]="'common_value-string' | translate"
+                               formControlName="<<f a_a>>">
+            <<?>>
+
+        <<?? f tN>>
+                        <nz-input-number class="w-100"
+                                         formControlName="<<f a_a>>" <<? f tNt>>[nzMin]="-90" [nzMax]="90"<<?? f tNg>>[nzMin]="-180" [nzMax]="180"<<?>>
+                                         [nzStep]="1"
+                                         [nzPlaceHolder]="'common_value-number' | translate"></nz-input-number>
+        <<?? f tD>>
+                        <nz-date-picker class="w-100"<<? f !nu>>
+                                        [nzAllowClear]="false"<<?>>
+                                        [nzPlaceHolder]="'common_value-date' | translate"
+                                        formControlName="<<f a_a>>"></nz-date-picker>
+        <<?? f tB>>
+                        <nz-select class="w-100"
+                                   [nzPlaceHolder]="'common_value-boolean' | translate"<<? f nu>>
+                                   [nzAllowClear]="true"<<?>>
+                                   formControlName="<<f a_a>>">
+                            <nz-option [nzValue]="true" [nzLabel]="'common_true' | translate"></nz-option>
+                            <nz-option [nzValue]="false" [nzLabel]="'common_false' | translate"></nz-option>
+                        </nz-select>
+        <<?? f tO>>
+                        <textarea class="w-100 text-monospace"
+                                  nz-input
+                                  [nzAutosize]="{ minRows: 6, maxRows: 12 }"
+                                  [placeholder]="'common_value-object' | translate"
+                                  formControlName="<<f a_a>>"></textarea>
+        <<?>>
+                        <nz-form-explain
+                                *ngIf="form.controls['<<f a_a>>'].invalid && (form.controls['<<f a_a>>'].dirty || form.controls['<<f a_a>>'].touched)"
+                                class="mt-1">
+                            <div *ngIf="form.controls['<<f a_a>>'].errors.required">
+                                {{ 'common_error-required' | translate }}
+                            </div>
+                            <div *ngIf="!form.controls['<<f a_a>>'].errors.required">
+                                {{ 'common_error-format' | translate }}
+                            </div>
+                        </nz-form-explain>
+
+                    </nz-form-control>
+                    </nz-form-item>
+                    <!-- /<<f A>> -->
+<<@>>
+                    <button nz-button nzType="primary" [disabled]="form.invalid" [nzLoading]="loading">
+                        {{ 'common_save' | translate }}
+                    </button>
+                </form>
+        </div>
+    </div>
+</div>

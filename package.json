@@ -12,7 +12,7 @@
   "scripts": {
     "build": "lerna run build",
     "bootstrap": "lerna bootstrap",
-    "clean": "lerna run --parallel clean",
+    "clean": "lerna run --parallel clean && rimraf node_modules",
     "lint": "lerna run --parallel lint",
     "lint:fix": "lerna run --parallel lint:fix",
     "postinstall": "is-ci || husky install",
@@ -32,6 +32,7 @@
     "@semantic-release/github": "^7.2.0",
     "@semantic-release/npm": "^7.0.10",
     "@semantic-release/release-notes-generator": "^9.0.1",
+    "@types/hapi__podium": "^3.4.1",
     "@types/node": "^14.14.37",
     "@typescript-eslint/eslint-plugin": "^4.21.0",
     "@typescript-eslint/parser": "^4.21.0",

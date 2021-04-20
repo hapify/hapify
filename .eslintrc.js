@@ -27,6 +27,11 @@ module.exports = {
     'no-await-in-loop': 'off',
     'no-continue': 'off',
     'no-param-reassign': ['error', { props: false }],
+    camelcase: 'off',
+    'no-underscore-dangle': [
+      'error',
+      { allow: ['_id', '_limit', '_page', '_order', '_sort'] },
+    ],
 
     // Not compatible with Hapify templates
     'no-template-curly-in-string': 'off',

@@ -1,0 +1,93 @@
+{
+  "version": "1",
+  "name": "HapiJS",
+  "description": "NodeJS Backend with MongoDB",
+  "logo": "https://hapijs.com/public/img/hapi.svg",
+  "project": "hapify-models.json",
+  "validatorPath": "hapify/validator.js",
+  "defaultFields": [
+    {
+      "name": "_id",
+      "type": "string",
+      "subtype": null,
+      "reference": null,
+      "primary": true,
+      "unique": false,
+      "label": false,
+      "nullable": false,
+      "multiple": false,
+      "embedded": false,
+      "searchable": false,
+      "sortable": false,
+      "hidden": false,
+      "internal": true,
+      "restricted": false,
+      "ownership": false
+    },
+    {
+      "name": "created_at",
+      "type": "datetime",
+      "subtype": null,
+      "reference": null,
+      "primary": false,
+      "unique": false,
+      "label": false,
+      "nullable": false,
+      "multiple": false,
+      "embedded": false,
+      "searchable": false,
+      "sortable": true,
+      "hidden": false,
+      "internal": true,
+      "restricted": false,
+      "ownership": false
+    }
+  ],
+  "templates": [
+    {
+      "path": "src/routes/{kebab}/count.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/create.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/delete.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/inc.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/index.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/list.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/read.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/update.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/index.js",
+      "engine": "hpf",
+      "input": "all"
+    }
+  ]
+}

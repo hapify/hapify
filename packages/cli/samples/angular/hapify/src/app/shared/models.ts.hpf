@@ -1,0 +1,26 @@
+
+/** @type {ModelLink} */
+interface ModelLink {
+  label: string;
+  link: string[];
+}
+ 
+/** @type {ModelsLinks} */
+export const ModelsLinks: ModelLink[] = [
+<<@ M m>>
+  {
+    label: '<<m A>>',
+    link: ['/<<m a-a>>']
+  },
+<<@>>
+];
+ 
+/** @type {ModelsLinks} */
+export const ModelsHomeLinks: ModelLink[] = [
+<<@5 M m>>
+  {
+    label: '<<m A>>',
+    link: ['/<<m a-a>>']
+  },
+<<@>>
+];

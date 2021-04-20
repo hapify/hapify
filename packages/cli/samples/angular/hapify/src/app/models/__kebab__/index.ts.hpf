@@ -1,0 +1,8 @@
+export * from './<<M a-a>>.service';
+export * from './<<M a-a>>';
+export * from './<<M a-a>>-search-params';
+export * from './<<M a-a>>-details/<<M a-a>>-details.component';
+export * from './<<M a-a>>-filters/<<M a-a>>-filters.component';
+export * from './<<M a-a>>-form/<<M a-a>>-form.component';
+export * from './<<M a-a>>-table/<<M a-a>>-table.component';
+export * from './<<M a-a>>-select/<<M a-a>>-select.component';

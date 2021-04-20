@@ -1,0 +1,29 @@
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {<<M AA>>} from '../../<<M a-a>>';
+ 
+@Component({
+  selector: 'hpf-<<M a-a>>-create',
+  templateUrl: './<<M a-a>>-create.component.html'
+})
+export class <<M AA>>CreateComponent implements OnInit {
+ 
+  /**
+   * Constructor
+   * @param {Router} router
+   */
+  constructor(private router: Router) {
+  }
+ 
+  /** Init */
+  ngOnInit() {
+  }
+  /**
+   * Called when the <<M a>> is saved
+   * @param {<<M AA>>} <<M aA>>
+   */
+  onSave(<<M aA>>: <<M AA>>): void {
+    this.router.navigateByUrl(`/<<M a-a>>/${<<M aA>>.getId()}`);
+  }
+ 
+}

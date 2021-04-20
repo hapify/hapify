@@ -1,0 +1,72 @@
+'use strict';
+ 
+/**
+ * Read <<M a>>
+ */
+ 
+const Joi = require('joi');
+const Boom = require('boom');
+const MongoDB = require('mongodb');
+
+<<# Includes projection if this model has private fields >>
+<<? F hd>>
+const <<M AA>>Projection = require('./inc').projection;
+<<?>>
+
+<<# Includes projections for all non-private dependencies that have private fields >>
+<<@ D !hd d>>
+    <<? d.f hd>>
+const <<d AA>>Projection = require('../<<d a-a>>/inc').projection;
+    <<?>>
+<<@>>
+ 
+// Validation schema for params
+const schema = Joi.object({
+    <<P a_a>>: Joi.string().length(24).hex().required()
+});
+ 
+/**
+ * Export route to get <<M a>>
+ */
+module.exports = {
+    method: 'GET',
+    path: '/<<M a-a>>/{<<P a_a>>}',
+    config: {
+        validate: { params: schema },
+        description: 'Route to get <<M a>>',
+        tags: ['<<M a-a>>', 'read']
+    },
+    handler: async (request) => {
+ 
+        // Get <<M a>> <<P a>>
+        const <<P a_a>> = new MongoDB.ObjectId(request.params.<<P a_a>>);
+ 
+        // Get <<M a>> from database
+        const result = await request.server.db.collection('<<M a_a>>')
+            .findOne({ <<P a_a>> }<<? F hd>>, { projection: <<M AA>>Projection() }<<?>>);
+ 
+        if (!result) {
+            return Boom.notFound('<<M A>> not found');
+        }
+
+<<? F tE/hd>>
+ 
+        // Convert reference fields
+        await request.server.utils.Entity
+            .populate(request.server.db, result, [
+    <<@ F tE/hd r>>
+                {
+                    col: '<<r.m a_a>>',
+                    prop: '<<r a_a>>'<<? r ml>>,
+                    multiple: true<<?>><<? r.m.f hd>>,
+                    projection: <<r.m AA>>Projection()
+        <<?>>
+                },
+    <<@>>
+            ]);
+<<?>>
+ 
+        return result;
+    }
+};
+ 

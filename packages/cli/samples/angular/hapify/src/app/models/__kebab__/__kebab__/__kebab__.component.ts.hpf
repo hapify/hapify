@@ -1,0 +1,15 @@
+import {Component, OnInit} from '@angular/core';
+ 
+@Component({
+  selector: 'hpf-<<M a-a>>',
+  templateUrl: './<<M a-a>>.component.html'
+})
+export class <<M AA>>Component implements OnInit {
+ 
+  /** Constructor */
+  constructor() {}
+ 
+  /** Init */
+  ngOnInit() {}
+ 
+}

@@ -1,0 +1,61 @@
+import {Component, OnDestroy, OnInit, AfterViewInit} from '@angular/core';
+import {Router, ActivatedRoute} from '@angular/router';
+import {Location} from '@angular/common';
+import {Subscription as RxJsSubscription} from 'rxjs/Subscription';
+import {<<M AA>>SearchParams} from '../../<<M a-a>>-search-params';
+import {<<M AA>>} from '../../<<M a-a>>';
+import {Helpers} from '@app/shared';
+ 
+@Component({
+  selector: 'hpf-<<M a-a>>-list',
+  templateUrl: './<<M a-a>>-list.component.html',
+  styleUrls: []
+})
+export class <<M AA>>ListComponent implements OnInit, AfterViewInit, OnDestroy {
+ 
+  /** @type {<<M AA>>SearchParams} The filters */
+  searchParams = new <<M AA>>SearchParams();
+  /** @type {RxJsSubscription} The query subscription */
+  private querySubscription: RxJsSubscription;
+  /** @type {RxJsSubscription} The search params subscription */
+  private paramsSubscription: RxJsSubscription;
+ 
+  /**
+   * Constructor
+   * @param {ActivatedRoute} route
+   * @param {Router} router
+   * @param {location} location
+   */
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private location: Location) {
+  }
+ 
+  /** Init */
+  ngOnInit() {
+    // Get results when params change
+    this.paramsSubscription = this.searchParams.subscribe(() => {
+      const params = this.searchParams.toObject();
+      // Update query string
+      this.location.replaceState('/<<M a-a>>', Helpers.toQueryString(params));
+    });
+    // Init the search from query params
+    this.querySubscription = this.route.queryParams.subscribe(params => {
+      this.searchParams.fromObject(params);
+    });
+  }
+  /** After View Init */
+  ngAfterViewInit() {
+    this.searchParams.next();
+  }
+  /** Destroy */
+  ngOnDestroy() {
+    this.paramsSubscription.unsubscribe();
+    this.querySubscription.unsubscribe();
+  }
+  /** @param {<<M AA>>} item Called when the user select a row in the table */
+  onSelect(item: <<M AA>>) {
+    this.router.navigateByUrl(`/<<M a-a>>/${item.getId()}`);
+  }
+ 
+}

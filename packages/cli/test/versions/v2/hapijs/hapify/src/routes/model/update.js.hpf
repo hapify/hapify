@@ -1,0 +1,119 @@
+'use strict';
+ 
+/**
+ * Update <<M a>>
+ */
+ 
+const Joi = require('joi');
+const Boom = require('boom');
+const MongoDB = require('mongodb');
+ 
+// Validation schema for params
+const schemaParams = Joi.object({
+    <<P a_a>>: Joi.string().length(24).hex().required()
+});
+// Validation schema for payload
+const schemaPayload = Joi.object({
+<<@ F !in f>>
+    <<f a_a>>: <<=joiValidator(f)>>,
+<<@>>
+}).min(1);
+ 
+/**
+ * Export route to update <<M a>>
+ */
+module.exports = {
+    method: 'PATCH',
+    path: '/<<M a-a>>/{<<P a_a>>}',
+    config: {
+        validate: {
+            params: schemaParams,
+            payload: schemaPayload
+        },
+        description: 'Route to update <<M a>>',
+        tags: ['<<M a-a>>', 'update']
+    },
+    handler: async (request, h) => {
+ 
+        // Get updates from payload
+        const updates = { $set: request.payload };
+ 
+        // Get <<M a>> <<P a>>
+        const <<P a_a>> = new MongoDB.ObjectId(request.params.<<P a_a>>);
+
+<<? F tE/in>>
+ 
+        // Convert reference fields
+    <<@ F tE/in r>>
+        <<? r ml>>
+        if (updates.$set.<<r a_a>> instanceof Array) {
+            updates.$set.<<r a_a>> = updates.$set.<<r a_a>>.map((i) => new MongoDB.ObjectId(i));
+        }
+        <<??>>
+        if (typeof updates.$set.<<r a_a>> === 'string') {
+            updates.$set.<<r a_a>> = new MongoDB.ObjectId(request.payload.<<r a_a>>);
+        }
+        <<?>>
+    <<@>>
+<<?>>
+ 
+        // @hook update:before-update:<<M a-a>>
+ 
+        // Insertion options
+        const options = { w: 'majority' };
+ 
+        // Update <<M a>> in database
+<<? F un>>
+        let result;
+        try {
+            result = await request.server.db.collection('<<M a_a>>')
+                .findOneAndUpdate({ <<P a_a>> }, updates, options);
+        }
+        catch (e) {
+            // Handle duplicated key for unique indexes
+            return e.name === 'MongoError' && e.code === 11000 ?
+                Boom.conflict('Duplicate key') :
+                Boom.boomify(e);
+        }
+<<??>>
+        const result = await request.server.db.collection('<<M a_a>>')
+            .findOneAndUpdate({ <<P a_a>> }, updates, options);
+<<?>>
+ 
+        if (result.value === null) {
+            return Boom.notFound('<<M A>> not found');
+        }
+ 
+        return h.response().code(204);
+    }
+};
+ 
+<<< 
+function joiValidator(f) {
+    let out = "Joi.";
+    
+    if (f.type === "boolean") out += "boolean()";
+    else if (f.type === "string") {
+        out +=  "string()";
+        if (f.subtype === "email") out += ".email()";
+        else if (f.subtype === "password") out += ".min(6)";
+        out +=  ".trim()";
+    }
+    else if (f.type === "number" || f.type === "datetime") {
+        out +=  "number()";
+        if (f.subtype === "latitude") out += ".min(-90).max(90)";
+        else if (f.subtype === "longitude") out += ".min(-180).max(180)";
+    }
+    if (f.type === "entity") out +=  "string().length(24).hex()";
+    
+    /* Multiple and nullable */
+    if (f.multiple) {
+        out = `Joi.array().items(${out})`;
+        out += f.nullable ? ".min(0)" : ".min(1)";
+    } else {
+        if (f.nullable) out += ".allow(null)";
+    }
+    
+    return out;
+}
+>>>

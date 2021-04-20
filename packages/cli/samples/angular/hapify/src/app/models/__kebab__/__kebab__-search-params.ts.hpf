@@ -1,0 +1,136 @@
+import {Helpers} from '@app/shared';
+import {BaseModelSearchParams, BaseModelSearchParamsInterface} from '@app/abstracts';
+ 
+/** Used to export and import search params */
+export interface <<M AA>>SearchParamsInterface extends BaseModelSearchParamsInterface {
+  <<P a_a>>?: string[];
+<<@ F se f>>
+  <<=_interface(f)>>;
+<<@>>
+}
+ 
+/** Manage <<M a>> search params */
+export class <<M AA>>SearchParams extends BaseModelSearchParams< <<M AA>>SearchParamsInterface> {
+ 
+  /** @inheritDoc */
+  fromObject(input: <<M AA>>SearchParamsInterface): void {
+ 
+    // Clone object with allowed keys only
+    const props: <<M AA>>SearchParamsInterface = {};
+    this.allowedKeys().map((key: string) => {
+      if (typeof input[key] !== 'undefined') {
+        props[key] = input[key];
+      }
+    });
+ 
+    // Keep default values
+    if (typeof props._page === 'undefined') { props._page = this.defaultPage; }
+    if (typeof props._limit === 'undefined') { props._limit = this.defaultLimit; }
+    
+    // Convert potentially multiple primary keys
+    if (typeof props.<<P a_a>> === 'string') {
+      props.<<P a_a>> = (< string>props.<<P a_a>>).split(',').filter((s) => s.length);
+    }
+
+<<@ F se f>>
+    <<? f tB>>
+ 
+    // Convert boolean <<f a>>
+    if (typeof props.<<f a_a>> !== 'undefined') {
+      props.<<f a_a>> = Helpers.convertToBoolean(props.<<f a_a>>);
+    }
+
+    <<?? f tD>>
+ 
+    // Convert dates for <<f a>>
+    if (typeof props.<<f a_a>> !== 'undefined') {
+      props.<<f a_a>> = Helpers.convertToDate(props.<<f a_a>>);
+    }
+    if (typeof props.<<f a_a>>__min !== 'undefined') {
+      props.<<f a_a>>__min = Helpers.convertToDate(props.<<f a_a>>__min);
+    }
+    if (typeof props.<<f a_a>>__max !== 'undefined') {
+      props.<<f a_a>>__max = Helpers.convertToDate(props.<<f a_a>>__max);
+    }
+
+    <<?? f tE*ml>>
+ 
+    // Convert potentially multiple ids for <<f a>>
+    if (typeof props.<<f a_a>> === 'string') {
+      props.<<f a_a>> = (< string>props.<<f a_a>>).split(',').filter((s) => s.length);
+    }
+    <<?>>
+<<@>>
+ 
+    // Assign values
+    this.props = props;
+    this.next();
+  }
+  /** @inheritDoc */
+  toObject(): <<M AA>>SearchParamsInterface {
+ 
+    // Filter not allowed, undefined and null values
+    const props: <<M AA>>SearchParamsInterface = {};
+    this.allowedKeys().map(Helpers.prepareObjectForApi(this.props, props));
+
+<<@ F se f>>
+    <<? f tD>>
+ 
+    // Avoid conflict in value of <<f a>>
+    if (typeof props.<<f a_a>> !== 'undefined') {
+      delete props.<<f a_a>>__min;
+      delete props.<<f a_a>>__max;
+    }
+    <<?? f tB>>
+ 
+    // Convert boolean <<f a>>
+    if (typeof props.<<f a_a>> !== 'undefined') {
+      props.<<f a_a>> = props.<<f a_a>> ? 'true' : 'false';
+    }
+    <<?>>
+<<@>>
+ 
+    return props;
+  }
+  /** @inheritDoc */
+  protected allowedKeys(): string[] {
+    return super.allowedKeys().concat([
+      '<<P a_a>>',
+<<@ F se f>>
+      <<=_key(f)>>,
+<<@>>
+    ]);
+  }
+}
+
+<<< 
+function _type(f) {
+  if (f.type === "boolean") return "string | boolean";
+  if (f.type === "string") return "string";
+  if (f.type === "number") return "string | number";
+  if (f.type === "datetime") return "string | number | Date";
+  if (f.type === "entity") {
+    return f.multiple ? "string[]" : "string";
+  }
+  return "any";
+}
+function _interface(f) {
+    const prop = f.names.snake;
+    const type = _type(f);
+    let line = `${prop}?: ${type}`;
+    if (f.type === "number" || f.type === "datetime") {
+        line += `;\n  ${prop}__min?: ${type}`;
+        line += `;\n  ${prop}__max?: ${type}`;
+    }
+    return line;
+}
+function _key(f) {
+    const prop = f.names.snake;
+    let line = `'${prop}'`;
+    if (f.type === "number" || f.type === "datetime") {
+        line += `,\n  '${prop}__min'`;
+        line += `,\n  '${prop}__max'`;
+    }
+    return line;
+}
+>>>

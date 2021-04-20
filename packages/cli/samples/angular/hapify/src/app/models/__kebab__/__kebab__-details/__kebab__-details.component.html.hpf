@@ -1,0 +1,72 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 my-3 my-lg-5">
+            <nz-card>
+<<@ F /hd/pr f>>
+                <!-- <<f A>> -->
+                <div class="mb-4">
+                    <h5>{{ '<<M a-a>>_<<f a-a>>' | translate }}</h5>
+    <<? f tD>>
+                    <div>{{ <<M aA>>.props.<<f a_a>> | date:'medium' }}</div>
+    <<?? f tE>>
+                    <div *ngIf="<<M aA>>.<<f aA>>Exists()">
+        <<? f ml>>
+                        <div *ngFor="let item of <<M aA>>.props.<<f a_a>>">
+                            <a class="mr-2" [routerLink]="['/<<f.m a-a>>', item.getId()]">
+                                {{ item.getLabel() }}
+                            </a>
+                        </div>
+        <<??>>
+                        <a [routerLink]="['/<<f.m a-a>>', <<M aA>>.props.<<f a_a>>.getId()]">
+                            {{ <<M aA>>.props.<<f a_a>>.getLabel() }}
+                        </a>
+        <<?>>
+                    </div>
+    <<?? f tB>>
+                    <div>
+                        <span *ngIf="<<M aA>>.props.<<f a_a>> === true || <<M aA>>.props.<<f a_a>> === false">
+                            {{ (<<M aA>>.props.<<f a_a>> ? 'common_true' : 'common_false') | translate }}
+                        </span>
+                    </div>
+    <<?? f tSt>>
+                    <div [innerHTML]="<<M aA>>.props.<<f a_a>> | nl2br"></div>
+    <<?? f tSr>>
+                    <div class="bg-light pt-3 pb-1 px-3 rounded" [innerHTML]="<<M aA>>.props.<<f a_a>>"></div>
+    <<?? f tO>>
+                    <small>
+                        <pre>{{ <<M aA>>.props.<<f a_a>> | json }}</pre>
+                    </small>
+    <<??>>
+                    <div>{{ <<M aA>>.props.<<f a_a>> }}</div>
+    <<?>>
+                </div>
+                <!-- /<<f A>> -->
+<<@>>
+                <nz-divider class="mb-4"></nz-divider>
+                <div class="row">
+                    <div class="col-6">
+                        <a [routerLink]="['/<<M a-a>>/edit', <<M aA>>.getId()]" nz-button nzType="primary">
+                            {{ 'common_edit' | translate }}
+                        </a>
+                        <a [routerLink]="['/<<M a-a>>/create']" nz-button nzType="default" class="ml-2">
+                            {{ 'common_create' | translate }}
+                        </a>
+                    </div>
+                    <div class="col-6" *ngIf="deletable">
+                        <div class="float-right">
+                            <nz-switch [(ngModel)]="deletionUnlocked"></nz-switch>
+                            <button class="ml-2"
+                                    [disabled]="!deletionUnlocked"
+                                    (click)="onDeleteClick()"
+                                    nz-button
+                                    [nzLoading]="deleting"
+                                    nzType="danger">
+                                {{ 'common_delete' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </nz-card>
+        </div>
+    </div>
+</div>

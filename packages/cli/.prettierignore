@@ -1,0 +1,6 @@
+node_modules/
+dist/
+samples/
+test/versions/
+test/sandbox/
+

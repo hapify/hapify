@@ -1,0 +1,46 @@
+import {Component, Input} from '@angular/core';
+import {ErrorService} from '@app/services';
+import {EntityTableComponent} from '@app/abstracts';
+import {<<M AA>>SearchParams} from '../<<M a-a>>-search-params';
+import {<<M AA>>Service} from '../<<M a-a>>.service';
+import {<<M AA>>} from '../<<M a-a>>';
+ 
+@Component({
+  selector: 'hpf-<<M a-a>>-table',
+  templateUrl: './<<M a-a>>-table.component.html'
+})
+export class <<M AA>>TableComponent extends EntityTableComponent< <<M AA>>, <<M AA>>SearchParams> {
+
+  /** @type {string[]} Columns to show */
+  @Input() columns = [
+<<@5 F /hd/pr/(tE/em)/tSt/tSr f>>
+    '<<f a_a>>',
+<<@>>
+  ];
+
+  /** Constructor */
+  constructor(private <<M aA>>Service: <<M AA>>Service,
+              private errorService: ErrorService) {
+    super();
+  }
+
+  /** @inheritDoc */
+  protected refresh(): void {
+    const params = this.searchParams.toObject();
+
+    // Set refreshing flag
+    this.refreshing = true;
+    // Get list
+    this.<<M aA>>Service.list(params)
+      .then((results) => {
+        // Link data
+        this.items = results.items;
+        this.total = results.total;
+      })
+      .catch((error) => this.errorService.handle(error))
+      .then(() => {
+        this.refreshing = false;
+      });
+  }
+ 
+}

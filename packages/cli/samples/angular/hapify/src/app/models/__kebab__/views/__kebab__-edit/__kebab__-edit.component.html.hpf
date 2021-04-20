@@ -1,0 +1,7 @@
+<hpf-<<M a-a>>-form
+        *ngIf="<<M aA>>"
+        [<<M aA>>]="<<M aA>>"
+        (update)="onSave($event)"></hpf-<<M a-a>>-form>
+<div *ngIf="!<<M aA>>" class="my-5 text-center">
+    <nz-spin nzSimple></nz-spin>
+</div>

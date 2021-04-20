@@ -1,0 +1,150 @@
+{
+  "version": "2",
+  "validatorPath": "hapify/validator.js",
+  "project": "../hapijs/hapify-models.json",
+  "name": "Angular Dashboard",
+  "description": "Dashboard for admins built with Angular 7",
+  "logo": "https://files-tractr.s3.ca-central-1.amazonaws.com/assets/angular-forms.png",
+  "templates": [
+    {
+      "path": "src/app/models/{kebab}/{kebab}-details/{kebab}-details.component.html",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/{kebab}-details/{kebab}-details.component.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/{kebab}-filters/{kebab}-filters.component.html",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/{kebab}-filters/{kebab}-filters.component.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/{kebab}-form/{kebab}-form.component.html",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/{kebab}-form/{kebab}-form.component.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/{kebab}-search-params.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/{kebab}-select/{kebab}-select.component.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/{kebab}-table/{kebab}-table.component.html",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/{kebab}-table/{kebab}-table.component.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/{kebab}.service.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/{kebab}.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/{kebab}/{kebab}.component.html",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/{kebab}/{kebab}.component.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/index.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/views/{kebab}-create/{kebab}-create.component.html",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/views/{kebab}-create/{kebab}-create.component.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/views/{kebab}-edit/{kebab}-edit.component.html",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/views/{kebab}-edit/{kebab}-edit.component.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/views/{kebab}-list/{kebab}-list.component.html",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/views/{kebab}-list/{kebab}-list.component.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/views/{kebab}-read/{kebab}-read.component.html",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/{kebab}/views/{kebab}-read/{kebab}-read.component.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/app/models/index.ts",
+      "engine": "hpf",
+      "input": "all"
+    },
+    {
+      "path": "src/app/models/models-routing.module.ts",
+      "engine": "hpf",
+      "input": "all"
+    },
+    {
+      "path": "src/app/models/models.module.ts",
+      "engine": "hpf",
+      "input": "all"
+    },
+    {
+      "path": "src/app/shared/models.ts",
+      "engine": "hpf",
+      "input": "all"
+    },
+    {
+      "path": "src/assets/i18n/en.json",
+      "engine": "js",
+      "input": "all"
+    }
+  ]
+}

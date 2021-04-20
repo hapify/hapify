@@ -1,0 +1,63 @@
+import {Component, Input, OnInit<<? F se*(tS+tN)>>, OnDestroy<<?>>} from '@angular/core';
+import {<<M AA>>SearchParams} from '../<<M a-a>>-search-params';
+<<? F se*(tS+tN)>>
+import {Subscription as RxJsSubscription} from 'rxjs/Subscription';
+import {Subject as RxJsSubject} from 'rxjs/Subject';
+import {debounceTime} from 'rxjs/operators';
+<<?>>
+<<? root.d.s>>
+import {<<M AA>>} from '../<<M a-a>>';
+import {<<M AA>>Service} from '../<<M a-a>>.service';
+<<?>>
+ 
+@Component({
+  selector: 'hpf-<<M a-a>>-filters',
+  templateUrl: './<<M a-a>>-filters.component.html'
+})
+export class <<M AA>>FiltersComponent implements OnInit<<? F se*(tS+tN)>>, OnDestroy<<?>> {
+ 
+  /** @type {<<M AA>>SearchParams} The filters */
+  @Input() searchParams: <<M AA>>SearchParams = new <<M AA>>SearchParams();
+<<? F se*(tS+tN)>>
+  /** @type {number} The debuonce delay before calling the API for filtering */
+  @Input() filterDebounceTime = 300;
+  /** @type {RxJsSubject<void>} Subject for debounced keyup event */
+  private keyupSubject = new RxJsSubject<void>();
+  /** @type {RxJsSubscription} Subscription of the component */
+  private subscription: RxJsSubscription;
+<<?>>
+  /** @type {boolean} Denotes if the page number should be set to 0 when filters change */
+  @Input() resetPage = false;
+ 
+  /** Constructor */
+  constructor() {}
+ 
+  /** Init */
+  ngOnInit() {
+<<? F se*(tS+tN)>>
+    // Subscription
+    this.subscription = this.keyupSubject
+      .pipe(debounceTime(this.filterDebounceTime))
+      .subscribe(() => { this.onChange(); });
+<<?>>
+  }
+
+<<? F se*(tS+tN)>>
+  /** Destroy */
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+  /** Called when a keyboard input is changed */
+  onChangeDebounced() {
+    this.keyupSubject.next();
+  }
+<<?>>
+
+  /** Called when an input is changed */
+  onChange() {
+    if (this.resetPage) {
+        this.searchParams.props._page = 0;
+    }
+    this.searchParams.next();
+  }
+}

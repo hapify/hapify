@@ -1,0 +1,16 @@
+import {Injectable} from '@angular/core';
+import {<<M AA>>, <<M AA>>Interface} from './<<M a-a>>';
+import {<<M AA>>SearchParamsInterface} from './<<M a-a>>-search-params';
+import {BaseModelService} from '@app/abstracts';
+ 
+@Injectable()
+export class <<M AA>>Service extends BaseModelService< <<M AA>>, <<M AA>>Interface, <<M AA>>SearchParamsInterface> {
+  /** @inheritDoc */
+  protected path(): string {
+    return '<<M a-a>>';
+  }
+  /** @inheritDoc */
+  protected new(object: <<M AA>>Interface): <<M AA>> {
+    return new <<M AA>>(object);
+  }
+}

@@ -56,7 +56,7 @@ export interface IWebSocketHandler<I, O> {
    * Handle message.
    * Returns data if necessary, null otherwise
    */
-  handle(message: WebSocketMessage<I>): Promise<O>;
+  handle(message: WebSocketMessage<I>): Promise<O> | O;
 
   /** Returns the JOi validator for the input payload */
   validator(): Joi.Schema;

@@ -1,7 +1,13 @@
 import * as Os from 'os';
 import * as Path from 'path';
 
-import * as Fs from 'fs-extra';
+import {
+  ensureDirSync,
+  existsSync,
+  readJSONSync,
+  statSync,
+  writeJSONSync,
+} from 'fs-extra';
 import { Service } from 'typedi';
 
 import { IGlobalConfig } from '../interface/Config';
@@ -28,14 +34,11 @@ export class GlobalConfigService {
   /** Create file if not exists */
   private init(): void {
     // Create path
-    if (
-      !Fs.existsSync(this.rootPath) ||
-      !Fs.statSync(this.rootPath).isDirectory()
-    ) {
-      Fs.ensureDirSync(this.rootPath);
+    if (!existsSync(this.rootPath) || !statSync(this.rootPath).isDirectory()) {
+      ensureDirSync(this.rootPath);
     }
     // Create file
-    if (!Fs.existsSync(this.filePath) || !Fs.statSync(this.filePath).isFile()) {
+    if (!existsSync(this.filePath) || !statSync(this.filePath).isFile()) {
       this.save();
     }
     // Load & validate config
@@ -45,12 +48,12 @@ export class GlobalConfigService {
 
   /** Save data to config file */
   private save(): void {
-    Fs.writeJSONSync(this.filePath, this.data, { spaces: 2 });
+    writeJSONSync(this.filePath, this.data, { spaces: 2 });
   }
 
   /** Load data from config file */
   private load(): void {
-    this.data = Fs.readJSONSync(this.filePath);
+    this.data = readJSONSync(this.filePath);
   }
 
   /** Validate the current config or scream */

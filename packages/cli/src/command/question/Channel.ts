@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import * as Inquirer from 'inquirer';
+import { prompt } from 'inquirer';
 
 export interface ChannelDescriptionQuery {
   name?: string;
@@ -12,7 +12,7 @@ export async function DescribeChannel(
 ) {
   // Get description from user
   // If the name is passed, bypass all questions
-  const answer = await Inquirer.prompt([
+  const answer = await prompt([
     {
       name: 'name',
       message: 'Enter the channel name',

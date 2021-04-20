@@ -5,7 +5,7 @@ import { GlobalConfigService } from '../service/GlobalConfig';
 import { LoggerService } from '../service/Logger';
 import { OptionsService } from '../service/Options';
 
-export async function ConfigCommand(cmd: Command) {
+export function ConfigCommand(cmd: Command) {
   // Get services
   const globalConfig = Container.get(GlobalConfigService);
   const options = Container.get(OptionsService);

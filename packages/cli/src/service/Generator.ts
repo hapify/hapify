@@ -1,5 +1,5 @@
 import { EvaluationError, Generator } from '@hapify/generator';
-import { NumberedError } from '@hapify/generator/dist/interfaces';
+import { NumberedError } from '@hapify/generator/dist/Interfaces';
 import { Service } from 'typedi';
 
 import { Channel } from '../class/Channel';
@@ -11,9 +11,9 @@ import { IGeneratorResult } from '../interface/Generator';
 @Service()
 export class GeneratorService {
   /** Compile for a whole channel */
-  async runChannel(channel: Channel): Promise<IGeneratorResult[]> {
-    const models = await channel.modelsCollection.list();
-    return await Generator.run(channel.templates, models)
+  runChannel(channel: Channel): Promise<IGeneratorResult[]> {
+    const models = channel.modelsCollection.list();
+    return Generator.run(channel.templates, models)
       .then((results) => this.filterEmptyFiles(results))
       .catch((e) => {
         throw this.formatGeneratorError(e);
@@ -24,9 +24,9 @@ export class GeneratorService {
    * Compile a template to multiple files.
    * One per model, if applicable.
    */
-  async runTemplate(template: Template): Promise<IGeneratorResult[]> {
-    const models = await template.channel().modelsCollection.list();
-    return await Generator.run([template], models)
+  runTemplate(template: Template): Promise<IGeneratorResult[]> {
+    const models = template.channel().modelsCollection.list();
+    return Generator.run([template], models)
       .then((results) => this.filterEmptyFiles(results))
       .catch((e) => {
         throw this.formatGeneratorError(e);
@@ -44,7 +44,7 @@ export class GeneratorService {
     if (template.needsModel() && !model) {
       throw new Error('Model should be defined for this template');
     }
-    const models = await template.channel().modelsCollection.list();
+    const models = template.channel().modelsCollection.list();
     const result = await Generator.run(
       [template],
       models,
@@ -56,7 +56,7 @@ export class GeneratorService {
   }
 
   /** Compute path from a string */
-  async pathPreview(path: string, model: Model | null = null): Promise<string> {
+  pathPreview(path: string, model: Model | null = null): string {
     try {
       return Generator.path(path, model ? model.name : null);
     } catch (e) {

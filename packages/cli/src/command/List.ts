@@ -36,19 +36,21 @@ export async function ListCommand(cmd: Command) {
 
   const modelsPaths = Object.keys(modelsCollections);
   for (const modelsPath of modelsPaths) {
-    const c: Channel[] = modelsCollections[modelsPath];
-    const mc = c.length > 1;
-    const m = await c[0].modelsCollection.list();
-    const mm = m.length > 1;
-    let message = `Channel${mc ? 's' : ''} ${c
+    const channel: Channel[] = modelsCollections[modelsPath];
+    const isMultiChannels = channel.length > 1;
+    const models = channel[0].modelsCollection.list();
+    const isMultiModels = models.length > 1;
+    let message = `Channel${isMultiChannels ? 's' : ''} ${channel
       .map((c) => cChannel(c.name))
-      .join(', ')} use${mc ? '' : 's'} models of ${cPath(modelsPath)}`;
-    if (m.length === 0) {
+      .join(', ')} use${isMultiChannels ? '' : 's'} models of ${cPath(
+      modelsPath,
+    )}`;
+    if (models.length === 0) {
       message += `\nThere is no model yet.`;
     } else {
-      message += `\nThe model${mm ? 's are' : ' is'}:\n- ${m
-        .map((m) => cModel(m.name))
-        .join('\n- ')}`;
+      message += `\nThe model${
+        isMultiModels ? 's are' : ' is'
+      }:\n- ${models.map((m) => cModel(m.name)).join('\n- ')}`;
     }
     logger.newLine().info(message);
   }

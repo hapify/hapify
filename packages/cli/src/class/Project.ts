@@ -6,28 +6,28 @@ import { TransformValidationMessage } from '../interface/schema/ValidatorResult'
 import { ISerializable, IStorable, StorageType } from '../interface/Storage';
 import { ProjectsApiStorageService } from '../service/storage/api/Projects';
 import { ProjectFileStorageService } from '../service/storage/file/Project';
-import { Channel } from './Channel';
+import type { Channel } from './Channel';
 
 export class Project
   implements IStorable, ISerializable<IProject, Project>, IProject {
   /** The project's unique id */
-  private _id: string;
+  private idValue: string;
 
   get id(): string {
-    return this._id;
+    return this.idValue;
   }
 
   set id(value: string) {
     // If the id is not a MongoDB Id, then it should be a file path
     if (Project.isRemoteId(value)) {
-      this._id = value;
-      this._storageType = 'remote';
+      this.idValue = value;
+      this.storageTypeValue = 'remote';
     } else {
       if (!this.localStorageService.exists(value)) {
         throw new Error(`Invalid path "${value}" for project`);
       }
-      this._id = value;
-      this._storageType = 'local';
+      this.idValue = value;
+      this.storageTypeValue = 'local';
     }
   }
 
@@ -41,10 +41,10 @@ export class Project
   description?: string;
 
   /** Storage type */
-  private _storageType: StorageType;
+  private storageTypeValue: StorageType;
 
   get storageType(): StorageType {
-    return this._storageType;
+    return this.storageTypeValue;
   }
 
   /** Project storage */
@@ -86,7 +86,7 @@ export class Project
 
   public toObject(): IProject {
     return {
-      id: this._id,
+      id: this.idValue,
       created_at: this.created_at,
       name: this.name,
       description: this.description,
@@ -96,7 +96,7 @@ export class Project
   public async load(): Promise<void> {
     if (this.storageType === 'local') {
       // Validate config format
-      const projectConfig = await this.localStorageService.get(this._id);
+      const projectConfig = await this.localStorageService.get(this.idValue);
       const validation = ProjectConfigSchema.validate(projectConfig);
       if (validation.error) {
         // Transform Joi message
@@ -104,17 +104,17 @@ export class Project
         throw validation.error;
       }
 
-      this.fromObject(await this.localStorageService.getProject(this._id));
+      this.fromObject(await this.localStorageService.getProject(this.idValue));
     } else {
-      this.fromObject(await this.remoteStorageService.get(this._id));
+      this.fromObject(await this.remoteStorageService.get(this.idValue));
     }
   }
 
   async save(): Promise<void> {
     if (this.storageType === 'local') {
-      await this.localStorageService.setProject(this._id, this.toObject());
+      await this.localStorageService.setProject(this.idValue, this.toObject());
     } else {
-      await this.remoteStorageService.update(this._id, {
+      await this.remoteStorageService.update(this.idValue, {
         name: this.name,
         description: this.description,
       });

@@ -10,10 +10,10 @@ import { ChannelsService } from './Channels';
 @Service()
 export class InfoService {
   /** Stores the limits */
-  private _limits: ILimits;
+  private limitsValue: ILimits;
 
   /** Stores the default fields */
-  private _fields: IField[];
+  private fieldsValue: IField[];
 
   constructor(
     private channelsService: ChannelsService,
@@ -28,28 +28,28 @@ export class InfoService {
 
   /** Get the default model field from channel */
   async fields(): Promise<IField[]> {
-    if (!this._fields) {
+    if (!this.fieldsValue) {
       // Get defined fields
       const channels = await this.channelsService.channels();
       const channel = channels.find((c) => !!c.config.defaultFields);
-      this._fields = channel ? channel.config.defaultFields : [];
+      this.fieldsValue = channel ? channel.config.defaultFields : [];
     }
-    return this._fields;
+    return this.fieldsValue;
   }
 
   /** Get the limits once and returns them */
   async limits(): Promise<ILimits> {
     // Get the limits from API if the project is stored remotely otherwise returns local limits
     const channel = (await this.channelsService.channels())[0];
-    if (!this._limits) {
+    if (!this.limitsValue) {
       if (channel.project.storageType === 'remote') {
-        this._limits = (
+        this.limitsValue = (
           await this.authenticatedApiService.get<ILimits>('generator/limits')
         ).data;
       } else {
-        this._limits = { ...InternalConfig.limits };
+        this.limitsValue = { ...InternalConfig.limits };
       }
     }
-    return this._limits;
+    return this.limitsValue;
   }
 }

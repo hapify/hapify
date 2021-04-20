@@ -3,14 +3,15 @@ import { Service } from 'typedi';
 
 import { IPreset } from '../../interface/Objects';
 import { IWebSocketHandler, WebSocketMessage } from '../../interface/WebSocket';
+import { EmptyObject } from '../../interface/WebSocketHandlers';
 import { PresetsService } from '../Presets';
 
 @Service()
 export class GetPresetsHandlerService
-  implements IWebSocketHandler<{}, IPreset[]> {
+  implements IWebSocketHandler<EmptyObject, IPreset[]> {
   constructor(private presetsService: PresetsService) {}
 
-  canHandle(message: WebSocketMessage<{}>): boolean {
+  canHandle(message: WebSocketMessage<EmptyObject>): boolean {
     return message.id === 'get:presets';
   }
 
@@ -18,7 +19,7 @@ export class GetPresetsHandlerService
     return Joi.any();
   }
 
-  async handle(message: WebSocketMessage<{}>): Promise<IPreset[]> {
+  async handle(): Promise<IPreset[]> {
     return (await this.presetsService.collection()).toObject();
   }
 }

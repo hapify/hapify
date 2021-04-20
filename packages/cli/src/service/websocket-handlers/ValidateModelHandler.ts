@@ -25,13 +25,10 @@ export class ValidateModelHandlerService
     });
   }
 
-  async handle(
+  handle(
     message: WebSocketMessage<WebSocketValidateModelHandlerInput>,
-  ): Promise<Validator> {
+  ): Validator {
     // From content
-    return await this.validatorService.run(
-      message.data.content,
-      message.data.model,
-    );
+    return this.validatorService.run(message.data.content, message.data.model);
   }
 }

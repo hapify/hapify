@@ -2,13 +2,12 @@ import * as http from 'http';
 import * as Path from 'path';
 import { URL } from 'url';
 
-import * as Fs from 'fs-extra';
-import Joi from 'joi';
+import { ensureDirSync, existsSync, unlinkSync, writeJSONSync } from 'fs-extra';
 import * as Jwt from 'jsonwebtoken';
 import pkgDir from 'pkg-dir';
 import * as RandomString from 'randomstring';
 import { Container, Service } from 'typedi';
-import * as ws from 'ws';
+import WebSocket from 'ws';
 
 import { TransformValidationMessage } from '../interface/schema/ValidatorResult';
 import {
@@ -25,13 +24,13 @@ import { GenerateTemplateHandlerService } from './websocket-handlers/GenerateTem
 import { GetChannelsHandlerService } from './websocket-handlers/GetChannelsHandler';
 import { GetInfoHandlerService } from './websocket-handlers/GetInfoHandler';
 import { GetModelsHandlerService } from './websocket-handlers/GetModelsHandler';
+import { GetPresetsHandlerService } from './websocket-handlers/GetPresetsHandler';
 import { NewModelHandlerService } from './websocket-handlers/NewModelHandler';
 import { PathPreviewHandlerService } from './websocket-handlers/PathPreviewHandler';
 import { SetChannelsHandlerService } from './websocket-handlers/SetChannelsHandler';
 import { SetModelsHandlerService } from './websocket-handlers/SetModelsHandler';
 import { TemplatePreviewHandlerService } from './websocket-handlers/TemplatePreviewHandler';
 import { ValidateModelHandlerService } from './websocket-handlers/ValidateModelHandler';
-import { GetPresetsHandlerService } from './websocket-handlers/GetPresetsHandler';
 
 interface TokenData {
   name: string;
@@ -44,7 +43,7 @@ export class WebSocketServerService {
   private baseUri = '/websocket';
 
   /** The server instance */
-  private server: ws.Server;
+  private server: WebSocket.Server;
 
   /** Denotes if the server is started */
   private serverStarted: boolean;
@@ -88,10 +87,10 @@ export class WebSocketServerService {
    * Check if running before starting
    * Every connection is checked against a JWT
    */
-  public async serve(httpServer: http.Server): Promise<void> {
+  public serve(httpServer: http.Server): void {
     if (this.started()) return;
     // Choose port
-    const options: ws.ServerOptions = {
+    const options: WebSocket.ServerOptions = {
       server: httpServer,
       path: this.baseUri,
       verifyClient: (info, cb) => {
@@ -120,32 +119,32 @@ export class WebSocketServerService {
         }
       },
     };
-    this.server = new ws.Server(options);
+    this.server = new WebSocket.Server(options);
 
-    this.server.on('connection', (ws: any) => {
+    this.server.on('connection', (wsClient: any) => {
       // Create unique id for this connection
       const id = this.makeId();
 
       // Create a reply method for this connection
       const reply = (
-        id: WebSocketMessageId,
+        messageId: WebSocketMessageId,
         data: any,
         type?: string,
         tag?: string,
       ) => {
-        const payload: WebSocketMessage<any> = { id, data };
+        const payload: WebSocketMessage<any> = { id: messageId, data };
         if (type) {
           payload.type = type;
         }
         if (tag) {
           payload.tag = tag;
         }
-        ws.send(JSON.stringify(payload));
+        wsClient.send(JSON.stringify(payload));
       };
 
       this.loggerService.debug(`[WS:${id}] Did open new websocket connection`);
 
-      ws.on('message', async (message: string) => {
+      wsClient.on('message', async (message: string) => {
         let decoded: WebSocketMessage<any>;
 
         try {
@@ -213,12 +212,14 @@ export class WebSocketServerService {
           reply(dId, payload, 'error', tag);
 
           this.loggerService.debug(
-            `[WS:${id}] Error while processing message: ${error.message}`,
+            `[WS:${id}] Error while processing message: ${
+              (error as Error).message
+            }`,
           );
         }
       });
 
-      ws.on('close', () => {
+      wsClient.on('close', () => {
         this.loggerService.debug(`[WS:${id}] Did close websocket connection`);
       });
     });
@@ -228,7 +229,7 @@ export class WebSocketServerService {
     });
 
     this.serverStarted = true;
-    await this.createToken();
+    this.createToken();
   }
 
   /**
@@ -244,7 +245,7 @@ export class WebSocketServerService {
         else resolve();
       });
     });
-    await this.deleteToken();
+    this.deleteToken();
     this.server = null;
   }
 
@@ -273,8 +274,8 @@ export class WebSocketServerService {
   }
 
   /** Create and store token */
-  private async createToken(): Promise<void> {
-    const wsAddress = <ws.AddressInfo>this.server.address();
+  private createToken(): void {
+    const wsAddress = <WebSocket.AddressInfo>this.server.address();
     const token = Jwt.sign({ name: this.randomName }, this.randomSecret, {
       expiresIn: this.tokenExpires,
     });
@@ -283,13 +284,15 @@ export class WebSocketServerService {
         this.baseUri
       }?token=${encodeURIComponent(token)}`,
     };
-    Fs.writeJSONSync(this.wsInfoPath, data, { spaces: 2 });
+    // Force dist folder creation for testings
+    ensureDirSync(Path.dirname(this.wsInfoPath));
+    writeJSONSync(this.wsInfoPath, data, { spaces: 2 });
   }
 
   /** Remove the token */
-  private async deleteToken(): Promise<void> {
-    if (Fs.existsSync(this.wsInfoPath)) {
-      Fs.unlinkSync(this.wsInfoPath);
+  private deleteToken(): void {
+    if (existsSync(this.wsInfoPath)) {
+      unlinkSync(this.wsInfoPath);
     }
   }
 

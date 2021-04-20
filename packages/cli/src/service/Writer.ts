@@ -1,6 +1,6 @@
 import * as Path from 'path';
 
-import * as Fs from 'fs-extra';
+import { ensureDirSync, writeFileSync } from 'fs-extra';
 import JSZip from 'jszip';
 import { Service } from 'typedi';
 
@@ -8,8 +8,6 @@ import { IGeneratorResult } from '../interface/Generator';
 
 @Service()
 export class WriterService {
-  constructor() {}
-
   /** Zip results and write to disk */
   async zip(path: string, results: IGeneratorResult[]): Promise<void> {
     // Create ZIP
@@ -26,21 +24,21 @@ export class WriterService {
         level: 9,
       },
     });
-    Fs.ensureDirSync(Path.dirname(path));
-    Fs.writeFileSync(path, content);
+    ensureDirSync(Path.dirname(path));
+    writeFileSync(path, content);
   }
 
   /** Write results to disk */
-  async writeMany(root: string, results: IGeneratorResult[]): Promise<void> {
+  writeMany(root: string, results: IGeneratorResult[]): void {
     for (const result of results) {
-      await this.write(root, result);
+      this.write(root, result);
     }
   }
 
   /** Write on result to disk */
-  async write(root: string, result: IGeneratorResult): Promise<void> {
+  write(root: string, result: IGeneratorResult): void {
     const path = Path.join(root, result.path);
-    Fs.ensureDirSync(Path.dirname(path));
-    Fs.writeFileSync(path, result.content, 'utf8');
+    ensureDirSync(Path.dirname(path));
+    writeFileSync(path, result.content, 'utf8');
   }
 }

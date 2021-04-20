@@ -20,7 +20,7 @@ export class PresetsService {
 
   /** Returns the presets collection */
   async collection(): Promise<PresetsCollection> {
-    return await PresetsCollection.getInstance();
+    return PresetsCollection.getInstance();
   }
 
   /** Apply one preset to models */
@@ -31,7 +31,7 @@ export class PresetsService {
 
     // List
     const modelsCollection = await this.channelsService.modelsCollection();
-    const models = await modelsCollection.list();
+    const models = modelsCollection.list();
     const referencesMap: { [id: string]: string } = {};
 
     for (const model of presetModels) {

@@ -2,6 +2,8 @@ import { ILimits } from './Config';
 import { IModel, ITemplate } from './Generator';
 import { IProject } from './Objects';
 
+export type EmptyObject = Record<string, never>;
+
 export interface WebSocketApplyPresetHandlerInput {
   models: IModel[];
 }

@@ -44,12 +44,12 @@ export class ProjectsCollection
   }
 
   /** Returns the list of projects */
-  async list(): Promise<Project[]> {
+  list(): Project[] {
     return this.projects;
   }
 
   /** Returns one project */
-  async get(id: string): Promise<Project> {
+  get(id: string): Project {
     return this.projects.find((p) => p.id === id);
   }
 

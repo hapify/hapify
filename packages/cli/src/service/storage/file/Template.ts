@@ -4,11 +4,11 @@ import { SingleSaveFileStorage } from './SingleSave';
 
 @Service()
 export class TemplatesFileStorageService extends SingleSaveFileStorage<string> {
-  protected async serialize(content: string): Promise<string> {
+  protected serialize(content: string): string {
     return content;
   }
 
-  protected async deserialize(content: string): Promise<string> {
+  protected deserialize(content: string): string {
     return content;
   }
 }

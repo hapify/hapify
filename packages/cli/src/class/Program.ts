@@ -1,4 +1,8 @@
+import * as Path from 'path';
+
 import commander from 'commander';
+import { readJSONSync } from 'fs-extra';
+import pkgDir from 'pkg-dir';
 import { Container } from 'typedi';
 
 import { ConfigCommand } from '../command/Config';
@@ -15,7 +19,8 @@ import { UseCommand } from '../command/Use';
 import { HttpServerService } from '../service/HttpServer';
 import { OptionsService } from '../service/Options';
 
-const packageJson = require('../../package.json');
+const RootDir = pkgDir.sync(__dirname);
+const PackageJson = readJSONSync(Path.join(RootDir, 'package.json'));
 
 function Aggregate(val: string, acc: string[]) {
   acc.push(val);
@@ -30,6 +35,7 @@ export class Program {
   private program: commander.Command;
 
   constructor() {
+    // eslint-disable-next-line import/no-named-as-default-member
     this.program = new commander.Command();
     this.http = Container.get(HttpServerService);
     this.options = Container.get(OptionsService);
@@ -43,7 +49,7 @@ export class Program {
 
   protected init(): void {
     this.program
-      .version(packageJson.version)
+      .version(PackageJson.version)
       .description('Hapify Command Line Tool')
       .option('--debug', 'enable debug mode', false)
       .option('--silent', 'enable silent mode', false)

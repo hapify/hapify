@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import * as Inquirer from 'inquirer';
+import { prompt, Separator } from 'inquirer';
 import { Container } from 'typedi';
 
 import { ProjectsService } from '../../service/Projects';
@@ -15,7 +15,7 @@ export async function AskLocalProject(cmd: Command, qProject: ProjectQuery) {
     qProject.name = cmd.projectName;
     qProject.description = cmd.projectDesc;
   } else {
-    const answer: any = await Inquirer.prompt([
+    const answer: any = await prompt([
       {
         name: 'name',
         message: 'Enter a project name',
@@ -41,18 +41,18 @@ export async function AskRemoteProject(cmd: Command, qProject: ProjectQuery) {
     qProject.description = cmd.projectDesc;
   } else {
     // Get projects from remote
-    const list = (await projectsCollection.list()).map((b: any) => ({
+    const list = projectsCollection.list().map((b: any) => ({
       name: b.name,
       value: b.id,
     }));
-    const answer: any = await Inquirer.prompt([
+    const answer: any = await prompt([
       {
         name: 'id',
         message: 'Choose a project',
         type: 'list',
         choices: [
           { name: 'Create a new project', value: null },
-          new Inquirer.Separator(),
+          new Separator(),
           ...list,
         ],
         when: () => list.length > 0,
@@ -60,13 +60,13 @@ export async function AskRemoteProject(cmd: Command, qProject: ProjectQuery) {
       {
         name: 'name',
         message: 'Enter a project name',
-        when: (answer: any) => !answer.id,
+        when: (project: any) => !project.id,
         validate: (input: any) => input.length > 0,
       },
       {
         name: 'description',
         message: 'Enter a project description',
-        when: (answer: any) => !answer.id,
+        when: (project: any) => !project.id,
       },
     ]);
     qProject.id = answer.id;

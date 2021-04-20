@@ -47,6 +47,6 @@ export class GenerateTemplateHandlerService
       throw new Error(`Unable to find template ${message.data.template}`);
     }
     const results = await this.generatorService.runTemplate(template);
-    await this.writerService.writeMany(channel.path, results);
+    this.writerService.writeMany(channel.path, results);
   }
 }

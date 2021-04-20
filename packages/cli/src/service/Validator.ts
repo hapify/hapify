@@ -1,3 +1,4 @@
+import { EvaluationError } from '@hapify/generator';
 import { HapifyVM } from '@hapify/vm';
 import { Service } from 'typedi';
 
@@ -9,13 +10,10 @@ import { Validator } from '../interface/Validator';
 
 @Service()
 export class ValidatorService {
-  constructor() {}
-
   /**
    * Run validation on a single model for a single channel
-   *
    */
-  async run(content: string, model: IModel): Promise<Validator> {
+  run(content: string, model: IModel): Validator {
     let result: Validator;
 
     // Try or die
@@ -36,11 +34,13 @@ export class ValidatorService {
       }
       if (error.code === 6002) {
         // Clone error
-        const { lineNumber, columnNumber } = error;
+        const { lineNumber, columnNumber } = error as EvaluationError;
         throw new RichError(error.message, {
           code: 4005,
           type: 'CliValidatorEvaluationError',
-          details: `Error: ${error.message}. Line: ${lineNumber}, Column: ${columnNumber}`,
+          details: `Error: ${
+            (error as Error).message
+          }. Line: ${lineNumber}, Column: ${columnNumber}`,
           lineNumber,
           columnNumber,
         });

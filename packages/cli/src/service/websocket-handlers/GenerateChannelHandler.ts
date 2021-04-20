@@ -39,6 +39,6 @@ export class GenerateChannelHandlerService
       throw new Error(`Unable to find channel ${message.data.channel}`);
     }
     const results = await this.generatorService.runChannel(channel);
-    await this.writerService.writeMany(channel.path, results);
+    this.writerService.writeMany(channel.path, results);
   }
 }

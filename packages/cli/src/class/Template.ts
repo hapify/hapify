@@ -10,7 +10,7 @@ import {
 import { ISerializable, IStorable } from '../interface/Storage';
 import { TemplatesFileStorageService } from '../service/storage/file/Template';
 import { StringService } from '../service/String';
-import { Channel } from './Channel';
+import type { Channel } from './Channel';
 
 export class Template
   implements IStorable, ISerializable<ITemplate, Template>, ITemplate {

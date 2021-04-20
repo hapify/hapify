@@ -2,15 +2,22 @@ import * as Os from 'os';
 import * as Path from 'path';
 
 import axios from 'axios';
-import * as Fs from 'fs-extra';
+import {
+  copySync,
+  ensureDirSync,
+  existsSync,
+  lstatSync,
+  readFileSync,
+  removeSync,
+  writeFileSync,
+} from 'fs-extra';
 import { Container } from 'typedi';
+import WebSocket from 'ws';
 
 import { Program } from '../src/class/Program';
 import { IGlobalConfig } from '../src/interface/Config';
 import { WebSocketMessage } from '../src/interface/WebSocket';
 import { LoggerService } from '../src/service/Logger';
-
-const WebSocket = require('ws');
 
 interface CliReturn {
   code: number;
@@ -93,14 +100,14 @@ export function GetFileContent(
   path: string,
   encoding: BufferEncoding = 'utf8',
 ): string {
-  return Fs.readFileSync(Path.resolve(path), { encoding });
+  return readFileSync(Path.resolve(path), { encoding });
 }
 export function SetFileContent(
   path: string,
   content: string,
   encoding: BufferEncoding = 'utf8',
 ): void {
-  Fs.writeFileSync(Path.resolve(path), content, { encoding });
+  writeFileSync(Path.resolve(path), content, { encoding });
 }
 
 export function GetJSONFileContent<T = unknown>(
@@ -139,11 +146,11 @@ export class Sandbox {
 
   private create(): void {
     // Make dir if not exists
-    Fs.ensureDirSync(this.rootPath);
+    ensureDirSync(this.rootPath);
   }
 
   clear(): void {
-    Fs.removeSync(this.rootPath);
+    removeSync(this.rootPath);
     this.create();
   }
 
@@ -152,7 +159,7 @@ export class Sandbox {
     filter: (src: string, dest: string) => boolean = () => true,
   ): void {
     const srcPath = Path.join(ProjectDir, path);
-    Fs.copySync(srcPath, this.rootPath, {
+    copySync(srcPath, this.rootPath, {
       overwrite: true,
       recursive: true,
       filter,
@@ -187,15 +194,15 @@ export class Sandbox {
 
   fileExists(subPath: string[]): boolean {
     const path = Path.join(this.rootPath, ...subPath);
-    return Fs.existsSync(path) && Fs.lstatSync(path).isFile();
+    return existsSync(path) && lstatSync(path).isFile();
   }
 
   dirExists(subPath: string[]): boolean {
     const path = Path.join(this.rootPath, ...subPath);
-    return Fs.existsSync(path) && Fs.lstatSync(path).isDirectory();
+    return existsSync(path) && lstatSync(path).isDirectory();
   }
 
   touch(name = 'placeholder', content = ''): void {
-    Fs.writeFileSync(Path.join(this.rootPath, name), content);
+    writeFileSync(Path.join(this.rootPath, name), content);
   }
 }

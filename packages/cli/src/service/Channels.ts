@@ -1,7 +1,7 @@
 import * as Path from 'path';
 
-import Hoek from '@hapi/hoek';
-import * as Fs from 'fs-extra';
+import { deepEqual } from '@hapi/hoek';
+import { existsSync, readdirSync, statSync, unlinkSync } from 'fs-extra';
 import { Service } from 'typedi';
 
 import { Channel } from '../class/Channel';
@@ -12,25 +12,25 @@ import { OptionsService } from './Options';
 @Service()
 export class ChannelsService {
   /** Channels instances */
-  private _channels: Channel[];
+  private channelsList: Channel[];
 
   constructor(private optionsService: OptionsService) {}
 
   /** Get the channels. Load them if not loaded yet */
   public async channels(): Promise<Channel[]> {
-    if (!(this._channels instanceof Array)) {
-      this._channels = await ChannelsService.sniff(
+    if (!(this.channelsList instanceof Array)) {
+      this.channelsList = await ChannelsService.sniff(
         this.optionsService.dir(),
         this.optionsService.depth(),
       );
-      if (this._channels.length === 0) {
+      if (this.channelsList.length === 0) {
         throw new Error('No channel found');
       }
-      for (const channel of this._channels) {
+      for (const channel of this.channelsList) {
         await channel.load();
       }
     }
-    return this._channels;
+    return this.channelsList;
   }
 
   /** Ensure that all channels refers to the same project */
@@ -57,7 +57,7 @@ export class ChannelsService {
     // Compare each fields group to the first one
     const ref = fieldsGroup[0];
     for (let i = 1; i < fieldsGroup.length; i++) {
-      if (!Hoek.deepEqual(ref, fieldsGroup[i])) {
+      if (!deepEqual(ref, fieldsGroup[i])) {
         throw new Error(
           'Default fields must match for all channels if defined',
         );
@@ -118,8 +118,8 @@ export class ChannelsService {
 
       // Remove project file
       const projectPath = await this.resolveLocalProjectPath(channel);
-      if (projectPath && Fs.existsSync(projectPath)) {
-        Fs.unlinkSync(projectPath);
+      if (projectPath && existsSync(projectPath)) {
+        unlinkSync(projectPath);
       }
 
       // Get relative path
@@ -164,21 +164,21 @@ export class ChannelsService {
         ? []
         : (
             await Promise.all(
-              Fs.readdirSync(path)
+              readdirSync(path)
                 .map((dir) => Path.join(path, dir))
-                .filter((subPath) => Fs.statSync(subPath).isDirectory())
+                .filter((subPath) => statSync(subPath).isDirectory())
                 .map((subPath) =>
                   ChannelsService.sniff(subPath, depth - 1, from),
                 ),
             )
           ).reduce(
-            (flatten: Channel[], channels: Channel[]) =>
-              flatten.concat(channels),
+            (flatten: Channel[], channelsList: Channel[]) =>
+              flatten.concat(channelsList),
             [],
           );
 
     // Get channel of current directory if exists
-    if (await Channel.configExists(path)) {
+    if (Channel.configExists(path)) {
       const name = Path.relative(Path.dirname(from), path);
       const channel = new Channel(path, name);
       channels.push(channel);

@@ -32,11 +32,9 @@ export class PathPreviewHandlerService
   ): Promise<string> {
     // Get model, if any
     const model = message.data.model
-      ? await (await this.channelsService.modelsCollection()).find(
-          message.data.model,
-        )
+      ? (await this.channelsService.modelsCollection()).find(message.data.model)
       : null;
     // Compute the path
-    return await this.generatorService.pathPreview(message.data.path, model);
+    return this.generatorService.pathPreview(message.data.path, model);
   }
 }

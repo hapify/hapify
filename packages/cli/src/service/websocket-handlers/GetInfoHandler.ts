@@ -2,15 +2,18 @@ import Joi from 'joi';
 import { Service } from 'typedi';
 
 import { IWebSocketHandler, WebSocketMessage } from '../../interface/WebSocket';
-import { WebSocketGetInfoHandlerOutput } from '../../interface/WebSocketHandlers';
+import {
+  EmptyObject,
+  WebSocketGetInfoHandlerOutput,
+} from '../../interface/WebSocketHandlers';
 import { InfoService } from '../Info';
 
 @Service()
 export class GetInfoHandlerService
-  implements IWebSocketHandler<{}, WebSocketGetInfoHandlerOutput> {
+  implements IWebSocketHandler<EmptyObject, WebSocketGetInfoHandlerOutput> {
   constructor(private infoService: InfoService) {}
 
-  canHandle(message: WebSocketMessage<{}>): boolean {
+  canHandle(message: WebSocketMessage<EmptyObject>): boolean {
     return message.id === 'get:info';
   }
 
@@ -18,9 +21,7 @@ export class GetInfoHandlerService
     return Joi.any();
   }
 
-  async handle(
-    message: WebSocketMessage<{}>,
-  ): Promise<WebSocketGetInfoHandlerOutput> {
+  async handle(): Promise<WebSocketGetInfoHandlerOutput> {
     return {
       project: await this.infoService.project(),
       limits: await this.infoService.limits(),

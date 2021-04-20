@@ -1,11 +1,11 @@
 import { Command } from 'commander';
+// eslint-disable-next-line import/no-named-as-default
+import SimpleGit from 'simple-git/promise';
 import { Container } from 'typedi';
 
 import { LoggerService } from '../service/Logger';
 import { OptionsService } from '../service/Options';
 import { ApplyDiff, AskDiff, DiffQuery } from './question/Diff';
-
-const SimpleGit = require('simple-git/promise');
 
 export async function PatchCommand(cmd: Command) {
   // Get services

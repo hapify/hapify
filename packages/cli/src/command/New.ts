@@ -1,7 +1,9 @@
 import * as Path from 'path';
 
 import { Command } from 'commander';
-import * as Fs from 'fs-extra';
+import { lstatSync, readdirSync, removeSync } from 'fs-extra';
+// eslint-disable-next-line import/no-named-as-default
+import SimpleGit from 'simple-git/promise';
 import { Container } from 'typedi';
 
 import { ChannelsService } from '../service/Channels';
@@ -20,12 +22,10 @@ import {
   ProjectQuery,
 } from './question/Project';
 
-const SimpleGit = require('simple-git/promise');
-
 const GetDirectories = (s: string) =>
-  Fs.readdirSync(s)
+  readdirSync(s)
     .map((n: string) => Path.join(s, n))
-    .filter((d: string) => Fs.lstatSync(d).isDirectory());
+    .filter((d: string) => lstatSync(d).isDirectory());
 
 export async function NewCommand(cmd: Command) {
   // Get services
@@ -43,7 +43,7 @@ export async function NewCommand(cmd: Command) {
   // ---------------------------------
   // Verify current dir
   const currentDir = options.dir();
-  const files = Fs.readdirSync(currentDir);
+  const files = readdirSync(currentDir);
   if (files.length) {
     throw new Error(
       'Current folder is not empty, cannot create a new project.',
@@ -73,11 +73,11 @@ export async function NewCommand(cmd: Command) {
     }
     const dirs = GetDirectories(currentDir);
     for (const dir of dirs) {
-      Fs.removeSync(Path.join(dir, '.git'));
+      removeSync(Path.join(dir, '.git'));
     }
   } else {
     await git.clone(qBoilerplate.urls[0], currentDir);
-    Fs.removeSync(Path.join(currentDir, '.git'));
+    removeSync(Path.join(currentDir, '.git'));
   }
 
   // =================================

@@ -115,6 +115,7 @@ export class LoggerService {
 
   private log(message: string, type: LogType): void {
     if (!this.optionsService.silent()) {
+      // eslint-disable-next-line no-console
       console.log(message);
     }
     this.output[type] += message;

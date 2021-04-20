@@ -42,12 +42,12 @@ export class BoilerplatesCollection
   }
 
   /** Returns the list of boilerplates */
-  async list(): Promise<Boilerplate[]> {
+  list(): Boilerplate[] {
     return this.boilerplates;
   }
 
   /** Returns one boilerplate */
-  async get(id: string): Promise<Boilerplate> {
+  get(id: string): Boilerplate {
     return this.boilerplates.find((p) => p.id === id);
   }
 

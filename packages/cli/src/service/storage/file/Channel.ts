@@ -1,6 +1,6 @@
 import * as Path from 'path';
 
-import * as Fs from 'fs-extra';
+import { readdirSync, rmdirSync, statSync, unlinkSync } from 'fs-extra';
 import { Service } from 'typedi';
 
 import { IConfig } from '../../../interface/Config';
@@ -16,7 +16,7 @@ export class ChannelFileStorageService extends SingleSaveFileStorage<IConfig> {
     super();
   }
 
-  protected async serialize(content: IConfig): Promise<string> {
+  protected serialize(content: IConfig): string {
     const compact: IStorableCompactConfig = {
       version: content.version,
       validatorPath: content.validatorPath,
@@ -34,7 +34,7 @@ export class ChannelFileStorageService extends SingleSaveFileStorage<IConfig> {
     return JSON.stringify(compact, null, 2);
   }
 
-  protected async deserialize(content: string): Promise<IConfig> {
+  protected deserialize(content: string): IConfig {
     try {
       const parsedContent: VersionedObject = JSON.parse(content);
       const compact = new ChannelParser(parsedContent).convert();
@@ -54,20 +54,20 @@ export class ChannelFileStorageService extends SingleSaveFileStorage<IConfig> {
       };
     } catch (error) {
       throw new Error(
-        `An error occurred while parsing Channel configuration: ${error.toString()}`,
+        `An error occurred while parsing Channel configuration: ${(error as Error).toString()}`,
       );
     }
   }
 
   /** Cleanup unused files */
-  async cleanup(root: FilePath, legitFiles: FilePath[]): Promise<void> {
+  cleanup(root: FilePath, legitFiles: FilePath[]): void {
     const joinedRoot = JoinPath(root);
     const joinedLegitFiles = legitFiles.map(JoinPath);
 
     const allFiles = ChannelFileStorageService.listAllFiles(joinedRoot);
     for (const filePath of allFiles) {
       if (joinedLegitFiles.indexOf(filePath) < 0) {
-        Fs.unlinkSync(filePath);
+        unlinkSync(filePath);
       }
     }
 
@@ -77,13 +77,13 @@ export class ChannelFileStorageService extends SingleSaveFileStorage<IConfig> {
   /** Get all files' absolute path from a directory */
   private static listAllFiles(rootPath: string): string[] {
     // Read the whole directory
-    const entries = Fs.readdirSync(rootPath).map((dir) =>
+    const entries = readdirSync(rootPath).map((dir) =>
       Path.join(rootPath, dir),
     );
 
     // Get sub-files
     const subFiles = entries
-      .filter((subPath) => Fs.statSync(subPath).isDirectory())
+      .filter((subPath) => statSync(subPath).isDirectory())
       .map((subPath) => ChannelFileStorageService.listAllFiles(subPath))
       .reduce(
         (flatten: string[], files: string[]) => flatten.concat(files),
@@ -92,25 +92,25 @@ export class ChannelFileStorageService extends SingleSaveFileStorage<IConfig> {
 
     // Return files and sub-files
     return entries
-      .filter((subPath) => Fs.statSync(subPath).isFile())
+      .filter((subPath) => statSync(subPath).isFile())
       .concat(subFiles);
   }
 
   /** Delete all directories if empty */
   private static clearEmptyDirectories(rootPath: string): void {
     // Remove sub-directories
-    Fs.readdirSync(rootPath)
+    readdirSync(rootPath)
       .map((dir) => Path.join(rootPath, dir))
-      .filter((subPath) => Fs.statSync(subPath).isDirectory())
+      .filter((subPath) => statSync(subPath).isDirectory())
       .forEach((subPath) =>
         ChannelFileStorageService.clearEmptyDirectories(subPath),
       );
 
     // Count remaining files & dirs
-    const count = Fs.readdirSync(rootPath).length;
+    const count = readdirSync(rootPath).length;
 
     if (count === 0) {
-      Fs.rmdirSync(rootPath);
+      rmdirSync(rootPath);
     }
   }
 }

@@ -28,7 +28,7 @@ export async function GenerateCommand(cmd: Command) {
 
   for (const channel of channels) {
     const results = await generator.runChannel(channel);
-    await writer.writeMany(channel.path, results);
+    writer.writeMany(channel.path, results);
     logger.success(
       `Generated ${cHigh(`${results.length} files`)} for channel ${cChannel(
         channel.name,

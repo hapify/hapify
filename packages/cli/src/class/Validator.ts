@@ -2,7 +2,7 @@ import { Container } from 'typedi';
 
 import { IStorable } from '../interface/Storage';
 import { ValidatorFileStorageService } from '../service/storage/file/Validator';
-import { Channel } from './Channel';
+import type { Channel } from './Channel';
 
 export class Validator implements IStorable {
   /** The validator's script content */
@@ -16,7 +16,7 @@ export class Validator implements IStorable {
   }
 
   public async load(): Promise<void> {
-    await this.validate();
+    this.validate();
     this.content = await this.storageService.get([this.parent.path, this.path]);
   }
 
@@ -25,8 +25,8 @@ export class Validator implements IStorable {
   }
 
   /** Check resource validity */
-  private async validate(): Promise<void> {
-    if (!(await this.storageService.exists([this.parent.path, this.path]))) {
+  private validate(): void {
+    if (!this.storageService.exists([this.parent.path, this.path])) {
       throw new Error(
         `Validator's path ${this.parent.path}/${this.path} does not exists.`,
       );

@@ -3,14 +3,15 @@ import { Service } from 'typedi';
 
 import { IChannel } from '../../interface/Objects';
 import { IWebSocketHandler, WebSocketMessage } from '../../interface/WebSocket';
+import { EmptyObject } from '../../interface/WebSocketHandlers';
 import { ChannelsService } from '../Channels';
 
 @Service()
 export class GetChannelsHandlerService
-  implements IWebSocketHandler<{}, IChannel[]> {
+  implements IWebSocketHandler<EmptyObject, IChannel[]> {
   constructor(private channelsService: ChannelsService) {}
 
-  canHandle(message: WebSocketMessage<{}>): boolean {
+  canHandle(message: WebSocketMessage<EmptyObject>): boolean {
     return message.id === 'get:channels';
   }
 
@@ -18,8 +19,8 @@ export class GetChannelsHandlerService
     return Joi.any();
   }
 
-  async handle(message: WebSocketMessage<{}>): Promise<IChannel[]> {
+  async handle(): Promise<IChannel[]> {
     const channels = await this.channelsService.channels();
-    return await channels.map((channel) => channel.toObject());
+    return channels.map((channel) => channel.toObject());
   }
 }

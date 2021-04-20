@@ -8,21 +8,21 @@ import { Preset } from './Preset';
 export class PresetsCollection
   implements IStorable, ISerializable<IPreset[], Preset[]> {
   get storageService(): PresetsApiStorageService {
-    return this._storageService;
+    return this.storageServiceInstance;
   }
 
   set storageService(value: PresetsApiStorageService) {
-    this._storageService = value;
+    this.storageServiceInstance = value;
   }
 
   /** The list of preset instances */
   private presets: Preset[] = [];
 
   /** Presets storage */
-  private _storageService: PresetsApiStorageService;
+  private storageServiceInstance: PresetsApiStorageService;
 
   private constructor() {
-    this._storageService = Container.get(PresetsApiStorageService);
+    this.storageServiceInstance = Container.get(PresetsApiStorageService);
   }
 
   /** Returns a singleton for this config */
@@ -42,7 +42,7 @@ export class PresetsCollection
 
   /** Load the presets */
   async load(): Promise<void> {
-    this.fromObject(await this._storageService.list());
+    this.fromObject(await this.storageServiceInstance.list());
   }
 
   async save(): Promise<void> {
@@ -50,12 +50,12 @@ export class PresetsCollection
   }
 
   /** Returns the list of presets */
-  async list(): Promise<Preset[]> {
+  list(): Preset[] {
     return this.presets;
   }
 
   /** Returns one preset */
-  async get(id: string): Promise<Preset> {
+  get(id: string): Preset {
     return this.presets.find((p) => p.id === id);
   }
 

@@ -117,7 +117,7 @@ export class Channel implements IStorable, ISerializable<IChannel, Channel> {
       t.contentPath,
     ]);
     legitFiles.push([this.path, this.config.validatorPath]);
-    await this.storageService.cleanup(
+    this.storageService.cleanup(
       [this.path, this.guessHapifyFolder()],
       legitFiles,
     );
@@ -158,7 +158,7 @@ export class Channel implements IStorable, ISerializable<IChannel, Channel> {
     path: string,
     project: string,
   ): Promise<void> {
-    if (!(await Channel.configExists(path))) {
+    if (!Channel.configExists(path)) {
       throw new Error(`Cannot find config file in ${path}`);
     }
     const storage = Container.get(ChannelFileStorageService);
@@ -171,16 +171,16 @@ export class Channel implements IStorable, ISerializable<IChannel, Channel> {
 
   /** Returns the config from ori file */
   public async readConfigFile(): Promise<IConfig> {
-    if (!(await this.storageService.exists([this.path, Channel.configFile]))) {
+    if (!this.storageService.exists([this.path, Channel.configFile])) {
       throw new Error(
         `Channel config's path ${this.path}/${Channel.configFile} does not exists.`,
       );
     }
-    return await this.storageService.get([this.path, Channel.configFile]);
+    return this.storageService.get([this.path, Channel.configFile]);
   }
 
   /** Denotes if the config file exists */
-  public static async configExists(path: string): Promise<boolean> {
+  public static configExists(path: string): boolean {
     return Container.get(ChannelFileStorageService).exists([
       path,
       Channel.configFile,
@@ -188,13 +188,13 @@ export class Channel implements IStorable, ISerializable<IChannel, Channel> {
   }
 
   /** Init a Hapify structure within a directory */
-  public static async create(
+  public static create(
     path: string,
     name?: string,
     description?: string,
     logo?: string,
-  ): Promise<Channel> {
-    if (await Channel.configExists(path)) {
+  ): Channel {
+    if (Channel.configExists(path)) {
       throw new Error(`A channel already exists in this directory.`);
     }
 

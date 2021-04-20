@@ -1,11 +1,13 @@
 import * as Path from 'path';
 
 import { Server } from '@hapi/hapi';
+import Inert from '@hapi/inert';
 import DetectPort from 'detect-port';
 import Open from 'open';
 import pkgDir from 'pkg-dir';
 import { Service } from 'typedi';
 
+import { LoggerService } from './Logger';
 import { OptionsService } from './Options';
 import { WebSocketServerService } from './WebSocketServer';
 
@@ -17,27 +19,27 @@ export class HttpServerService {
   private rootPath: string = Path.join(RootDir, 'dist', 'html');
 
   /** Start port number */
-  private _minPort = 4800;
+  private minPortValue = 4800;
 
   /** Start port getter */
   get minPort(): number {
-    return this._minPort;
+    return this.minPortValue;
   }
 
   /** Maximum port number */
-  private _maxPort = 4820;
+  private maxPortValue = 4820;
 
   /** Maximum port getter */
   get maxPort(): number {
-    return this._maxPort;
+    return this.maxPortValue;
   }
 
   /** Current port number */
-  private _port: number = this._minPort;
+  private portValue: number = this.minPortValue;
 
   /** Current port getter */
   get port(): number {
-    return this._port;
+    return this.portValue;
   }
 
   /** The server instance */
@@ -49,6 +51,7 @@ export class HttpServerService {
   constructor(
     private optionsService: OptionsService,
     private webSocketServerService: WebSocketServerService,
+    private loggerService: LoggerService,
   ) {}
 
   /**
@@ -59,13 +62,13 @@ export class HttpServerService {
     if (this.started()) return;
 
     // Choose port
-    this._port = this.optionsService.port()
+    this.portValue = this.optionsService.port()
       ? this.optionsService.port()
       : await this.findAvailablePort();
 
     // Create server
     this.server = new Server({
-      port: this._port,
+      port: this.portValue,
       routes: {
         cors: { credentials: true },
         files: {
@@ -75,7 +78,7 @@ export class HttpServerService {
     });
 
     // Create static files handler
-    await this.server.register(require('@hapi/inert'));
+    await this.server.register(Inert);
     this.server.route({
       method: 'GET',
       path: '/{param*}',
@@ -102,11 +105,13 @@ export class HttpServerService {
     this.serverStarted = true;
 
     // Bind events
-    this.server.listener.on('close', async () => {
-      await this.webSocketServerService.stop();
+    this.server.listener.on('close', () => {
+      this.webSocketServerService
+        .stop()
+        .catch((error) => this.loggerService.handle(error));
     });
 
-    await this.webSocketServerService.serve(this.server.listener);
+    this.webSocketServerService.serve(this.server.listener);
   }
 
   /**
@@ -143,18 +148,18 @@ export class HttpServerService {
    */
   public url(): string | null {
     return this.started()
-      ? `http://${this.optionsService.hostname()}:${this._port}`
+      ? `http://${this.optionsService.hostname()}:${this.portValue}`
       : null;
   }
 
   /** Test ports and returns the first one available */
   private async findAvailablePort(increment = 0): Promise<number> {
-    if (this._port > this._maxPort) {
+    if (this.portValue > this.maxPortValue) {
       throw new Error(
-        `Reached maximum port number ${this._maxPort} to start HTTP server`,
+        `Reached maximum port number ${this.maxPortValue} to start HTTP server`,
       );
     }
-    const requiredPort = this._port + increment;
+    const requiredPort = this.portValue + increment;
     const possiblePort = await DetectPort(requiredPort);
     return requiredPort !== possiblePort
       ? this.findAvailablePort(increment + 1)

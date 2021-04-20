@@ -3,14 +3,15 @@ import { Service } from 'typedi';
 
 import { IModel } from '../../interface/Generator';
 import { IWebSocketHandler, WebSocketMessage } from '../../interface/WebSocket';
+import { EmptyObject } from '../../interface/WebSocketHandlers';
 import { ChannelsService } from '../Channels';
 
 @Service()
 export class GetModelsHandlerService
-  implements IWebSocketHandler<{}, IModel[]> {
+  implements IWebSocketHandler<EmptyObject, IModel[]> {
   constructor(private channelsService: ChannelsService) {}
 
-  canHandle(message: WebSocketMessage<{}>): boolean {
+  canHandle(message: WebSocketMessage<EmptyObject>): boolean {
     return message.id === 'get:models';
   }
 
@@ -18,7 +19,7 @@ export class GetModelsHandlerService
     return Joi.any();
   }
 
-  async handle(message: WebSocketMessage<{}>): Promise<IModel[]> {
+  async handle(): Promise<IModel[]> {
     return (await this.channelsService.modelsCollection()).toObject();
   }
 }

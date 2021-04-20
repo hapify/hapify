@@ -24,7 +24,7 @@ export class ProjectFileStorageService extends SingleSaveFileStorage<IStorablePr
     super();
   }
 
-  protected async serialize(content: IStorableProject): Promise<string> {
+  protected serialize(content: IStorableProject): string {
     const compact: IStorableCompactProject = {
       version: content.version,
       name: content.name || undefined,
@@ -44,7 +44,7 @@ export class ProjectFileStorageService extends SingleSaveFileStorage<IStorablePr
     return JSON.stringify(compact, null, 2);
   }
 
-  protected async deserialize(content: string): Promise<IStorableProject> {
+  protected deserialize(content: string): IStorableProject {
     try {
       const parsedContent: VersionedObject = JSON.parse(content);
       const compact = new ProjectParser(parsedContent).convert();
@@ -64,7 +64,7 @@ export class ProjectFileStorageService extends SingleSaveFileStorage<IStorablePr
       };
     } catch (error) {
       throw new Error(
-        `An error occurred while parsing Project configuration: ${error.toString()}`,
+        `An error occurred while parsing Project configuration: ${(error as Error).toString()}`,
       );
     }
   }

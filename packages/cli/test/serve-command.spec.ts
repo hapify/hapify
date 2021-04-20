@@ -1,6 +1,5 @@
 import 'reflect-metadata';
 import { expect } from '@hapi/code';
-
 import 'mocha';
 import { clone as Clone } from '@hapi/hoek';
 import { Container } from 'typedi';
@@ -12,6 +11,7 @@ import { IChannel, IPreset } from '../src/interface/Objects';
 import { IStorableCompactProject } from '../src/interface/Storage';
 import { Validator } from '../src/interface/Validator';
 import {
+  EmptyObject,
   WebSocketApplyPresetHandlerInput,
   WebSocketApplyPresetHandlerOutput,
   WebSocketGenerateChannelHandlerInput,
@@ -70,7 +70,6 @@ describe('serve command', () => {
     const host = /http:\/\/localhost:(\d+)/.exec(response.stdout);
     expect(host).to.not.be.empty();
     const rootUrl = host[0];
-    const port = Number(host[1]);
     const authJsonUrl = `${rootUrl}/ws.json`;
     authJson = await Fetch<{ url: string }>(authJsonUrl);
 
@@ -108,14 +107,17 @@ describe('serve command', () => {
   });
 
   it('template preview error', async () => {
-    const channels = await SingleUseWebSocketClient<{}, IChannel[]>(
+    const channels = await SingleUseWebSocketClient<EmptyObject, IChannel[]>(
       authJson.url,
       { id: 'get:channels', data: {} },
     );
-    const models = await SingleUseWebSocketClient<{}, IModel[]>(authJson.url, {
-      id: 'get:models',
-      data: {},
-    });
+    const models = await SingleUseWebSocketClient<EmptyObject, IModel[]>(
+      authJson.url,
+      {
+        id: 'get:models',
+        data: {},
+      },
+    );
 
     const template = channels[0].templates.find((t) => t.input === 'one');
     template.content = `${template.content}\n\n<<@ S f>>\n...\n<<@>>`;
@@ -145,7 +147,7 @@ describe('serve command', () => {
   // =======================================================================================
   it('get info', async () => {
     const response = await SingleUseWebSocketClient<
-      {},
+      EmptyObject,
       WebSocketGetInfoHandlerOutput
     >(authJson.url, { id: 'get:info', data: {} });
     expect(response.limits).to.be.an.object();
@@ -160,7 +162,7 @@ describe('serve command', () => {
   });
 
   it('get models', async () => {
-    const response = await SingleUseWebSocketClient<{}, IModel[]>(
+    const response = await SingleUseWebSocketClient<EmptyObject, IModel[]>(
       authJson.url,
       { id: 'get:models', data: {} },
     );
@@ -171,7 +173,7 @@ describe('serve command', () => {
   });
 
   it('get presets', async () => {
-    const response = await SingleUseWebSocketClient<{}, IPreset[]>(
+    const response = await SingleUseWebSocketClient<EmptyObject, IPreset[]>(
       authJson.url,
       { id: 'get:presets', data: {} },
     );
@@ -181,7 +183,7 @@ describe('serve command', () => {
   });
 
   it('get channels', async () => {
-    const response = await SingleUseWebSocketClient<{}, IChannel[]>(
+    const response = await SingleUseWebSocketClient<EmptyObject, IChannel[]>(
       authJson.url,
       { id: 'get:channels', data: {} },
     );
@@ -194,10 +196,13 @@ describe('serve command', () => {
   });
 
   it('path preview', async () => {
-    const models = await SingleUseWebSocketClient<{}, IModel[]>(authJson.url, {
-      id: 'get:models',
-      data: {},
-    });
+    const models = await SingleUseWebSocketClient<EmptyObject, IModel[]>(
+      authJson.url,
+      {
+        id: 'get:models',
+        data: {},
+      },
+    );
 
     const response = await SingleUseWebSocketClient<
       WebSocketPathPreviewHandlerInput,
@@ -224,14 +229,17 @@ describe('serve command', () => {
   });
 
   it('template preview', async () => {
-    const channels = await SingleUseWebSocketClient<{}, IChannel[]>(
+    const channels = await SingleUseWebSocketClient<EmptyObject, IChannel[]>(
       authJson.url,
       { id: 'get:channels', data: {} },
     );
-    const models = await SingleUseWebSocketClient<{}, IModel[]>(authJson.url, {
-      id: 'get:models',
-      data: {},
-    });
+    const models = await SingleUseWebSocketClient<EmptyObject, IModel[]>(
+      authJson.url,
+      {
+        id: 'get:models',
+        data: {},
+      },
+    );
 
     // With one model
     const response = await SingleUseWebSocketClient<
@@ -270,14 +278,17 @@ describe('serve command', () => {
   });
 
   it('validate model', async () => {
-    const channels = await SingleUseWebSocketClient<{}, IChannel[]>(
+    const channels = await SingleUseWebSocketClient<EmptyObject, IChannel[]>(
       authJson.url,
       { id: 'get:channels', data: {} },
     );
-    const models = await SingleUseWebSocketClient<{}, IModel[]>(authJson.url, {
-      id: 'get:models',
-      data: {},
-    });
+    const models = await SingleUseWebSocketClient<EmptyObject, IModel[]>(
+      authJson.url,
+      {
+        id: 'get:models',
+        data: {},
+      },
+    );
 
     // Working validation
     const response = await SingleUseWebSocketClient<
@@ -320,7 +331,7 @@ describe('serve command', () => {
   //	SETTERS
   // =======================================================================================
   it('apply preset', async () => {
-    const presets = await SingleUseWebSocketClient<{}, IPreset[]>(
+    const presets = await SingleUseWebSocketClient<EmptyObject, IPreset[]>(
       authJson.url,
       { id: 'get:presets', data: {} },
     );
@@ -342,7 +353,7 @@ describe('serve command', () => {
   });
 
   it('generate template', async () => {
-    const channels = await SingleUseWebSocketClient<{}, IChannel[]>(
+    const channels = await SingleUseWebSocketClient<EmptyObject, IChannel[]>(
       authJson.url,
       { id: 'get:channels', data: {} },
     );
@@ -365,7 +376,7 @@ describe('serve command', () => {
   });
 
   it('generate channel', async () => {
-    const channels = await SingleUseWebSocketClient<{}, IChannel[]>(
+    const channels = await SingleUseWebSocketClient<EmptyObject, IChannel[]>(
       authJson.url,
       { id: 'get:channels', data: {} },
     );
@@ -417,7 +428,7 @@ describe('serve command', () => {
   });
 
   it('set channels', async () => {
-    const channels = await SingleUseWebSocketClient<{}, IChannel[]>(
+    const channels = await SingleUseWebSocketClient<EmptyObject, IChannel[]>(
       authJson.url,
       { id: 'get:channels', data: {} },
     );
@@ -479,10 +490,13 @@ describe('serve command', () => {
   });
 
   it('set models', async () => {
-    const models = await SingleUseWebSocketClient<{}, IModel[]>(authJson.url, {
-      id: 'get:models',
-      data: {},
-    });
+    const models = await SingleUseWebSocketClient<EmptyObject, IModel[]>(
+      authJson.url,
+      {
+        id: 'get:models',
+        data: {},
+      },
+    );
     const newModel = Clone(models[0]);
     newModel.name = 'New Model';
     newModel.fields = [];
@@ -507,7 +521,7 @@ describe('serve command', () => {
     expect(hapifyModelsJSON.models[1].fields.length).to.equal(0);
 
     // Check from endpoint
-    const response2 = await SingleUseWebSocketClient<{}, IModel[]>(
+    const response2 = await SingleUseWebSocketClient<EmptyObject, IModel[]>(
       authJson.url,
       { id: 'get:models', data: {} },
     );

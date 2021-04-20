@@ -29,7 +29,7 @@ export async function InitCommand(cmd: Command) {
 
   // =================================
   // Init channel to save
-  const channel = await Channel.create(
+  const channel = Channel.create(
     options.dir(),
     qChannelDescription.name,
     qChannelDescription.description,

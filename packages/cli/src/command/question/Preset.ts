@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import * as Inquirer from 'inquirer';
+import { prompt } from 'inquirer';
 import { Container } from 'typedi';
 
 import { ChannelsService } from '../../service/Channels';
@@ -15,13 +15,13 @@ export async function AskPreset(cmd: Command): Promise<string[]> {
       qPresets = cmd.preset;
     } else {
       // Get presets from remote
-      const list = (await presetsCollection.list()).map((p: any) => ({
+      const list = presetsCollection.list().map((p: any) => ({
         name: p.name,
         value: p.id,
       }));
 
       qPresets = (
-        await Inquirer.prompt([
+        await prompt([
           {
             name: 'presets',
             message: 'Choose some presets to preload in your project',
@@ -45,7 +45,7 @@ export async function ApplyPreset(qPresets: string[]): Promise<boolean> {
   ).modelsCollection();
 
   if (qPresets && qPresets.length) {
-    const models = await modelsCollection.list();
+    const models = modelsCollection.list();
     // If the project already has models, ignore add presets
     if (models.length) {
       logger.warning('Project already contains models. Ignore presets import.');
@@ -53,7 +53,7 @@ export async function ApplyPreset(qPresets: string[]): Promise<boolean> {
     }
     // Get and apply presets
     for (const id of qPresets) {
-      const preset = await presetsCollection.get(id);
+      const preset = presetsCollection.get(id);
       const results = await presets.apply(preset.models);
       await modelsCollection.add(results.created);
       await modelsCollection.update(results.updated);

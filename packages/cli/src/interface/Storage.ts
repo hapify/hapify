@@ -3,7 +3,7 @@ import {
   FieldSubType,
   FieldType,
   FieldValueType,
-} from '@hapify/generator/dist/interfaces';
+} from '@hapify/generator/dist/Interfaces';
 
 import { IConfigTemplate } from './Config';
 import { IModel } from './Generator';
@@ -23,17 +23,17 @@ export interface ISerializable<IT, T> {
 
 /** Represent a class that can be loaded and saved */
 export interface IStorable {
-  load(): Promise<void>;
+  load(): Promise<void> | void;
 
-  save(): Promise<void>;
+  save(): Promise<void> | void;
 }
 
 /** Represent a class that can be loaded and saved */
 export interface IStorageService<T> {
   /** List items */
-  list(query: any): Promise<T[]>;
+  list(query: any): Promise<T[]> | T[];
   /** List items */
-  get(id: any): Promise<T>;
+  get(id: any): Promise<T> | T;
 }
 
 export type StorageType = 'local' | 'remote';

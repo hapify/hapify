@@ -22,8 +22,6 @@ export class VersionService {
     preset: '2',
   };
 
-  constructor() {}
-
   ensureVersionIsSupported(scope: VersionScope, version: string) {
     if (!this.supportedVersions[scope].includes(version)) {
       throw new Error(

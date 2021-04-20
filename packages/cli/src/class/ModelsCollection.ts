@@ -113,12 +113,12 @@ export class ModelsCollection
   }
 
   /** Find a instance with its id */
-  async find(id: string): Promise<Model | null> {
+  find(id: string): Model | null {
     return this.models.find((instance) => instance.id === id);
   }
 
   /** Returns the list of models */
-  async list(): Promise<Model[]> {
+  list(): Model[] {
     return this.models;
   }
 

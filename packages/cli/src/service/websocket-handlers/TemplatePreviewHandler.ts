@@ -44,7 +44,7 @@ export class TemplatePreviewHandlerService
     }
     // Get model, if any
     const model = message.data.model
-      ? await channel.modelsCollection.find(message.data.model)
+      ? channel.modelsCollection.find(message.data.model)
       : null;
     // Get template
     const template = new Template(channel, message.data.template);

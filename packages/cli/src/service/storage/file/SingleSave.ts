@@ -1,6 +1,11 @@
 import * as Path from 'path';
 
-import * as Fs from 'fs-extra';
+import {
+  ensureDirSync,
+  existsSync,
+  readFileSync,
+  writeFileSync,
+} from 'fs-extra';
 import md5 from 'md5';
 import { Service } from 'typedi';
 
@@ -17,9 +22,9 @@ export abstract class SingleSaveFileStorage<T> {
   /** Load content from path */
   async get(path: FilePath): Promise<T> {
     const contentPath = JoinPath(path);
-    const content = Fs.readFileSync(contentPath, 'utf8');
+    const content = readFileSync(contentPath, 'utf8');
     this.didLoad(contentPath, content);
-    return await this.deserialize(content);
+    return this.deserialize(content);
   }
 
   /** Load content from path */
@@ -27,21 +32,21 @@ export abstract class SingleSaveFileStorage<T> {
     const content = await this.serialize(input);
     const contentPath = JoinPath(path);
     if (this.shouldSave(contentPath, content)) {
-      Fs.ensureDirSync(Path.dirname(contentPath));
-      Fs.writeFileSync(contentPath, content, 'utf8');
+      ensureDirSync(Path.dirname(contentPath));
+      writeFileSync(contentPath, content, 'utf8');
     }
   }
 
   /** Check if the resource exists */
   exists(path: FilePath): boolean {
-    return Fs.existsSync(JoinPath(path));
+    return existsSync(JoinPath(path));
   }
 
   /** Convert content to string before saving */
-  protected abstract serialize(content: T): Promise<string>;
+  protected abstract serialize(content: T): Promise<string> | string;
 
   /** Convert content to string before saving */
-  protected abstract deserialize(content: string): Promise<T>;
+  protected abstract deserialize(content: string): Promise<T> | T;
 
   /** Should be called after loading to hash the content */
   protected didLoad(bucket: string, data: string): void {

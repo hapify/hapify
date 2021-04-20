@@ -14,7 +14,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "rimraf dist && tsc -p .",
-    "clean": "rimraf dist node_modules coverage .nyc_output",
+    "clean": "rimraf dist node_modules package-lock.json coverage .nyc_output",
     "prepublishOnly": "npm run build",
     "lint": "npm run lint:tsc && npm run lint:prettier && npm run lint:eslint",
     "lint:eslint": "eslint \"{src,test}/**/*.{ts,js}\"",

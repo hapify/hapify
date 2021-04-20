@@ -14,7 +14,7 @@
     "ng": "ng",
     "build": "ng build --prod --configuration=production",
     "start": "ng serve",
-    "clean": "rimraf dist node_modules src/assets/ace-builds/src-min-noconflict",
+    "clean": "rimraf dist node_modules package-lock.json src/assets/ace-builds/src-min-noconflict",
     "prepublishOnly": "npm run build",
     "lint": "npm run lint:tsc && npm run lint:prettier && npm run lint:eslint",
     "lint:eslint": "eslint \"{src,test}/**/*.{ts,js}\"",

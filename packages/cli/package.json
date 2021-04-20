@@ -18,7 +18,7 @@
   "scripts": {
     "build": "rm -rf dist && tsc -p . && cp -r ../../node_modules/@hapify/gui/dist/hapify-gui dist/html",
     "start": "ts-node src/index.ts",
-    "clean": "rimraf dist node_modules coverage .nyc_output",
+    "clean": "rimraf dist node_modules package-lock.json coverage .nyc_output",
     "prepublishOnly": "npm run build",
     "lint": "npm run lint:tsc && npm run lint:prettier && npm run lint:eslint",
     "lint:eslint": "eslint \"{src,test}/**/*.{ts,js}\"",

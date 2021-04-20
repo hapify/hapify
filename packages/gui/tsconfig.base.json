@@ -2,6 +2,7 @@
   "extends": "../../tsconfig.json",
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "experimentalDecorators": true,
     "declaration": false,

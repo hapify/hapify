@@ -2,11 +2,14 @@
 
 set -e
 
+NODE_MODULES_PATH="${PWD}/node_modules"
+SRC_PATH="${PWD}/packages/gui/src"
+
 # Copy ACE Modes
-if [ -d "$PWD/node_modules/ace-builds/src-min-noconflict" ]; then
-  rm -rf "$PWD/src/assets/ace-builds/src-min-noconflict"
-  cp -r "$PWD/node_modules/ace-builds/src-min-noconflict" "$PWD/src/assets/ace-builds/src-min-noconflict"
-  cp "$PWD/src/assets/ace-builds/mode-hpf.js" "$PWD/src/assets/ace-builds/src-min-noconflict"
+if [ -d "$NODE_MODULES_PATH/ace-builds/src-min-noconflict" ]; then
+  rm -rf "$SRC_PATH/assets/ace-builds/src-min-noconflict"
+  cp -r "$NODE_MODULES_PATH/ace-builds/src-min-noconflict" "$SRC_PATH/assets/ace-builds/src-min-noconflict"
+  cp "$SRC_PATH/assets/ace-builds/mode-hpf.js" "$SRC_PATH/assets/ace-builds/src-min-noconflict"
 fi
 
 

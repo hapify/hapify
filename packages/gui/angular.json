@@ -1,5 +1,5 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "$schema": "../../node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -30,13 +30,13 @@
               "src/robots.txt"
             ],
             "styles": [
-              "./node_modules/bootstrap/scss/bootstrap.scss",
-              "./node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
+              "../../node_modules/bootstrap/scss/bootstrap.scss",
+              "../../node_modules/perfect-scrollbar/css/perfect-scrollbar.css",
               "src/styles.scss"
             ],
             "scripts": [
               {
-                "input": "node_modules/ace-builds/src-min/ace.js"
+                "input": "../../node_modules/ace-builds/src-min/ace.js"
               }
             ]
           },
@@ -98,17 +98,6 @@
             "assets": ["src/favicon.ico", "src/assets", "src/manifest.json"],
             "styles": ["src/styles.scss"],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {

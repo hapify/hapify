@@ -10,7 +10,6 @@
   "author": "Edouard Demotes-Mainard <edouard@tractr.net>",
   "homepage": "https://github.com/hapify/hapify",
   "scripts": {
-    "prepare": "./post-install.sh",
     "ng": "ng",
     "build": "ng build --prod --configuration=production",
     "start": "ng serve",
@@ -28,7 +27,6 @@
     "e2e": "ng e2e",
     "update": "npm-check -u"
   },
-  "dependencies": {},
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.1002.0",
     "@angular/animations": "~10.0.6",

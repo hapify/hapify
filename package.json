@@ -7,9 +7,10 @@
     "url": "git+ssh://git@github.com:hapify/hapify.git"
   },
   "workspaces": [
-    "./packages/*"
+      "./packages/*"
   ],
   "scripts": {
+    "prepare": "packages/gui/post-install.sh",
     "build": "lerna run build",
     "bootstrap": "lerna bootstrap",
     "clean": "lerna run --parallel clean && rimraf node_modules",

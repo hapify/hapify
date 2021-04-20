@@ -1,0 +1,97 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '../../../../palette.scss';
+
+.card {
+	border-radius: 4px !important;
+	height: 160px;
+	width: 160px;
+
+	transition: background-color 0.1s ease;
+
+	&:hover {
+		transform: scale(1.035);
+		background-color: fade_out(mat-color($hpf-app-primary, 50), 0.7);
+		box-shadow: 0px 2px 1px -1px fade_out(mat-color($hpf-app-primary, 100), 0.7),
+			0px 1px 1px 0px fade_out(mat-color($hpf-app-primary, 100), 0.85),
+			0px 1px 3px 0px fade_out(mat-color($hpf-app-primary, 100), 0.9);
+
+		.mat-raised-button,
+		a {
+			transform: scale(0.965);
+		}
+	}
+
+	.initialState {
+		display: flex;
+	}
+
+	.overedState {
+		display: none;
+	}
+
+	&:hover {
+		border-color: mat-color($hpf-app-primary) !important;
+
+		.initialState {
+			display: none;
+		}
+
+		.overedState {
+			display: flex;
+		}
+	}
+}
+
+h2 {
+	font-size: 0.8em;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: mat-color($hpf-app-primary);
+}
+
+h3 {
+	font-size: 0.7em;
+	font-weight: 400;
+	text-transform: uppercase;
+	color: mat-color($hpf-app-primary);
+
+	mat-icon {
+		top: 2px;
+		position: relative;
+	}
+}
+
+h4 {
+	font-size: 0.7em;
+	font-weight: 400;
+	color: mat-color($hpf-app-primary);
+}
+
+.description {
+	background-color: rgba(255, 255, 255, 0.95);
+	pointer-events: none;
+	z-index: 999;
+	border-radius: 4px;
+	width: 320px;
+
+	h3,
+	h4 {
+		color: mat-color($hpf-app-primary);
+	}
+
+	.content {
+		font-size: 0.7em;
+	}
+
+	.diffImportList {
+		font-size: 0.7em;
+		color: $gray-700;
+
+		li {
+			small {
+				color: $gray-600;
+			}
+		}
+	}
+}

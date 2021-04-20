@@ -1,0 +1,69 @@
+<div class="row align-items-center flex-nowrap">
+	<div class="col-5 ellipsis">{{ field.name }}</div>
+	<div class="col-1">
+		<div class="notes" *ngIf="field.notes">
+			<mat-icon color="primary" [inline]="true">speaker_notes</mat-icon>
+		</div>
+	</div>
+	<div
+		class="col-6 d-flex flex-nowrap align-items-center justify-content-between"
+	>
+		<div class="badge field-{{ field.type }}">
+			<span>{{
+				field.type === fieldType.Entity
+					? getModelName(field)
+					: field.type
+			}}</span
+			><span *ngIf="field.subtype">:{{ field.subtype }}</span>
+			<div
+				class="typesTooltip d-flex flex-row flex-nowrap justify-content-center align-items-center p-2 border border-hpf-primary"
+			>
+				<ul class="list-unstyled flex-nowrap m-0 p-0 typeList d-flex">
+					<li
+						*ngFor="let type of types; let i = index"
+						class="m-1"
+						[class.ml-0]="i === 1"
+						[class.mr-0]="i === types.length - 1"
+					>
+						<label class="m-0 field">
+							<span class="p-1 field-{{ type.value }}">
+								{{ type.name }}
+							</span>
+						</label>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="d-flex align-items-center position-relative">
+			<ul
+				class="list-unstyled m-0 p-0 flex-nowrap align-items-center deletionMode"
+				[class.d-none]="!deletionMode"
+				[class.d-flex]="deletionMode"
+			>
+				<li>
+					<mat-icon [inline]="true" color="warn">
+						remove_circle
+					</mat-icon>
+				</li>
+			</ul>
+			<ul
+				class="list-unstyled m-0 p-0 flex-nowrap align-items-center selectedFields d-flex"
+				[class.d-none]="deletionMode"
+				[class.d-flex]="!deletionMode"
+			>
+				<li *ngFor="let pi of filteredPropertiesIcons">
+					<mat-icon [inline]="true">{{ pi.icon }}</mat-icon>
+				</li>
+				<li *ngIf="filteredPropertiesIcons.length === 0">
+					<mat-icon
+						color="primary"
+						[inline]="true"
+						matTooltip="{{ 'tooltip_generic' | translate }}"
+						>settings</mat-icon
+					>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

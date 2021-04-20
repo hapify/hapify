@@ -1,0 +1,55 @@
+@import '../../../../palette.scss';
+
+ul {
+	font-size: 12px;
+	border-left: 1px solid mat-color($hpf-app-primary, 100);
+	li {
+		& > span {
+			transition: background-color 0.1s ease;
+
+			.removeBtn {
+				opacity: 0;
+			}
+
+			&:hover {
+				.removeBtn {
+					opacity: 1;
+				}
+			}
+
+			& > span {
+				cursor: pointer;
+
+				mat-icon {
+					margin-top: 2px;
+				}
+			}
+
+			& > mat-icon {
+				cursor: pointer;
+			}
+		}
+
+		app-channel-tree {
+			height: 0;
+			overflow: hidden;
+			transition: height 0.1s ease;
+
+			&.openned {
+				height: auto;
+			}
+		}
+	}
+}
+
+.newpath {
+	mat-icon {
+		margin-top: 2px;
+	}
+	input {
+		opacity: 0.7;
+		&:hover {
+			opacity: 1;
+		}
+	}
+}

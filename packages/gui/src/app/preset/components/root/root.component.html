@@ -1,0 +1,19 @@
+<div class="container-fluid">
+	<header class="row border-bottom mb-2">
+		<div class="col-12 d-flex justify-content-between align-items-center">
+			<h1 class="my-3">
+				{{ 'presets_title' | translate }}
+				<small class="d-block mt-2">{{
+					'presets_intro' | translate
+				}}</small>
+			</h1>
+		</div>
+	</header>
+	<div class="row align-items-center justify-content-start">
+		<app-preset-preset-card
+			*ngFor="let preset of presets"
+			class="d-block m-2"
+			[preset]="preset"
+		></app-preset-preset-card>
+	</div>
+</div>

@@ -1,0 +1,129 @@
+<ul *ngIf="tree && tree.length" class="list-unstyled w-100 d-flex flex-column">
+	<li *ngFor="let branch of tree" class="w-100 pl-2 d-flex flex-column">
+		<span
+			class="d-flex align-items-center justify-content-between {{
+				'over-' + types[branch.path]
+			}}"
+			[class.selected]="isSelected(branch)"
+		>
+			<span
+				class="w-100 flex-shrink-1 d-flex align-items-center justify-content-between py-1 px-2"
+				(click)="selectBranch.emit(branch); isOpen[branch.path] = true"
+				(mouseleave)="confirmDeletion = false"
+			>
+				<div class="w-100 d-flex align-items-center flex-shrink-1">
+					<div class="mr-1 {{ 'color-' + types[branch.path] }}">
+						<mat-icon
+							*ngIf="
+								types[branch.path] === 'folder' &&
+								isOpen[branch.path]
+							"
+							[inline]="true"
+							>folder_open</mat-icon
+						>
+						<mat-icon
+							*ngIf="
+								types[branch.path] === 'folder' &&
+								!isOpen[branch.path]
+							"
+							[inline]="true"
+							>folder</mat-icon
+						>
+						<mat-icon
+							*ngIf="types[branch.path] !== 'folder'"
+							[inline]="true"
+							>insert_drive_file</mat-icon
+						>
+					</div>
+					{{ branch.name }}
+				</div>
+				<div
+					class="removeBtn flex-shrink-0 d-flex align-items-center"
+					*ngIf="types[branch.path] !== 'folder'"
+				>
+					<mat-icon
+						*ngIf="!confirmDeletion"
+						[inline]="true"
+						color="warn"
+						(click)="confirmDeletion = true"
+						>remove_circle</mat-icon
+					>
+					<mat-icon
+						*ngIf="confirmDeletion"
+						[inline]="true"
+						color="primary"
+						(click)="confirmDeletion = false"
+						class="mr-1"
+						>undo</mat-icon
+					>
+					<mat-icon
+						*ngIf="confirmDeletion"
+						[inline]="true"
+						color="warn"
+						(click)="removeTemplate.emit(branch)"
+						>delete_forever</mat-icon
+					>
+				</div>
+			</span>
+			<mat-icon
+				*ngIf="types[branch.path] === 'folder'"
+				color="primary"
+				[inline]="true"
+				class="flex-shrink-0 mr-2"
+				(click)="isOpen[branch.path] = !isOpen[branch.path]"
+			>
+				{{
+					isOpen[branch.path]
+						? 'keyboard_arrow_down'
+						: 'keyboard_arrow_left'
+				}}
+			</mat-icon>
+		</span>
+		<app-channel-tree
+			class="d-flex flex-column"
+			[selectedPath]="selectedPath"
+			[rootPath]="branch.path"
+			[class.openned]="isOpen[branch.path]"
+			[tree]="branch.children"
+			[addTemplateDisabled]="addTemplateDisabled"
+			(selectBranch)="selectBranch.emit($event)"
+			(addTemplate)="addTemplate.emit($event)"
+			(removeTemplate)="removeTemplate.emit($event)"
+		></app-channel-tree>
+	</li>
+	<li class="w-100 pl-2 d-flex flex-column">
+		<span
+			class="d-flex align-items-center justify-content-between py-1 px-2"
+		>
+			<div class="d-flex align-items-center w-100 flex-shrink-1 newpath">
+				<span
+					(click)="newpath.focus()"
+					style="cursor:pointer;"
+					class="mr-1"
+					[matTooltip]="'tree_add_new_path_tooltip' | translate"
+				>
+					<mat-icon [inline]="true" color="primary">add</mat-icon>
+				</span>
+				<input
+					[(ngModel)]="newTemplatePath"
+					[placeholder]="'tree_add_new_path_placeholder' | translate"
+					class="inline-input w-100 flex-shrink-1 mr-2"
+					type="text"
+					#newpath
+					[disabled]="addTemplateDisabled"
+					(change)="onAddTemplate()"
+				/>
+			</div>
+			<span
+				(click)="onAddTemplate()"
+				*ngIf="newpath.value.length"
+				class="flex-shrink-0"
+				style="cursor:pointer;"
+			>
+				<mat-icon [inline]="true" color="primary"
+					>keyboard_return
+				</mat-icon>
+			</span>
+		</span>
+	</li>
+</ul>

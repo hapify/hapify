@@ -1,0 +1,79 @@
+<div class="d-flex h-100 align-content-stretch flex-nowrap">
+	<app-sidebar
+		class="d-none d-sm-block flex-shrink-0 flex-grow-0 {{
+			breakpoint.label
+		}} {{ sidebarIsReduced ? 'reduced' : '' }}"
+		[reduced]="sidebarIsReduced"
+	></app-sidebar>
+	<div
+		id="toggleReduceSidebar"
+		class="flex-shrink-0 flex-grow-0"
+		[class.reduced]="sidebarIsReduced"
+		(click)="sidebarIsReduced = !sidebarIsReduced"
+	></div>
+	<div
+		id="scrollzone"
+		(scroll)="disablePointerEvents()"
+		class="d-block h-100 w-100 bg-plain-grey-1 flex-shrink-1 flex-grow-1"
+	>
+		<div #scrollzone><router-outlet></router-outlet></div>
+	</div>
+</div>
+<!--
+<span class="d-none">
+  {{ 'error_code-1001' | translate }}
+  {{ 'error_code-1002' | translate }}
+  {{ 'error_code-1003' | translate }}
+  {{ 'error_code-1004' | translate }}
+  {{ 'error_code-1005' | translate }}
+
+  {{ 'error_code-2001' | translate }}
+  {{ 'error_code-2002' | translate }}
+  {{ 'error_code-2003' | translate }}
+  {{ 'error_code-2004' | translate }}
+  {{ 'error_code-2005' | translate }}
+
+  {{ 'error_code-3001' | translate }}
+  {{ 'error_code-3002' | translate }}
+  {{ 'error_code-3003' | translate }}
+  {{ 'error_code-3010' | translate }}
+  {{ 'error_code-3030' | translate }}
+  {{ 'error_code-3040' | translate }}
+  {{ 'error_code-3090' | translate }}
+  {{ 'error_code-3220' | translate }}
+  {{ 'error_code-3290' | translate }}
+
+  {{ 'error_code-3021' | translate }}
+  {{ 'error_code-3031' | translate }}
+  {{ 'error_code-3041' | translate }}
+  {{ 'error_code-3221' | translate }}
+  {{ 'error_code-3291' | translate }}
+
+  {{ 'error_code-3032' | translate }}
+  {{ 'error_code-3042' | translate }}
+
+  {{ 'error_code-3023' | translate }}
+  {{ 'error_code-3033' | translate }}
+  {{ 'error_code-3043' | translate }}
+
+  {{ 'error_code-4001' | translate }}
+  {{ 'error_code-4002' | translate }}
+  {{ 'error_code-4003' | translate }}
+  {{ 'error_code-4004' | translate }}
+  {{ 'error_code-4005' | translate }}
+  {{ 'error_code-4006' | translate }}
+  {{ 'error_code-4007' | translate }}
+
+  {{ 'error_code-5001' | translate }}
+  {{ 'error_code-5002' | translate }}
+  {{ 'error_code-5003' | translate }}
+  {{ 'error_code-5004' | translate }}
+  {{ 'error_code-5005' | translate }}
+  {{ 'error_code-5006' | translate }}
+
+  {{ 'error_code-6001' | translate }}
+  {{ 'error_code-6002' | translate }}
+  {{ 'error_code-6003' | translate }}
+  {{ 'error_code-6004' | translate }}
+</span>
+-->

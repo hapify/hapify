@@ -1,0 +1,99 @@
+@import '../../../../palette.scss';
+
+$c-string: #df0002;
+$c-comment: #008e00;
+$c-bullet: #cccccc;
+$op-meta: 0.4;
+
+header {
+	position: relative;
+	z-index: 99;
+
+	.inline-input {
+		color: mat-color($hpf-app-primary);
+	}
+
+	.input-inline-hidden-result {
+		opacity: 0;
+		height: 0;
+		overflow: hidden;
+		white-space: pre;
+	}
+}
+
+ace-editor {
+	background-color: mat-color($hpf-app-primary, 100);
+}
+
+::ng-deep {
+	.ace-xcode .ace_gutter {
+		background-color: transparent !important;
+	}
+	.ace_content {
+		background-color: rgba(255, 255, 255, 0.7);
+	}
+	.ace_hpf {
+		border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+		&.ace_inter {
+			background-color: rgba(220, 153, 153, 0.3);
+			opacity: $op-meta;
+			&.ace_nqme {
+				background-color: rgba(220, 153, 153, 0.3);
+			}
+		}
+		&.ace_cond {
+			background-color: rgba(180, 220, 180, 0.7);
+			opacity: $op-meta;
+		}
+		&.ace_iter {
+			background-color: rgba(220, 220, 255, 0.7);
+			opacity: $op-meta;
+		}
+		&.ace_eval,
+		&.ace_cmt {
+			background-color: rgba(153, 153, 153, 0.3);
+			opacity: $op-meta;
+		}
+		&.ace_blank {
+			border-bottom: none;
+			&:before {
+				content: '•';
+				color: $c-bullet;
+			}
+		}
+	}
+
+	// Force comment color on interpolations
+	.ace_comment {
+		+ .ace_hpf.ace_inter {
+			color: $c-comment;
+			+ .ace_hpf.ace_inter {
+				color: $c-comment;
+				+ .ace_hpf.ace_inter {
+					color: $c-comment;
+				}
+			}
+		}
+	}
+	// Force string color on interpolations
+	.ace_string {
+		+ .ace_hpf.ace_inter {
+			color: $c-string;
+			+ .ace_hpf.ace_inter {
+				color: $c-string;
+				+ .ace_hpf.ace_inter {
+					color: $c-string;
+				}
+			}
+		}
+	}
+}
+
+.preError {
+	background-color: mat-color($hpf-app-warn, 50);
+	color: mat-color($hpf-app-warn);
+	font-size: 0.8em;
+}
+.preSummary {
+	font-size: 0.8em;
+}

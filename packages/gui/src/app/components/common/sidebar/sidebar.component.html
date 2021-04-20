@@ -1,0 +1,118 @@
+<nav
+	class="h-100 d-flex flex-column justify-content-between px-3 {{
+		breakpoint.label
+	}} {{ reduced ? 'reduced' : '' }}"
+>
+	<div class="d-flex flex-column">
+		<a
+			routerLink="/"
+			class="hpflogofont d-none py-4 px-3"
+			[class.d-lg-block]="!reduced"
+			color="white"
+			>HAPIfy</a
+		>
+		<a
+			routerLink="/"
+			class="hpflogofont d-block py-4 text-center"
+			[class.d-lg-none]="!reduced"
+			color="white"
+			>[H]</a
+		>
+		<small class="d-none mt-3 mb-3 px-3" [class.d-lg-block]="!reduced">
+			{{ info ? info.project.name : '&nbsp;' }}
+		</small>
+		<ul
+			class="list-unstyled d-flex w-100 flex-column align-items-center justify-content-between"
+		>
+			<li class="mb-3">
+				<a
+					mat-raised-button
+					color="primary"
+					[routerLinkActive]="['active']"
+					[routerLink]="['/model']"
+					class="d-flex align-items-center justify-content-center mat-elevation-z0"
+					[class.justify-content-lg-start]="!reduced"
+				>
+					<mat-icon class="mr-md-0" [class.mr-lg-2]="!reduced"
+						>dashboard</mat-icon
+					><span class="d-none" [class.d-lg-inline]="!reduced">{{
+						'nav_model' | translate
+					}}</span>
+				</a>
+			</li>
+			<li class="mb-3">
+				<a
+					mat-raised-button
+					color="primary"
+					[routerLinkActive]="['active']"
+					[routerLink]="['/channel']"
+					class="d-flex align-items-center justify-content-center mat-elevation-z0"
+					[class.justify-content-lg-start]="!reduced"
+				>
+					<mat-icon class="mr-md-0" [class.mr-lg-2]="!reduced"
+						>code</mat-icon
+					><span class="d-none" [class.d-lg-inline]="!reduced">{{
+						'nav_channel' | translate
+					}}</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="d-flex flex-column flex-shrink-0">
+		<small class="d-none mt-3 mb-3 px-3" [class.d-lg-block]="!reduced"
+			>Ressources</small
+		>
+		<ul
+			class="list-unstyled d-flex w-100 flex-column align-items-center justify-content-between"
+		>
+			<li class="mb-3">
+				<a
+					mat-raised-button
+					color="primary"
+					href="https://hub.hapify.io"
+					target="_blank"
+					class="d-flex align-items-center justify-content-center mat-elevation-z0"
+					[class.justify-content-lg-start]="!reduced"
+				>
+					<mat-icon class="mr-md-0" [class.mr-lg-2]="!reduced"
+						>input</mat-icon
+					><span class="d-none" [class.d-lg-inline]="!reduced">{{
+						'nav_preset' | translate
+					}}</span>
+				</a>
+			</li>
+			<li class="mb-3">
+				<a
+					mat-raised-button
+					color="primary"
+					href="https://docs.hapify.io/"
+					target="_blank"
+					class="d-flex align-items-center justify-content-center mat-elevation-z0"
+					[class.justify-content-lg-start]="!reduced"
+				>
+					<mat-icon class="mr-md-0" [class.mr-lg-2]="!reduced"
+						>assignment</mat-icon
+					><span class="d-none" [class.d-lg-inline]="!reduced">{{
+						'nav_documentation' | translate
+					}}</span>
+				</a>
+			</li>
+			<li class="mb-3">
+				<a
+					mat-raised-button
+					color="primary"
+					href="https://www.hapify.io/my-account"
+					target="_blank"
+					class="d-flex align-items-center justify-content-center mat-elevation-z0"
+					[class.justify-content-lg-start]="!reduced"
+				>
+					<mat-icon class="mr-md-0" [class.mr-lg-2]="!reduced"
+						>account_circle</mat-icon
+					><span class="d-none" [class.d-lg-inline]="!reduced">{{
+						'nav_account' | translate
+					}}</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>

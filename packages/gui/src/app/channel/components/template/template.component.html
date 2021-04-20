@@ -1,0 +1,75 @@
+<mat-card>
+	<mat-card-content>
+		<div
+			class="d-flex w-100 align-items-center justify-content-between flex-nowrap border-bottom pb-2"
+		>
+			<input
+				autofocus
+				class="title inline-input w-100 flex-shrink-1 mr-2"
+				[value]="template.path"
+				(blur)="onPathChange($event.target.value)"
+				(change)="changed.emit()"
+				type="text"
+			/>
+			<div class="d-flex align-items-center w-25 flex-shrink-0">
+				<mat-select
+					class="mr-3"
+					[(ngModel)]="template.engine"
+					(selectionChange)="changed.emit()"
+					matTooltip="{{ 'template_engine' | translate }}"
+				>
+					<mat-option disabled>{{
+						'template_engine' | translate
+					}}</mat-option>
+					<mat-option
+						*ngFor="let engine of engines"
+						[value]="engine.value"
+						>{{ engine.name }}</mat-option
+					>
+				</mat-select>
+				<!--
+          <span class="d-none">
+            {{ 'template_input_one' | translate }}
+            {{ 'template_input_all' | translate }}
+          </span>
+        -->
+
+				<mat-select
+					[(ngModel)]="template.input"
+					(selectionChange)="changed.emit()"
+					matTooltip="{{ 'template_input' | translate }}"
+				>
+					<mat-option disabled>{{
+						'template_input' | translate
+					}}</mat-option>
+					<mat-option
+						*ngFor="let input of inputs"
+						[value]="input.value"
+						>{{ input.name | translate }}</mat-option
+					>
+				</mat-select>
+			</div>
+		</div>
+		<div class="template-preview mt-2">
+			<pre
+				class="m-0 p-3 rounded {{ 'bg-' + template.type }} {{
+					'gradientoverlay-' + template.type
+				}}"
+			><code>{{ template.content }}</code></pre>
+			<div
+				class="open-overlay d-flex align-items-center justify-content-center"
+			>
+				<button
+					type="button"
+					mat-raised-button
+					color="primary"
+					(click)="onShowEditor()"
+					class="d-flex align-items-center mat-elevation-z0"
+				>
+					<mat-icon [inline]="true" class="mr-1">edit</mat-icon>
+					{{ 'template_open_editor' | translate }}
+				</button>
+			</div>
+		</div>
+	</mat-card-content>
+</mat-card>

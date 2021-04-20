@@ -1,0 +1,28 @@
+@import '../../../../palette.scss';
+
+.template-preview {
+	position: relative;
+	pre {
+		min-height: 80px;
+		max-height: 260px;
+		overflow: hidden;
+		position: relative;
+		color: #666;
+	}
+	.open-overlay {
+		position: absolute;
+		z-index: 2;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		top: 0;
+		opacity: 0;
+		background-color: rgba(255, 255, 255, 0.3);
+		transition: opacity 0.1s ease;
+	}
+	&:hover {
+		.open-overlay {
+			opacity: 1;
+		}
+	}
+}

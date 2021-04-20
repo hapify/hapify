@@ -1,0 +1,101 @@
+<header class="row py-3 px-4 border-bottom">
+	<div class="col-12 d-flex justify-content-between align-items-center">
+		<h1 class="my-3">
+			{{ channel.name }}
+			<small class="d-block mt-2">{{ channel.description }}</small>
+		</h1>
+		<div class="flex-shrink-0 d-flex align-items-center">
+			<button
+				mat-raised-button
+				color="accent"
+				class="mat-elevation-z0 border d-inline-flex align-items-center mr-3"
+				(click)="showValidatorEditor = !showValidatorEditor"
+				type="button"
+			>
+				<mat-icon class="mr-1">playlist_add_check</mat-icon>
+				<span *ngIf="!showValidatorEditor">
+					{{ 'channels_show_validator' | translate }}
+				</span>
+			</button>
+			<button
+				mat-raised-button
+				color="accent"
+				class="mat-elevation-z0 border d-inline-flex align-items-center mr-3"
+				(click)="onGenerate()"
+				type="button"
+				[disabled]="channel.isEmpty() || syncing"
+			>
+				<mat-icon
+					*ngIf="!channel.isEmpty() && !syncing"
+					[inline]="true"
+					class="mr-1"
+					>gavel</mat-icon
+				>
+				<mat-spinner
+					*ngIf="channel.isEmpty() || syncing"
+					[diameter]="16"
+					class="d-inline-block"
+				></mat-spinner>
+				{{ 'channels_generate' | translate }}
+			</button>
+			<button
+				mat-raised-button
+				[color]="unsavedChanges ? 'primary' : 'accent'"
+				class="mat-elevation-z0 border d-inline-flex align-items-center accent"
+				type="button"
+				(click)="onSave(null)"
+				[disabled]="channel.isEmpty()"
+			>
+				<mat-icon [inline]="true">check</mat-icon>
+				{{ 'channels_save' | translate }}
+			</button>
+		</div>
+	</div>
+</header>
+<app-validator-editor
+	*ngIf="showValidatorEditor"
+	[channel]="channel"
+	(save)="onSave(null)"
+  (exit)="onValidatorEditorClose()"
+>
+</app-validator-editor>
+<app-channel-editor
+	*ngIf="currentEditedTemplate"
+	[template]="currentEditedTemplate"
+	(save)="onSave($event); updateTree()"
+    (exit)="onEditorClose()"
+	class="d-block"
+>
+</app-channel-editor>
+<div class="row px-4 my-4">
+	<!-- /Delete this input -->
+	<div class="col-4">
+		<app-channel-tree
+			[tree]="tree"
+			(selectBranch)="onSelectBranch($event)"
+			[selectedPath]="selectedPath"
+			[addTemplateDisabled]="
+				info &&
+				channel &&
+				channel.templates.length >= info.limits.templates
+			"
+			(addTemplate)="onAddTemplate($event)"
+			(removeTemplate)="onRemoveTemplate($event)"
+		></app-channel-tree>
+	</div>
+	<ul class="col-8 list-unstyled d-flex flex-column">
+		<li
+			*ngFor="let template of channel.templates"
+			[class.d-none]="!templatesToDisplay[template.path]"
+			class="w-100"
+		>
+			<app-channel-template
+				class="d-block mb-3"
+				[template]="template"
+				(pathChanged)="updateTree()"
+				(changed)="onTemplateChanged()"
+				(showEditor)="onShowEditor(template)"
+			></app-channel-template>
+		</li>
+	</ul>
+</div>

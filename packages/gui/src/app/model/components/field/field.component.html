@@ -1,0 +1,324 @@
+<div class="row align-items-center flex-nowrap">
+	<div class="col-5">
+		<input
+			class="inline-input w-100"
+			type="text"
+			[(ngModel)]="field.name"
+			(change)="onInputChange()"
+		/>
+	</div>
+	<div class="col-1">
+		<div class="notes">
+			<mat-icon
+				color="primary"
+				(click)="isNotesTooltipDisplayed = true"
+				[class.inactive]="!field.notes"
+				[inline]="true"
+				>speaker_notes</mat-icon
+			>
+		</div>
+		<div
+			class="notesTooltip flex-column justify-content-center align-items-center p-2 border border-hpf-primary"
+			[class.active]="isNotesTooltipDisplayed"
+		>
+			<div class="row">
+				<div class="col-12">
+					<mat-form-field class="w-100">
+						<textarea
+							matInput
+							matTextareaAutosize
+							[matAutosizeMinRows]="4"
+							[matAutosizeMaxRows]="8"
+							[(ngModel)]="field.notes"
+							(change)="onInputChange()"
+							placeholder="{{ 'notes_title' | translate }}"
+						></textarea>
+					</mat-form-field>
+				</div>
+			</div>
+			<div
+				class="overlay"
+				(click)="isNotesTooltipDisplayed = false"
+			></div>
+		</div>
+	</div>
+	<div
+		class="col-6 d-flex flex-nowrap align-items-center justify-content-between"
+	>
+		<div class="badge field-{{ field.type }}">
+			<span
+				(click)="
+					isTypesTooltipDisplayed = true;
+					displayedSubTypesTooltip = null
+				"
+				>{{
+					field.type === fieldType.Entity
+						? getModelName(field)
+						: field.type
+				}}</span
+			><span
+				*ngIf="field.subtype"
+				(click)="isTypesTooltipDisplayed = true"
+				>:{{ field.subtype }}</span
+			>
+			<div
+				class="typesTooltip d-flex justify-content-between align-items-center py-2 border border-hpf-primary"
+				[class.active]="isTypesTooltipDisplayed"
+			>
+				<div class="pl-1 backIcon">
+					<mat-icon
+						*ngIf="displayedSubTypesTooltip !== null"
+						(click)="displayedSubTypesTooltip = null"
+						color="primary"
+						>arrow_back</mat-icon
+					>
+				</div>
+        <div class="pr-2 w-100 flex-shrink-1 flex-grow-1 d-flex"
+             *ngIf="displayedSubTypesTooltip === null"
+        >
+          <ng-container *ngTemplateOutlet="typesList"></ng-container>
+        </div>
+				<div class="pr-2 w-100 flex-shrink-1 flex-grow-1 d-flex "
+					*ngIf="displayedSubTypesTooltip === 'subtype'"
+				>
+          <ng-container *ngTemplateOutlet="subtypeTitle"></ng-container>
+          <ng-container *ngTemplateOutlet="subtypesList"></ng-container>
+				</div>
+        <div class="pr-2 w-100 flex-shrink-1 flex-grow-1 d-flex"
+          *ngIf="displayedSubTypesTooltip === 'entity'"
+				>
+          <ng-container *ngTemplateOutlet="subtypeTitle"></ng-container>
+          <div class="w-100">
+            <div class="border-bottom entity-subtypes">
+              <ng-container *ngTemplateOutlet="subtypesList"></ng-container>
+            </div>
+            <ng-container *ngTemplateOutlet="modelsList"></ng-container>
+          </div>
+				</div>
+          <div class="pr-2 w-100 flex-shrink-1 flex-grow-1 d-flex"
+          *ngIf="displayedSubTypesTooltip === 'enum'"
+        >
+          <ng-container *ngTemplateOutlet="subtypeTitle"></ng-container>
+          <ng-container *ngTemplateOutlet="enumList"></ng-container>
+        </div>
+				<div
+					class="overlay"
+					(click)="isTypesTooltipDisplayed = false"
+				></div>
+			</div>
+		</div>
+
+		<div class="d-flex align-items-center position-relative">
+			<div
+				class="fieldsTooltip flex-column justify-content-center align-items-center p-2 border border-hpf-primary"
+				[class.active]="isFieldsTooltipDisplayed"
+			>
+				<!--
+					  DO NOT REMOVE
+					<span class="d-none">
+						{{ 'tooltip_generic' | translate }}
+						{{ 'tooltip_internal' | translate }}
+						{{ 'tooltip_embedded' | translate }}
+						{{ 'tooltip_label' | translate }}
+						{{ 'tooltip_multiple' | translate }}
+						{{ 'tooltip_nullable' | translate }}
+						{{ 'tooltip_ownership' | translate }}
+						{{ 'tooltip_primary' | translate }}
+						{{ 'tooltip_hidden' | translate }}
+						{{ 'tooltip_restricted' | translate }}
+						{{ 'tooltip_searchable' | translate }}
+						{{ 'tooltip_sortable' | translate }}
+						{{ 'tooltip_unique' | translate }}
+					</span>
+				-->
+				<p
+					class="
+			pb-2 px-2 border-bottom w-100 m-0 d-flex align-items-center justify-content-center"
+					[class.generic]="fieldHovered === 'generic'"
+				>
+					{{ 'tooltip_' + fieldHovered.toLowerCase() | translate }}
+				</p>
+				<ul
+					class="fieldsTooltip__group list-unstyled d-flex flex-nowrap p-0 m-0 mt-2"
+				>
+					<li
+						*ngFor="let pi of propertiesIcons"
+						class="d-flex align-items-center px-1"
+						(mouseover)="fieldHovered = pi.property"
+						(mouseleave)="fieldHovered = 'generic'"
+					>
+						<label
+							class="m-0 p-0 d-flex align-items-center"
+							[class.active]="pi.value"
+						>
+							<input
+								(change)="onInputChange()"
+								[(ngModel)]="field[pi.property]"
+								type="checkbox"
+								autocomplete="off"
+								class="d-none"
+							/>
+							<mat-icon
+								[class.inactive]="!pi.value"
+								color="primary"
+								>{{ pi.icon }}</mat-icon
+							>
+						</label>
+					</li>
+				</ul>
+				<div
+					class="overlay"
+					(click)="isFieldsTooltipDisplayed = false"
+				></div>
+			</div>
+			<ul
+				class="list-unstyled m-0 p-0 flex-nowrap align-items-center deletionMode d-flex"
+				*ngIf="deletionMode"
+			>
+				<li>
+					<mat-icon [inline]="true" color="warn" (click)="onDelete()">
+						remove_circle
+					</mat-icon>
+				</li>
+			</ul>
+			<ul
+				class="list-unstyled m-0 p-0 flex-nowrap align-items-center selectedFields d-flex"
+				(click)="isFieldsTooltipDisplayed = true"
+        *ngIf="!deletionMode"
+			>
+				<li *ngFor="let pi of filteredPropertiesIcons">
+					<mat-icon [inline]="true">{{ pi.icon }}</mat-icon>
+				</li>
+				<li *ngIf="filteredPropertiesIcons.length === 0">
+					<mat-icon
+						color="primary"
+						[inline]="true"
+						matTooltip="{{ 'tooltip_generic' | translate }}"
+						>settings</mat-icon
+					>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+<ng-template #typesList>
+  <ul
+    class="list-unstyled flex-wrap m-0 p-0 typeList d-flex"
+  >
+    <li
+      *ngFor="let type of types; let i = index"
+      class="m-1"
+      [class.ml-0]="i === 0"
+      [class.mr-0]="i === types.length - 1"
+    >
+      <label
+        class="d-flex m-0 p-0 align-content-stretch align-items-stretch field"
+      >
+        <input
+          type="radio"
+          class="d-none"
+          [value]="type.value"
+          [(ngModel)]="field.type"
+          (change)="resetSubtypeAndTriggerInputChange()"
+          (click)="toggleSubtypesTooltipIfSameValue(type)"
+        />
+        <span
+          class="p-1 d-flex justify-content-center align-items-center field-{{type.value}} typeBadge"
+          [class.selected]="field.type === type.value"
+        >
+								{{ type.name }}
+							</span>
+      </label>
+    </li>
+  </ul>
+</ng-template>
+<ng-template #subtypeTitle>
+  <div class="p-1 pr-2 mr-2 border-right border-hpf-primary font-weight-bold text-capitalize subtypeTitle d-flex align-items-center">
+    <span class="field-{{ field.type }}">{{ field.type }}</span>
+  </div>
+</ng-template>
+<ng-template #subtypesList>
+  <ul class="list-unstyled m-0 p-0 subtypeList d-flex flex-shrink-1 flex-grow-1 flex-wrap">
+    <li
+      *ngFor="let subtype of subtypes; let i = index"
+      class="m-1"
+      [class.ml-0]="i === 1"
+      [class.mr-0]="i === subtypes.length - 1"
+    >
+      <label
+        class="d-flex m-0 p-0 align-content-stretch align-items-stretch field"
+      >
+        <input
+          type="radio"
+          class="d-none"
+          [value]="subtype.value"
+          [(ngModel)]="field.subtype"
+          (change)="onInputChange()"
+        />
+        <span
+          class="p-1 d-flex justify-content-center align-items-center field-{{
+                    field.type
+                  }} typeBadge"
+          [class.selected]="field.subtype === subtype.value"
+        >
+                  {{ subtype.name }}
+                </span>
+      </label>
+    </li>
+  </ul>
+</ng-template>
+<ng-template #modelsList>
+  <ul class="list-unstyled m-0 p-0 subtypeList d-flex flex-shrink-1 flex-grow-1 flex-wrap">
+    <li
+      *ngFor="let model of models; let i = index"
+      class="m-1"
+      [class.ml-0]="i === 1"
+      [class.mr-0]="i === models.length - 1"
+    >
+      <label
+        class="d-flex m-0 p-0 align-content-stretch align-items-stretch field"
+      >
+        <input
+          type="radio"
+          class="d-none"
+          [value]="model.id"
+          [(ngModel)]="field.value"
+          (change)="onInputChange();"
+        />
+        <span
+          class="p-1 d-flex justify-content-center align-items-center field-entity typeBadge"
+          [class.selected]="field.value === model.id"
+        >
+                  {{ model.name }}
+                </span>
+      </label>
+    </li>
+  </ul>
+</ng-template>
+<ng-template #enumList>
+  <mat-chip-list
+    #enumChipList
+    class="chipsList-enum d-flex align-items-center"
+    cdkDropList
+    cdkDropListOrientation="horizontal"
+    (cdkDropListDropped)="dropEnumInChipList($event)"
+  >
+    <input placeholder="{{ 'enum_placeholder' | translate }}"
+           [matChipInputFor]="enumChipList"
+           [matChipInputSeparatorKeyCodes]="chipsListSeparatorKeysCodes"
+           [matChipInputAddOnBlur]="true"
+           (matChipInputTokenEnd)="addEnumToChipList($event)">
+    <div class="chip-list d-flex flex-shrink-1 flex-grow-1 flex-wrap">
+      <mat-chip class="chip-enum"
+                *ngFor="let value of field.value"
+                cdkDrag
+                [selectable]="false"
+                [removable]="true"
+                (removed)="removeEnumFromChipList(value)">
+        {{value}}
+        <mat-icon matChipRemove>cancel</mat-icon>
+      </mat-chip>
+    </div>
+  </mat-chip-list>
+</ng-template>

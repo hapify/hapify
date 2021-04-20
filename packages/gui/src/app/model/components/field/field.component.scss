@@ -1,0 +1,231 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+
+$string: #799599;
+$enum: #998279;
+$datetime: #3cbacc;
+$number: #52d19b;
+$boolean: #ffa4a4;
+$entity: #d93c89;
+$object: #d9a251;
+$file: #7273d9;
+
+$typesTooltipWidth: 310px;
+
+.field-string {
+  color: $string;
+  background-color: $string;
+  border-color: $string;
+}
+.field-enum {
+  color: $enum;
+  background-color: $enum;
+  border-color: $enum;
+}
+.field-datetime {
+  color: $datetime;
+  background-color: $datetime;
+  border-color: $datetime;
+}
+.field-number {
+  color: $number;
+  background-color: $number;
+  border-color: $number;
+}
+.field-boolean {
+  color: $boolean;
+  background-color: $boolean;
+  border-color: $boolean;
+}
+.field-entity {
+  color: $entity;
+  background-color: $entity;
+  border-color: $entity;
+}
+.field-object {
+  color: $object;
+  background-color: $object;
+  border-color: $object;
+}
+.field-file {
+  color: $file;
+  background-color: $file;
+  border-color: $file;
+}
+
+.badge {
+	cursor: pointer;
+	border-radius: 4px;
+	color: $white;
+  transition: none;
+}
+
+mat-icon.inactive {
+	color: $gray-600;
+}
+
+.fieldsTooltip,
+.typesTooltip,
+.notesTooltip {
+  position: absolute;
+  z-index: 99999;
+  bottom: 110%;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, right 0.2s ease;
+  width: 400px;
+  right: -32px;
+
+  &.notesTooltip {
+    left: -170px;
+  }
+
+  &.typesTooltip {
+    width: $typesTooltipWidth;
+  }
+
+  &.active {
+    pointer-events: initial;
+    opacity: 1;
+    right: -64px;
+  }
+
+  * {
+    position: relative;
+    z-index: 99999;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99998;
+  }
+}
+
+.fieldsTooltip {
+	p {
+		min-height: 48px;
+		font-size: 0.8em;
+		color: $gray-700;
+
+		&.generic {
+			color: $gray-600;
+		}
+	}
+
+	.fieldsTooltip__group {
+		position: relative;
+		li {
+			mat-icon {
+				transition: color 0.1s ease;
+			}
+			&:hover {
+				background: none;
+				mat-icon {
+					color: $gray-700;
+				}
+			}
+
+			label {
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+.typesTooltip {
+	&.active {
+		right: -48px;
+	}
+
+	mat-icon {
+		cursor: pointer;
+		transition: color 0.1s ease;
+		&:hover {
+			color: $gray-600;
+		}
+	}
+
+  .subtypeTitle span {
+    background: none;
+    border: none;
+  }
+
+  .chipsList-enum {
+    width: #{$typesTooltipWidth - 80px};
+    input {
+      display: block;
+      width: auto;
+      text-align: left;
+      color: $enum;
+    }
+  }
+
+  .backIcon {
+    mat-icon {
+      font-size: 12px;
+      width: 14px;
+      height: 14px;
+      line-height: 14px;
+    }
+  }
+}
+
+.typeBadge {
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.1s ease, color 0.1s ease, border-color 0.1s ease;
+  &:not(.selected):not(:hover) {
+    background: none;
+  }
+  &.selected,
+  &:hover {
+    color: $white;
+  }
+
+  .entity-subtypes & {
+    background: none;
+    color: $entity;
+    border: 1px solid;
+    &:not(.selected):not(:hover) {
+      border-color: transparent;
+    }
+    &.selected,
+    &:hover {
+      color: $entity;
+      border-color: $entity;
+    }
+  }
+}
+
+.mat-chip {
+  &.chip-enum {
+    font-size: 12px;
+    padding: 3px 3px 3px 6px;
+    margin: 2px;
+    &.mat-standard-chip {
+      min-height: 26px;
+    }
+  }
+}
+
+.notes {
+	cursor: pointer;
+}
+
+.selectedFields {
+	cursor: pointer;
+	mat-icon:not(.mat-primary) {
+		color: $gray-600;
+	}
+}
+
+.deletionMode {
+	cursor: pointer;
+}

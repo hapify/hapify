@@ -3,3 +3,5 @@ dist/
 docs/
 
 packages/generator/test/files/
+
+packages/gui/src/assets/

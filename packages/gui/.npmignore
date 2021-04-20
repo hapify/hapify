@@ -5,20 +5,14 @@ e2e/
 .vscode
 
 .browserslistrc
-.editorconfig
 .gitignore
-.prettierignore
-.prettierrc
 angular.json
-commitlint.config.js
 ERRORS.md
 karma.conf.js
 ngsw-config.json
 post-install.sh
 ROADMAP.md
-syntax-patterns.hpf
 tsconfig.app.json
 tsconfig.base.json
 tsconfig.json
 tsconfig.spec.json
-tslint.json

@@ -1,14 +1,30 @@
 {
   "name": "@hapify/gui",
   "version": "0.8.0",
+  "description": "Graphical User Interface for Hapify",
+  "keywords": [
+    "hapify",
+    "cli"
+  ],
   "license": "MIT",
+  "author": "Edouard Demotes-Mainard <edouard@tractr.net>",
+  "homepage": "https://github.com/hapify/hapify",
   "scripts": {
     "prepare": "./post-install.sh",
     "ng": "ng",
-    "start": "ng serve",
     "build": "ng build --prod --configuration=production",
+    "start": "ng serve",
+    "clean": "rimraf dist node_modules src/assets/ace-builds/src-min-noconflict",
+    "prepublishOnly": "npm run build",
+    "lint": "npm run lint:tsc && npm run lint:prettier && npm run lint:eslint",
+    "lint:eslint": "eslint \"{src,test}/**/*.{ts,js}\"",
+    "lint:eslint:fix": "npm run lint:eslint -- --fix",
+    "lint:fix": "npm run lint:tsc:fix && npm run lint:prettier:fix && npm run lint:eslint:fix",
+    "lint:prettier": "prettier --check \"{src,test}/**/*.{ts,js}\"",
+    "lint:prettier:fix": "prettier --write \"{src,test}/**/*.{ts,js}\"",
+    "lint:tsc": "tsc --noEmit",
+    "lint:tsc:fix": "npm run lint:tsc",
     "test": "ng test",
-    "lint": "prettier --write '**/*.{ts,js}'",
     "e2e": "ng e2e",
     "update": "npm-check -u"
   },
@@ -27,8 +43,6 @@
     "@angular/platform-browser": "~10.0.6",
     "@angular/platform-browser-dynamic": "~10.0.6",
     "@angular/router": "~10.0.6",
-    "@commitlint/cli": "^9.1.2",
-    "@commitlint/config-conventional": "^9.1.1",
     "@ng-bootstrap/ng-bootstrap": "^7.0.0",
     "@ng-bootstrap/schematics": "^2.0.0-alpha.1",
     "@ngx-meta/core": "^9.0.0",
@@ -37,11 +51,9 @@
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/md5": "^2.2.0",
-    "@types/node": "^14.0.27",
     "angular2-hotkeys": "^2.2.0",
     "bootstrap": "^4.5.0",
     "codelyzer": "^6.0.0",
-    "husky": "^4.3.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
@@ -55,22 +67,11 @@
     "ngx-bootstrap": "^5.6.1",
     "ngx-perfect-scrollbar": "^10.0.1",
     "nl2br-pipe": "^1.2.3",
-    "npm-check": "^5.9.2",
     "open-iconic": "^1.1.1",
-    "prettier": "^2.1.2",
-    "pretty-quick": "^2.0.1",
     "protractor": "~7.0.0",
     "rxjs": "^6.6.2",
-    "ts-node": "~8.3.0",
     "tslib": "^2.0.0",
-    "tslint": "~6.1.0",
     "typescript": "~3.9.5",
     "zone.js": "~0.10.3"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "pretty-quick --staged --pattern '**/*.{ts,js}'"
-    }
   }
 }

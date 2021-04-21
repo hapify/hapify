@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService } from '../../services/storage.service';
-import { IModel, IModelBase } from '../../interfaces/model';
-import { environment } from '@env/environment';
-import { InfoService } from '@app/services/info.service';
-import { IInfo } from '@app/interfaces/info';
-import { WebSocketService } from '@app/services/websocket.service';
-import { WebSocketMessages } from '@app/interfaces/websocket-message';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogPremiumComponent } from '@app/components/common/dialog-premium/dialog-premium.component';
+import { IInfo } from '@app/interfaces/info';
+import { WebSocketMessages } from '@app/interfaces/websocket-message';
+import { InfoService } from '@app/services/info.service';
 import { MessageService } from '@app/services/message.service';
-import { Model } from '../../classes/model';
+import { WebSocketService } from '@app/services/websocket.service';
+import { environment } from '@env/environment';
+
 import { FieldType } from '../../classes/field-type';
+import { Model } from '../../classes/model';
+import { IModel, IModelBase } from '../../interfaces/model';
+import { StorageService } from '../../services/storage.service';
 
 declare const navigator: any;
 
@@ -30,20 +31,29 @@ export class RootComponent implements OnInit {
   ) {}
 
   private saveTimeout;
+
   dTime = environment.debounceTime;
+
   public models: IModel[];
+
   public visibleModels: IModel[];
+
   public currentModel: IModel;
+
   public info: IInfo;
 
   /** Used for loader to toggle */
   modelsAreLoaded = false;
+
   /** Used new model atom to toggle */
   addingNewModel = false;
+
   /** Current filter by name */
   nameFilter: string;
+
   /** Current filter by field */
   fieldFilter: string;
+
   /** Current filter by link */
   linkFilter: string;
 
@@ -53,6 +63,7 @@ export class RootComponent implements OnInit {
       this.info = info;
     });
   }
+
   /** Called when the user update the model */
   onDelete(model: IModel): void {
     // Delete the model
@@ -208,6 +219,7 @@ export class RootComponent implements OnInit {
     this.modelsAreLoaded = true;
     this.addingNewModel = false;
   }
+
   /** Denotes if the model should be shown regarding the active filter */
   updateVisibleModels(): void {
     this.visibleModels = this.models

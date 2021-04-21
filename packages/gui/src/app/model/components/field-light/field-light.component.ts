@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IField } from '../../interfaces/field';
-import { FieldType } from '../../classes/field-type';
-import { IModel } from '../../interfaces/model';
 import { ILabelledValue } from '@app/model/interfaces/labelled-value';
+
+import { FieldType } from '../../classes/field-type';
+import { IField } from '../../interfaces/field';
+import { IModel } from '../../interfaces/model';
+
 
 interface IPropertyIcon {
   property: string;
@@ -21,14 +23,19 @@ export class FieldLightComponent implements OnInit {
 
   /** Rows deletion mode */
   @Input() deletionMode = false;
+
   /** Available Models */
   @Input() models: IModel[];
+
   /** New field instance */
   @Input() field: IField;
+
   /** Link to FieldType class */
   fieldType = FieldType;
+
   /** Available types */
   types = this.fieldType.list();
+
   /** Available subtypes */
   subtypes: ILabelledValue[] = [];
 
@@ -46,6 +53,7 @@ export class FieldLightComponent implements OnInit {
     { property: 'restricted', icon: 'pan_tool', value: false },
     { property: 'ownership', icon: 'copyright', value: false },
   ];
+
   filteredPropertiesIcons: IPropertyIcon[] = [];
 
   ngOnInit(): void {

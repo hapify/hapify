@@ -7,11 +7,12 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { IPreset } from '../../interfaces/preset';
 import { WebSocketMessages } from '@app/interfaces/websocket-message';
 import { IModel } from '@app/model/interfaces/model';
 import { ModelService } from '@app/preset/services/model.service';
 import { WebSocketService } from '@app/services/websocket.service';
+
+import { IPreset } from '../../interfaces/preset';
 
 interface PresetMergeResults {
   created: IModel[];
@@ -62,12 +63,12 @@ export class PresetCardComponent implements OnInit {
     this.renderer.setStyle(
       this.description.nativeElement,
       'top',
-      event.clientY + 20 + 'px',
+      `${event.clientY + 20  }px`,
     );
     this.renderer.setStyle(
       this.description.nativeElement,
       'left',
-      event.clientX + 20 + 'px',
+      `${event.clientX + 20  }px`,
     );
   }
 

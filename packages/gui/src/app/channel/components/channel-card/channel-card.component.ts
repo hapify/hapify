@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+
 import { IChannel } from '../../interfaces/channel';
 
 @Component({
@@ -9,6 +10,7 @@ import { IChannel } from '../../interfaces/channel';
 export class ChannelCardComponent implements OnInit {
   /** Constructor */
   constructor() {}
+
   /** Channel instance */
   @Input() channel: IChannel;
 

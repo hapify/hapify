@@ -1,13 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IModel } from '@app/model/interfaces/model';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
-
+import { Model } from '@app/model/classes/model';
+import { IModel } from '@app/model/interfaces/model';
+import { StorageService } from '@app/model/services/storage.service';
 import { RootComponent as PresetRootComponent } from '@app/preset/preset.module';
 import { ModelService } from '@app/preset/services/model.service';
-import { Model } from '@app/model/classes/model';
 import { MessageService } from '@app/services/message.service';
-import { StorageService } from '@app/model/services/storage.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -16,11 +15,17 @@ import { StorageService } from '@app/model/services/storage.service';
 })
 export class HeaderComponent implements OnInit {
   addingNewModel = false;
+
   @Output() newModel = new EventEmitter<IModel>();
+
   @Output() newImport = new EventEmitter<void>();
+
   @Input() newModelDisabled = false;
+
   dialogSubscription: Subscription;
+
   modelServiceSubscription: Subscription;
+
   constructor(
     private dialog: MatDialog,
     private modelService: ModelService,

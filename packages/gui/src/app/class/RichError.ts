@@ -7,9 +7,13 @@ export interface RichErrorData {
 }
 export class RichError implements Error {
   name: string;
+
   message: string;
+
   stack?: string;
+
   data?: RichErrorData;
+
   constructor(message: string, data?: RichErrorData) {
     this.name = 'RichError';
     this.message = message;
@@ -17,9 +21,11 @@ export class RichError implements Error {
       this.data = data;
     }
   }
+
   static from(payload: any): RichError {
     return new this(payload.message, payload.data);
   }
+
   details(): string {
     let output = this.message;
     if (this.data) {

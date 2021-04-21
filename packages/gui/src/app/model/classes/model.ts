@@ -1,6 +1,6 @@
-import { IModel, IModelBase } from '../interfaces/model';
-import { IField, IFieldBase } from '../interfaces/field';
 import { IAccesses } from '../interfaces/access';
+import { IField, IFieldBase } from '../interfaces/field';
+import { IModel, IModelBase } from '../interfaces/model';
 import { Field } from './field';
 
 export class Model implements IModel {
@@ -11,9 +11,13 @@ export class Model implements IModel {
   constructor() {}
 
   public id: string;
+
   public name = '';
+
   public notes: string;
+
   public fields: IField[] = [];
+
   public accesses: IAccesses;
 
   public newField(): IField {
@@ -73,9 +77,7 @@ export class Model implements IModel {
   }
 
   public filter(): void {
-    this.fields = this.fields.filter((field: IField): boolean => {
-      return !field.isEmpty();
-    });
+    this.fields = this.fields.filter((field: IField): boolean => !field.isEmpty());
   }
 
   public clone(): IModel {

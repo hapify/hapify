@@ -12,10 +12,12 @@ export class Lock {
       setTimeout(() => resolve(this.wait(key)), 10);
     });
   }
+
   /** Wait to be unlocked */
   protected lock(key: string): void {
     this.locks[key] = true;
   }
+
   /** Wait to be unlocked */
   protected unlock(key: string): void {
     this.locks[key] = false;

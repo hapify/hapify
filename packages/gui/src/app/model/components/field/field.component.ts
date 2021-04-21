@@ -1,3 +1,5 @@
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import {
   Component,
   EventEmitter,
@@ -6,11 +8,10 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import { ILabelledValue } from '@app/model/interfaces/labelled-value';
-import { FieldLightComponent } from '../field-light/field-light.component';
 import { FieldType } from '@app/model/classes/field-type';
+import { ILabelledValue } from '@app/model/interfaces/labelled-value';
+
+import { FieldLightComponent } from '../field-light/field-light.component';
 
 @Component({
   selector: 'app-model-field',
@@ -22,17 +23,23 @@ export class FieldComponent
   implements OnInit, OnDestroy {
   /** Rows deletion mode */
   @Input() deletionMode = false;
+
   /** Notify changes */
   @Output() update = new EventEmitter<void>();
+
   /** Request for delete field */
   @Output() delete = new EventEmitter<void>();
 
   isTypesTooltipDisplayed = false;
+
   displayedSubTypesTooltip: 'subtype' | 'entity' | 'enum' | null = null;
+
   isNotesTooltipDisplayed = false;
 
   fieldHovered = 'generic';
+
   isFieldsTooltipDisplayed = false;
+
   noSelectedField = false;
 
   readonly chipsListSeparatorKeysCodes: number[] = [ENTER, COMMA];
@@ -124,8 +131,8 @@ export class FieldComponent
       if (!Array.isArray(this.field.value)) {
         this.field.value = [];
       }
-      (this.field.value as string[]).push(value.trim());
-      this.field.value = (this.field.value as string[]).filter(
+      (this.field.value ).push(value.trim());
+      this.field.value = (this.field.value ).filter(
         (v) => v.trim().length > 0,
       );
       input.value = '';

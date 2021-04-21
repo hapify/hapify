@@ -1,3 +1,4 @@
+import { CdkDragDrop } from '@angular/cdk/drag-drop';
 import {
   Component,
   EventEmitter,
@@ -5,13 +6,14 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { Field } from '@app/model/classes/field';
+import { IField } from '@app/model/interfaces/field';
+import { Hotkey, HotkeysService } from 'angular2-hotkeys';
+
 import { Access } from '../../interfaces/access';
 import { ILabelledValue } from '../../interfaces/labelled-value';
-import { Hotkey, HotkeysService } from 'angular2-hotkeys';
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
-import { Field } from '@app/model/classes/field';
 import { ModelLightComponent } from '../model-light/model-light.component';
-import { IField } from '@app/model/interfaces/field';
+
 
 interface IAccessValue {
   selected: boolean;
@@ -52,23 +54,33 @@ export class ModelComponent
 
   /** Notify save */
   @Output() save = new EventEmitter<void>();
+
   /** Notify changes */
   @Output() update = new EventEmitter<void>();
+
   /** Notify cloning */
   @Output() clone = new EventEmitter<void>();
+
   /** Notify copy. Cannot be called copy, otherwise it will be called on Meta+C */
   @Output() copyModel = new EventEmitter<void>();
+
   /** Notify deletion */
   @Output() delete = new EventEmitter<void>();
+
   /** Hotkeys to unbind */
   private saveHotKeys: Hotkey | Hotkey[];
+
   /** List available actions */
   actions: IActionValue[] = [];
+
   public currentField: IField;
 
   accessRightsPanelIsDisplayed = false;
+
   notesPanelIsDisplayed = false;
+
   cleanRows = false;
+
   confirmModelDeletion = false;
 
   ngOnInit(): void {
@@ -120,6 +132,7 @@ export class ModelComponent
     this.model.accesses[action] = access.value;
     this.onModelChange();
   }
+
   /** Denotes if the access should be highlighted */
   private isAccessSelected(action: string, access: ILabelledValue): boolean {
     return (
@@ -130,15 +143,13 @@ export class ModelComponent
   /** Compute actions selected actions for this model */
   private updateActions(): void {
     this.actions = Object.keys(this.model.accesses).map(
-      (action: string): IActionValue => {
-        return {
+      (action: string): IActionValue => ({
           name: action,
           accesses: Accesses.map((access) => ({
             selected: this.isAccessSelected(action, access),
             value: access,
           })),
-        };
-      },
+        }),
     );
   }
 

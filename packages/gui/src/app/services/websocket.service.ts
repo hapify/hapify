@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { RichError } from '@app/class/RichError';
 import { Observable, Subject, Subscription } from 'rxjs';
+
 import { IWebSocketInfo } from '../interfaces/websocket-info';
 import { IWebSocketMessage } from '../interfaces/websocket-message';
 import { ConfigService } from './config.service';
 import { MessageService } from './message.service';
-import { RichError } from '@app/class/RichError';
 
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
@@ -16,11 +17,15 @@ export class WebSocketService {
     private configService: ConfigService,
     private messageService: MessageService,
   ) {}
+
   /** The current websocket */
   private ws: WebSocket;
+
   /** Incoming messages/orders from server */
   private messageSubject = new Subject<IWebSocketMessage>();
+
   private messageObservable: Observable<IWebSocketMessage> = this.messageSubject.asObservable();
+
   /** Delay to retry connection */
   private reconnectDelay = 10 * SECOND;
 

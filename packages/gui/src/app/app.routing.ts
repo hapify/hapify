@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { MODEL_ROUTES, ModelModule } from './model/model.module';
-import { ModelComponent } from './components/model/model.component';
 
 import { CHANNEL_ROUTES, ChannelModule } from './channel/channel.module';
 import { ChannelComponent } from './components/channel/channel.component';
+import { ModelComponent } from './components/model/model.component';
+import { MODEL_ROUTES, ModelModule } from './model/model.module';
 
 export const routes: Routes = [
   {

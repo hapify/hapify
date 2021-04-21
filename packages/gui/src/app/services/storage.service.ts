@@ -1,11 +1,13 @@
+import { Injectable } from '@angular/core';
+
 import { IStorable } from '../interfaces/storable';
 import { WebSocketService } from './websocket.service';
-import { Injectable } from '@angular/core';
 
 @Injectable()
 export abstract class StorageService<T extends IStorable> {
   /** Cached instances */
   private instances: T[] = null;
+
   /** Pending reading */
   private locked = false;
 
@@ -120,6 +122,7 @@ export abstract class StorageService<T extends IStorable> {
       setTimeout(() => resolve(this.lock()), 10);
     });
   }
+
   /** Resolves when the client is ready */
   private release(): void {
     this.locked = false;

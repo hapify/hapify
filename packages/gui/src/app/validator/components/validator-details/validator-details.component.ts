@@ -6,13 +6,14 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
-import { ValidatorService } from '../../services/validator.service';
-import { StorageService as ChannelStorageService } from '@app/channel/services/storage.service';
-import { StorageService as ModelStorageService } from '@app/model/services/storage.service';
-import { IModel } from '@app/model/interfaces/model';
 import { IChannel } from '@app/channel/interfaces/channel';
+import { StorageService as ChannelStorageService } from '@app/channel/services/storage.service';
+import { IModel } from '@app/model/interfaces/model';
+import { StorageService as ModelStorageService } from '@app/model/services/storage.service';
 import { MessageService } from '@app/services/message.service';
 import { Subscription } from 'rxjs';
+
+import { ValidatorService } from '../../services/validator.service';
 
 @Component({
   selector: 'app-validator-details',
@@ -22,22 +23,33 @@ import { Subscription } from 'rxjs';
 export class ValidatorDetailsComponent implements OnInit, OnDestroy {
   /** The channel storage service */
   protected channelStorageService: ChannelStorageService;
+
   /** The model storage service */
   protected modelStorageService: ModelStorageService;
+
   /** The validator service */
   protected validatorService: ValidatorService;
+
   /** The message service */
   protected messageService: MessageService;
+
   protected modelValue: IModel;
+
   protected models: IModel[];
+
   protected channelValue: IChannel;
+
   protected channels: IChannel[];
+
   /** Notify changes */
   protected signalSubscription: Subscription;
+
   /** Denotes if the process can be ran */
   protected initialized = false;
+
   /** Denotes if the process is already running */
   protected running = false;
+
   /** Errors & warnings details */
   details: string = null;
 

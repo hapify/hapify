@@ -11,18 +11,20 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { ITemplate } from '../../interfaces/template';
-import { GeneratorService } from '../../services/generator.service';
+import { RichError } from '@app/class/RichError';
+import { AceService } from '@app/services/ace.service';
+import { MessageService } from '@app/services/message.service';
+import { TranslateService } from '@ngx-translate/core';
+import { Hotkey, HotkeysService } from 'angular2-hotkeys';
+
 import {
   IModel,
   StorageService as ModelStorageService,
 } from '../../../model/model.module';
 import { IGeneratorResult } from '../../interfaces/generator-result';
-import { AceService } from '@app/services/ace.service';
-import { TranslateService } from '@ngx-translate/core';
-import { Hotkey, HotkeysService } from 'angular2-hotkeys';
-import { MessageService } from '@app/services/message.service';
-import { RichError } from '@app/class/RichError';
+import { ITemplate } from '../../interfaces/template';
+import { GeneratorService } from '../../services/generator.service';
+
 
 @Component({
   selector: 'app-channel-editor',
@@ -32,34 +34,49 @@ import { RichError } from '@app/class/RichError';
 export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
   /** The generator service */
   generatorService: GeneratorService;
+
   /** The generator service */
   modelStorageService: ModelStorageService;
+
   /** Template to edit instance */
   @Input() template: ITemplate;
+
   /** On save event */
   @Output() save = new EventEmitter<ITemplate | null>();
+
   /** On close event */
   @Output() exit = new EventEmitter<void>();
+
   /** The edited template */
   wip: ITemplate;
+
   /** Preview models */
   models: IModel[];
+
   /** Preview model */
   model: IModel;
+
   /** Generation results */
   result: IGeneratorResult;
+
   /** Generation results for path only */
   pathResult: string;
+
   /** Generation error */
   error: string;
+
   /** Denotes if should re-generate preview on change */
   autoRefresh = true;
+
   /** Text display to prevent reloading */
   private beforeUnloadWarning: string;
+
   /** Denotes if the user has unsaved changes (to prevent reload) */
   unsavedChanges = false;
+
   /** Hotkeys to unbind */
   private saveHotKeys: Hotkey | Hotkey[];
+
   /** Error codes to display in editor */
   private handledCodes = [
     1003,
@@ -73,8 +90,10 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
     6004,
     7001,
   ];
+
   /** Left editor */
   @ViewChild('editorInput') editorInput;
+
   /** Constructor */
   constructor(
     private injector: Injector,
@@ -88,6 +107,7 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
     this.generatorService = this.injector.get(GeneratorService);
     this.modelStorageService = this.injector.get(ModelStorageService);
   }
+
   /** On init */
   ngOnInit(): void {
     // Handle generation messages
@@ -128,6 +148,7 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
     this.hotKeysService.remove(this.saveHotKeys);
     this.messageService.removeErrorHandler('template-editor');
   }
+
   /**
    * After init
    * Bind Ctrl-S inside the editors
@@ -138,6 +159,7 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
       .commands.addCommand(this.getEditorSaveCommand());
     this.cd.detectChanges();
   }
+
   /** Get the save command for the editors */
   private getEditorSaveCommand(): any {
     return {
@@ -152,6 +174,7 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
       },
     };
   }
+
   /** Called when the user click on save */
   didClickSave(): void {
     this.template.content = this.wip.content;
@@ -159,12 +182,14 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
     this.unsavedChanges = false;
     this.save.emit(this.generatorService.autoSyncEnabled ? this.wip : null);
   }
+
   /** Called when the user click on close */
   didClickClose(): void {
     if (!this.unsavedChanges || confirm(this.beforeUnloadWarning)) {
       this.exit.emit();
     }
   }
+
   /** Runs the content generation */
   private generate(): void {
     // Clean results and error
@@ -181,6 +206,7 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
         this.formatError(e);
       });
   }
+
   /** Runs the path generation */
   private generatePath(): void {
     // Run generation
@@ -193,12 +219,14 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
         this.formatError(e);
       });
   }
+
   /** Format an error to be displayed */
   private formatError(error: Error): void {
     if (this.handledError(error)) {
       this.error = (error as RichError).details();
     }
   }
+
   /** Format an error to be displayed */
   private handledError(error: Error): boolean {
     return (
@@ -210,16 +238,19 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
   onModelChange(): void {
     this.generate();
   }
+
   /** Call when the path is changed */
   onPathChange(value: string): void {
     this.wip.path = value;
     this.generatePath();
   }
+
   /** Call when the content is left */
   onBlur(content: string): void {
     this.wip.content = content;
     this.generate();
   }
+
   /** Call when the content changes */
   onChange(content: string): void {
     this.wip.content = content;
@@ -228,11 +259,13 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
       this.generate();
     }
   }
+
   /** Call when the user click on "dump" */
   async didClickDump(): Promise<void> {
     // @todo Dump in popin
     this.messageService.info('To be implemented');
   }
+
   /** Prevent reloading */
   @HostListener('window:beforeunload', ['$event'])
   beforeUnloadHandler(event: any): string {

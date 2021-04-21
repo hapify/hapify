@@ -7,8 +7,11 @@
  */
 export class Access {
   static GUEST = 'guest';
+
   static AUTHENTICATED = 'auth';
+
   static OWNER = 'owner';
+
   static ADMIN = 'admin';
 }
 

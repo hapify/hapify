@@ -5,10 +5,11 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
-import { WebSocketService } from './services/websocket.service';
-import { ResizeService } from '@app/services/resize.service';
 import { MessageService } from '@app/services/message.service';
+import { ResizeService } from '@app/services/resize.service';
+import { TranslateService } from '@ngx-translate/core';
+
+import { WebSocketService } from './services/websocket.service';
 
 @Component({
   selector: 'app-root',
@@ -17,9 +18,11 @@ import { MessageService } from '@app/services/message.service';
 })
 export class AppComponent implements OnInit {
   sidebarIsReduced = false;
+
   breakpoint = this.resizeService.currentBreakpoint;
 
   @ViewChild('scrollzone') scrollzone: ElementRef;
+
   scrollTimeout;
 
   constructor(

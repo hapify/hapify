@@ -10,18 +10,19 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { IChannel } from '@app/channel/interfaces/channel';
+import { RichError } from '@app/class/RichError';
 import {
   IModel,
   StorageService as ModelStorageService,
 } from '@app/model/model.module';
 import { AceService } from '@app/services/ace.service';
+import { MessageService } from '@app/services/message.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Hotkey, HotkeysService } from 'angular2-hotkeys';
+
 import { IValidatorResult } from '../../interfaces/validator-result';
 import { ValidatorService } from '../../services/validator.service';
-import { IChannel } from '@app/channel/interfaces/channel';
-import { MessageService } from '@app/services/message.service';
-import { RichError } from '@app/class/RichError';
 
 @Component({
   selector: 'app-validator-editor',
@@ -32,38 +33,55 @@ export class ValidatorEditorComponent
   implements OnInit, OnDestroy, AfterViewInit {
   /** The model storage service */
   modelStorageService: ModelStorageService;
+
   /** The validator service */
   validatorService: ValidatorService;
+
   /** The calling channel */
   @Input() channel: IChannel;
+
   /** On save event */
   @Output() save = new EventEmitter<void>();
+
   /** On save event */
   @Output() exit = new EventEmitter<void>();
+
   /** The edited template */
   content: string;
+
   /** The content mode for ACE */
   aceMode = 'js';
+
   /** Models for auto-check */
   models: IModel[];
+
   /** Checked model */
   model: IModel;
+
   /** Validation result */
   result: IValidatorResult;
+
   /** Validation error */
   error: string;
+
   /** Result summary */
   summary = '';
+
   /** Denotes if should auto-check on change */
   autoValidate = true;
+
   /** Error codes to display in editor */
   private handledCodes = [4005, 4006, 4007];
+
   /** Text display to prevent reloading */
   private beforeUnloadWarning: string;
+
   /** Denotes if the user has unsaved changes (to prevent reload) */
   unsavedChanges = false;
+
   /** Hotkeys to unbind */
   private saveHotKeys: Hotkey | Hotkey[];
+
   /** Main editor */
   @ViewChild('editorInput') editorInput;
 

@@ -4,6 +4,7 @@ export class FieldSubType {
   static Boolean = {
     Default: null,
   };
+
   static Number = {
     Default: null,
     Integer: 'integer',
@@ -11,6 +12,7 @@ export class FieldSubType {
     Latitude: 'latitude',
     Longitude: 'longitude',
   };
+
   static String = {
     Default: null,
     Email: 'email',
@@ -19,11 +21,13 @@ export class FieldSubType {
     Text: 'text',
     RichText: 'rich',
   };
+
   static DateTime = {
     Default: null,
     Date: 'date',
     Time: 'time',
   };
+
   static Entity = {
     Default: null,
     OneOne: 'oneOne',
@@ -31,12 +35,15 @@ export class FieldSubType {
     ManyOne: 'manyOne',
     ManyMany: 'manyMany',
   };
+
   static Enum = {
     Default: null,
   };
+
   static Object = {
     Default: null,
   };
+
   static File = {
     Default: null,
     Image: 'image',

@@ -1,7 +1,7 @@
+import { IChannel } from '../interfaces/channel';
 import { ITemplate, ITemplateBase } from '../interfaces/template';
 import { TemplateEngine } from '../interfaces/template-engine.enum';
 import { TemplateInput } from '../interfaces/template-input.enum';
-import { IChannel } from '../interfaces/channel';
 
 export class Template implements ITemplate {
   constructor(channel: IChannel) {
@@ -9,12 +9,17 @@ export class Template implements ITemplate {
   }
 
   private readonly channelValue: IChannel;
+
   /** Stores the path value managed by getter/setter */
   private pathValue = '';
+
   /** Stores the type value managed by getter/setter */
   private typeValue: string = null;
+
   public engine = TemplateEngine.Hpf;
+
   public input = TemplateInput.One;
+
   public content = '';
 
   /** Split a string into path parts */

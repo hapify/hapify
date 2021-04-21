@@ -6,12 +6,14 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { GeneratorService } from '../../services/generator.service';
+import { IInfo } from '@app/interfaces/info';
+import { InfoService } from '@app/services/info.service';
+
 import { IChannel } from '../../interfaces/channel';
 import { ITemplate } from '../../interfaces/template';
 import { TreeBranch } from '../../interfaces/tree-branch';
-import { InfoService } from '@app/services/info.service';
-import { IInfo } from '@app/interfaces/info';
+import { GeneratorService } from '../../services/generator.service';
+
 
 @Component({
   selector: 'app-channel-channel',
@@ -21,19 +23,29 @@ import { IInfo } from '@app/interfaces/info';
 export class ChannelComponent implements OnInit {
   /** The generator service */
   generatorService: GeneratorService;
+
   /** Channel instance */
   @Input() channel: IChannel;
+
   /** On save event */
   @Output() save = new EventEmitter<ITemplate | null>();
+
   syncing = false;
+
   /** Current edited template */
   currentEditedTemplate: ITemplate;
+
   showValidatorEditor = false;
+
   /** Denotes if the user has unsaved changes (to prevent reload) */
   unsavedChanges = false;
+
   tree: TreeBranch[];
+
   selectedPath = '';
+
   templatesToDisplay: { [key: string]: boolean } = {};
+
   info: IInfo;
 
   /** Constructor */

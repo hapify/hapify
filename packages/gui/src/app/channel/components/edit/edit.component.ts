@@ -1,10 +1,11 @@
 import { Component, Injector, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+
 import { IChannel } from '../../interfaces/channel';
 import { ITemplate } from '../../interfaces/template';
-import { ActivatedRoute, Router } from '@angular/router';
-import { StorageService } from '../../services/storage.service';
 import { GeneratorService } from '../../services/generator.service';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-channel-edit',
@@ -14,10 +15,13 @@ import { GeneratorService } from '../../services/generator.service';
 export class EditComponent implements OnInit, OnDestroy {
   /** The generator service */
   generatorService: GeneratorService;
+
   /** Route params subscription */
   private paramsSubcription: Subscription;
+
   /** Channel instance */
   public channel: IChannel;
+
   /** Constructor */
   constructor(
     private router: Router,
@@ -32,7 +36,7 @@ export class EditComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.paramsSubcription = this.route.params.subscribe(async (params) => {
       // Get channel id
-      const id = params.id;
+      const {id} = params;
       // Load channel
       const channel = await this.storageService.find(id);
       // Bind the channel if any

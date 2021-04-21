@@ -1,29 +1,45 @@
 import { IField, IFieldBase } from '../interfaces/field';
 import { ILabelledValue } from '../interfaces/labelled-value';
-import { FieldType } from './field-type';
 import { FieldSubType } from './field-subtype';
+import { FieldType } from './field-type';
 
 export class Field implements IField {
   /** Constructor */
   constructor() {}
 
   public name = '';
+
   /** The field's notes */
   public notes: string;
+
   public type = FieldType.String;
+
   public subtype = FieldSubType.String.Default;
+
   public value = null;
+
   public primary = false;
+
   public unique = false;
+
   public label = false;
+
   public nullable = false;
+
   public multiple = false;
+
   public embedded = false;
+
   public searchable = false;
+
   public sortable = false;
+
   public hidden = false;
+
   public internal = false;
+
   public restricted = false;
+
   public ownership = false;
 
   public fromObject(object: IFieldBase): void {
@@ -104,10 +120,10 @@ export class Field implements IField {
   private getValueProperty(): string | string[] | null {
     if (this.type === FieldType.Entity) {
       return typeof this.value === 'string' ? this.value : null;
-    } else if (this.type === FieldType.Enum) {
+    } if (this.type === FieldType.Enum) {
       return this.value instanceof Array ? this.value : [];
-    } else {
+    } 
       return null;
-    }
+    
   }
 }

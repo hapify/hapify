@@ -1,9 +1,9 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { IInfo } from '@app/interfaces/info';
+import { InfoService } from '@app/services/info.service';
 import { ResizeService } from '@app/services/resize.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { InfoService } from '@app/services/info.service';
-import { IInfo } from '@app/interfaces/info';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,8 +12,11 @@ import { IInfo } from '@app/interfaces/info';
 })
 export class SidebarComponent implements OnInit, OnDestroy {
   @Input() reduced = false;
+
   unsubscribe = new Subject<void>();
+
   breakpoint = this.resizeService.currentBreakpoint;
+
   info: IInfo;
 
   constructor(

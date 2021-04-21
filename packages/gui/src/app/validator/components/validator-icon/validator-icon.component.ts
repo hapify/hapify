@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IModel } from '@app/model/interfaces/model';
 import { IChannel } from '@app/channel/interfaces/channel';
+import { IModel } from '@app/model/interfaces/model';
+
 import { ValidatorDetailsComponent } from '../validator-details/validator-details.component';
 
 @Component({

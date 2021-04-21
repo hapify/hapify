@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+
 // Components
 import { NewComponent } from './components/new/new.component';
 import { RootComponent } from './components/root/root.component';

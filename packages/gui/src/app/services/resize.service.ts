@@ -13,7 +13,9 @@ export interface Breakpoint {
 })
 export class ResizeService {
   wait = new Subject<void>();
+
   resizeEnd = new Subject<void>();
+
   breakpointChanges = new Subject<{
     previous: Breakpoint;
     current: Breakpoint;
@@ -47,6 +49,7 @@ export class ResizeService {
       maxWidth: Number.MAX_SAFE_INTEGER,
     },
   ];
+
   currentBreakpoint: Breakpoint = this.getCurrentBreakpoint();
 
   constructor() {

@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
-import { IValidatorResult } from '../interfaces/validator-result';
-import { IModel } from '@app/model/interfaces/model';
-import * as md5 from 'md5';
-import { WebSocketService } from '@app/services/websocket.service';
 import { WebSocketMessages } from '@app/interfaces/websocket-message';
+import { IModel } from '@app/model/interfaces/model';
+import { WebSocketService } from '@app/services/websocket.service';
+import * as md5 from 'md5';
+
+import { IValidatorResult } from '../interfaces/validator-result';
+
 
 @Injectable()
 export class ValidatorService {
   /** Constructor */
   constructor(private webSocketService: WebSocketService) {}
+
   /** Cache stack */
   private cache: { [key: string]: IValidatorResult } = {};
+
   /** Processes locks */
   private locks: { [key: string]: boolean } = {};
+
   /** Delay before retry */
   private lockDelay = 50;
 

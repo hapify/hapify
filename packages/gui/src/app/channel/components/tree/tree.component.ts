@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+
 import { TreeBranch } from '../../interfaces/tree-branch';
 
 @Component({
@@ -26,21 +27,31 @@ export class TreeComponent implements OnInit {
         this.types[branch.path] || TreeComponent.getType(branch); // Avoid re-compute
     });
   }
+
   get tree(): TreeBranch[] {
     return this.treeValue;
   }
 
   constructor() {}
+
   @Input() rootPath = '';
+
   @Input() selectedPath = '';
+
   @Input() addTemplateDisabled = false;
+
   @Output() selectBranch = new EventEmitter<TreeBranch>();
+
   @Output() addTemplate = new EventEmitter<string>();
+
   @Output() removeTemplate = new EventEmitter<TreeBranch>();
 
   newTemplatePath = '';
+
   private treeValue: TreeBranch[];
+
   isOpen: { [key: string]: boolean } = {};
+
   types: { [key: string]: string } = {};
 
   confirmDeletion = false;
@@ -70,10 +81,11 @@ export class TreeComponent implements OnInit {
   isSelected(branch: TreeBranch): boolean {
     if (this.selectedPath.endsWith('/')) {
       return this.selectedPath === `${branch.path}/`;
-    } else {
+    } 
       return this.selectedPath === branch.path;
-    }
+    
   }
+
   onAddTemplate(): void {
     if (this.addTemplateDisabled || this.newTemplatePath.length === 0) {
       return;

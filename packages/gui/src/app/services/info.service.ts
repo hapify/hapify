@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { WebSocketService } from '@app/services/websocket.service';
-import { WebSocketMessages } from '@app/interfaces/websocket-message';
-import { IInfo } from '@app/interfaces/info';
 import { Lock } from '@app/class/Lock';
+import { IInfo } from '@app/interfaces/info';
+import { WebSocketMessages } from '@app/interfaces/websocket-message';
+import { WebSocketService } from '@app/services/websocket.service';
 
 @Injectable()
 export class InfoService extends Lock {

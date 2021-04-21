@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
+import { WebSocketMessages } from '@app/interfaces/websocket-message';
+import { WebSocketService } from '@app/services/websocket.service';
+
 import { IModel } from '../../model/model.module';
-import { ITemplate } from '../interfaces/template';
 import { IChannel } from '../interfaces/channel';
 import { IGeneratorResult } from '../interfaces/generator-result';
-import { WebSocketService } from '@app/services/websocket.service';
-import { WebSocketMessages } from '@app/interfaces/websocket-message';
+import { ITemplate } from '../interfaces/template';
+
 
 @Injectable()
 export class GeneratorService {

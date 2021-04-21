@@ -1,26 +1,27 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '@app/shared/shared.module';
+import { HotkeyModule } from 'angular2-hotkeys';
+import { AceEditorModule } from 'ng2-ace-editor';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { AceEditorModule } from 'ng2-ace-editor';
-import { TranslateModuleLoad } from '../translate-import';
 
-import { ChannelComponent } from './components/channel/channel.component';
+import { TranslateModuleLoad } from '../translate-import';
+import { ValidatorEditorComponent } from '../validator/components/validator-editor/validator-editor.component';
 import { ChannelCardComponent } from './components/channel-card/channel-card.component';
-import { TemplateComponent } from './components/template/template.component';
-import { RootComponent } from './components/root/root.component';
+import { ChannelComponent } from './components/channel/channel.component';
 import { EditComponent } from './components/edit/edit.component';
 import { EditorComponent } from './components/editor/editor.component';
-import { ValidatorEditorComponent } from '../validator/components/validator-editor/validator-editor.component';
+import { RootComponent } from './components/root/root.component';
+import { TemplateComponent } from './components/template/template.component';
 // Services
-import { StorageService } from './services/storage.service';
-import { GeneratorService } from './services/generator.service';
-import { HotkeyModule } from 'angular2-hotkeys';
-// Directives
-import { SharedModule } from '@app/shared/shared.module';
 import { TreeComponent } from './components/tree/tree.component';
+import { GeneratorService } from './services/generator.service';
+import { StorageService } from './services/storage.service';
+// Directives
+
 
 @NgModule({
   imports: [

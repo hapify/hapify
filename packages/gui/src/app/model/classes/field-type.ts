@@ -2,12 +2,19 @@ import { ILabelledValue } from '../interfaces/labelled-value';
 
 export class FieldType {
   static Boolean = 'boolean';
+
   static Number = 'number';
+
   static String = 'string';
+
   static Enum = 'enum';
+
   static DateTime = 'datetime';
+
   static Entity = 'entity';
+
   static Object = 'object';
+
   static File = 'file';
 
   /** Get the list of available types with names */

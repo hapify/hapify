@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { StringService } from './string.service';
+
 import { ConfigService } from './config.service';
+import { StringService } from './string.service';
 
 declare const ace: any;
 
@@ -31,7 +32,7 @@ export class AceService {
    * Returns the mode for a path
    * Should parse path to extract extension (default: true)
    */
-  mode(path: string, parse: boolean = true): string {
+  mode(path: string, parse = true): string {
     const ext = parse ? this.stringService.extension(path) : path;
     if (ext && typeof this.modeMap[ext] === 'string') {
       return this.modeMap[ext];

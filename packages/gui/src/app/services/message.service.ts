@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslateService } from '@ngx-translate/core';
 import { RichError } from '@app/class/RichError';
+import { TranslateService } from '@ngx-translate/core';
 
 type MessageLevel = 'info' | 'success' | 'warning' | 'error';
 
@@ -15,8 +15,10 @@ export interface ErrorHandler {
 export class MessageService {
   /** A set of functions that can handle an error and skip the default behavior */
   private errorHandlers: ErrorHandler[] = [];
+
   /** Display duration */
   defaultDuration = 4000;
+
   /** Display duration for error */
   errorDuration = 8000;
 
@@ -25,28 +27,34 @@ export class MessageService {
     private translateService: TranslateService,
     public snackBar: MatSnackBar,
   ) {}
+
   /** Push an error handler to the set */
   addErrorHandler(handler: ErrorHandler): void {
     // Avoid conflict
     this.removeErrorHandler(handler.name);
     this.errorHandlers.push(handler);
   }
+
   /** Remove an error handler to the set */
   removeErrorHandler(name: string): void {
     this.errorHandlers = this.errorHandlers.filter((h) => h.name !== name);
   }
+
   /** Show info */
   info(message: string): void {
     this.show(message, 'info');
   }
+
   /** Show success */
   success(message: string): void {
     this.show(message, 'success');
   }
+
   /** Show warning */
   warning(message: string): void {
     this.show(message, 'warning');
   }
+
   /** Handle an error */
   error(error: Error, asWarning = false): void {
     // Try handlers first
@@ -71,6 +79,7 @@ export class MessageService {
     // Dump in console anyway
     console.error(error.message);
   }
+
   /** Log a message */
   log(message: string | any): void {
     console.log(message);

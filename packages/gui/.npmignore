@@ -8,6 +8,7 @@ e2e/
 .eslintignore
 .eslintrc.js
 .gitignore
+.prettierignore
 angular.json
 ERRORS.md
 karma.conf.js

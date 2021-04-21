@@ -13,7 +13,7 @@ Ce JSON est une représentation partielle de l'objet modèle réellement inject�
 
 !!! seealso "Voir aussi"
     Si vous voulez connaître la structure complète de l'objet modèle, vous pouvez vous référer à la [documentation de l'objet modèle](./model-object.md),
-    ou bien à l'interface TypeScript `ExplicitModel` dans le [code source](https://github.com/hapify/generator/blob/master/src/interfaces.ts) de `hapify/generator`.
+    ou bien à l'interface TypeScript `ExplicitModel` dans le [code source](https://github.com/hapify/hapify/blob/master/packages/generator/src/Interfaces.ts) de `hapify/generator`.
 
 ```json
 {

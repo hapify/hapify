@@ -4,8 +4,6 @@
 
 This package allows you to generate code using Hapify models and Hapify or JavaScript code templates.
 
-[![Build Status](https://travis-ci.org/hapify/generator.svg?branch=master)](https://travis-ci.org/hapify/generator) [![codecov](https://codecov.io/gh/hapify/generator/branch/master/graph/badge.svg)](https://codecov.io/gh/hapify/generator)
-
 ## Usage
 
 ```typescript
@@ -68,4 +66,4 @@ const path = Generator.path('/path/to/{camel}', models[0]); // '/path/to/placeBo
 
 ## More
 
-For more information about this module, please refer to the [online documentation](https://docs.hapify.io/en/latest/).
+For more information about this module, please refer to the [online documentation](https://docs.hapify.io/).

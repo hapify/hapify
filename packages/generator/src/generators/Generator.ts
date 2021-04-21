@@ -376,10 +376,10 @@ export class Generator {
     // Get and format fields
     const fields = model.fields.map((f) => {
       const explicitField: ExplicitField = {
+        ...f,
         names: StringVariants(f.name),
         notes: this.getNotes(f),
-        hasNotes: this.hasNotes(f),
-        ...f,
+        hasNotes: this.hasNotes(f)
       };
       // Deal with enums
       if (f.type === 'enum' && f.value) {

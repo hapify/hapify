@@ -1,0 +1,6 @@
+<% if (model.hasNotes) { %>// <%= model.notes %><% } %>
+export class <%= model.names.pascal %> {
+<% for (const field of model.fields.list) { -%>
+    public <%= field.names.camel %>; <% if (field.hasNotes) { %>// <%= field.notes %><% } %>
+<% } %>
+}

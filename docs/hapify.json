@@ -210,6 +210,26 @@
       "input": "one"
     },
     {
+      "path": "template-writing/notes/ejs.ts",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/notes/hapify-long.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/notes/hapify-short.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/notes/javascript.ts",
+      "engine": "js",
+      "input": "one"
+    },
+    {
       "path": "template-writing/referenced-in-condition/ejs.js",
       "engine": "ejs",
       "input": "one"

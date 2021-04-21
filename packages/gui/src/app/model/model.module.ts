@@ -18,35 +18,38 @@ import { HeaderComponent } from './components/header/header.component';
 // Services
 import { StorageService } from './services/storage.service';
 import { SharedModule } from '@app/shared/shared.module';
-import { PresetModule, RootComponent as PresetRootComponent } from '@app/preset/preset.module';
+import {
+  PresetModule,
+  RootComponent as PresetRootComponent,
+} from '@app/preset/preset.module';
 import { ModelService } from '@app/preset/services/model.service';
 import { MessageService } from '@app/services/message.service';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		FormsModule,
-		RouterModule,
-		ReactiveFormsModule,
-		TranslateModuleLoad(),
-		TooltipModule.forRoot(),
-		AlertModule.forRoot(),
-		SharedModule,
-		PresetModule,
-	],
-	declarations: [
-		ModelComponent,
-		FieldComponent,
-		ModelLightComponent,
-		FieldLightComponent,
-		NewComponent,
-		RootComponent,
-		ValidatorIconComponent,
-		ValidatorDetailsComponent,
-		HeaderComponent,
-	],
-	providers: [StorageService, ModelService, MessageService],
-	entryComponents: [PresetRootComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    ReactiveFormsModule,
+    TranslateModuleLoad(),
+    TooltipModule.forRoot(),
+    AlertModule.forRoot(),
+    SharedModule,
+    PresetModule,
+  ],
+  declarations: [
+    ModelComponent,
+    FieldComponent,
+    ModelLightComponent,
+    FieldLightComponent,
+    NewComponent,
+    RootComponent,
+    ValidatorIconComponent,
+    ValidatorDetailsComponent,
+    HeaderComponent,
+  ],
+  providers: [StorageService, ModelService, MessageService],
+  entryComponents: [PresetRootComponent],
 })
 export class ModelModule {}
 

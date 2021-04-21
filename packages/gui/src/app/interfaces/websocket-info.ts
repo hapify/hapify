@@ -1,3 +1,3 @@
 export interface IWebSocketInfo {
-	url: string;
+  url: string;
 }

@@ -5,30 +5,33 @@ import { IModel } from '@app/model/interfaces/model';
 import { MessageService } from '@app/services/message.service';
 
 interface PresetMergeResults {
-	created: IModel[];
-	updated: IModel[];
+  created: IModel[];
+  updated: IModel[];
 }
 
 @Component({
-	selector: 'app-preset-root',
-	templateUrl: './root.component.html',
-	styleUrls: ['./root.component.scss'],
+  selector: 'app-preset-root',
+  templateUrl: './root.component.html',
+  styleUrls: ['./root.component.scss'],
 })
 export class RootComponent implements OnInit {
-	@Output() presetApplied = new EventEmitter<PresetMergeResults>();
+  @Output() presetApplied = new EventEmitter<PresetMergeResults>();
 
-	/** Constructor */
-	constructor(private storageService: StorageService, private messageService: MessageService) {}
+  /** Constructor */
+  constructor(
+    private storageService: StorageService,
+    private messageService: MessageService,
+  ) {}
 
-	/** Preset instances */
-	public presets: IPreset[];
+  /** Preset instances */
+  public presets: IPreset[];
 
-	ngOnInit(): void {
-		this.updatePresets().catch((error) => this.messageService.error(error));
-	}
+  ngOnInit(): void {
+    this.updatePresets().catch((error) => this.messageService.error(error));
+  }
 
-	/** Update presets with storage */
-	protected async updatePresets(): Promise<void> {
-		this.presets = await this.storageService.list();
-	}
+  /** Update presets with storage */
+  protected async updatePresets(): Promise<void> {
+    this.presets = await this.storageService.list();
+  }
 }

@@ -1,4 +1,4 @@
 export interface ILabelledValue {
-	name: string;
-	value: string | null;
+  name: string;
+  value: string | null;
 }

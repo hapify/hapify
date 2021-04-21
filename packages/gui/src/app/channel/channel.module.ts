@@ -23,29 +23,29 @@ import { SharedModule } from '@app/shared/shared.module';
 import { TreeComponent } from './components/tree/tree.component';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		FormsModule,
-		RouterModule,
-		ReactiveFormsModule,
-		AceEditorModule,
-		TranslateModuleLoad(),
-		TooltipModule.forRoot(),
-		AlertModule.forRoot(),
-		HotkeyModule,
-		SharedModule,
-	],
-	declarations: [
-		ChannelComponent,
-		TemplateComponent,
-		RootComponent,
-		EditComponent,
-		ChannelCardComponent,
-		EditorComponent,
-		ValidatorEditorComponent,
-		TreeComponent,
-	],
-	providers: [StorageService, GeneratorService],
+  imports: [
+    CommonModule,
+    FormsModule,
+    RouterModule,
+    ReactiveFormsModule,
+    AceEditorModule,
+    TranslateModuleLoad(),
+    TooltipModule.forRoot(),
+    AlertModule.forRoot(),
+    HotkeyModule,
+    SharedModule,
+  ],
+  declarations: [
+    ChannelComponent,
+    TemplateComponent,
+    RootComponent,
+    EditComponent,
+    ChannelCardComponent,
+    EditorComponent,
+    ValidatorEditorComponent,
+    TreeComponent,
+  ],
+  providers: [StorageService, GeneratorService],
 })
 export class ChannelModule {}
 

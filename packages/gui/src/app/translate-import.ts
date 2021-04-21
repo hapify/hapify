@@ -8,15 +8,15 @@ import { ModuleWithProviders } from '@angular/core';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-	return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http);
 }
 
 export function TranslateModuleLoad(): ModuleWithProviders<TranslateModule> {
-	return TranslateModule.forRoot({
-		loader: {
-			provide: TranslateLoader,
-			useFactory: HttpLoaderFactory,
-			deps: [HttpClient],
-		},
-	});
+  return TranslateModule.forRoot({
+    loader: {
+      provide: TranslateLoader,
+      useFactory: HttpLoaderFactory,
+      deps: [HttpClient],
+    },
+  });
 }

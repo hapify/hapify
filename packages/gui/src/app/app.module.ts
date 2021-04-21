@@ -23,48 +23,59 @@ import { ChannelModule } from './channel/channel.module';
 import { ModelModule } from './model/model.module';
 import { WebSocketService } from './services/websocket.service';
 import { SharedModule } from '@app/shared/shared.module';
-import { PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface, PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import {
+  PERFECT_SCROLLBAR_CONFIG,
+  PerfectScrollbarConfigInterface,
+  PerfectScrollbarModule,
+} from 'ngx-perfect-scrollbar';
 import { MessageService } from '@app/services/message.service';
 import { InfoService } from '@app/services/info.service';
 import { DialogPremiumComponent } from './components/common/dialog-premium/dialog-premium.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
-	suppressScrollX: true,
+  suppressScrollX: true,
 };
 
 @NgModule({
-	declarations: [AppComponent, ModelComponent, ChannelComponent, SidebarComponent, HeaderComponent, DialogPremiumComponent],
-	imports: [
-		BrowserModule,
-		AppRoutingModule,
-		HttpClientModule,
-		TranslateModuleLoad(),
-		TooltipModule.forRoot(),
-		AlertModule.forRoot(),
-		AceEditorModule,
-		FormsModule,
-		HotkeyModule.forRoot(),
-		ChannelModule,
-		ModelModule,
-		SharedModule,
-		PerfectScrollbarModule,
-		BrowserAnimationsModule,
-	],
-	providers: [
-		ConfigService,
-		StringService,
-		AceService,
-		ValidatorService,
-		WebSocketService,
-		MessageService,
-		InfoService,
-		{
-			provide: PERFECT_SCROLLBAR_CONFIG,
-			useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
-		},
-	],
-	bootstrap: [AppComponent],
-	entryComponents: [DialogPremiumComponent],
+  declarations: [
+    AppComponent,
+    ModelComponent,
+    ChannelComponent,
+    SidebarComponent,
+    HeaderComponent,
+    DialogPremiumComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    TranslateModuleLoad(),
+    TooltipModule.forRoot(),
+    AlertModule.forRoot(),
+    AceEditorModule,
+    FormsModule,
+    HotkeyModule.forRoot(),
+    ChannelModule,
+    ModelModule,
+    SharedModule,
+    PerfectScrollbarModule,
+    BrowserAnimationsModule,
+  ],
+  providers: [
+    ConfigService,
+    StringService,
+    AceService,
+    ValidatorService,
+    WebSocketService,
+    MessageService,
+    InfoService,
+    {
+      provide: PERFECT_SCROLLBAR_CONFIG,
+      useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG,
+    },
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [DialogPremiumComponent],
 })
 export class AppModule {}

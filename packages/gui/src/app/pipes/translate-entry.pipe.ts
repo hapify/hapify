@@ -2,19 +2,21 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Pipe({
-	name: 'translateEntry',
-	pure: false,
+  name: 'translateEntry',
+  pure: false,
 })
 export class TranslateEntryPipe implements PipeTransform {
-	constructor(private translateService: TranslateService) {}
+  constructor(private translateService: TranslateService) {}
 
-	transform(value: any, args?: any): any {
-		if (this.translateService.currentLang !== this.translateService.defaultLang) {
-			const key = `${args}__${this.translateService.currentLang}`;
-			if (value[key]) {
-				return value[key];
-			}
-		}
-		return value[args];
-	}
+  transform(value: any, args?: any): any {
+    if (
+      this.translateService.currentLang !== this.translateService.defaultLang
+    ) {
+      const key = `${args}__${this.translateService.currentLang}`;
+      if (value[key]) {
+        return value[key];
+      }
+    }
+    return value[args];
+  }
 }

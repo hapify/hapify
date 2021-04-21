@@ -8,25 +8,25 @@ import { CHANNEL_ROUTES, ChannelModule } from './channel/channel.module';
 import { ChannelComponent } from './components/channel/channel.component';
 
 export const routes: Routes = [
-	{
-		path: '',
-		redirectTo: '/model',
-		pathMatch: 'full',
-	},
-	{
-		path: 'model',
-		component: ModelComponent,
-		children: MODEL_ROUTES,
-	},
-	{
-		path: 'channel',
-		component: ChannelComponent,
-		children: CHANNEL_ROUTES,
-	},
+  {
+    path: '',
+    redirectTo: '/model',
+    pathMatch: 'full',
+  },
+  {
+    path: 'model',
+    component: ModelComponent,
+    children: MODEL_ROUTES,
+  },
+  {
+    path: 'channel',
+    component: ChannelComponent,
+    children: CHANNEL_ROUTES,
+  },
 ];
 
 @NgModule({
-	imports: [ModelModule, ChannelModule, RouterModule.forRoot(routes)],
-	exports: [RouterModule],
+  imports: [ModelModule, ChannelModule, RouterModule.forRoot(routes)],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

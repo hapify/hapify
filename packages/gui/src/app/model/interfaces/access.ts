@@ -6,17 +6,17 @@
  *  - guest (Denotes if the access is not restricted)
  */
 export class Access {
-	static GUEST = 'guest';
-	static AUTHENTICATED = 'auth';
-	static OWNER = 'owner';
-	static ADMIN = 'admin';
+  static GUEST = 'guest';
+  static AUTHENTICATED = 'auth';
+  static OWNER = 'owner';
+  static ADMIN = 'admin';
 }
 
 export interface IAccesses {
-	create: string;
-	read: string;
-	update: string;
-	remove: string;
-	search: string;
-	count: string;
+  create: string;
+  read: string;
+  update: string;
+  remove: string;
+  search: string;
+  count: string;
 }

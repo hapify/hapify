@@ -1,4 +1,4 @@
 export interface IValidatorResult {
-	errors: string[];
-	warnings: string[];
+  errors: string[];
+  warnings: string[];
 }

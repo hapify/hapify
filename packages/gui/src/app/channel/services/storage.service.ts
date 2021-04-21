@@ -6,25 +6,25 @@ import { WebSocketMessages } from '@app/interfaces/websocket-message';
 
 @Injectable()
 export class StorageService extends BaseStorageService<IChannel> {
-	protected instance(): IChannel {
-		return new Channel();
-	}
-	protected getMessageId(): string {
-		return WebSocketMessages.GET_CHANNELS;
-	}
-	protected setMessageId(): string {
-		return WebSocketMessages.SET_CHANNELS;
-	}
-	list(): Promise<IChannel[]> {
-		return super.list();
-	}
-	find(id: string): Promise<IChannel> {
-		return super.find(id);
-	}
-	sort(instances: IChannel[]): void {
-		instances.sort((a, b) => a.name.localeCompare(b.name));
-		for (const instance of instances) {
-			instance.templates.sort((a, b) => a.path.localeCompare(b.path));
-		}
-	}
+  protected instance(): IChannel {
+    return new Channel();
+  }
+  protected getMessageId(): string {
+    return WebSocketMessages.GET_CHANNELS;
+  }
+  protected setMessageId(): string {
+    return WebSocketMessages.SET_CHANNELS;
+  }
+  list(): Promise<IChannel[]> {
+    return super.list();
+  }
+  find(id: string): Promise<IChannel> {
+    return super.find(id);
+  }
+  sort(instances: IChannel[]): void {
+    instances.sort((a, b) => a.name.localeCompare(b.name));
+    for (const instance of instances) {
+      instance.templates.sort((a, b) => a.path.localeCompare(b.path));
+    }
+  }
 }

@@ -6,22 +6,22 @@ import { WebSocketMessages } from '@app/interfaces/websocket-message';
 
 @Injectable()
 export class StorageService extends BaseStorageService<IPreset> {
-	protected instance(): IPreset {
-		return new Preset();
-	}
-	protected getMessageId(): string {
-		return WebSocketMessages.GET_PRESETS;
-	}
-	protected setMessageId(): string {
-		return WebSocketMessages.NA;
-	}
-	list(): Promise<IPreset[]> {
-		return super.list();
-	}
-	find(id: string): Promise<IPreset> {
-		return super.find(id);
-	}
-	sort(instances: IPreset[]): void {
-		instances.sort((a, b) => a.name.localeCompare(b.name));
-	}
+  protected instance(): IPreset {
+    return new Preset();
+  }
+  protected getMessageId(): string {
+    return WebSocketMessages.GET_PRESETS;
+  }
+  protected setMessageId(): string {
+    return WebSocketMessages.NA;
+  }
+  list(): Promise<IPreset[]> {
+    return super.list();
+  }
+  find(id: string): Promise<IPreset> {
+    return super.find(id);
+  }
+  sort(instances: IPreset[]): void {
+    instances.sort((a, b) => a.name.localeCompare(b.name));
+  }
 }

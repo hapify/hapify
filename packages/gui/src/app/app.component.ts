@@ -5,11 +5,14 @@ import {
   Renderer2,
   ViewChild,
 } from '@angular/core';
-import { MessageService } from '@app/services/message.service';
-import { ResizeService } from '@app/services/resize.service';
 import { TranslateService } from '@ngx-translate/core';
 
 import { WebSocketService } from './services/websocket.service';
+
+import { MessageService } from '@app/services/message.service';
+import { ResizeService } from '@app/services/resize.service';
+// eslint-disable-next-line import/order
+import Timeout = NodeJS.Timeout;
 
 @Component({
   selector: 'app-root',
@@ -23,7 +26,7 @@ export class AppComponent implements OnInit {
 
   @ViewChild('scrollzone') scrollzone: ElementRef;
 
-  scrollTimeout;
+  scrollTimeout: Timeout;
 
   constructor(
     private translate: TranslateService,

@@ -19,9 +19,15 @@ Before reading this article, we recommend you to read the documentation about [H
     export type <<Model pascal>><<field pascal>>Enum =<<for field.enum e>> | '<<e snake>>'<<endfor>>;
     <<endfor>>
      
+    <<if Model hasNotes>>
+    /** <<! Model>> */
+    <<endif>>
     export class <<Model pascal>> {
      
         <<for Fields not primary field>>
+            <<if field hasNotes>>
+        /** <<! field>> */
+            <<endif>>
             <<if field entity>>
         private <<field camel>>: number<<if field multiple>>[]<<endif>>;
             <<elseif field enum>>
@@ -78,7 +84,7 @@ Before reading this article, we recommend you to read the documentation about [H
     import {Service} from './Service';
     import {User} from './User';
     
-     
+    /** Represent a restaurant */
     export class Place {
     
         public name: string;
@@ -86,7 +92,9 @@ Before reading this article, we recommend you to read the documentation about [H
         private categories: number[];
         public address1: string;
         public address2: string;
+        /** Inferred from address fields */
         public latitude: number;
+        /** Inferred from address fields */
         public longitude: number;
         public phone: string;
         public websiteUrl: string;
@@ -124,12 +132,15 @@ Before reading this article, we recommend you to read the documentation about [H
     ```typescript
     export type UserRoleEnum = | 'admin' | 'user';
     
+    /** Represent a customer */
     export class User {
     
         public name: string;
         public email: string;
+        /** Hashed using BCrpyt */
         public password: string;
         public role: UserRoleEnum;
+        /** Allow admins to disable this user */
         public banned: boolean;
         public lastConnectedAt: Date;
     

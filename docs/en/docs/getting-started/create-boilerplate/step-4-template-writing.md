@@ -767,6 +767,78 @@ The second iteration loops over all the entity relations contained in these depe
     await db.collection('ConversationReport').deleteMany({ defendant: id });
     ```
 
+## Notes
+
+It is possible to add notes to a field or a model.
+Here is how to find them in the templates:
+
+=== "Hapify (long)"
+
+    ```hapify
+    <<if Model hasNotes>>// <<! Model>><<endif>>
+    export class <<Model pascal>> {
+        <<for Fields field>>
+        public <<field camel>>; <<if field hasNotes>>// <<! field>><<endif>>
+        <<endfor>>
+    }
+    ```
+
+=== "Hapify (short)"
+
+    ```hapify
+    <<? M hN>>// <<! M>><<?>>
+    export class <<M AA>> {
+        <<@ F f>>
+        public <<f aA>>; <<? f hN>>// <<! f>><<?>>
+        <<@>>
+    }
+    ```
+
+=== "EJS"
+
+    ```js
+    <% if (model.hasNotes) { %>// <%= model.notes %><% } %>
+    export class <%= model.names.pascal %> {
+    <% for (const field of model.fields.list) { -%>
+        public <%= field.names.camel %>; <% if (field.hasNotes) { %>// <%= field.notes %><% } %>
+    <% } %>
+    }
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    if (model.hasNotes) { output += `// ${model.notes}\n`; }
+    output += `export class ${model.names.pascal} {
+    ${getFields()}}`;
+    
+    function getFields() {
+        let fields = '';
+        for (const field of model.fields.list) {
+            fields += `    public ${field.names.camel};`;
+            if (field.hasNotes) { fields += ` // ${field.notes}`; }
+            fields += `\n`;
+        }
+        return fields;
+    }
+    return output;
+    ```
+
+=== "Output"
+
+    ```typescript
+    // A user can only list its own bookmarks
+    export class Bookmark {
+        public id;
+        public owner; // Current user when creating the bookmark
+        public place;
+    }
+    ```
+
+!!! tip "Tip"
+    With the Hapify syntax it is also possible to display notes using interpolation: `#!hapify <<= root.notes >>` or `#!hapify <<= model.notes >>` for a model or `#!hapify <<= field.notes >>` for a field.
+
 ## Exclusion of generated files
 
 It is possible to exclude some files from the generation.

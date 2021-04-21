@@ -198,7 +198,9 @@ export interface ExplicitReferenceModel extends BaseExplicitModel {
 }
 export type ExplicitEnum = NameInterpolable;
 export interface ExplicitField<T extends FieldType = FieldType>
-  extends Field<T>, NameInterpolable, Annotated {
+  extends Field<T>,
+    NameInterpolable,
+    Annotated {
   // Redefine notes to force interface conflict
   notes: string;
 }

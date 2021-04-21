@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## @hapify/cli [1.1.1](https://github.com/hapify/hapify/compare/@hapify/cli@1.1.0...@hapify/cli@1.1.1) (2021-04-21)
+
+
+### Bug Fixes
+
+* **cli:** add #! in bin file ([#21](https://github.com/hapify/hapify/issues/21)) ([77438d1](https://github.com/hapify/hapify/commit/77438d1e78cbca31e8292fa5d07f37767c4b20d0))
+
 # @hapify/cli [1.1.0](https://github.com/hapify/hapify/compare/@hapify/cli@1.0.0...@hapify/cli@1.1.0) (2021-04-21)
 
 

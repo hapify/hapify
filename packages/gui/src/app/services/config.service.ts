@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+
 import { environment } from '@env/environment';
+
+declare const location: Location;
 
 @Injectable()
 export class ConfigService {
-  constructor() {}
-
   /** Get the base path for ace */
   getAceBaseUri(): string {
     return environment.ace.baseUri;
@@ -17,7 +18,7 @@ export class ConfigService {
 
   /** Returns the ws info url */
   getWebSocketInfoUrl(): string {
-    const uri = environment.cli.wsInfoUri as string;
+    const uri = environment.cli.wsInfoUri;
     return uri.startsWith('http')
       ? uri
       : `${location.protocol}//${location.host}${uri}`;

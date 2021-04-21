@@ -6,14 +6,15 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+import { ValidatorService } from '../../services/validator.service';
+
 import { IChannel } from '@app/channel/interfaces/channel';
 import { StorageService as ChannelStorageService } from '@app/channel/services/storage.service';
 import { IModel } from '@app/model/interfaces/model';
 import { StorageService as ModelStorageService } from '@app/model/services/storage.service';
 import { MessageService } from '@app/services/message.service';
-import { Subscription } from 'rxjs';
-
-import { ValidatorService } from '../../services/validator.service';
 
 @Component({
   selector: 'app-validator-details',

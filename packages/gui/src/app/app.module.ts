@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InfoService } from '@app/services/info.service';
-import { MessageService } from '@app/services/message.service';
-import { SharedModule } from '@app/shared/shared.module';
 import { HotkeyModule } from 'angular2-hotkeys';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { AlertModule } from 'ngx-bootstrap/alert';
@@ -31,6 +28,10 @@ import { StringService } from './services/string.service';
 import { WebSocketService } from './services/websocket.service';
 import { TranslateModuleLoad } from './translate-import';
 import { ValidatorService } from './validator/services/validator.service';
+
+import { InfoService } from '@app/services/info.service';
+import { MessageService } from '@app/services/message.service';
+import { SharedModule } from '@app/shared/shared.module';
 // Components
 // Services
 

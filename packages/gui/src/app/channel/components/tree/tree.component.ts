@@ -21,7 +21,7 @@ export class TreeComponent implements OnInit {
       return a.name.localeCompare(b.name);
     });
     this.treeValue = value;
-    this.treeValue.map((branch) => {
+    this.treeValue.forEach((branch) => {
       this.isOpen[branch.path] = this.isOpen[branch.path] || false;
       this.types[branch.path] =
         this.types[branch.path] || TreeComponent.getType(branch); // Avoid re-compute
@@ -31,8 +31,6 @@ export class TreeComponent implements OnInit {
   get tree(): TreeBranch[] {
     return this.treeValue;
   }
-
-  constructor() {}
 
   @Input() rootPath = '';
 
@@ -72,7 +70,7 @@ export class TreeComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.selectedPath.length) {
-      this.treeValue.map((branch) => {
+      this.treeValue.forEach((branch) => {
         this.isOpen[branch.path] = this.selectedPath.startsWith(branch.path);
       });
     }

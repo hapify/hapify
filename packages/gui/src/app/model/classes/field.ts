@@ -4,9 +4,6 @@ import { FieldSubType } from './field-subtype';
 import { FieldType } from './field-type';
 
 export class Field implements IField {
-  /** Constructor */
-  constructor() {}
-
   public name = '';
 
   /** The field's notes */
@@ -16,7 +13,7 @@ export class Field implements IField {
 
   public subtype = FieldSubType.String.Default;
 
-  public value = null;
+  public value: string | string[] | null = null;
 
   public primary = false;
 

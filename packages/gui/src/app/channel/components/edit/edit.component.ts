@@ -7,6 +7,8 @@ import { ITemplate } from '../../interfaces/template';
 import { GeneratorService } from '../../services/generator.service';
 import { StorageService } from '../../services/storage.service';
 
+import { MessageService } from '@app/services/message.service';
+
 @Component({
   selector: 'app-channel-edit',
   templateUrl: './edit.component.html',
@@ -28,21 +30,26 @@ export class EditComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private storageService: StorageService,
     private injector: Injector,
+    private messageService: MessageService,
   ) {
     // Avoid circular dependency
     this.generatorService = this.injector.get(GeneratorService);
   }
 
   ngOnInit(): void {
-    this.paramsSubcription = this.route.params.subscribe(async (params) => {
+    this.paramsSubcription = this.route.params.subscribe((params) => {
       // Get channel id
       const { id } = params;
       // Load channel
-      const channel = await this.storageService.find(id);
-      // Bind the channel if any
-      if (channel) {
-        this.channel = channel;
-      }
+      this.storageService
+        .find(id)
+        .then((channel) => {
+          // Bind the channel if any
+          if (channel) {
+            this.channel = channel;
+          }
+        })
+        .catch((error) => this.messageService.error(error));
     });
   }
 

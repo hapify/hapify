@@ -4,12 +4,6 @@ import { IModel, IModelBase } from '../interfaces/model';
 import { Field } from './field';
 
 export class Model implements IModel {
-  /**
-   * Constructor
-   * Auto-generate unique id
-   */
-  constructor() {}
-
   public id: string;
 
   public name = '';

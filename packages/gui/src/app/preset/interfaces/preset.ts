@@ -1,6 +1,6 @@
-import { IStorable, IStorableBase } from '@app/interfaces/storable';
+import type { IModel, IModelBase } from '../../model/model.module';
 
-import { IModel, IModelBase } from '../../model/model.module';
+import { IStorable, IStorableBase } from '@app/interfaces/storable';
 
 export interface IPresetBase extends IStorableBase {
   /** The preset icon */
@@ -23,4 +23,9 @@ export interface IPreset extends IPresetBase, IStorable {
 
   /** Convert the instance to an object */
   toObject(): IPresetBase;
+}
+
+export interface PresetMergeResults {
+  created: IModel[];
+  updated: IModel[];
 }

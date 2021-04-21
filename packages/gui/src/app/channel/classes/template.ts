@@ -26,7 +26,7 @@ export class Template implements ITemplate {
   private static split(path: string): string[] {
     return path
       .trim()
-      .split(/[\/\\]/g)
+      .split(/[/\\]/g)
       .filter((x) => x.length);
   }
 

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+
 import { Lock } from '@app/class/Lock';
 import { IInfo } from '@app/interfaces/info';
 import { WebSocketMessages } from '@app/interfaces/websocket-message';

@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from '@app/shared/shared.module';
 import { HotkeyModule } from 'angular2-hotkeys';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { AlertModule } from 'ngx-bootstrap/alert';
@@ -20,6 +19,8 @@ import { TemplateComponent } from './components/template/template.component';
 import { TreeComponent } from './components/tree/tree.component';
 import { GeneratorService } from './services/generator.service';
 import { StorageService } from './services/storage.service';
+
+import { SharedModule } from '@app/shared/shared.module';
 // Directives
 
 @NgModule({

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { WebSocketMessages } from '@app/interfaces/websocket-message';
-import { WebSocketService } from '@app/services/websocket.service';
 
 import { IModel } from '../../model/model.module';
 import { IChannel } from '../interfaces/channel';
 import { IGeneratorResult } from '../interfaces/generator-result';
 import { ITemplate } from '../interfaces/template';
+
+import { WebSocketMessages } from '@app/interfaces/websocket-message';
+import { WebSocketService } from '@app/services/websocket.service';
 
 @Injectable()
 export class GeneratorService {
@@ -51,10 +52,7 @@ export class GeneratorService {
       }
       data.model = model.id;
     }
-    return await this.webSocketService.send(
-      WebSocketMessages.PREVIEW_TEMPLATE,
-      data,
-    );
+    return this.webSocketService.send(WebSocketMessages.PREVIEW_TEMPLATE, data);
   }
 
   /**
@@ -69,9 +67,6 @@ export class GeneratorService {
       }
       data.model = model.id;
     }
-    return await this.webSocketService.send(
-      WebSocketMessages.PREVIEW_PATH,
-      data,
-    );
+    return this.webSocketService.send(WebSocketMessages.PREVIEW_PATH, data);
   }
 }

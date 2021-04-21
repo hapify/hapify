@@ -11,11 +11,9 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { RichError } from '@app/class/RichError';
-import { AceService } from '@app/services/ace.service';
-import { MessageService } from '@app/services/message.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Hotkey, HotkeysService } from 'angular2-hotkeys';
+import { AceEditorComponent } from 'ng2-ace-editor';
 
 import {
   IModel,
@@ -24,6 +22,12 @@ import {
 import { IGeneratorResult } from '../../interfaces/generator-result';
 import { ITemplate } from '../../interfaces/template';
 import { GeneratorService } from '../../services/generator.service';
+
+import { RichError } from '@app/class/RichError';
+import { AceService } from '@app/services/ace.service';
+import { MessageService } from '@app/services/message.service';
+
+declare function confirm(message: string): void;
 
 @Component({
   selector: 'app-channel-editor',
@@ -91,7 +95,7 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
   ];
 
   /** Left editor */
-  @ViewChild('editorInput') editorInput;
+  @ViewChild('editorInput') editorInput: AceEditorComponent;
 
   /** Constructor */
   constructor(
@@ -116,9 +120,9 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
     });
 
     // Unloading message
-    this.translateService
-      .get('common_unload_warning')
-      .subscribe((value) => (this.beforeUnloadWarning = value));
+    this.translateService.get('common_unload_warning').subscribe((value) => {
+      this.beforeUnloadWarning = value;
+    });
 
     // Save on Ctrl+S
     this.saveHotKeys = this.hotKeysService.add(
@@ -132,14 +136,17 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
     this.wip = this.template.clone();
 
     // Get all models
-    this.modelStorageService.list().then((models) => {
-      this.models = models;
-      if (this.wip.needsModel()) {
-        this.model = this.models[0];
-      }
-      // Generate
-      this.generate();
-    });
+    this.modelStorageService
+      .list()
+      .then((models) => {
+        this.models = models;
+        if (this.wip.needsModel()) {
+          [this.model] = this.models;
+        }
+        // Generate
+        this.generate();
+      })
+      .catch((error) => this.messageService.error(error));
   }
 
   /** Destroy */
@@ -260,7 +267,7 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   /** Call when the user click on "dump" */
-  async didClickDump(): Promise<void> {
+  didClickDump(): void {
     // @todo Dump in popin
     this.messageService.info('To be implemented');
   }
@@ -272,6 +279,8 @@ export class EditorComponent implements OnInit, OnDestroy, AfterViewInit {
       return;
     }
     event.returnValue = this.beforeUnloadWarning;
+    // Return a value for Safari
+    // eslint-disable-next-line consistent-return
     return this.beforeUnloadWarning;
   }
 }

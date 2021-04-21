@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { RichError } from '@app/class/RichError';
 import { Observable, Subject, Subscription } from 'rxjs';
 
 import { IWebSocketInfo } from '../interfaces/websocket-info';
 import { IWebSocketMessage } from '../interfaces/websocket-message';
 import { ConfigService } from './config.service';
 import { MessageService } from './message.service';
+
+import { RichError } from '@app/class/RichError';
 
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
@@ -67,7 +68,8 @@ export class WebSocketService {
           },
         ),
       );
-      return await this.handshake(this.reconnectDelay);
+      await this.handshake(this.reconnectDelay);
+      return;
     }
 
     this.ws = new WebSocket(wsInfo.url);
@@ -90,7 +92,9 @@ export class WebSocketService {
           },
         ),
       );
-      this.handshake(this.reconnectDelay);
+      this.handshake(this.reconnectDelay).catch((error) =>
+        this.messageService.error(error),
+      );
     };
     this.ws.onerror = (event: ErrorEvent) => {
       this.messageService.error(
@@ -101,7 +105,7 @@ export class WebSocketService {
       );
     };
     // Wait for opening
-    await new Promise((resolve) => {
+    await new Promise<void>((resolve) => {
       this.ws.onopen = () => {
         resolve();
       };
@@ -116,7 +120,7 @@ export class WebSocketService {
   /** Send a message to the server and wait for a response */
   async send(id: string, data = {}, timeout = MINUTE): Promise<any> {
     await this.waitOpened();
-    return await new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       // Declare subs
       let subscription: Subscription;
       let timeoutSub: any;
@@ -127,6 +131,7 @@ export class WebSocketService {
         tag: WebSocketService.makeTag(),
       };
       // Create listener
+      // eslint-disable-next-line prefer-const
       subscription = this.messageObservable.subscribe(
         (response: IWebSocketMessage) => {
           // Wait for the same response

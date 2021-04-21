@@ -6,13 +6,14 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { Field } from '@app/model/classes/field';
-import { IField } from '@app/model/interfaces/field';
 import { Hotkey, HotkeysService } from 'angular2-hotkeys';
 
-import { Access } from '../../interfaces/access';
+import { Access, AccessType } from '../../interfaces/access';
 import { ILabelledValue } from '../../interfaces/labelled-value';
 import { ModelLightComponent } from '../model-light/model-light.component';
+
+import { Field } from '@app/model/classes/field';
+import { IField } from '@app/model/interfaces/field';
 
 interface IAccessValue {
   selected: boolean;
@@ -127,13 +128,16 @@ export class ModelComponent
   }
 
   /** Called when the user changes a access */
-  onAccessChange(action: string, access: ILabelledValue): void {
+  onAccessChange(action: AccessType, access: ILabelledValue): void {
     this.model.accesses[action] = access.value;
     this.onModelChange();
   }
 
   /** Denotes if the access should be highlighted */
-  private isAccessSelected(action: string, access: ILabelledValue): boolean {
+  private isAccessSelected(
+    action: AccessType,
+    access: ILabelledValue,
+  ): boolean {
     return (
       AccessesIndex[this.model.accesses[action]] >= AccessesIndex[access.value]
     );
@@ -142,7 +146,7 @@ export class ModelComponent
   /** Compute actions selected actions for this model */
   private updateActions(): void {
     this.actions = Object.keys(this.model.accesses).map(
-      (action: string): IActionValue => ({
+      (action: AccessType): IActionValue => ({
         name: action,
         accesses: Accesses.map((access) => ({
           selected: this.isAccessSelected(action, access),

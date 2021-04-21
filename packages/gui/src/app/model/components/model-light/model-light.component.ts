@@ -8,9 +8,6 @@ import { IModel } from '../../interfaces/model';
   styleUrls: ['../model/model.component.scss'],
 })
 export class ModelLightComponent {
-  /** Constructor */
-  constructor() {}
-
   /** Model instance */
   @Input() model: IModel;
 

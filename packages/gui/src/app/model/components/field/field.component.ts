@@ -1,26 +1,18 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  OnInit,
-  Output,
-} from '@angular/core';
-import { FieldType } from '@app/model/classes/field-type';
-import { ILabelledValue } from '@app/model/interfaces/labelled-value';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 import { FieldLightComponent } from '../field-light/field-light.component';
+
+import { FieldType } from '@app/model/classes/field-type';
+import { ILabelledValue } from '@app/model/interfaces/labelled-value';
 
 @Component({
   selector: 'app-model-field',
   templateUrl: './field.component.html',
   styleUrls: ['./field.component.scss'],
 })
-export class FieldComponent
-  extends FieldLightComponent
-  implements OnInit, OnDestroy {
+export class FieldComponent extends FieldLightComponent implements OnInit {
   /** Rows deletion mode */
   @Input() deletionMode = false;
 
@@ -48,9 +40,6 @@ export class FieldComponent
     super.ngOnInit();
     this.areSelectedFields();
   }
-
-  /** Destroy */
-  ngOnDestroy(): void {}
 
   /** Called when a value change */
   onInputChange(): void {

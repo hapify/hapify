@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { RichError } from '@app/class/RichError';
 import { TranslateService } from '@ngx-translate/core';
+
+import { RichError } from '@app/class/RichError';
 
 type MessageLevel = 'info' | 'success' | 'warning' | 'error';
 
@@ -82,13 +83,14 @@ export class MessageService {
 
   /** Log a message */
   log(message: string | any): void {
+    // eslint-disable-next-line no-console
     console.log(message);
   }
 
   /** Helper to translate key */
   translateKey(
     key: string | Array<string>,
-    interpolateParams?: object,
+    interpolateParams?: Record<string, unknown>,
   ): Promise<string> {
     return this.translateService.get(key, interpolateParams).toPromise();
   }

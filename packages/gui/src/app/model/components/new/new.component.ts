@@ -6,11 +6,12 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { WebSocketMessages } from '@app/interfaces/websocket-message';
-import { WebSocketService } from '@app/services/websocket.service';
 
 import { Model } from '../../classes/model';
 import { IModel, IModelBase } from '../../interfaces/model';
+
+import { WebSocketMessages } from '@app/interfaces/websocket-message';
+import { WebSocketService } from '@app/services/websocket.service';
 
 @Component({
   selector: 'app-model-new',

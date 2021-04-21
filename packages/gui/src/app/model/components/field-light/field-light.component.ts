@@ -1,12 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ILabelledValue } from '@app/model/interfaces/labelled-value';
 
 import { FieldType } from '../../classes/field-type';
-import { IField } from '../../interfaces/field';
+import { IField, IFieldBase } from '../../interfaces/field';
 import { IModel } from '../../interfaces/model';
 
+import { ILabelledValue } from '@app/model/interfaces/labelled-value';
+
 interface IPropertyIcon {
-  property: string;
+  property: keyof IFieldBase;
   icon: string;
   value: boolean;
 }
@@ -17,9 +18,6 @@ interface IPropertyIcon {
   styleUrls: ['../field/field.component.scss'],
 })
 export class FieldLightComponent implements OnInit {
-  /** Constructor */
-  constructor() {}
-
   /** Rows deletion mode */
   @Input() deletionMode = false;
 

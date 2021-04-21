@@ -1,19 +1,21 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
+
 import { Model } from '@app/model/classes/model';
 import { IModel } from '@app/model/interfaces/model';
 import { StorageService } from '@app/model/services/storage.service';
+import { PresetMergeResults } from '@app/preset/interfaces/preset';
 import { RootComponent as PresetRootComponent } from '@app/preset/preset.module';
 import { ModelService } from '@app/preset/services/model.service';
 import { MessageService } from '@app/services/message.service';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   addingNewModel = false;
 
   @Output() newModel = new EventEmitter<IModel>();
@@ -32,8 +34,6 @@ export class HeaderComponent implements OnInit {
     private storageService: StorageService,
     private messageService: MessageService,
   ) {}
-
-  ngOnInit(): void {}
 
   openPresetDialog(): void {
     this.dialog.open(PresetRootComponent, {
@@ -54,7 +54,7 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-  private async updateModel(results): Promise<void> {
+  private async updateModel(results: PresetMergeResults): Promise<void> {
     // @todo Require validation from user
     await this.storageService.update(
       results.updated.map((m) => {

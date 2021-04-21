@@ -23,3 +23,5 @@ export interface IAccesses {
   search: string;
   count: string;
 }
+
+export type AccessType = keyof IAccesses;

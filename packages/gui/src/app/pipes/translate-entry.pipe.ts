@@ -8,7 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class TranslateEntryPipe implements PipeTransform {
   constructor(private translateService: TranslateService) {}
 
-  transform(value: any, args?: any): any {
+  transform(value: Record<string, string>, args?: string): string {
     if (
       this.translateService.currentLang !== this.translateService.defaultLang
     ) {

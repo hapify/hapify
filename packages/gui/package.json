@@ -23,7 +23,7 @@
     "lint:prettier:fix": "prettier --write \"{src,test}/**/*.{ts,js}\"",
     "lint:tsc": "tsc --noEmit",
     "lint:tsc:fix": "npm run lint:tsc",
-    "test": "ng test",
+    "test": "echo 'No tests for @hapify/gui'",
     "e2e": "ng e2e",
     "update": "npm-check -u"
   },

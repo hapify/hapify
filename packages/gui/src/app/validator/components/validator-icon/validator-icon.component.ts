@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IChannel } from '@app/channel/interfaces/channel';
-import { IModel } from '@app/model/interfaces/model';
 
 import { ValidatorDetailsComponent } from '../validator-details/validator-details.component';
+
+import { IChannel } from '@app/channel/interfaces/channel';
+import { IModel } from '@app/model/interfaces/model';
 
 @Component({
   selector: 'app-validator-icon',

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from '@app/services/message.service';
 
 import { IChannel } from '../../interfaces/channel';
 import { StorageService } from '../../services/storage.service';
+
+import { MessageService } from '@app/services/message.service';
 
 @Component({
   selector: 'app-channel-root',

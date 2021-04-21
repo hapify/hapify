@@ -10,9 +10,6 @@ import { TemplateInput } from '../../interfaces/template-input.enum';
   styleUrls: ['./template.component.scss'],
 })
 export class TemplateComponent {
-  /** Constructor */
-  constructor() {}
-
   /** New template instance */
   @Input() template: ITemplate;
 

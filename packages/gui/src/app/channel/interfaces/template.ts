@@ -1,4 +1,4 @@
-import { IChannel } from './channel';
+import type { IChannel } from './channel';
 
 export interface ITemplateBase {
   /** The template's path */

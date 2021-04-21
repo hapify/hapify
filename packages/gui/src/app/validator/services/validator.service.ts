@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import md5 from 'md5';
+
+import { IValidatorResult } from '../interfaces/validator-result';
+
 import { WebSocketMessages } from '@app/interfaces/websocket-message';
 import { IModel } from '@app/model/interfaces/model';
 import { WebSocketService } from '@app/services/websocket.service';
-import * as md5 from 'md5';
-
-import { IValidatorResult } from '../interfaces/validator-result';
 
 @Injectable()
 export class ValidatorService {
@@ -48,7 +49,7 @@ export class ValidatorService {
     // If locked, wait few milliseconds and retry to hit the cache
     if (this.locks[hash]) {
       await new Promise((r) => setTimeout(r, this.lockDelay));
-      return await this.run(script, model);
+      return this.run(script, model);
     }
 
     // Set the lock

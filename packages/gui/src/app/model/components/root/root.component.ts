@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+
+import { FieldType } from '../../classes/field-type';
+import { Model } from '../../classes/model';
+import { IModel, IModelBase } from '../../interfaces/model';
+import { StorageService } from '../../services/storage.service';
+
 import { DialogPremiumComponent } from '@app/components/common/dialog-premium/dialog-premium.component';
 import { IInfo } from '@app/interfaces/info';
 import { WebSocketMessages } from '@app/interfaces/websocket-message';
@@ -7,11 +13,7 @@ import { InfoService } from '@app/services/info.service';
 import { MessageService } from '@app/services/message.service';
 import { WebSocketService } from '@app/services/websocket.service';
 import { environment } from '@env/environment';
-
-import { FieldType } from '../../classes/field-type';
-import { Model } from '../../classes/model';
-import { IModel, IModelBase } from '../../interfaces/model';
-import { StorageService } from '../../services/storage.service';
+import Timeout = NodeJS.Timeout;
 
 declare const navigator: any;
 
@@ -30,9 +32,9 @@ export class RootComponent implements OnInit {
     private messageService: MessageService,
   ) {}
 
-  private saveTimeout;
+  private saveTimeout: Timeout;
 
-  dTime = environment.debounceTime;
+  private readonly dTime = environment.debounceTime;
 
   public models: IModel[];
 
@@ -59,15 +61,21 @@ export class RootComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateModels().catch((error) => this.messageService.error(error));
-    this.infoService.info().then((info) => {
-      this.info = info;
-    });
+    this.infoService
+      .info()
+      .then((info) => {
+        this.info = info;
+      })
+      .catch((error) => this.messageService.error(error));
   }
 
   /** Called when the user update the model */
   onDelete(model: IModel): void {
     // Delete the model
-    this.storageService.remove(model).then(() => this.updateModels());
+    this.storageService
+      .remove(model)
+      .then(() => this.updateModels())
+      .catch((error) => this.messageService.error(error));
   }
 
   /** Called when the user update the model */
@@ -86,7 +94,9 @@ export class RootComponent implements OnInit {
     // Replace self reference
     clone.fields
       .filter((f) => f.type === 'entity' && f.value === clone.id)
-      .forEach((f) => (f.value = modelObject.id));
+      .forEach((f) => {
+        f.value = modelObject.id;
+      });
 
     // Copy temp id and new name
     clone.name = modelObject.name;
@@ -140,7 +150,7 @@ export class RootComponent implements OnInit {
             }),
           );
         })
-        .catch((error) => {
+        .catch((error: Error) => {
           this.messageService.error(error);
         });
     } else {
@@ -155,7 +165,7 @@ export class RootComponent implements OnInit {
     if (navigator.clipboard) {
       await navigator.clipboard
         .readText()
-        .then(async (text) => {
+        .then(async (text: string) => {
           // Convert string to model
           const data: IModelBase = JSON.parse(text);
           const clone = new Model();
@@ -174,7 +184,9 @@ export class RootComponent implements OnInit {
             .filter(
               (f) => f.type === 'entity' && (f.value as string) === clone.id,
             )
-            .forEach((f) => (f.value = modelObject.id));
+            .forEach((f) => {
+              f.value = modelObject.id;
+            });
 
           // Remove non-existing references
           const fieldsIds = (await this.storageService.list()).map((m) => m.id);
@@ -184,7 +196,9 @@ export class RootComponent implements OnInit {
               (f) =>
                 f.type === 'entity' && !fieldsIds.includes(f.value as string),
             )
-            .forEach((f) => (f.value = null));
+            .forEach((f) => {
+              f.value = null;
+            });
 
           // Copy new id
           clone.id = modelObject.id;
@@ -201,7 +215,7 @@ export class RootComponent implements OnInit {
             }),
           );
         })
-        .catch((error) => {
+        .catch((error: Error) => {
           this.messageService.error(error);
         });
     } else {

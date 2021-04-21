@@ -3,28 +3,22 @@ import {
   ElementRef,
   HostListener,
   Input,
-  OnInit,
   Renderer2,
   ViewChild,
 } from '@angular/core';
+
+import type { IPreset, PresetMergeResults } from '../../interfaces/preset';
+
 import { WebSocketMessages } from '@app/interfaces/websocket-message';
-import { IModel } from '@app/model/interfaces/model';
 import { ModelService } from '@app/preset/services/model.service';
 import { WebSocketService } from '@app/services/websocket.service';
-
-import { IPreset } from '../../interfaces/preset';
-
-interface PresetMergeResults {
-  created: IModel[];
-  updated: IModel[];
-}
 
 @Component({
   selector: 'app-preset-preset-card',
   templateUrl: './preset-card.component.html',
   styleUrls: ['./preset-card.component.scss'],
 })
-export class PresetCardComponent implements OnInit {
+export class PresetCardComponent {
   /** Constructor */
   constructor(
     private renderer: Renderer2,
@@ -41,8 +35,6 @@ export class PresetCardComponent implements OnInit {
 
   diffPreset: PresetMergeResults;
 
-  ngOnInit(): void {}
-
   async previewDiffPresetApllied(): Promise<void> {
     this.diffPreset = (await this.webSocketService.send(
       WebSocketMessages.APPLY_PRESETS,
@@ -53,7 +45,7 @@ export class PresetCardComponent implements OnInit {
   }
 
   /** Called when the user click on "apply" */
-  async applyDiffPreset(): Promise<void> {
+  applyDiffPreset(): void {
     this.modelService.presetApplied.next(this.diffPreset);
   }
 

@@ -1,9 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { IModel } from '@app/model/interfaces/model';
-import { MessageService } from '@app/services/message.service';
 
 import { IPreset } from '../../interfaces/preset';
 import { StorageService } from '../../services/storage.service';
+
+import { IModel } from '@app/model/interfaces/model';
+import { MessageService } from '@app/services/message.service';
 
 interface PresetMergeResults {
   created: IModel[];

@@ -2,9 +2,6 @@ import { IModel, IModelBase, Model } from '../../model/model.module';
 import { IPreset, IPresetBase } from '../interfaces/preset';
 
 export class Preset implements IPreset {
-  /** Constructor */
-  constructor() {}
-
   public id = '';
 
   public icon = '';

@@ -2,11 +2,11 @@ import { ILabelledValue } from '../interfaces/labelled-value';
 
 export class FieldSubType {
   static Boolean = {
-    Default: null,
+    Default: null as string,
   };
 
   static Number = {
-    Default: null,
+    Default: null as string,
     Integer: 'integer',
     Float: 'float',
     Latitude: 'latitude',
@@ -14,7 +14,7 @@ export class FieldSubType {
   };
 
   static String = {
-    Default: null,
+    Default: null as string,
     Email: 'email',
     Password: 'password',
     Url: 'url',
@@ -23,13 +23,13 @@ export class FieldSubType {
   };
 
   static DateTime = {
-    Default: null,
+    Default: null as string,
     Date: 'date',
     Time: 'time',
   };
 
   static Entity = {
-    Default: null,
+    Default: null as string,
     OneOne: 'oneOne',
     OneMany: 'oneMany',
     ManyOne: 'manyOne',
@@ -37,15 +37,15 @@ export class FieldSubType {
   };
 
   static Enum = {
-    Default: null,
+    Default: null as string,
   };
 
   static Object = {
-    Default: null,
+    Default: null as string,
   };
 
   static File = {
-    Default: null,
+    Default: null as string,
     Image: 'image',
     Video: 'video',
     Audio: 'audio',

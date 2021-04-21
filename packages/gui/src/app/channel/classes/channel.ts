@@ -20,9 +20,9 @@ export class Channel implements IChannel {
 
   public name = '';
 
-  public description = null;
+  public description: string = null;
 
-  public logo = null;
+  public logo: string = null;
 
   public validator = '';
 

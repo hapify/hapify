@@ -10,6 +10,13 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { Hotkey, HotkeysService } from 'angular2-hotkeys';
+import { AceEditorComponent } from 'ng2-ace-editor';
+
+import { IValidatorResult } from '../../interfaces/validator-result';
+import { ValidatorService } from '../../services/validator.service';
+
 import { IChannel } from '@app/channel/interfaces/channel';
 import { RichError } from '@app/class/RichError';
 import {
@@ -18,11 +25,6 @@ import {
 } from '@app/model/model.module';
 import { AceService } from '@app/services/ace.service';
 import { MessageService } from '@app/services/message.service';
-import { TranslateService } from '@ngx-translate/core';
-import { Hotkey, HotkeysService } from 'angular2-hotkeys';
-
-import { IValidatorResult } from '../../interfaces/validator-result';
-import { ValidatorService } from '../../services/validator.service';
 
 @Component({
   selector: 'app-validator-editor',
@@ -83,7 +85,7 @@ export class ValidatorEditorComponent
   private saveHotKeys: Hotkey | Hotkey[];
 
   /** Main editor */
-  @ViewChild('editorInput') editorInput;
+  @ViewChild('editorInput') editorInput: AceEditorComponent;
 
   /** Constructor */
   constructor(
@@ -106,28 +108,31 @@ export class ValidatorEditorComponent
       handle: (error: Error) => this.handledError(error),
     });
 
-    this.translateService
-      .get('common_unload_warning')
-      .subscribe((value) => (this.beforeUnloadWarning = value));
+    this.translateService.get('common_unload_warning').subscribe((value) => {
+      this.beforeUnloadWarning = value;
+    });
 
     // Clone content
     this.content = this.channel.validator;
 
     // Save on Ctrl+S
     this.saveHotKeys = this.hotKeysService.add(
-      new Hotkey('meta+s', (event: KeyboardEvent): boolean => {
+      new Hotkey('meta+s', (): boolean => {
         this.didClickSave();
         return false;
       }),
     );
 
     // Get all models
-    this.modelStorageService.list().then((models) => {
-      this.models = models;
-      this.model = this.models[0];
-      // Re validate
-      this.validate().catch((error) => this.messageService.error(error));
-    });
+    this.modelStorageService
+      .list()
+      .then((models) => {
+        this.models = models;
+        [this.model] = this.models;
+        // Re validate
+        this.validate().catch((error) => this.messageService.error(error));
+      })
+      .catch((error) => this.messageService.error(error));
   }
 
   /** Destroy */
@@ -202,7 +207,7 @@ export class ValidatorEditorComponent
       if (error instanceof RichError) {
         this.error = error.details();
       } else {
-        this.error = `${error.message}\n\n${error.stack}`;
+        this.error = `${(error as Error).message}\n\n${(error as Error).stack}`;
       }
     }
   }
@@ -228,7 +233,7 @@ export class ValidatorEditorComponent
   }
 
   /** Call when the user click on "dump" */
-  async didClickDump(): Promise<void> {
+  didClickDump(): void {
     this.messageService.log(this.model.toObject());
   }
 
@@ -239,6 +244,8 @@ export class ValidatorEditorComponent
       return;
     }
     event.returnValue = this.beforeUnloadWarning;
+    // Return value for Safari
+    // eslint-disable-next-line consistent-return
     return this.beforeUnloadWarning;
   }
 }

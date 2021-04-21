@@ -6,13 +6,15 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { IInfo } from '@app/interfaces/info';
-import { InfoService } from '@app/services/info.service';
 
 import { IChannel } from '../../interfaces/channel';
 import { ITemplate } from '../../interfaces/template';
 import { TreeBranch } from '../../interfaces/tree-branch';
 import { GeneratorService } from '../../services/generator.service';
+
+import { IInfo } from '@app/interfaces/info';
+import { InfoService } from '@app/services/info.service';
+import { MessageService } from '@app/services/message.service';
 
 @Component({
   selector: 'app-channel-channel',
@@ -48,12 +50,19 @@ export class ChannelComponent implements OnInit {
   info: IInfo;
 
   /** Constructor */
-  constructor(private injector: Injector, private infoService: InfoService) {
+  constructor(
+    private injector: Injector,
+    private infoService: InfoService,
+    private messageService: MessageService,
+  ) {
     // Avoid circular dependency
     this.generatorService = this.injector.get(GeneratorService);
-    this.infoService.info().then((info) => {
-      this.info = info;
-    });
+    this.infoService
+      .info()
+      .then((info) => {
+        this.info = info;
+      })
+      .catch((error) => this.messageService.error(error));
   }
 
   ngOnInit(): void {
@@ -68,7 +77,7 @@ export class ChannelComponent implements OnInit {
 
   /** Get the tree */
   private buildTree(): TreeBranch[] {
-    const tree = [];
+    const tree: TreeBranch[] = [];
 
     this.channel.templates.forEach((template) => {
       const pathParts = template.splitPath();
@@ -92,7 +101,7 @@ export class ChannelComponent implements OnInit {
               name: pathPart,
               path: parentPath,
               root: rootPath,
-              children: [],
+              children: [] as TreeBranch[],
             };
             currentLevel.push(newPathPart);
             currentLevel = newPathPart.children;

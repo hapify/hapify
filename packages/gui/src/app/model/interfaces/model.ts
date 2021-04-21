@@ -1,7 +1,7 @@
-import { IStorable, IStorableBase } from '@app/interfaces/storable';
-
 import { IAccesses } from './access';
 import { IField, IFieldBase } from './field';
+
+import { IStorable, IStorableBase } from '@app/interfaces/storable';
 
 export interface IModelBase extends IStorableBase {
   /** The model's name */

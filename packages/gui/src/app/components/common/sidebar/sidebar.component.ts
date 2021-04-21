@@ -1,9 +1,11 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { MessageService } from '@app/services/message.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
 import { IInfo } from '@app/interfaces/info';
 import { InfoService } from '@app/services/info.service';
 import { ResizeService } from '@app/services/resize.service';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-sidebar',
@@ -22,6 +24,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   constructor(
     private resizeService: ResizeService,
     private infoService: InfoService,
+    private messageService: MessageService,
   ) {}
 
   ngOnInit(): void {
@@ -30,9 +33,12 @@ export class SidebarComponent implements OnInit, OnDestroy {
       .subscribe((breakpointInfo) => {
         this.breakpoint = breakpointInfo.current;
       });
-    this.infoService.info().then((info) => {
-      this.info = info;
-    });
+    this.infoService
+      .info()
+      .then((info) => {
+        this.info = info;
+      })
+      .catch((error) => this.messageService.error(error));
   }
 
   ngOnDestroy(): void {

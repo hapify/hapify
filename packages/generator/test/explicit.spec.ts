@@ -163,9 +163,7 @@ describe('field names', () => {
 
 describe('field notes', () => {
   it('field.notes', async () => {
-    const templates = getTemplates(
-      `return model.fields.list[0].notes`,
-    );
+    const templates = getTemplates(`return model.fields.list[0].notes`);
     // With note
     let models = getModels([{ notes: 'i have a note' }]);
     const response1 = await Generator.run(templates, models);

@@ -379,7 +379,7 @@ export class Generator {
         ...f,
         names: StringVariants(f.name),
         notes: this.getNotes(f),
-        hasNotes: this.hasNotes(f)
+        hasNotes: this.hasNotes(f),
       };
       // Deal with enums
       if (f.type === 'enum' && f.value) {

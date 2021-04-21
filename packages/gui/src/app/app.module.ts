@@ -10,32 +10,29 @@ import { HotkeyModule } from 'angular2-hotkeys';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
-
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app.routing';
-
-import { ChannelModule } from './channel/channel.module';
-import { ChannelComponent } from './components/channel/channel.component';
-import { ModelComponent } from './components/model/model.component';
-import { TranslateModuleLoad } from './translate-import';
-import { ValidatorService } from './validator/services/validator.service';
-// Components
-import { SidebarComponent } from './components/common/sidebar/sidebar.component';
-// Services
-import { ConfigService } from './services/config.service';
-import { StringService } from './services/string.service';
-import { AceService } from './services/ace.service';
-import { HeaderComponent } from './components/common/header/header.component';
-import { ModelModule } from './model/model.module';
-import { WebSocketService } from './services/websocket.service';
-
 import {
   PERFECT_SCROLLBAR_CONFIG,
   PerfectScrollbarConfigInterface,
   PerfectScrollbarModule,
 } from 'ngx-perfect-scrollbar';
 
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing';
+import { ChannelModule } from './channel/channel.module';
+import { ChannelComponent } from './components/channel/channel.component';
 import { DialogPremiumComponent } from './components/common/dialog-premium/dialog-premium.component';
+import { HeaderComponent } from './components/common/header/header.component';
+import { SidebarComponent } from './components/common/sidebar/sidebar.component';
+import { ModelComponent } from './components/model/model.component';
+import { ModelModule } from './model/model.module';
+import { AceService } from './services/ace.service';
+import { ConfigService } from './services/config.service';
+import { StringService } from './services/string.service';
+import { WebSocketService } from './services/websocket.service';
+import { TranslateModuleLoad } from './translate-import';
+import { ValidatorService } from './validator/services/validator.service';
+// Components
+// Services
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,

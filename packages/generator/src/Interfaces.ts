@@ -8,6 +8,15 @@ export interface NameInterpolable {
   names: StringVariations;
 }
 // ==================================================================
+//  Notes
+// ==================================================================
+export interface Annotated {
+  /** The field's notes */
+  notes: string;
+  /** Denotes if the notes value is defined */
+  hasNotes: boolean;
+}
+// ==================================================================
 //  Fields
 // ==================================================================
 export type FieldType =
@@ -48,6 +57,8 @@ export type FieldValueType<T> = T extends 'entity'
 export interface Field<T extends FieldType = FieldType> {
   /** The field's name */
   name: string;
+  /** The field's notes */
+  notes?: string;
   /** The field's type */
   type: T;
   /** The field's subtype */
@@ -113,6 +124,8 @@ export interface Model {
   id: string;
   /** The model's name */
   name: string;
+  /** The model's notes */
+  notes?: string;
   /** The fields of the model */
   fields: Field[];
   /** The model privacy access */
@@ -141,7 +154,7 @@ export interface AliasedArray<T> extends Array<T> {
     thisArg?: any,
   ): T[];
 }
-interface BaseExplicitModel extends NameInterpolable {
+interface BaseExplicitModel extends NameInterpolable, Annotated {
   /** An unique id */
   id: string;
   /** An object containing pre-computed properties from fields */
@@ -185,8 +198,10 @@ export interface ExplicitReferenceModel extends BaseExplicitModel {
 }
 export type ExplicitEnum = NameInterpolable;
 export interface ExplicitField<T extends FieldType = FieldType>
-  extends Field<T>,
-    NameInterpolable {}
+  extends Field<T>, NameInterpolable, Annotated {
+  // Redefine notes to force interface conflict
+  notes: string;
+}
 export interface ExplicitReferenceField extends ExplicitField<'entity'> {
   /** The target model object if the field is of type `entity` */
   model: ExplicitDeepModel;

@@ -56,6 +56,7 @@ const getModels = (
     {
       id: `0cf80d75-abcd-f8c7-41f6-ed41c6425aa1`,
       name: 'User profile',
+      notes: 'this is a note',
       fields,
       accesses: {
         create: 'guest',

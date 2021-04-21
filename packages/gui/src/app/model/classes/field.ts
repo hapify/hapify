@@ -120,10 +120,10 @@ export class Field implements IField {
   private getValueProperty(): string | string[] | null {
     if (this.type === FieldType.Entity) {
       return typeof this.value === 'string' ? this.value : null;
-    } if (this.type === FieldType.Enum) {
+    }
+    if (this.type === FieldType.Enum) {
       return this.value instanceof Array ? this.value : [];
-    } 
-      return null;
-    
+    }
+    return null;
   }
 }

@@ -5,7 +5,6 @@ import { FieldType } from '../../classes/field-type';
 import { IField } from '../../interfaces/field';
 import { IModel } from '../../interfaces/model';
 
-
 interface IPropertyIcon {
   property: string;
   icon: string;

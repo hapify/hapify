@@ -131,10 +131,8 @@ export class FieldComponent
       if (!Array.isArray(this.field.value)) {
         this.field.value = [];
       }
-      (this.field.value ).push(value.trim());
-      this.field.value = (this.field.value ).filter(
-        (v) => v.trim().length > 0,
-      );
+      this.field.value.push(value.trim());
+      this.field.value = this.field.value.filter((v) => v.trim().length > 0);
       input.value = '';
       this.onInputChange();
     }

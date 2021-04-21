@@ -37,7 +37,6 @@ import {
 
 import { DialogPremiumComponent } from './components/common/dialog-premium/dialog-premium.component';
 
-
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
 };

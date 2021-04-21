@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-
 import { CHANNEL_ROUTES, ChannelModule } from './channel/channel.module';
 import { ChannelComponent } from './components/channel/channel.component';
 import { ModelComponent } from './components/model/model.component';

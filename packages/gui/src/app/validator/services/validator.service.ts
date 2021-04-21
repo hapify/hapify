@@ -6,7 +6,6 @@ import * as md5 from 'md5';
 
 import { IValidatorResult } from '../interfaces/validator-result';
 
-
 @Injectable()
 export class ValidatorService {
   /** Constructor */

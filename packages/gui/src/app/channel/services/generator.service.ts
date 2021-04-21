@@ -7,7 +7,6 @@ import { IChannel } from '../interfaces/channel';
 import { IGeneratorResult } from '../interfaces/generator-result';
 import { ITemplate } from '../interfaces/template';
 
-
 @Injectable()
 export class GeneratorService {
   /** Used to keep activation across multiple editors */

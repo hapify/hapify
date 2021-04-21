@@ -14,7 +14,6 @@ import { ITemplate } from '../../interfaces/template';
 import { TreeBranch } from '../../interfaces/tree-branch';
 import { GeneratorService } from '../../services/generator.service';
 
-
 @Component({
   selector: 'app-channel-channel',
   templateUrl: './channel.component.html',

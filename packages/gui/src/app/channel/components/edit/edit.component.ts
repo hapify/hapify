@@ -36,7 +36,7 @@ export class EditComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.paramsSubcription = this.route.params.subscribe(async (params) => {
       // Get channel id
-      const {id} = params;
+      const { id } = params;
       // Load channel
       const channel = await this.storageService.find(id);
       // Bind the channel if any

@@ -81,9 +81,8 @@ export class TreeComponent implements OnInit {
   isSelected(branch: TreeBranch): boolean {
     if (this.selectedPath.endsWith('/')) {
       return this.selectedPath === `${branch.path}/`;
-    } 
-      return this.selectedPath === branch.path;
-    
+    }
+    return this.selectedPath === branch.path;
   }
 
   onAddTemplate(): void {

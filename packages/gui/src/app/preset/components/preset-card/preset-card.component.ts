@@ -63,12 +63,12 @@ export class PresetCardComponent implements OnInit {
     this.renderer.setStyle(
       this.description.nativeElement,
       'top',
-      `${event.clientY + 20  }px`,
+      `${event.clientY + 20}px`,
     );
     this.renderer.setStyle(
       this.description.nativeElement,
       'left',
-      `${event.clientX + 20  }px`,
+      `${event.clientX + 20}px`,
     );
   }
 

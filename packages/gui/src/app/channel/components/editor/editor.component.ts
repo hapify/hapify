@@ -25,7 +25,6 @@ import { IGeneratorResult } from '../../interfaces/generator-result';
 import { ITemplate } from '../../interfaces/template';
 import { GeneratorService } from '../../services/generator.service';
 
-
 @Component({
   selector: 'app-channel-editor',
   templateUrl: './editor.component.html',

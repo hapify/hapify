@@ -14,7 +14,6 @@ import { Access } from '../../interfaces/access';
 import { ILabelledValue } from '../../interfaces/labelled-value';
 import { ModelLightComponent } from '../model-light/model-light.component';
 
-
 interface IAccessValue {
   selected: boolean;
   value: ILabelledValue;
@@ -144,12 +143,12 @@ export class ModelComponent
   private updateActions(): void {
     this.actions = Object.keys(this.model.accesses).map(
       (action: string): IActionValue => ({
-          name: action,
-          accesses: Accesses.map((access) => ({
-            selected: this.isAccessSelected(action, access),
-            value: access,
-          })),
-        }),
+        name: action,
+        accesses: Accesses.map((access) => ({
+          selected: this.isAccessSelected(action, access),
+          value: access,
+        })),
+      }),
     );
   }
 

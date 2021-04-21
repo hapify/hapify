@@ -12,7 +12,6 @@ import { WebSocketService } from '@app/services/websocket.service';
 import { Model } from '../../classes/model';
 import { IModel, IModelBase } from '../../interfaces/model';
 
-
 @Component({
   selector: 'app-model-new',
   templateUrl: './new.component.html',

@@ -1,0 +1,27 @@
+<mat-card>
+	<mat-card-content>
+		<div
+			class="p-4 d-flex flex-column align-items-center justify-content-center"
+		>
+			<div
+				*ngIf="channel.logo"
+				class="w-50 mb-3 bg"
+				[style.background-image]="'url(' + channel.logo + ')'"
+			></div>
+			<h2 class="w-100 mb-2 pb-2 border-bottom border-light text-center">
+				{{ channel.name }}
+			</h2>
+			<p *ngIf="channel.description" class="text-center">
+				{{ channel.description }}
+			</p>
+			<button
+				mat-raised-button
+				color="primary"
+				class="mat-elevation-z0 mt-3"
+				[routerLink]="['/channel', 'edit', channel.id]"
+			>
+				{{ 'channel_edit' | translate }}
+			</button>
+		</div>
+	</mat-card-content>
+</mat-card>

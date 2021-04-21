@@ -1,0 +1,404 @@
+@import '~bootstrap/scss/bootstrap-grid';
+@import 'palette.scss';
+@import 'file-colors.scss';
+
+/* THEME */
+@include mat-core();
+$hpf-app-theme: mat-light-theme(
+    $hpf-app-primary,
+    $hpf-app-accent,
+    $hpf-app-warn
+);
+@include angular-material-theme($hpf-app-theme);
+$custom-typography: mat-typography-config(
+  $font-family: 'Open Sans'
+);
+@include angular-material-typography($custom-typography);
+/* /THEME */
+
+/* FONTS */
+@font-face {
+	font-family: 'hapify-logo';
+	src: url('assets/fonts/hapify/hapify-logo.eot?lsqtnl');
+	src: url('assets/fonts/hapify/hapify-logo.eot?lsqtnl#iefix')
+			format('embedded-opentype'),
+		url('assets/fonts/hapify/hapify-logo.ttf?lsqtnl') format('truetype'),
+		url('assets/fonts/hapify/hapify-logo.woff?lsqtnl') format('woff'),
+		url('assets/fonts/hapify/hapify-logo.svg?lsqtnl#hapify-logo')
+			format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+/* /FONTS */
+
+/* ANIMATIONS */
+@keyframes fadein {
+	0% {
+		margin-top: 0.5rem;
+		opacity: 0;
+	}
+
+	100% {
+		margin-top: 0;
+		opacity: 1;
+	}
+}
+/* /ANIMATIONS */
+
+html,
+body {
+	height: 100%;
+	max-height: 100%;
+}
+
+body {
+	font-size: 1em;
+	font-weight: 400;
+	color: $gray-700;
+
+	.hpflogofont {
+		font-family: 'hapify-logo', monospace !important;
+		font-size: 1.6em;
+
+		&[color='white'] {
+			color: white;
+		}
+
+		&[color='primary'] {
+			color: mat-color($hpf-app-primary);
+		}
+	}
+
+	.material-icons {
+		font-family: 'Material Icons' !important;
+		font-weight: normal;
+		font-style: normal;
+		font-size: 24px;
+		display: inline-block;
+		line-height: 1;
+		text-transform: none;
+		letter-spacing: normal;
+		word-wrap: normal;
+		white-space: nowrap;
+		direction: ltr;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		-moz-osx-font-smoothing: grayscale;
+		font-feature-settings: 'liga';
+	}
+
+	a {
+		color: mat-color($hpf-app-primary);
+	}
+
+	p,
+	li,
+	a,
+	span,
+	input,
+	select,
+	optgroup,
+	textarea {
+		font-family: Monaco, monospace;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	button,
+	.mat-button,
+	.mat-raised-button,
+	.mat-button *,
+	.mat-raised-button * {
+		font-family: 'Open Sans', sans-serif;
+	}
+
+	h1 {
+		font-weight: 800;
+	}
+
+	h2 {
+		font-weight: 700;
+	}
+
+	h3,
+	h4 {
+		font-weight: 600;
+	}
+
+	.bg-gradient-purple,
+	&.bg-gradient-purple {
+		background: linear-gradient(to bottom, #3424af 1%, #a25cc1 100%);
+	}
+
+	.bg-plain-grey-1 {
+		background-color: $gray-200;
+	}
+
+	a {
+		&:hover {
+			color: inherit;
+
+			&.mat-raised-button {
+				text-decoration: none;
+			}
+		}
+	}
+
+	.mat-raised-button {
+		border-radius: 20px;
+		font-weight: 500;
+
+		&[color='primary'] {
+			border: none !important;
+		}
+	}
+
+	[color='accent'].border:not([disabled]),
+	.accent.border:not([disabled]) {
+		border-color: mat-contrast($hpf-app-accent, 500) !important;
+	}
+
+	.mat-mini-fab .mat-button-wrapper {
+		padding: 7px 0;
+	}
+
+	button {
+		&:focus {
+			outline: none;
+		}
+	}
+
+	[class*='border'] {
+		border-color: $gray-500 !important;
+	}
+
+	.border-light {
+		border-color: $gray-400 !important;
+	}
+
+	.border-hpf-primary {
+		border-color: mat-color($hpf-app-primary) !important;
+	}
+
+	h1 {
+		font-size: 1em;
+		font-weight: 600;
+		small {
+			font-size: 0.9em;
+			font-weight: 400;
+		}
+	}
+	.overable > li:hover {
+		background-color: $gray-300;
+	}
+
+	.ellipsis {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	.badge {
+		font-weight: 500 !important;
+		padding: 0.25em 0.4em 0.35em !important;
+	}
+
+	.inline-input {
+		border: none;
+		margin: 0;
+		padding: 0;
+		background: transparent;
+
+		&:focus {
+			outline: none;
+			color: mat-color($hpf-app-primary);
+		}
+	}
+
+	.color-ts {
+		color: $ts;
+		mat-icon {
+			color: $ts;
+		}
+	}
+	.color-html {
+		color: $html;
+		mat-icon {
+			color: $html;
+		}
+	}
+	.color-scss {
+		color: $scss;
+		mat-icon {
+			color: $scss;
+		}
+	}
+	.color-json {
+		color: $json;
+		mat-icon {
+			color: $json;
+		}
+	}
+	.color-js {
+		color: $js;
+		mat-icon {
+			color: $js;
+		}
+	}
+	.color-php {
+		color: $php;
+		mat-icon {
+			color: $php;
+		}
+	}
+	.color-file,
+	.color-null {
+		color: $file;
+		mat-icon {
+			color: $file;
+		}
+	}
+	.color-folder {
+		color: $folder;
+		mat-icon {
+			color: $folder;
+		}
+	}
+
+	.bg-ts {
+		background-color: $bg-ts !important;
+	}
+	.bg-html {
+		background-color: $bg-html !important;
+	}
+	.bg-scss {
+		background-color: $bg-scss !important;
+	}
+	.bg-json {
+		background-color: $bg-json !important;
+	}
+	.bg-js {
+		background-color: $bg-js !important;
+	}
+	.bg-php {
+		background-color: $bg-php !important;
+	}
+	.bg-file,
+	.bg-null {
+		background-color: $bg-file !important;
+	}
+	.bg-folder {
+		background-color: $bg-folder !important;
+	}
+
+	[class*='gradientoverlay']:after {
+		content: '';
+		position: absolute;
+		z-index: 1;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 3rem;
+	}
+	.gradientoverlay-ts:after {
+		background: linear-gradient(
+			to bottom,
+			fade_out($bg-ts, 0.3) 30%,
+			$bg-ts 100%
+		);
+	}
+	.gradientoverlay-html:after {
+		background: linear-gradient(
+			to bottom,
+			fade_out($bg-html, 0.3) 30%,
+			$bg-html 100%
+		);
+	}
+	.gradientoverlay-scss:after {
+		background: linear-gradient(
+			to bottom,
+			fade_out($bg-scss, 0.3) 30%,
+			$bg-scss 100%
+		);
+	}
+	.gradientoverlay-json:after {
+		background: linear-gradient(
+			to bottom,
+			fade_out($bg-json, 0.3) 30%,
+			$bg-json 100%
+		);
+	}
+	.gradientoverlay-js:after {
+		background: linear-gradient(
+			to bottom,
+			fade_out($bg-js, 0.3) 30%,
+			$bg-js 100%
+		);
+	}
+	.gradientoverlay-file:after,
+	.gradientoverlay-null:after {
+		background: linear-gradient(
+			to bottom,
+			fade_out($bg-file, 0.3) 30%,
+			$bg-file 100%
+		);
+	}
+	.gradientoverlay-folder:after {
+		background: linear-gradient(
+			to bottom,
+			fade_out($bg-folder, 0.3) 30%,
+			$bg-folder 100%
+		);
+	}
+
+	.over-ts:hover,
+	.over-ts.selected {
+		background-color: $bg-ts;
+	}
+	.over-html:hover,
+	.over-html.selected {
+		background-color: $bg-html;
+	}
+	.over-scss:hover,
+	.over-scss.selected {
+		background-color: $bg-scss;
+	}
+	.over-json:hover,
+	.over-json.selected {
+		background-color: $bg-json;
+	}
+	.over-js:hover,
+	.over-js.selected {
+		background-color: $bg-js;
+	}
+	.over-file:hover,
+	.over-file.selected,
+	.over-null:hover,
+	.over-null.selected {
+		background-color: $bg-file;
+	}
+	.over-folder:hover,
+	.over-folder.selected {
+		background-color: $bg-folder;
+	}
+
+	.wideDialog {
+		width: 100% !important;
+		max-width: 1280px !important;
+		height: 90%;
+		overflow: auto;
+	}
+
+	.mat-badge-content {
+		right: 0 !important;
+		top: 0 !important;
+	}
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

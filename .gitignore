@@ -3,6 +3,7 @@ dist
 node_modules
 .nyc_output
 coverage
+packages/**/package-lock.json
 
 # Logs
 logs
@@ -14,10 +15,6 @@ lerna-debug.log*
 
 # OS
 .DS_Store
-
-# Tests
-/coverage
-/.nyc_output
 
 # IDEs and editors
 /.idea

@@ -8,7 +8,7 @@ import { EjsEvaluationError } from './errors/EjsEvaluationError';
 
 const SECOND = 1000;
 const RootDir = pkgDir.sync(__dirname);
-const EjsLibContent = readFileSync(join(RootDir, 'libs', 'ejs.js'), {
+const EjsLibContent = readFileSync(join(RootDir, 'lib', 'ejs.js'), {
   encoding: 'utf8',
 });
 

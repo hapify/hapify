@@ -1,0 +1,67 @@
+<div>
+	<mat-card class="position-relative">
+		<div
+			class="d-flex w-100 align-items-center justify-content-between flex-nowrap border-bottom pb-2"
+		>
+			<div class="d-flex align-items-center w-100">
+				<app-validator-icon
+					[model]="model"
+					class="flex-shrink-0 mr-2 d-flex align-items-center"
+				></app-validator-icon>
+				<span class="title">{{ model.name }}</span>
+			</div>
+			<div class="d-flex align-items-center modelTools">
+				<button mat-icon-button type="button">
+					<mat-icon>fingerprint</mat-icon>
+				</button>
+				<button
+					mat-icon-button
+					type="button"
+					matBadge="1"
+					[matBadgeHidden]="!model.notes"
+					matBadgePosition="after"
+					matBadgeColor="primary"
+					matBadgeSize="small"
+					matBadgeOverlap="true"
+				>
+					<mat-icon>speaker_notes</mat-icon>
+				</button>
+				<button mat-icon-button type="button">
+					<mat-icon>delete_sweep</mat-icon>
+				</button>
+				<button mat-icon-button type="button">
+					<mat-icon>more_vert</mat-icon>
+				</button>
+			</div>
+		</div>
+		<mat-card-content class="mb-0">
+			<ul class="list-unstyled overable container-fluid mt-2">
+				<li
+					*ngFor="let field of model.fields"
+					class="row border-bottom border-light py-1 position-relative"
+				>
+					<mat-icon [inline]="true" class="dndHandler"
+						>more_vert</mat-icon
+					>
+					<app-model-field-light
+						[models]="models"
+						[field]="field"
+						class="col-12"
+					></app-model-field-light>
+				</li>
+				<li
+					class="row align-items-center py-2 addField"
+					[class.disabled]="addFieldDisabled"
+				>
+					<div class="col-12">
+						{{ 'models_add_field' | translate }}
+					</div>
+				</li>
+			</ul>
+			<app-validator-details
+				[model]="model"
+				class="d-block"
+			></app-validator-details>
+		</mat-card-content>
+	</mat-card>
+</div>

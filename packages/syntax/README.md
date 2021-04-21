@@ -16,4 +16,4 @@ HapifySyntax.run(template, model, { timeout: 2000 }); // Outputs 'Model is userP
 
 ## More
 
-For more information about this module, please refer to the [online documentation](https://docs.hapify.io/en/latest/templating/hapify/syntax/).
+For more information about this module, please refer to the [online documentation](https://docs.hapify.io/reference/hapify-syntax/).

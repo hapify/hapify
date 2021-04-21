@@ -1,0 +1,223 @@
+<div>
+	<mat-card class="position-relative active">
+		<div
+			class="d-flex w-100 align-items-center justify-content-between flex-nowrap border-bottom pb-2"
+		>
+			<div class="d-flex align-items-center w-100">
+				<app-validator-icon
+					[signal]="update"
+					[model]="model"
+					class="flex-shrink-0 mr-2 d-flex align-items-center"
+				></app-validator-icon>
+				<input
+					autofocus
+					class="title inline-input w-100"
+					type="text"
+					placeholder="{{ 'model_name_placeholder' | translate }}"
+					[(ngModel)]="model.name"
+					(change)="onModelChange()"
+				/>
+			</div>
+			<div class="d-flex align-items-center modelTools">
+				<button
+					mat-icon-button
+					matTooltip="{{ 'access_title' | translate }}"
+					(click)="togglePanel('access')"
+					[color]="accessRightsPanelIsDisplayed ? 'primary' : ''"
+					type="button"
+				>
+					<mat-icon>fingerprint</mat-icon>
+				</button>
+				<button
+					mat-icon-button
+					matTooltip="{{ 'notes_title' | translate }}"
+					(click)="togglePanel('notes')"
+					[color]="notesPanelIsDisplayed ? 'primary' : ''"
+					type="button"
+					matBadge="1"
+					[matBadgeHidden]="!model.notes"
+					matBadgePosition="after"
+					matBadgeColor="primary"
+					matBadgeSize="small"
+					matBadgeOverlap="true"
+				>
+					<mat-icon>speaker_notes</mat-icon>
+				</button>
+				<button
+					mat-icon-button
+					matTooltip="{{ 'models_clean_fields' | translate }}"
+					(click)="cleanRows = !cleanRows"
+					[color]="cleanRows ? 'warn' : ''"
+					type="button"
+				>
+					<mat-icon>delete_sweep</mat-icon>
+				</button>
+				<button
+					mat-icon-button
+					[matMenuTriggerFor]="menu"
+					type="button"
+				>
+					<mat-icon>more_vert</mat-icon>
+				</button>
+				<mat-menu #menu>
+					<button mat-menu-item (click)="clone.emit()" type="button">
+						<mat-icon>filter_none</mat-icon>
+						{{ 'model_duplicate' | translate }}
+					</button>
+					<button
+						mat-menu-item
+						(click)="copyModel.emit()"
+						type="button"
+					>
+						<mat-icon>file_copy_outline</mat-icon>
+						{{ 'model_copy_clipboard' | translate }}
+					</button>
+					<button
+						mat-menu-item
+						(click)="confirmModelDeletion = true"
+						type="button"
+					>
+						<mat-icon color="warn">delete_outline</mat-icon>
+						{{ 'model_delete' | translate }}
+					</button>
+				</mat-menu>
+			</div>
+		</div>
+		<mat-card-content class="mb-0">
+			<div
+				class="container-fluid accessRights pt-3"
+				[class.d-none]="!accessRightsPanelIsDisplayed"
+			>
+				<div class="row">
+					<div class="col-12">
+						<h4 class="mb-3">{{ 'access_title' | translate }}</h4>
+						<ul class="list-unstyled ">
+							<li *ngFor="let action of actions" class="mb-3">
+								<mat-button-toggle-group
+									class="w-100 border-0 d-flex flex-row flex-nowrap"
+								>
+									<mat-button-toggle [disabled]="true">
+										{{ action.name }}
+									</mat-button-toggle>
+									<mat-button-toggle
+										*ngFor="let access of action.accesses"
+										(click)="
+											onAccessChange(
+												action.name,
+												access.value
+											)
+										"
+										[class.active]="access.selected"
+										>{{
+											access.value.name
+										}}</mat-button-toggle
+									>
+								</mat-button-toggle-group>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div
+				class="container-fluid notes pt-3"
+				[class.d-none]="!notesPanelIsDisplayed"
+			>
+				<div class="row">
+					<div class="col-12">
+						<mat-form-field class="w-100">
+							<textarea
+								matInput
+								matTextareaAutosize
+								[matAutosizeMinRows]="6"
+								[matAutosizeMaxRows]="12"
+								[(ngModel)]="model.notes"
+								(change)="onModelChange()"
+								placeholder="{{ 'notes_title' | translate }}"
+							></textarea>
+						</mat-form-field>
+					</div>
+				</div>
+			</div>
+			<ul
+				class="list-unstyled overable container-fluid mt-2"
+				cdkDropList
+				(cdkDropListDropped)="dropped($event)"
+			>
+				<li
+					*ngFor="let field of model.fields"
+					class="row border-bottom border-light py-1 position-relative"
+					[class.active]="field === currentField"
+					(mouseenter)="currentField = field"
+					cdkDrag
+				>
+					<mat-icon
+						[inline]="true"
+						class="dndHandler"
+						cdkDragHandle=""
+						>more_vert</mat-icon
+					>
+					<app-model-field-light
+						*ngIf="field !== currentField"
+						[models]="models"
+						[field]="field"
+						[deletionMode]="cleanRows"
+						class="col-12"
+					></app-model-field-light>
+					<app-model-field
+						*ngIf="field === currentField"
+						[models]="models"
+						[field]="field"
+						[deletionMode]="cleanRows"
+						(delete)="deleteField(field)"
+                        (update)="onModelChange()"
+						class="col-12"
+					></app-model-field>
+				</li>
+				<li
+					(click)="addFieldDisabled ? false : addField()"
+					class="row align-items-center py-2 addField"
+					[class.disabled]="addFieldDisabled"
+				>
+					<div class="col-12">
+						{{ 'models_add_field' | translate }}
+					</div>
+				</li>
+			</ul>
+
+			<app-validator-details
+				[signal]="update"
+				[model]="model"
+				class="d-block"
+			></app-validator-details>
+		</mat-card-content>
+		<div
+			class="position-absolute w-100 h-100 d-flex align-items-center justify-content-center confirmModelDeletion"
+			[class.active]="confirmModelDeletion"
+		>
+			<div class="bg-gradient-purple position-absolute w-100 h-100"></div>
+			<div class="position-relative">
+				<h6>{{ 'model_delete_confirm' | translate }}</h6>
+				<div class="d-flex align-items-center justify-content-center">
+					<button
+						mat-mini-fab
+						color="accent"
+						(click)="confirmModelDeletion = false"
+						class="mat-elevation-z0 mr-2"
+						type="button"
+					>
+						<mat-icon color="primary">undo</mat-icon>
+					</button>
+					<button
+						mat-mini-fab
+						color="warn"
+						(click)="delete.emit()"
+						class="mat-elevation-z0"
+						type="button"
+					>
+						<mat-icon>delete_forever</mat-icon>
+					</button>
+				</div>
+			</div>
+		</div>
+	</mat-card>
+</div>

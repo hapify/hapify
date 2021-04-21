@@ -1,0 +1,149 @@
+.action-label {
+	width: 100px;
+}
+
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '../../../../palette.scss';
+mat-card {
+	&.active {
+		outline: solid 1px mat-color($hpf-app-primary);
+	}
+}
+
+.title {
+	font-size: 0.9em;
+	font-weight: 500;
+}
+
+.overable > li {
+	.dndHandler {
+		position: absolute;
+		z-index: 9;
+		top: 6px;
+		left: 0px;
+		color: $gray-500;
+		opacity: 0;
+		cursor: grab;
+
+		&:active {
+			cursor: grabbing;
+		}
+	}
+	&:hover {
+		background-color: transparent;
+	}
+
+	&.active {
+		background-color: $gray-100;
+		.dndHandler {
+			opacity: 1;
+		}
+	}
+}
+
+input[type='text'] {
+	&:focus {
+		color: mat-color($hpf-app-primary);
+		outline: none;
+	}
+}
+.addField {
+	color: mat-color($hpf-app-primary);
+	cursor: pointer;
+	&.disabled {
+		color: $gray-500;
+		cursor: default;
+	}
+}
+::ng-deep {
+	.mat-button-toggle-appearance-standard .mat-button-toggle-label-content {
+		line-height: 32px !important;
+	}
+}
+
+.accessRights,
+.notes {
+	font-size: 0.9em;
+	background-color: mat-color($hpf-app-primary, 50, 0.3);
+	h4 {
+		font-size: 1em;
+		font-weight: 400;
+		color: mat-color($hpf-app-primary);
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		text-align: center;
+	}
+}
+.accessRights {
+	mat-button-toggle {
+		background-color: transparent;
+		width: inherit;
+		color: $gray-600 !important;
+
+		&.mat-button-toggle-disabled {
+			::ng-deep {
+				.mat-button-toggle-label-content {
+					text-transform: uppercase !important;
+					font-size: 0.8em;
+					color: mat-color($hpf-app-primary) !important;
+				}
+			}
+		}
+
+		&.active {
+			background-color: mat-color($hpf-app-primary, 50);
+			color: mat-color($hpf-app-primary) !important;
+			border-color: mat-color($hpf-app-primary, 100) !important;
+		}
+	}
+}
+
+.confirmModelDeletion {
+	pointer-events: none;
+	opacity: 0;
+	top: 0;
+	left: 0;
+	z-index: 99;
+	transition: opacity 0.1s ease;
+	border-radius: 4px;
+	overflow: hidden;
+
+	&.active {
+		pointer-events: initial;
+		opacity: 1;
+	}
+
+	.bg-gradient-purple {
+		top: 0;
+		left: 0;
+		opacity: 0.9;
+		z-index: 1;
+		& + div {
+			z-index: 2;
+		}
+	}
+
+	h6 {
+		color: $white !important;
+	}
+}
+
+.cdk-drag {
+	transition: transform 0.2s ease;
+}
+
+.cdk-drag-placeholder {
+	box-shadow: 0 1px 2px $gray-500;
+}
+
+.cdk-drop-list-dragging,
+.cdk-drop-list-dragging *,
+.cdk-drop-list-dragging * *,
+.cdk-drop-list-dragging * * * {
+	cursor: grabbing !important;
+}
+
+.mat-badge-content {
+	transition: none !important;
+}

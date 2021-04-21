@@ -1,0 +1,49 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '../palette.scss';
+
+app-sidebar {
+	flex-basis: 224px;
+	overflow-x: hidden;
+
+	&.sm,
+	&.md,
+	&.reduced {
+		flex-basis: 80px;
+	}
+}
+
+#toggleReduceSidebar {
+	width: 3px;
+	background-color: $gray-200;
+	cursor: w-resize;
+	&.reduced {
+		cursor: e-resize;
+	}
+}
+.scrolling {
+	pointer-events: none;
+}
+
+#scrollzone {
+	height: 100%;
+	overflow: auto;
+}
+
+::ng-deep {
+	snack-bar-container.messageBar {
+		background-color: $white;
+		color: mat-color($hpf-app-primary);
+		border: 1px solid mat-color($hpf-app-primary);
+		button {
+			background-color: mat-color($hpf-app-primary);
+		}
+		&.errorBar {
+			color: mat-color($hpf-app-warn);
+			border-color: mat-color($hpf-app-warn);
+			button {
+				background-color: mat-color($hpf-app-warn);
+			}
+		}
+	}
+}

@@ -1,0 +1,23 @@
+<div class="container-fluid">
+	<header class="row py-3 px-4 border-bottom">
+		<div class="col-12 d-flex justify-content-between align-items-center">
+			<h1 class="my-3">
+				{{ 'channels_title' | translate }}
+				<small class="d-block mt-2">{{
+					'channels_intro' | translate
+				}}</small>
+			</h1>
+		</div>
+	</header>
+
+	<ul class="row px-4 my-4 list-unstyled">
+		<li
+			*ngFor="let channel of channels"
+			class="col-12 col-md-6 col-lg-6 col-xl-4 mb-4"
+		>
+			<app-channel-channel-card
+				[channel]="channel"
+			></app-channel-channel-card>
+		</li>
+	</ul>
+</div>

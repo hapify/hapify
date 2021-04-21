@@ -1,0 +1,23 @@
+<form
+	(submit)="save(); nameInput.value = ''"
+	class="d-flex w-100 flex-column justify-content-center align-items-center"
+>
+	<mat-form-field class="w-100">
+		<input
+			matInput
+			placeholder="{{ 'new_model_name_placeholder' | translate }}"
+			autocomplete="false"
+			#nameInput
+			name="nameInput"
+			[(ngModel)]="name"
+		/>
+		<mat-icon
+			*ngIf="name"
+			matSuffix
+			[inline]="true"
+			(click)="save(); nameInput.value = ''"
+			style="cursor: pointer"
+			>keyboard_return</mat-icon
+		>
+	</mat-form-field>
+</form>

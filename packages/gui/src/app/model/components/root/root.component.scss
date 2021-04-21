@@ -1,0 +1,25 @@
+@import '../../../../palette.scss';
+
+section {
+	opacity: 0;
+	animation: fadein 0.3s forwards;
+	animation-delay: 0.2s;
+}
+.overable {
+	& > li {
+		opacity: 0;
+		animation: fadein 0.3s forwards;
+		animation-delay: 0.2s;
+	}
+}
+
+.newModelCallToAction {
+	border-radius: 4px;
+	border-style: dashed !important;
+
+	h6 {
+		color: mat-color($hpf-app-primary);
+	}
+}
+.editOverlay {
+}

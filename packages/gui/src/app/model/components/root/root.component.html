@@ -1,0 +1,171 @@
+<main class="container-fluid">
+	<app-header
+		(newModel)="onCreate($event)"
+		(newImport)="updateModels()"
+	></app-header>
+	<section class="row px-4 pb-5 pt-3">
+		<div
+			class="col-12 d-flex justify-content-center my-5"
+			*ngIf="!modelsAreLoaded"
+		>
+			<mat-spinner [diameter]="32"></mat-spinner>
+		</div>
+		<div class="col-12" *ngIf="modelsAreLoaded">
+			<div class="row mb-3 filters">
+				<div class="col-12 col-lg-6 offset-0 offset-lg-6">
+					<div class="small">
+						<div class="row">
+							<mat-form-field class="col-12 col-md-4">
+								<input
+									matInput
+									[(ngModel)]="nameFilter"
+									(keyup)="updateVisibleModels()"
+									(keyup.esc)="
+										nameFilter = null; updateVisibleModels()
+									"
+									autocomplete="off"
+									placeholder="{{
+										'common_model_filter-name' | translate
+									}}"
+								/>
+								<mat-icon matSuffix [inline]="true"
+									>search</mat-icon
+								>
+							</mat-form-field>
+							<mat-form-field class="col-12 col-md-4">
+								<input
+									matInput
+									[(ngModel)]="fieldFilter"
+									(keyup)="updateVisibleModels()"
+									(keyup.esc)="
+										fieldFilter = null;
+										updateVisibleModels()
+									"
+									autocomplete="off"
+									placeholder="{{
+										'common_model_filter-field' | translate
+									}}"
+								/>
+								<mat-icon matSuffix [inline]="true"
+									>search</mat-icon
+								>
+							</mat-form-field>
+							<mat-form-field class="col-12 col-md-4">
+								<mat-select
+									[(ngModel)]="linkFilter"
+									(selectionChange)="updateVisibleModels()"
+									(keyup.esc)="
+										linkFilter = null; updateVisibleModels()
+									"
+									[placeholder]="
+										'common_model_filter-ref' | translate
+									"
+								>
+									<mat-option [value]="null">{{
+										'common_model_filter-ref-none'
+											| translate
+									}}</mat-option>
+									<mat-option
+										*ngFor="let model of models"
+										[value]="model.id"
+										>{{ model.name }}</mat-option
+									>
+								</mat-select>
+							</mat-form-field>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-12">
+			<ul class="row list-unstyled">
+				<li
+					*ngFor="let model of visibleModels"
+					class="col-12 col-md-6 col-lg-6 col-xl-4 mb-4"
+				>
+					<div
+						class="editOverlay"
+						(mouseenter)="currentModel = model"
+					>
+						<app-model-model-light
+							*ngIf="model !== currentModel"
+							[model]="model"
+							[models]="models"
+							[addFieldDisabled]="
+								info &&
+								model.fields.length >= info.limits.fields
+							"
+						></app-model-model-light>
+						<app-model-model
+							*ngIf="model === currentModel"
+							[model]="model"
+							[models]="models"
+							[addFieldDisabled]="
+								info &&
+								model.fields.length >= info.limits.fields
+							"
+							(save)="onSave(model)"
+							(clone)="onClone(model)"
+							(copyModel)="onCopy(model)"
+							(delete)="onDelete(model)"
+						></app-model-model>
+					</div>
+				</li>
+				<li
+					class="col-12 col-md-6 col-lg-6 col-xl-4 mb-4"
+					*ngIf="modelsAreLoaded"
+				>
+					<div
+						class="newModelCallToAction border border-hpf-primary p-5 d-flex w-100 align-items-center justify-content-center flex-column"
+					>
+						<div
+							class="d-flex flex-nowrap align-items-center w-75 justify-content-center"
+							*ngIf="addingNewModel"
+						>
+							<app-model-new
+								class="d-block w-100"
+								(create)="onCreate($event)"
+							></app-model-new>
+							<button
+								mat-icon-button
+								color="warn"
+								type="button"
+								(click)="addingNewModel = false"
+							>
+								<mat-icon>close</mat-icon>
+							</button>
+						</div>
+						<button
+							mat-raised-button
+							color="accent"
+							class="mat-elevation-z0 border mt-5 d-inline-flex align-items-center"
+							(click)="addingNewModel = true"
+							*ngIf="!addingNewModel"
+						>
+							<mat-icon>add</mat-icon>
+							{{ 'common_new_model' | translate }}
+						</button>
+						<button
+							mat-raised-button
+							class="mat-elevation-z0 border mt-2 mb-5 d-inline-flex align-items-center"
+							(click)="onPaste()"
+							*ngIf="!addingNewModel"
+						>
+							<mat-icon>save_alt</mat-icon>
+							{{ 'common_paste_model' | translate }}
+						</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</section>
+</main>
+
+<!--
+      DO NOT REMOVE
+    <span class="d-none">
+        {{ 'clipboard_not-supported' | translate }}
+        {{ 'clipboard_copy-success' | translate }}
+        {{ 'clipboard_paste-success' | translate }}
+    </span>
+-->

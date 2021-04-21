@@ -1,0 +1,128 @@
+<div class="container-fluid d-flex flex-column w-100 h-100 bg-light">
+	<header class="row flex-shrink-0 mat-elevation-z1 bg-white py-2">
+		<div class="col-12 d-flex align-items-center justify-content-between">
+			<div
+				class="d-flex align-items-center justify-content-start flex-shrink-1"
+			>
+				<button
+					mat-icon-button
+					type="button"
+					(click)="didClickClose()"
+					color="warn"
+				>
+					<mat-icon>arrow_back_ios</mat-icon>
+				</button>
+				<div class="d-flex flex-column">
+					<div class="input-inline-hidden-result">
+						{{ wipPath.value }}
+					</div>
+					<input
+						class="inline-input path-preview"
+						type="text"
+						#wipPath
+						[value]="wip.path"
+						(blur)="onPathChange($event.target.value)"
+					/>
+				</div>
+
+				<mat-icon class="ml-1 mr-2">arrow_right_alt</mat-icon>
+				<span
+					*ngIf="!template.needsModel() || !!model"
+					class="color-{{ template.type }} path-preview"
+				>
+					{{ pathResult }}
+				</span>
+			</div>
+			<div
+				class="d-flex align-items-center justify-content-end flex-shrink-0"
+			>
+				<mat-select
+					*ngIf="template.needsModel()"
+					[(ngModel)]="model"
+					(selectionChange)="onModelChange()"
+					color="accent"
+					class="w-75 flex-shrink-0"
+				>
+					<mat-option *ngFor="let m of models" [value]="m">{{
+						m.name
+					}}</mat-option>
+				</mat-select>
+				<button
+					mat-icon-button
+					[color]="autoRefresh ? 'primary' : ''"
+					(click)="autoRefresh = !autoRefresh"
+					matTooltip="{{
+						'channels_tooltip_autorefresh' | translate
+					}}}"
+					type="button"
+				>
+					<mat-icon>refresh</mat-icon>
+				</button>
+				<button
+					mat-icon-button
+					[color]="generatorService.autoSyncEnabled ? 'primary' : ''"
+					(click)="
+						generatorService.autoSyncEnabled = !generatorService.autoSyncEnabled
+					"
+					matTooltip="{{
+						'channels_tooltip_autogenerate' | translate
+					}}"
+					type="button"
+					class="mr-1"
+				>
+					<mat-icon>gavel</mat-icon>
+				</button>
+				<button
+					class="d-none"
+					mat-icon-button
+					color="primary"
+					matTooltip="{{ 'channels_tooltip_dump' | translate }}"
+					type="button"
+					(click)="didClickDump()"
+				>
+					<mat-icon>code</mat-icon>
+				</button>
+				<button
+					mat-raised-button
+					[color]="unsavedChanges ? 'primary' : 'accent'"
+					class="mat-elevation-z0 border d-flex align-items-center flex-shrink-0 accent"
+					type="button"
+					(click)="didClickSave()"
+				>
+					<mat-icon [inline]="true">check</mat-icon>
+					{{ 'channels_save' | translate }}
+				</button>
+			</div>
+		</div>
+	</header>
+	<div class="row h-100 flex-shrink-1 my-3">
+		<div class="col-6">
+			<ace-editor
+				class="h-100 p-3 rounded code input-editor"
+				#editorInput
+				[(text)]="wip.content"
+				[mode]="aceService.mode(wip.aceMode(), false)"
+				[theme]="aceService.theme()"
+				[options]="{}"
+				[readOnly]="false"
+				[autoUpdateContent]="true"
+				[durationBeforeCallback]="1000"
+				(textChanged)="onChange($event)"
+			></ace-editor>
+		</div>
+		<div class="col-6">
+			<ace-editor
+				*ngIf="result"
+				class="h-100 p-3 rounded code"
+				[ngClass]="'bg-' + template.type"
+				[(text)]="result.content"
+				[mode]="aceService.mode(wip.path)"
+				[theme]="aceService.theme()"
+				[options]="{ printMargin: false }"
+				[readOnly]="true"
+				[autoUpdateContent]="true"
+			></ace-editor>
+			<pre *ngIf="error" class="m-0 p-2 preError">{{ error }}</pre>
+		</div>
+	</div>
+</div>

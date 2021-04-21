@@ -1,0 +1,129 @@
+@import '../../../../palette.scss';
+
+$c-string: #df0002;
+$c-comment: #008e00;
+$c-bullet: #cccccc;
+
+$c-cond: #4c8e47;
+$c-iter: #666bc3;
+$c-inter: #d77c81;
+$c-eval: #555555;
+
+header {
+	position: relative;
+	z-index: 99;
+
+	.inline-input {
+		color: mat-color($hpf-app-primary);
+	}
+	.path-preview {
+		font-size: 0.9rem;
+	}
+
+	.input-inline-hidden-result {
+		opacity: 0;
+		height: 0;
+		overflow: hidden;
+		white-space: pre;
+	}
+}
+
+ace-editor {
+	background-color: mat-color($hpf-app-primary, 100);
+}
+
+::ng-deep {
+	.ace-xcode .ace_gutter {
+		background-color: transparent !important;
+	}
+	.ace_content {
+		background-color: rgba(255, 255, 255, 0.7);
+	}
+	.ace_hpf {
+		border-bottom: 1px solid;
+    font-weight: bold;
+    &.ace_start,
+    &.ace_end {
+      font-weight: normal;
+    }
+		&.ace_inter {
+			background-color: transparentize($c-inter, .90);
+      color: darken($c-inter, 10%);
+      border-color: transparentize($c-inter, .80);
+      &.ace_start,
+      &.ace_end,
+      &.ace_word {
+        color: $c-inter;
+      }
+		}
+		&.ace_cond {
+      background-color: transparentize($c-cond, .90);
+      color: darken($c-cond, 10%);
+      border-color: transparentize($c-cond, .80);
+      &.ace_start,
+      &.ace_end,
+      &.ace_word {
+        color: $c-cond;
+      }
+		}
+		&.ace_iter {
+      background-color: transparentize($c-iter, .90);
+      color: darken($c-iter, 20%);
+      border-color: transparentize($c-iter, .80);
+      &.ace_start,
+      &.ace_end,
+      &.ace_word {
+        color: $c-iter;
+      }
+		}
+		&.ace_eval,
+		&.ace_cmt {
+      background-color: transparentize($c-eval, .90);
+      color: darken($c-eval, 30%);
+      border-color: transparentize($c-eval, .80);
+      &.ace_start,
+      &.ace_end,
+      &.ace_word {
+        color: $c-eval;
+      }
+		}
+		&.ace_blank {
+			border-bottom: none;
+			&:before {
+				content: '•';
+				color: $c-bullet;
+			}
+		}
+	}
+
+	// Force comment color on interpolations
+	.ace_comment {
+		+ .ace_hpf.ace_inter {
+			color: $c-comment;
+			+ .ace_hpf.ace_inter {
+				color: $c-comment;
+				+ .ace_hpf.ace_inter {
+					color: $c-comment;
+				}
+			}
+		}
+	}
+	// Force string color on interpolations
+	.ace_string {
+		+ .ace_hpf.ace_inter {
+			color: $c-string;
+			+ .ace_hpf.ace_inter {
+				color: $c-string;
+				+ .ace_hpf.ace_inter {
+					color: $c-string;
+				}
+			}
+		}
+	}
+}
+
+.preError {
+	background-color: mat-color($hpf-app-warn, 50);
+	color: mat-color($hpf-app-warn);
+	font-size: 0.8em;
+}

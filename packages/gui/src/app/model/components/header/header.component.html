@@ -1,0 +1,50 @@
+<header class="row py-3 px-4 border-bottom">
+	<div class="col-12 d-flex justify-content-between align-items-center">
+		<h1 class="my-3 flex-shrink-1">
+			{{ 'models_title' | translate }}
+			<small class="d-block mt-2">{{ 'models_intro' | translate }}</small>
+		</h1>
+		<div
+			class="flex-shrink-0 d-flex align-content-center justify-content-end"
+		>
+			<div
+				class="d-flex flex-nowrap align-items-center justify-content-end"
+				*ngIf="addingNewModel"
+			>
+				<app-model-new
+					class="d-block w-100"
+					(create)="newModel.emit($event)"
+				></app-model-new>
+				<button
+					mat-icon-button
+					color="warn"
+					type="button"
+					(click)="addingNewModel = false"
+				>
+					<mat-icon>close</mat-icon>
+				</button>
+			</div>
+
+			<button
+				mat-raised-button
+				color="accent"
+				class="mat-elevation-z0 border d-inline-flex align-items-center mr-2"
+				[disabled]="newModelDisabled"
+				(click)="addingNewModel = true"
+				*ngIf="!addingNewModel"
+			>
+				<mat-icon>add</mat-icon>
+				{{ 'common_new_model' | translate }}
+			</button>
+			<button
+				mat-raised-button
+				color="primary"
+				(click)="openPresetDialog()"
+				class="d-flex align-items-center mat-elevation-z0"
+			>
+				<mat-icon>library_add</mat-icon>
+				{{ 'common_import_model' | translate }}
+			</button>
+		</div>
+	</div>
+</header>

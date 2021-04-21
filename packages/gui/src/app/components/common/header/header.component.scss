@@ -1,0 +1,16 @@
+$h-lg-header: 65px;
+$w-lg-sidebar: 250px;
+
+#header {
+	height: $h-lg-header;
+	position: relative;
+	> .inr {
+		position: fixed;
+		z-index: 10;
+		height: $h-lg-header;
+		left: $w-lg-sidebar;
+		top: 0;
+		right: 0;
+		box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+	}
+}

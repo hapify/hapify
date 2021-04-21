@@ -1,6 +1,6 @@
 {
   "name": "@hapify/syntax",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Templating syntax optimized for Hapify models handling.",
   "keywords": [
     "hapify",
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "@hapi/hoek": "^9.1.1",
-    "@hapify/vm": "1.3.0",
+    "@hapify/vm": "1.4.0",
     "escape-string-regexp": "^4.0.0",
     "line-column": "^1.0.2"
   },

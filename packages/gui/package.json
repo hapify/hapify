@@ -1,6 +1,6 @@
 {
   "name": "@hapify/gui",
-  "version": "0.8.0",
+  "version": "1.0.0",
   "description": "Graphical User Interface for Hapify",
   "keywords": [
     "hapify",

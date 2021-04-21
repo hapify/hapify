@@ -1,5 +1,17 @@
 # Changelog
 
+All notable changes to this project will be documented in this file. See
+[Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# @hapify/gui 1.0.0 (2021-04-21)
+
+
+### Features
+
+* add gui package ([#20](https://github.com/hapify/hapify/issues/20)) ([443c758](https://github.com/hapify/hapify/commit/443c758804b0477005fe2ef15fc0c8f64794115d))
+
+# Changelog
+
 ## [Unreleased]
 
 ### Added

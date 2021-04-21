@@ -56,7 +56,7 @@ const getModels = (
     {
       id: `0cf80d75-abcd-f8c7-41f6-ed41c6425aa1`,
       name: 'User profile',
-      notes: 'this is a note',
+      notes: 'this is a comment',
       fields,
       accesses: {
         create: 'guest',
@@ -109,6 +109,24 @@ describe('model names', () => {
     const response1 = await Generator.run(templates, getModels());
     expect(response1.length).to.equal(1);
     expect(response1[0].content).to.equal('User profile');
+  });
+});
+
+describe('model notes', () => {
+  it('model.notes', async () => {
+    const templates = getTemplates(
+      `return model.hasNotes ? model.notes : 'No notes';`,
+    );
+    // With note
+    const models = getModels();
+    const response1 = await Generator.run(templates, models);
+    expect(response1.length).to.equal(1);
+    expect(response1[0].content).to.equal('this is a comment');
+    // Without notes
+    delete models[0].notes;
+    const response2 = await Generator.run(templates, models);
+    expect(response2.length).to.equal(1);
+    expect(response2[0].content).to.equal('No notes');
   });
 });
 

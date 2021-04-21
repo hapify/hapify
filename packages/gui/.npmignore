@@ -5,6 +5,8 @@ e2e/
 .vscode
 
 .browserslistrc
+.eslintignore
+.eslintrc.js
 .gitignore
 angular.json
 ERRORS.md

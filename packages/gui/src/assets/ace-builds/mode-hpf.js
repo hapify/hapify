@@ -846,6 +846,20 @@ ace.define(
           ],
         },
         {
+          token: 'hpf.inter.notes.start',
+          regex: '<<!',
+          push: [
+            {
+              token: 'hpf.inter.notes.end',
+              regex: '>>',
+              next: pop,
+            },
+            {
+              defaultToken: 'hpf.inter.notes',
+            },
+          ],
+        },
+        {
           token: 'hpf.inter.name.start',
           // regex: /<<(?!@|\?|for\b|endfor\b|if\b|elseif\b|else\b|endif\b)\S+/,
           regex: '<<',

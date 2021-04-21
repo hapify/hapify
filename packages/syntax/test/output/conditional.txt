@@ -8,4 +8,6 @@ Big condition
 At least 2 primary or label
 This model has some fields
 This model has some enum
+This model has notes
+This model has some fields with notes
 End

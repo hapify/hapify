@@ -42,8 +42,16 @@ At least 2 primary or label
 This model has some fields
 <<endif>>
 
-<<? F enum >>
+<<if F enum >>
 This model has some enum
-<<?>>
+<<endif>>
+
+<<if Model hasNotes>>
+This model has notes
+<<endif>>
+
+<<if Fields hasNotes >>
+This model has some fields with notes
+<<endif>>
 
 End

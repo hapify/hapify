@@ -1,0 +1,4 @@
+Notes of <<Model pascal>>: <<! Model >>
+<<for Fields hasNotes field>>
+Notes of <<field pascal>>: <<!field>>
+<<endfor>>

@@ -176,6 +176,11 @@ describe('conditional', () => {
       condition("(i.type === 'file' && i.subtype === 'document')"),
     );
 
+    // Notes
+    expect(ConditionalPattern.execute('<<? M hN>>')).to.equal(
+      conditionModel('i.hasNotes'),
+    );
+
     // properties
     expect(ConditionalPattern.execute('<<? M pMHd>>')).to.equal(
       conditionModel('i.properties.mainlyHidden'),

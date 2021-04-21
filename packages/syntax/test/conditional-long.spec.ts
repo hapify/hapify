@@ -203,6 +203,11 @@ describe('conditional long', () => {
       Condition("(i.type === 'file' && i.subtype === 'document')"),
     );
 
+    // Notes
+    expect(ConditionalPatternExecute('<<if Model hasNotes>>')).to.equal(
+      conditionModel('i.hasNotes'),
+    );
+
     // properties
     expect(ConditionalPatternExecute('<<if Model mainlyHidden>>')).to.equal(
       conditionModel('i.properties.mainlyHidden'),

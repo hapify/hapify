@@ -18,6 +18,7 @@ import { IndentPattern } from './patterns/IndentPattern';
 import { InterpolationPattern } from './patterns/InterpolationPattern';
 import { IterationPattern } from './patterns/IterationPattern';
 import { NameInterpolationPattern } from './patterns/NameInterpolationPattern';
+import { NotesInterpolationPattern } from './patterns/NotesInterpolationPattern';
 
 /** Ordered patterns */
 const PatternsStack = [
@@ -29,6 +30,7 @@ const PatternsStack = [
   IterationPattern,
   InterpolationPattern,
   NameInterpolationPattern,
+  NotesInterpolationPattern,
   EvaluatePattern,
   EscapePattern,
 ];

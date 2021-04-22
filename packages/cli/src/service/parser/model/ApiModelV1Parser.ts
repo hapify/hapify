@@ -1,3 +1,4 @@
+import {DeepRequired} from "ts-essentials";
 import { Container } from 'typedi';
 
 import { IApiModel } from '../../../interface/Api';
@@ -12,9 +13,9 @@ export class ApiModelV1Parser implements VersionedObjectParser<IApiModel> {
     this.converterService = Container.get(ConverterService);
   }
 
-  convert(input: IV1ApiModel): IApiModel {
+  convert(input: IV1ApiModel): DeepRequired<IApiModel> {
     return {
-      version: '2',
+      version: '3',
       _id: input._id,
       created_at: input.created_at,
       updated_at: input.updated_at,

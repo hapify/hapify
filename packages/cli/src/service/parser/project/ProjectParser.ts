@@ -3,6 +3,7 @@ import { VersionScope } from '../../../interface/Version';
 import { Parser } from '../Parser';
 import { ProjectV1Parser } from './ProjectV1Parser';
 import { ProjectV2Parser } from './ProjectV2Parser';
+import {ProjectV3Parser} from "./ProjectV3Parser";
 
 export class ProjectParser extends Parser<IStorableCompactProject> {
   protected getScope(): VersionScope {
@@ -13,6 +14,7 @@ export class ProjectParser extends Parser<IStorableCompactProject> {
     return {
       '1': ProjectV1Parser,
       '2': ProjectV2Parser,
+      '3': ProjectV3Parser,
     };
   }
 }

@@ -4,9 +4,9 @@ import { VersionedObjectParser } from '../../../interface/Version';
 import { ApiModelParser } from '../model/ApiModelParser';
 
 export class ApiPresetV1Parser implements VersionedObjectParser<IApiPreset> {
-  convert(input: IV1ApiPreset): IApiPreset {
+  convert(input: IV1ApiPreset): Required<IApiPreset> {
     return {
-      version: '2',
+      version: '3',
       _id: input._id,
       models: input.models.map((model) => new ApiModelParser(model).convert()),
       name: input.name,

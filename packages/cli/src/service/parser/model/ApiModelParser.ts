@@ -3,7 +3,7 @@ import { VersionScope } from '../../../interface/Version';
 import { Parser } from '../Parser';
 import { ApiModelV1Parser } from './ApiModelV1Parser';
 import { ApiModelV2Parser } from './ApiModelV2Parser';
-import {ApiModelV3Parser} from "./ApiModelV3Parser";
+import { ApiModelV3Parser } from './ApiModelV3Parser';
 
 export class ApiModelParser extends Parser<IApiModel> {
   protected getScope(): VersionScope {

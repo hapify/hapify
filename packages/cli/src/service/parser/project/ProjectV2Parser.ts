@@ -1,11 +1,13 @@
-import {DeepRequired} from "ts-essentials";
-import {IV2StorableCompactProject} from "../../../interface/legacy/v2/Storage";
+import { DeepRequired } from 'ts-essentials';
+import { IV2StorableCompactProject } from '../../../interface/legacy/v2/Storage';
 import { IStorableCompactProject } from '../../../interface/Storage';
 import { VersionedObjectParser } from '../../../interface/Version';
 
 export class ProjectV2Parser
   implements VersionedObjectParser<IStorableCompactProject> {
-  convert(input: IV2StorableCompactProject): DeepRequired<IStorableCompactProject> {
+  convert(
+    input: IV2StorableCompactProject,
+  ): DeepRequired<IStorableCompactProject> {
     return {
       version: '3',
       name: input.name,

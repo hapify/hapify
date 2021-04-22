@@ -35,8 +35,8 @@ type FieldSubType =
 type FieldValueType<T> = T extends 'entity'
   ? string
   : T extends 'enum'
-    ? string[]
-    : null;
+  ? string[]
+  : null;
 interface Field<T extends FieldType = FieldType> {
   /** The field's name */
   name: string;
@@ -150,9 +150,6 @@ type CompactFieldBooleanProperty =
   | 'internal'
   | 'restricted'
   | 'ownership';
-
-
-
 
 interface IConfigTemplate {
   /** The template's path */

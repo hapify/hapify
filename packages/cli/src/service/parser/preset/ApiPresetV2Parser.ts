@@ -1,7 +1,7 @@
 import { IApiPreset } from '../../../interface/Api';
-import {IV2ApiPreset} from "../../../interface/legacy/v2/Api";
+import { IV2ApiPreset } from '../../../interface/legacy/v2/Api';
 import { VersionedObjectParser } from '../../../interface/Version';
-import {ApiModelParser} from "../model/ApiModelParser";
+import { ApiModelParser } from '../model/ApiModelParser';
 
 export class ApiPresetV2Parser implements VersionedObjectParser<IApiPreset> {
   convert(input: IV2ApiPreset): Required<IApiPreset> {

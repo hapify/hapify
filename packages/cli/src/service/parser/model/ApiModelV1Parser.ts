@@ -1,4 +1,4 @@
-import {DeepRequired} from "ts-essentials";
+import { DeepRequired } from 'ts-essentials';
 import { Container } from 'typedi';
 
 import { IApiModel } from '../../../interface/Api';

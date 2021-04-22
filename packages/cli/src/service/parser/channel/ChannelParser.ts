@@ -3,7 +3,7 @@ import { VersionScope } from '../../../interface/Version';
 import { Parser } from '../Parser';
 import { ChannelV1Parser } from './ChannelV1Parser';
 import { ChannelV2Parser } from './ChannelV2Parser';
-import {ChannelV3Parser} from "./ChannelV3Parser";
+import { ChannelV3Parser } from './ChannelV3Parser';
 
 export class ChannelParser extends Parser<IStorableCompactConfig> {
   protected getScope(): VersionScope {

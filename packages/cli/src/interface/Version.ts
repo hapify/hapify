@@ -26,8 +26,6 @@ export interface CurrentVersions extends VersionScopes<string> {
 }
 export type VersionScope = keyof CurrentVersions;
 
-
-
 export interface VersionedObjectParser<O> {
   convert(input: VersionedObject): O;
 }

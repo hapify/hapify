@@ -1,6 +1,6 @@
-import {DeepRequired} from "ts-essentials";
+import { DeepRequired } from 'ts-essentials';
 import { IApiModel } from '../../../interface/Api';
-import {IV2ApiModel} from "../../../interface/legacy/v2/Api";
+import { IV2ApiModel } from '../../../interface/legacy/v2/Api';
 import { VersionedObjectParser } from '../../../interface/Version';
 
 export class ApiModelV2Parser implements VersionedObjectParser<IApiModel> {

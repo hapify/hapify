@@ -1,6 +1,8 @@
 {
   "id": "0b5fec90-e484-f736-f4c9-81bdad35d4ba",
   "name": "Youtube video",
+  "notes": "This is a comment",
+  "hasNotes": true,
   "fields": {
     "list": [
       {
@@ -61,6 +63,8 @@
       },
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -2141,6 +2145,8 @@
       },
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -4223,6 +4229,8 @@
     "label": [
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -4253,6 +4261,8 @@
     "lb": [
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -4287,6 +4297,8 @@
     "searchable": [
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -4345,6 +4357,8 @@
     "se": [
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -4431,6 +4445,8 @@
       },
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -4489,6 +4505,8 @@
       },
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -4639,6 +4657,8 @@
     "searchableLabel": [
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -4669,6 +4689,8 @@
     "sl": [
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -12240,6 +12262,8 @@
       },
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -14198,6 +14222,8 @@
       },
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -16158,6 +16184,8 @@
     "label": [
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -16188,6 +16216,8 @@
     "lb": [
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -16222,6 +16252,8 @@
     "searchable": [
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -16280,6 +16312,8 @@
     "se": [
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -16366,6 +16400,8 @@
       },
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -16424,6 +16460,8 @@
       },
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -16574,6 +16612,8 @@
     "searchableLabel": [
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -16604,6 +16644,8 @@
     "sl": [
       {
         "name": "name",
+"notes": "this is the name",
+"hasNotes": true,
         "type": "string",
         "subtype": null,
         "value": null,

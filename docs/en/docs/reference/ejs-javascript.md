@@ -33,6 +33,8 @@ This JSON is a partial representation of the actual injected model object, but i
     "pascal": "UserProfile",
     "camel": "userProfile"
   },
+  "notes": "The user's details",
+  "hasNotes": true,
   "fields": {
     "list": [
       {
@@ -51,7 +53,8 @@ This JSON is a partial representation of the actual injected model object, but i
           "camel": "id"
         },
         "name": "_id",
-        "notes": null,
+        "notes": "",
+        "hasNotes": false,
         "type": "string",
         "subtype": null,
         "value": null,
@@ -84,7 +87,8 @@ This JSON is a partial representation of the actual injected model object, but i
           "camel": "createdAt"
         },
         "name": "created at",
-        "notes": null,
+        "notes": "",
+        "hasNotes": false,
         "type": "datetime",
         "subtype": null,
         "value": null,
@@ -117,7 +121,8 @@ This JSON is a partial representation of the actual injected model object, but i
           "camel": "avatar"
         },
         "name": "avatar",
-        "notes": null,
+        "notes": "",
+        "hasNotes": false,
         "type": "entity",
         "subtype": null,
         "value": "ac046aac-7a20-de65-2209-57e80a2bbea4",
@@ -151,7 +156,8 @@ This JSON is a partial representation of the actual injected model object, but i
           "camel": "role"
         },
         "name": "role",
-        "notes": null,
+        "notes": "restricted to admins",
+        "hasNotes": true,
         "type": "enum",
         "subtype": null,
         "value": ["admin", "user", "customer"],

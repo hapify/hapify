@@ -1165,6 +1165,67 @@ Ce bloc permet d'écrire une condition non gérée par la syntaxe Hapify :
 !!! seealso "Voir aussi"
     Pour connaitre en détail la structure du modèle de données, reportez-vous à [l'objet modèle](./model-object.md).
 
+## Notes
+
+Vous pouvez récupérer les notes laissées par l'utilisateur au niveau d'un champ ou d'un modèle :
+
+=== "Hapify (long)"
+
+    ```hapify
+    <<if Model hasNotes>>// <<! Model>><<endif>>
+    export class <<Model pascal>> {
+        <<for Fields field>>
+        public <<field camel>>; <<if field hasNotes>>// <<! field>><<endif>>
+        <<endfor>>
+    }
+    ```
+
+=== "Hapify (short)"
+
+    ```hapify
+    <<? M hN>>// <<! M>><<?>>
+    export class <<M AA>> {
+        <<@ F f>>
+        public <<f aA>>; <<? f hN>>// <<! f>><<?>>
+        <<@>>
+    }
+    ```
+
+=== "Sortie"
+
+    ```typescript
+    // A user can only list its own bookmarks
+    export class Bookmark {
+        public id;
+        public owner; // Current user when creating the bookmark
+        public place;
+    }
+    ```
+
+Il est également possible d'utiliser l'interpolation pour afficher les notes :
+
+=== "Hapify (long)"
+
+    ```hapify
+    <<if Model hasNotes>>// <<=root.notes>><<endif>>
+    export class <<Model pascal>> {
+        <<for Fields field>>
+        public <<field camel>>; <<if field hasNotes>>// <<=field.notes>><<endif>>
+        <<endfor>>
+    }
+    ```
+
+=== "Hapify (short)"
+
+    ```hapify
+    <<? M hN>>// <<=root.notes>><<?>>
+    export class <<M AA>> {
+        <<@ F f>>
+        public <<f aA>>; <<? f hN>>// <<=field.notes>><<?>>
+        <<@>>
+    }
+    ```
+
 ## Erreur
 
 N'écrivez pas ceci : `#!hapify <<= JSON.stringify(root) >>`.
@@ -1211,4 +1272,5 @@ Pour forcer le générateur à garder une ligne vide, insérez un ou plusieurs e
 
 La liste suivante de mots ne peut pas être utilisée pour nommer des variables.
 
-`A`, `Ac`, `Accesses`, `Ad`, `An`, `Ar`, `As`, `Au`, `CountAccess`, `CreateAccess`, `D`, `Dependencies`, `F`, `Fields`, `M`, `Model`, `Models`, `P`, `PrimaryField`, `R`, `ReadAccess`, `RefModels`, `ReferencedIn`, `RemoveAccess`, `SearchAccess`, `UpdateAccess`, `ad`, `admin`, `and`, `andNot`, `au`, `audio`, `auth`, `boolean`, `date`, `datetime`, `document`, `else`, `elseif`, `em`, `email`, `embedded`, `endfor`, `endif`, `entity`, `enum`, `file`, `float`, `for`, `gs`, `gteAdmin`, `gteAuth`, `gteGuest`, `gteOwner`, `guest`, `hd`, `hidden`, `if`, `image`, `in`, `integer`, `internal`, `isGeoSearchable`, `isGeolocated`, `label`, `latitude`, `lb`, `longitude`, `lteAdmin`, `lteAuth`, `lteGuest`, `lteOwner`, `mainlyHidden`, `mainlyInternal`, `manyMany`, `manyOne`, `maxAdmin`, `maxAuth`, `maxGuest`, `maxOwner`, `ml`, `multiple`, `noAdmin`, `noAuth`, `noGuest`, `noOwner`, `not`, `nu`, `nullable`, `number`, `object`, `oneMany`, `oneOne`, `onlyAdmin`, `onlyAuth`, `onlyGuest`, `onlyOwner`, `or`, `orNot`, `os`, `out`, `ow`, `owner`, `ownership`, `pGSe`, `pGeo`, `pMAd`, `pMAu`, `pMGs`, `pMHd`, `pMIn`, `pMOw`, `pNAd`, `pNAu`, `pNGs`, `pNOw`, `pOAd`, `pOAu`, `pOGs`, `pOOw`, `password`, `pr`, `primary`, `restricted`, `rich`, `richText`, `root`, `rs`, `se`, `searchable`, `so`, `sortable`, `string`, `tB`, `tD`, `tDd`, `tDt`, `tE`, `tEmm`, `tEom`, `tEoo`, `tF`, `tFa`, `tFd`, `tFi`, `tFv`, `tN`, `tNf`, `tNg`, `tNi`, `tNt`, `tO`, `tS`, `tSe`, `tSp`, `tSr`, `tSt`, `tSu`, `tU`, `text`, `time`, `un`, `unique`, `url`, `video`.
+`A`, `Ac`, `Accesses`, `ad`, `Ad`, `admin`, `An`, `and`, `andNot`, `Ar`, `As`, `au`, `Au`, `audio`, `auth`, `boolean`, `CountAccess`, `CreateAccess`, `D`, `date`, `datetime`, `Dependencies`, `document`, `else`, `elseif`, `em`, `email`, `embedded`, `endfor`, `endif`, `entity`, `enum`, `F`, `Fields`, `file`, `float`, `for`, `gs`, `gteAdmin`, `gteAuth`, `gteGuest`, `gteOwner`, `guest`, `hasNotes`, `hd`, `hidden`, `hN`, `if`, `image`, `in`, `integer`, `internal`, `isGeolocated`, `isGeoSearchable`, `label`, `latitude`, `lb`, `longitude`, `lteAdmin`, `lteAuth`, `lteGuest`, `lteOwner`, `M`, `mainlyHidden`, `mainlyInternal`, `manyMany`, `manyOne`, `maxAdmin`, `maxAuth`, `maxGuest`, `maxOwner`, `ml`, `Model`, `Models`, `multiple`, `noAdmin`, `noAuth`, `noGuest`, `noOwner`, `not`, `nu`, `nullable`, `number`, `object`, `oneMany`, `oneOne`, `onlyAdmin`, `onlyAuth`, `onlyGuest`, `onlyOwner`, `or`, `orNot`, `os`, `out`, `ow`, `owner`, `ownership`, `P`, `password`, `pGeo`, `pGSe`, `pMAd`, `pMAu`, `pMGs`, `pMHd`, `pMIn`, `pMOw`, `pNAd`, `pNAu`, `pNGs`, `pNOw`, `pOAd`, `pOAu`, `pOGs`, `pOOw`, `pr`, `primary`, `PrimaryField`, `R`, `ReadAccess`, `ReferencedIn`, `RefModels`, `RemoveAccess`, `restricted`, `rich`, `richText`, `root`, `rs`, `se`, `searchable`, `SearchAccess`, `so`, `sortable`, `string`, `tB`, `tD`, `tDd`, `tDt`, `tE`, `tEmm`, `tEmo`, `tEom`, `tEoo`, `text`, `tF`, `tFa`, `tFd`, `tFi`, `tFv`, `time`, `tN`, `tNf`, `tNg`, `tNi`, `tNt`, `tO`, `tS`, `tSe`, `tSp`, `tSr`, `tSt`, `tSu`, `tU`, `un`, `unique`, `UpdateAccess`, `url`, `video`.
+

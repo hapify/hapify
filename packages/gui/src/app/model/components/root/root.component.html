@@ -2,6 +2,7 @@
 	<app-header
 		(newModel)="onCreate($event)"
 		(newImport)="updateModels()"
+		[syncStatus]="syncStatus"
 	></app-header>
 	<section class="row px-4 pb-5 pt-3">
 		<div

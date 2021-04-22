@@ -43,6 +43,8 @@ The following objects will be available in the template.
     -   `pascal` (string): example `OnlineItem`.
     -   `lower` (string): example `online item`.
     -   `capital` (string): example `Online Item`.
+-   `notes` (string): the notes of the model, as entered by the user.
+-   `hasNotes` (boolean): the model has notes.
 -   `fields` - alias `f` (object): an object containing all fields, grouped in different arrays. See *Field object* section to learn more about field's structure.
     -   `list` - alias `l` (array): containing all fields of the model.
     -   `primary` - alias `pr` (Field): primary field of the model. `null` if no primary field is defined.
@@ -137,6 +139,8 @@ The following objects will be available in the template.
     -   `lower` (string): example `first name`.
     -   `upper` (string): example `FIRST NAME`.
     -   `capital` (string): example `First Name`.
+-   `notes` (string): the notes of the field, as entered by the user.
+-   `hasNotes` (boolean): the field has notes.
 -   `primary` (boolean): field is flagged as `primary`.
 -   `unique` (boolean): field is flagged as `unique`.
 -   `label` (boolean): field is flagged as `label`.

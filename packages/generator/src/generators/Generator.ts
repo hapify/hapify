@@ -208,6 +208,8 @@ export class Generator {
       id: model.id,
       name: model.name,
       names: StringVariants(model.name),
+      notes: this.getNotes(model),
+      hasNotes: this.hasNotes(model),
       fields,
       f: fields,
       properties,
@@ -237,6 +239,8 @@ export class Generator {
       id: model.id,
       name: model.name,
       names: StringVariants(model.name),
+      notes: this.getNotes(model),
+      hasNotes: this.hasNotes(model),
       fields,
       f: fields,
       properties,
@@ -262,6 +266,8 @@ export class Generator {
       id: model.id,
       name: model.name,
       names: StringVariants(model.name),
+      notes: this.getNotes(model),
+      hasNotes: this.hasNotes(model),
       fields: filteredFields,
       f: filteredFields,
       properties,
@@ -370,8 +376,10 @@ export class Generator {
     // Get and format fields
     const fields = model.fields.map((f) => {
       const explicitField: ExplicitField = {
-        names: StringVariants(f.name),
         ...f,
+        names: StringVariants(f.name),
+        notes: this.getNotes(f),
+        hasNotes: this.hasNotes(f),
       };
       // Deal with enums
       if (f.type === 'enum' && f.value) {
@@ -602,5 +610,15 @@ export class Generator {
   /** Convert all the models to an array of objects containing all its properties */
   private explicitAllModels(models: Model[], cache: Cache): ExplicitModel[] {
     return models.map((mod: Model) => this.explicitModel(models, mod, cache));
+  }
+
+  /** Safely get notes from model or field */
+  private getNotes(input: Model | Field): string {
+    return (input.notes || '').toString().trim();
+  }
+
+  /** Safely denotes if the notes is defined */
+  private hasNotes(input: Model | Field): boolean {
+    return this.getNotes(input).length > 0;
   }
 }

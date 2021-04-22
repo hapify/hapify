@@ -13,15 +13,21 @@ Avant de lire cet article, nous vous recommandons de lire la documentation sur l
     <<for Dependencies not (hidden and internal) dep>>
     import {<<dep pascal>>} from './<<dep pascal>>';
     <<endfor>>
-     
+    
     <<# Declare interfaces for enum fields >>
     <<for Fields enum field>>
     export type <<Model pascal>><<field pascal>>Enum =<<for field.enum e>> | '<<e snake>>'<<endfor>>;
     <<endfor>>
-     
+    
+    <<if Model hasNotes>>
+    /** <<! Model>> */
+    <<endif>>
     export class <<Model pascal>> {
-     
+    
         <<for Fields not primary field>>
+            <<if field hasNotes>>
+        /** <<! field>> */
+            <<endif>>
             <<if field entity>>
         private <<field camel>>: number<<if field multiple>>[]<<endif>>;
             <<elseif field enum>>
@@ -32,14 +38,14 @@ Avant de lire cet article, nous vous recommandons de lire la documentation sur l
         public <<field camel>>: <<=field.type>>;
             <<endif>>
         <<endfor>>
-     
+    
         constructor(private <<PrimaryField camel>>: number) {}
-     
+    
         <<# Getter for primary field >>
         getId(): number {
             return this.<<PrimaryField camel>>
         }
-        
+    
         getLabel(): string {
             <<if Fields label>>
             return `<<=labels()>>`;
@@ -47,10 +53,10 @@ Avant de lire cet article, nous vous recommandons de lire la documentation sur l
             return this.getId().toString();
             <<endif>>
         }
-        
+    
         <<# Getter for each entity >>
         <<for Fields entity field>>
-     
+    
         get<<field pascal>>(): <<field.model pascal>><<if field multiple>>[]<<endif>> {
             <<if field multiple>>
             return this.<<field camel>>.map(id => new <<field.model pascal>>(id));
@@ -64,9 +70,9 @@ Avant de lire cet article, nous vous recommandons de lire la documentation sur l
     
     <<<
     function labels() {
-        return root.fields.label
-            .map(label => "${this."+label.names.snake+"}")
-            .join(' ');
+    return root.fields.label
+    .map(label => "${this."+label.names.snake+"}")
+    .join(' ');
     }
     >>>
     ```
@@ -78,7 +84,7 @@ Avant de lire cet article, nous vous recommandons de lire la documentation sur l
     import {Service} from './Service';
     import {User} from './User';
     
-     
+    /** Represent a restaurant */
     export class Place {
     
         public name: string;
@@ -86,7 +92,9 @@ Avant de lire cet article, nous vous recommandons de lire la documentation sur l
         private categories: number[];
         public address1: string;
         public address2: string;
+        /** Inferred from address fields */
         public latitude: number;
+        /** Inferred from address fields */
         public longitude: number;
         public phone: string;
         public websiteUrl: string;
@@ -124,12 +132,15 @@ Avant de lire cet article, nous vous recommandons de lire la documentation sur l
     ```typescript
     export type UserRoleEnum = | 'admin' | 'user';
     
+    /** Represent a customer */
     export class User {
     
         public name: string;
         public email: string;
+        /** Hashed using BCrpyt */
         public password: string;
         public role: UserRoleEnum;
+        /** Allow admins to disable this user */
         public banned: boolean;
         public lastConnectedAt: Date;
     

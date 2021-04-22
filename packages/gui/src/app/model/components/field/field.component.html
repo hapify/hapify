@@ -4,7 +4,7 @@
 			class="inline-input w-100"
 			type="text"
 			[(ngModel)]="field.name"
-			(change)="onInputChange()"
+			(ngModelChange)="onInputChange()"
 		/>
 	</div>
 	<div class="col-1">
@@ -30,7 +30,7 @@
 							[matAutosizeMinRows]="4"
 							[matAutosizeMaxRows]="8"
 							[(ngModel)]="field.notes"
-							(change)="onInputChange()"
+							(ngModelChange)="onInputChange()"
 							placeholder="{{ 'notes_title' | translate }}"
 						></textarea>
 					</mat-form-field>

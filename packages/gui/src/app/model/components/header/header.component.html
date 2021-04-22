@@ -1,12 +1,21 @@
 <header class="row py-3 px-4 border-bottom">
 	<div class="col-12 d-flex justify-content-between align-items-center">
 		<h1 class="my-3 flex-shrink-1">
-			{{ 'models_title' | translate }}
+			<span class="d-flex align-items-center">
+				{{ 'models_title' | translate }}
+				<span class="ml-2 statusCnt">
+					<span *ngIf="syncStatus === 'none'"><mat-icon></mat-icon></span>
+					<span *ngIf="syncStatus === 'saved'"><mat-icon color="primary">check</mat-icon></span>
+					<span *ngIf="syncStatus === 'error'"><mat-icon color="warn">error</mat-icon></span>
+					<span *ngIf="syncStatus === 'saving'" class="spinnerCnt"><mat-spinner color="default" diameter="24"></mat-spinner></span>
+				</span>
+			</span>
 			<small class="d-block mt-2">{{ 'models_intro' | translate }}</small>
 		</h1>
 		<div
 			class="flex-shrink-0 d-flex align-content-center justify-content-end"
 		>
+
 			<div
 				class="d-flex flex-nowrap align-items-center justify-content-end"
 				*ngIf="addingNewModel"

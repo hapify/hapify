@@ -15,7 +15,7 @@
 					type="text"
 					placeholder="{{ 'model_name_placeholder' | translate }}"
 					[(ngModel)]="model.name"
-					(change)="onModelChange()"
+					(ngModelChange)="onModelChange()"
 				/>
 			</div>
 			<div class="d-flex align-items-center modelTools">
@@ -131,7 +131,7 @@
 								[matAutosizeMinRows]="6"
 								[matAutosizeMaxRows]="12"
 								[(ngModel)]="model.notes"
-								(change)="onModelChange()"
+								(ngModelChange)="onModelChange()"
 								placeholder="{{ 'notes_title' | translate }}"
 							></textarea>
 						</mat-form-field>

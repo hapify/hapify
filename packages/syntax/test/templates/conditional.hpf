@@ -46,4 +46,12 @@ This model has some fields
 This model has some enum
 <<?>>
 
+<<? M hN>>
+This model has notes
+<<?>>
+
+<<? F hN >>
+This model has some fields with notes
+<<?>>
+
 End

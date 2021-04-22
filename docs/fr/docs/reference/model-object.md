@@ -43,6 +43,8 @@ Les objets suivants seront disponibles dans le template.
     -   `pascal` (string): exemple `OnlineItem`.
     -   `lower` (string): exemple `online item`.
     -   `capital` (string): exemple `Online Item`.
+-   `notes` (string): le commentaire du modèle, tel que l'utilisateur l'a saisi.
+-   `hasNotes` (boolean): le modèle a un commentaire.
 -   `fields` - alias `f` (object): un objet contenant tous les champs, regroupés dans différents tableaux. Voir la section *Objet de champ* pour en savoir plus sur la structure d'un champ.
     -   `list` - alias `l` (array): contenant tous les champs du modèle.
     -   `primary` - alias `pr` (Field): champ primaire du modèle. `null` si aucun champ primaire n'est défini.
@@ -137,6 +139,8 @@ Les objets suivants seront disponibles dans le template.
     -   `lower` (string): exemple `first name`.
     -   `upper` (string): exemple `FIRST NAME`.
     -   `capital` (string): exemple `First Name`.
+-   `notes` (string): le commentaire du champ, tel que l'utilisateur l'a saisi.
+-   `hasNotes` (boolean): le champ a un commentaire.
 -   `primary` (boolean): est marqué comme `primary`.
 -   `unique` (boolean): est marqué comme `unique`.
 -   `label` (boolean): est marqué comme `label`.

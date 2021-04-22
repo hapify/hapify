@@ -1,0 +1,6 @@
+<<if Model hasNotes>>// <<! Model>><<endif>>
+export class <<Model pascal>> {
+    <<for Fields field>>
+    public <<field camel>>; <<if field hasNotes>>// <<! field>><<endif>>
+    <<endfor>>
+}

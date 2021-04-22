@@ -135,6 +135,9 @@ const Replacements: Replacement[] = [
   },
   { search: ['file', 'tF'], replace: "(i.type === 'file')" },
 
+  // Notes
+  { search: ['hasNotes', 'hN'], replace: 'i.hasNotes' },
+
   // Models computed properties
   { search: ['mainlyHidden', 'pMHd'], replace: 'i.properties.mainlyHidden' },
   {

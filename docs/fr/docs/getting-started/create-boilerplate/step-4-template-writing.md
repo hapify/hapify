@@ -767,6 +767,78 @@ La deuxième itération boucle sur toutes les relations d'entités contenues dan
     await db.collection('ConversationReport').deleteMany({ defendant: id });
     ```
 
+## Notes
+
+Il est possible d'ajouter des notes au niveau d'un champ ou bien d'un modèle.
+Voici comment les retrouver dans les templates:
+
+=== "Hapify (long)"
+
+    ```hapify
+    <<if Model hasNotes>>// <<! Model>><<endif>>
+    export class <<Model pascal>> {
+        <<for Fields field>>
+        public <<field camel>>; <<if field hasNotes>>// <<! field>><<endif>>
+        <<endfor>>
+    }
+    ```
+
+=== "Hapify (short)"
+
+    ```hapify
+    <<? M hN>>// <<! M>><<?>>
+    export class <<M AA>> {
+        <<@ F f>>
+        public <<f aA>>; <<? f hN>>// <<! f>><<?>>
+        <<@>>
+    }
+    ```
+
+=== "EJS"
+
+    ```js
+    <% if (model.hasNotes) { %>// <%= model.notes %><% } %>
+    export class <%= model.names.pascal %> {
+    <% for (const field of model.fields.list) { -%>
+        public <%= field.names.camel %>; <% if (field.hasNotes) { %>// <%= field.notes %><% } %>
+    <% } %>
+    }
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    let output = '';
+    if (model.hasNotes) { output += `// ${model.notes}\n`; }
+    output += `export class ${model.names.pascal} {
+    ${getFields()}}`;
+    
+    function getFields() {
+        let fields = '';
+        for (const field of model.fields.list) {
+            fields += `    public ${field.names.camel};`;
+            if (field.hasNotes) { fields += ` // ${field.notes}`; }
+            fields += `\n`;
+        }
+        return fields;
+    }
+    return output;
+    ```
+
+=== "Sortie"
+
+    ```typescript
+    // A user can only list its own bookmarks
+    export class Bookmark {
+        public id;
+        public owner; // Current user when creating the bookmark
+        public place;
+    }
+    ```
+
+!!! tip "À savoir"
+    Avec la syntaxe Hapify il est également possible d'afficher les notes en utilisant l'interpolation : `#!hapify <<= root.notes >>` ou `#!hapify <<= model.notes >>` pour un modèle ou bien `#!hapify <<= field.notes >>` pour un champ.
+
 ## Exclusion de fichiers générés
 
 Il est possible d'exclure certain fichier de la génération.

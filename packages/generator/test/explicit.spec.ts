@@ -56,6 +56,7 @@ const getModels = (
     {
       id: `0cf80d75-abcd-f8c7-41f6-ed41c6425aa1`,
       name: 'User profile',
+      notes: 'this is a comment',
       fields,
       accesses: {
         create: 'guest',
@@ -111,6 +112,24 @@ describe('model names', () => {
   });
 });
 
+describe('model notes', () => {
+  it('model.notes', async () => {
+    const templates = getTemplates(
+      `return model.hasNotes ? model.notes : 'No notes';`,
+    );
+    // With note
+    const models = getModels();
+    const response1 = await Generator.run(templates, models);
+    expect(response1.length).to.equal(1);
+    expect(response1[0].content).to.equal('this is a comment');
+    // Without notes
+    delete models[0].notes;
+    const response2 = await Generator.run(templates, models);
+    expect(response2.length).to.equal(1);
+    expect(response2[0].content).to.equal('No notes');
+  });
+});
+
 describe('field names', () => {
   const variations: { name: keyof StringVariations; value: string }[] = [
     { name: 'raw', value: 'Created at' },
@@ -140,6 +159,27 @@ describe('field names', () => {
       expect(response1[0].content).to.equal(variation.value);
     });
   }
+});
+
+describe('field notes', () => {
+  it('field.notes', async () => {
+    const templates = getTemplates(`return model.fields.list[0].notes`);
+    // With note
+    let models = getModels([{ notes: 'i have a note' }]);
+    const response1 = await Generator.run(templates, models);
+    expect(response1.length).to.equal(1);
+    expect(response1[0].content).to.equal('i have a note');
+    // Without notes
+    models = getModels();
+    const response2 = await Generator.run(templates, models);
+    expect(response2.length).to.equal(1);
+    expect(response2[0].content).to.equal('');
+    // Without null notes
+    models = getModels([{ notes: null }]);
+    const response3 = await Generator.run(templates, models);
+    expect(response3.length).to.equal(1);
+    expect(response3[0].content).to.equal('');
+  });
 });
 
 describe('fields list', () => {

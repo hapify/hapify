@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { SyncStatus } from '@app/model/interfaces/sync';
 
 import { FieldType } from '../../classes/field-type';
 import { Model } from '../../classes/model';
@@ -43,6 +44,8 @@ export class RootComponent implements OnInit {
   public currentModel: IModel;
 
   public info: IInfo;
+
+  public syncStatus: SyncStatus = 'none';
 
   /** Used for loader to toggle */
   modelsAreLoaded = false;
@@ -130,11 +133,18 @@ export class RootComponent implements OnInit {
   /** Called when the user save the model (For now, autosaving on any changes is activated) */
   onSave(model: IModel): void {
     clearTimeout(this.saveTimeout);
+    this.syncStatus = 'saving';
     this.saveTimeout = setTimeout(() => {
       // Update the model
       this.storageService
         .update(model)
-        .catch((error) => this.messageService.error(error));
+        .then(() => {
+          this.syncStatus = 'saved';
+        })
+        .catch((error) => {
+          this.messageService.error(error);
+          this.syncStatus = 'error';
+        });
     }, this.dTime);
   }
 

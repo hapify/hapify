@@ -6,7 +6,9 @@ import {
   OnDestroy,
   OnInit,
 } from '@angular/core';
+import { environment } from '@env/environment';
 import { Subscription } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 import { ValidatorService } from '../../services/validator.service';
 
@@ -54,6 +56,8 @@ export class ValidatorDetailsComponent implements OnInit, OnDestroy {
   /** Errors & warnings details */
   details: string = null;
 
+  private readonly dTime = environment.debounceTime;
+
   /** Model getter */
   get model(): IModel {
     return this.modelValue;
@@ -81,9 +85,11 @@ export class ValidatorDetailsComponent implements OnInit, OnDestroy {
     if (this.signalSubscription) {
       this.signalSubscription.unsubscribe();
     }
-    this.signalSubscription = val.subscribe(() => {
-      this.run().catch((error) => this.messageService.error(error));
-    });
+    this.signalSubscription = val
+      .pipe(debounceTime(this.dTime))
+      .subscribe(() => {
+        this.run().catch((error) => this.messageService.error(error));
+      });
   }
 
   /** Constructor */

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { SyncStatus } from '@app/model/interfaces/sync';
 import { Subscription } from 'rxjs';
 
 import { Model } from '@app/model/classes/model';
@@ -23,6 +24,8 @@ export class HeaderComponent {
   @Output() newImport = new EventEmitter<void>();
 
   @Input() newModelDisabled = false;
+
+  @Input() syncStatus: SyncStatus = 'none';
 
   dialogSubscription: Subscription;
 

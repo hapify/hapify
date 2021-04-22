@@ -652,7 +652,7 @@ export class Generator {
     const output: Meta = {};
     const keys = Object.keys(meta);
     for (const key of keys) {
-      output[key] = StringVariants(meta[key]);
+      output[key] = StringVariants(meta[key].toString());
     }
     return output;
   }

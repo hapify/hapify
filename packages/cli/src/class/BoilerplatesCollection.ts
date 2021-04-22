@@ -1,3 +1,4 @@
+import { DeepRequired } from 'ts-essentials';
 import { Container } from 'typedi';
 
 import { IBoilerplate } from '../interface/Objects';
@@ -65,7 +66,7 @@ export class BoilerplatesCollection
     return this.boilerplates;
   }
 
-  public toObject(): IBoilerplate[] {
+  public toObject(): DeepRequired<IBoilerplate[]> {
     return this.boilerplates.map((p) => p.toObject());
   }
 }

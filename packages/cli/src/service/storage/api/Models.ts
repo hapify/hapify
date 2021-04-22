@@ -1,4 +1,5 @@
 import md5 from 'md5';
+import { DeepRequired } from 'ts-essentials';
 import { Service } from 'typedi';
 
 import { Model } from '../../../class/Model';
@@ -165,11 +166,12 @@ export class ModelsApiStorageService extends BaseApiStorageService<
     return new ApiModelParser(object).convert();
   }
 
-  protected fromApi(object: IApiModel): IModel {
+  protected fromApi(object: IApiModel): DeepRequired<IModel> {
     return {
       id: object._id,
       name: object.name,
       notes: object.notes || null,
+      meta: object.meta || null,
       fields: object.fields.map((f) =>
         this.converterService.convertFieldFromCompactFormat(f),
       ),

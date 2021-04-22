@@ -7,6 +7,7 @@ import {
   writeFileSync,
 } from 'fs-extra';
 import md5 from 'md5';
+import { DeepRequired } from 'ts-essentials';
 import { Service } from 'typedi';
 
 export type FilePath = string | string[];
@@ -20,11 +21,11 @@ export abstract class SingleSaveFileStorage<T> {
   private contentMd5: { [bucket: string]: string } = {};
 
   /** Load content from path */
-  async get(path: FilePath): Promise<T> {
+  get(path: FilePath): Promise<T> {
     const contentPath = JoinPath(path);
     const content = readFileSync(contentPath, 'utf8');
     this.didLoad(contentPath, content);
-    return this.deserialize(content);
+    return this.deserialize(content) as Promise<T>;
   }
 
   /** Load content from path */
@@ -46,7 +47,9 @@ export abstract class SingleSaveFileStorage<T> {
   protected abstract serialize(content: T): Promise<string> | string;
 
   /** Convert content to string before saving */
-  protected abstract deserialize(content: string): Promise<T> | T;
+  protected abstract deserialize(
+    content: string,
+  ): Promise<DeepRequired<T>> | DeepRequired<T>;
 
   /** Should be called after loading to hash the content */
   protected didLoad(bucket: string, data: string): void {

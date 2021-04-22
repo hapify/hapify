@@ -1,6 +1,7 @@
 import * as Path from 'path';
 
 import { readdirSync, rmdirSync, statSync, unlinkSync } from 'fs-extra';
+import { DeepRequired } from 'ts-essentials';
 import { Service } from 'typedi';
 
 import { IConfig } from '../../../interface/Config';
@@ -17,7 +18,7 @@ export class ChannelFileStorageService extends SingleSaveFileStorage<IConfig> {
   }
 
   protected serialize(content: IConfig): string {
-    const compact: IStorableCompactConfig = {
+    const compact: DeepRequired<IStorableCompactConfig> = {
       version: content.version,
       validatorPath: content.validatorPath,
       project: content.project,
@@ -34,7 +35,7 @@ export class ChannelFileStorageService extends SingleSaveFileStorage<IConfig> {
     return JSON.stringify(compact, null, 2);
   }
 
-  protected deserialize(content: string): IConfig {
+  protected deserialize(content: string): DeepRequired<IConfig> {
     try {
       const parsedContent: VersionedObject = JSON.parse(content);
       const compact = new ChannelParser(parsedContent).convert();

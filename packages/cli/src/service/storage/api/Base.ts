@@ -1,3 +1,4 @@
+import { DeepRequired } from 'ts-essentials';
 import { Container, Service } from 'typedi';
 
 import { IRemoteConfig } from '../../../interface/Config';
@@ -52,7 +53,7 @@ export abstract class BaseApiStorageService<T, I, S extends BaseSearchParams>
   async create(payload: Partial<I>): Promise<T> {
     const output = (await this.apiService.post<I>(`${this.path()}`, payload))
       .data;
-    return this.parsePayloadFromApi(output);
+    return this.parsePayloadFromApi(output) as T;
   }
 
   /** Update an model selected from it's id */
@@ -63,7 +64,7 @@ export abstract class BaseApiStorageService<T, I, S extends BaseSearchParams>
   /** Get an model from it's id */
   async get(id: string): Promise<T> {
     const output = (await this.apiService.get<I>(`${this.path()}/${id}`)).data;
-    return this.parsePayloadFromApi(output);
+    return this.parsePayloadFromApi(output) as T;
   }
 
   /** Delete an model selected from it's id */
@@ -80,7 +81,7 @@ export abstract class BaseApiStorageService<T, I, S extends BaseSearchParams>
         mergedSearchParams,
       )
     ).data.items;
-    return output.map((o) => this.parsePayloadFromApi(o));
+    return output.map((o) => this.parsePayloadFromApi(o) as T);
   }
 
   /** Count for model */
@@ -114,7 +115,7 @@ export abstract class BaseApiStorageService<T, I, S extends BaseSearchParams>
   protected abstract path(): string;
 
   /** Convert an old payload to new payload */
-  protected parsePayloadFromApi(object: VersionedObject | I): T {
+  protected parsePayloadFromApi(object: VersionedObject | I): DeepRequired<T> {
     if (typeof (object as VersionedObject).version !== 'undefined') {
       const converted = this.convertToCurrentVersion(object as VersionedObject);
       return this.fromApi(converted);
@@ -128,7 +129,7 @@ export abstract class BaseApiStorageService<T, I, S extends BaseSearchParams>
   }
 
   /** Convert an incoming payload to an internal payload */
-  protected abstract fromApi(object: I): T;
+  protected abstract fromApi(object: I): DeepRequired<T>;
 
   /** Helper to merge search params */
   protected mergeSearchParams(searchParams?: S): S {

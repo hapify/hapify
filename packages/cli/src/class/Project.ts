@@ -1,3 +1,4 @@
+import { DeepRequired } from 'ts-essentials';
 import { Container } from 'typedi';
 
 import { IProject } from '../interface/Objects';
@@ -84,7 +85,7 @@ export class Project
     return this;
   }
 
-  public toObject(): IProject {
+  public toObject(): DeepRequired<IProject> {
     return {
       id: this.idValue,
       created_at: this.created_at,

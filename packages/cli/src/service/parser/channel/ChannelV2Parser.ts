@@ -1,4 +1,5 @@
 import { DeepRequired } from 'ts-essentials';
+
 import { IV2StorableCompactConfig } from '../../../interface/legacy/v2/Storage';
 import { IStorableCompactConfig } from '../../../interface/Storage';
 import { VersionedObjectParser } from '../../../interface/Version';
@@ -23,6 +24,7 @@ export class ChannelV2Parser
             value: f.value,
             properties: f.properties,
             notes: f.notes,
+            meta: undefined,
           }))
         : undefined,
       templates: input.templates,

@@ -1,3 +1,4 @@
+import { DeepRequired } from 'ts-essentials';
 import { Service } from 'typedi';
 
 import { IProject } from '../../../interface/Objects';
@@ -30,7 +31,7 @@ export class ProjectsApiStorageService extends BaseApiStorageService<
     return 'project';
   }
 
-  protected fromApi(object: IApiProject): IProject {
+  protected fromApi(object: IApiProject): DeepRequired<IProject> {
     return {
       id: object._id,
       created_at: object.created_at,

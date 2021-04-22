@@ -1,3 +1,4 @@
+import { DeepRequired } from 'ts-essentials';
 import { Container } from 'typedi';
 
 import { IPreset } from '../interface/Objects';
@@ -64,7 +65,7 @@ export class PresetsCollection
     return this.presets;
   }
 
-  public toObject(): IPreset[] {
+  public toObject(): DeepRequired<IPreset[]> {
     return this.presets.map((p) => p.toObject());
   }
 }

@@ -23,7 +23,7 @@ export class ConverterService {
     'ownership',
   ];
 
-  convertFieldToCompactFormat(field: IField): IStorableCompactField {
+  convertFieldToCompactFormat(field: IField): Required<IStorableCompactField> {
     return {
       name: field.name,
       type: field.type,
@@ -31,6 +31,7 @@ export class ConverterService {
       value: field.value || undefined,
       properties: this.convertBooleanPropertiesToCompactFormat(field),
       notes: field.notes || undefined,
+      meta: field.meta || undefined,
     };
   }
 
@@ -42,7 +43,9 @@ export class ConverterService {
       .filter((p) => !!p);
   }
 
-  convertFieldFromCompactFormat(field: IStorableCompactField): IField {
+  convertFieldFromCompactFormat(
+    field: IStorableCompactField,
+  ): Required<IField> {
     return {
       name: field.name,
       type: field.type,
@@ -61,6 +64,7 @@ export class ConverterService {
       restricted: field.properties.includes('restricted'),
       ownership: field.properties.includes('ownership'),
       notes: field.notes || null,
+      meta: field.meta || null,
     };
   }
 }

@@ -1,4 +1,5 @@
 import { DeepRequired } from 'ts-essentials';
+
 import { IV1StorableCompactProject } from '../../../interface/legacy/v1/Storage';
 import { IStorableCompactProject } from '../../../interface/Storage';
 import { VersionedObjectParser } from '../../../interface/Version';
@@ -23,8 +24,10 @@ export class ProjectV1Parser
           value: field.reference,
           properties: field.properties,
           notes: field.notes,
+          meta: undefined,
         })),
         notes: model.notes,
+        meta: undefined,
       })),
     };
   }

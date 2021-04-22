@@ -1,3 +1,5 @@
+import { DeepRequired } from 'ts-essentials';
+
 import { IPreset } from '../interface/Objects';
 import { ISerializable } from '../interface/Storage';
 import { Model } from './Model';
@@ -41,7 +43,7 @@ export class Preset implements ISerializable<IPreset, Preset>, IPreset {
     return this;
   }
 
-  public toObject(): IPreset {
+  public toObject(): DeepRequired<IPreset> {
     return {
       id: this.id,
       icon: this.icon,

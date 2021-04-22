@@ -1,4 +1,5 @@
 import { DeepRequired } from 'ts-essentials';
+
 import { IApiModel } from '../../../interface/Api';
 import { IV2ApiModel } from '../../../interface/legacy/v2/Api';
 import { VersionedObjectParser } from '../../../interface/Version';
@@ -14,6 +15,7 @@ export class ApiModelV2Parser implements VersionedObjectParser<IApiModel> {
       project: input.project,
       name: input.name,
       notes: input.notes,
+      meta: undefined,
       fields: input.fields.map((f) => ({
         name: f.name,
         type: f.type,
@@ -21,6 +23,7 @@ export class ApiModelV2Parser implements VersionedObjectParser<IApiModel> {
         value: f.value,
         properties: f.properties,
         notes: f.notes,
+        meta: undefined,
       })),
       accesses: input.accesses,
     };

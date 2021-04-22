@@ -63,6 +63,7 @@ export interface IApiModel {
   project?: string;
   name: string;
   notes?: string;
+  meta?: Record<string, string>;
   fields: Field[];
   accesses: Accesses;
 }
@@ -70,6 +71,7 @@ export interface IApiModel {
 interface Field {
   name: string;
   notes?: string | null;
+  meta?: Record<string, string> | null;
   type: FieldType;
   subtype?: FieldSubType | null;
   properties: FieldBooleanProperty[];

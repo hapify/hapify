@@ -32,6 +32,7 @@ export class ChannelV1Parser
               f,
             ),
             notes: f.notes,
+            meta: undefined,
           }))
         : undefined,
       templates: input.templates,

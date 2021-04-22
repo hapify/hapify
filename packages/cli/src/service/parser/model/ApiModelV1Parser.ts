@@ -23,6 +23,7 @@ export class ApiModelV1Parser implements VersionedObjectParser<IApiModel> {
       project: input.project,
       name: input.name,
       notes: input.notes,
+      meta: undefined,
       fields: input.fields.map((f) => ({
         name: f.name,
         type: f.type,
@@ -32,6 +33,7 @@ export class ApiModelV1Parser implements VersionedObjectParser<IApiModel> {
           f,
         ),
         notes: f.notes,
+        meta: undefined,
       })),
       accesses: input.accesses,
     };

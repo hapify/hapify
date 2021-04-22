@@ -1,3 +1,5 @@
+import { DeepRequired } from 'ts-essentials';
+
 import { FieldSubType, FieldType, IField } from '../interface/Generator';
 import { ISerializable } from '../interface/Storage';
 
@@ -7,6 +9,9 @@ export class Field implements ISerializable<IField, Field> {
 
   /** The field's notes */
   notes?: string;
+
+  /** The field's meta data */
+  meta?: Record<string, string>;
 
   /** The field's type */
   type: FieldType;
@@ -62,6 +67,7 @@ export class Field implements ISerializable<IField, Field> {
   public fromObject(object: IField): Field {
     this.name = object.name;
     this.notes = object.notes || null;
+    this.meta = object.meta || null;
     this.type = object.type;
     this.subtype = object.subtype;
     this.value = object.value;
@@ -80,10 +86,11 @@ export class Field implements ISerializable<IField, Field> {
     return this;
   }
 
-  public toObject(): IField {
+  public toObject(): DeepRequired<IField> {
     return {
       name: this.name,
       notes: this.notes || null,
+      meta: this.meta || null,
       type: this.type,
       subtype: this.subtype,
       value: this.type === 'entity' || this.type === 'enum' ? this.value : null,

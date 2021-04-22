@@ -167,7 +167,10 @@ export interface AliasedArray<T> extends Array<T> {
     thisArg?: any,
   ): T[];
 }
-interface BaseExplicitModel extends WithNameInterpolable, WithNotes, WithMetaInterpolable {
+interface BaseExplicitModel
+  extends WithNameInterpolable,
+    WithNotes,
+    WithMetaInterpolable {
   /** An unique id */
   id: string;
   /** An object containing pre-computed properties from fields */
@@ -520,7 +523,7 @@ export type StringVariationType = keyof StringVariations;
 // ==================================================================
 //  Meta
 // ==================================================================
-export type Meta = Record<string, StringVariations>
+export type Meta = Record<string, StringVariations>;
 
 // ==================================================================
 //  Generator

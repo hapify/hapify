@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# @hapify/gui [1.1.0](https://github.com/hapify/hapify/compare/@hapify/gui@1.0.0...@hapify/gui@1.1.0) (2021-04-22)
+
+
+### Features
+
+* notes available in templates ([#22](https://github.com/hapify/hapify/issues/22)) ([b33166c](https://github.com/hapify/hapify/commit/b33166c855a11639b9d67d96ecd8d2a7146bb827))
+
 # @hapify/gui 1.0.0 (2021-04-21)
 
 

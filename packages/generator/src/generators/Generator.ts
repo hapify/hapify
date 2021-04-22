@@ -23,7 +23,8 @@ import {
   ExplicitReferenceModel,
   Field,
   GeneratorResult,
-  GeneratorWorker, Meta,
+  GeneratorWorker,
+  Meta,
   Model,
   NumberedError,
   StringVariationType,
@@ -367,7 +368,8 @@ export class Generator {
   ): AliasedArray<ExplicitReferenceModel> {
     // Filter referencing models
     const extractReferencingFields = (f: Field | ExplicitField) =>
-      f.type === 'entity' && (f as Field<'entity'> | ExplicitField<'entity'>).value === model.id;
+      f.type === 'entity' &&
+      (f as Field<'entity'> | ExplicitField<'entity'>).value === model.id;
     const referencedIn: AliasedArray<ExplicitReferenceModel> = models
       .filter((m) => m.fields.some(extractReferencingFields))
       .map((m) =>
@@ -601,7 +603,8 @@ export class Generator {
           (f: ExplicitField) => f.type === 'number' && f.subtype === 'latitude',
         ).length > 0 &&
         fields.list.filter(
-          (f: ExplicitField) => f.type === 'number' && f.subtype === 'longitude',
+          (f: ExplicitField) =>
+            f.type === 'number' && f.subtype === 'longitude',
         ).length > 0,
       isGeoSearchable:
         fields.list.filter(
@@ -637,7 +640,7 @@ export class Generator {
     const keys = Object.keys(input.meta);
     for (const key of keys) {
       if (input.meta[key]) {
-        output[key] = input.meta[key]
+        output[key] = input.meta[key];
       }
     }
     return output;

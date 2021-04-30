@@ -5,6 +5,8 @@ export interface IFieldBase {
   name: string;
   /** The field's notes */
   notes?: string;
+  /** The field's meta */
+  meta?: Record<string, string>;
   /** The field's type */
   type: string;
   /** The field's subtype */

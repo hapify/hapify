@@ -23,6 +23,7 @@ interface IActionValue {
   name: string;
   accesses: IAccessValue[];
 }
+type Pannel = 'notes' | 'access' | 'meta';
 
 /** Store accesses indexes */
 const AccessesIndex = {
@@ -75,9 +76,7 @@ export class ModelComponent
 
   public currentField: IField;
 
-  accessRightsPanelIsDisplayed = false;
-
-  notesPanelIsDisplayed = false;
+  displayedPanel: Pannel = null;
 
   cleanRows = false;
 
@@ -95,11 +94,12 @@ export class ModelComponent
     this.updateActions();
   }
 
-  togglePanel(panel: 'notes' | 'access'): void {
-    this.accessRightsPanelIsDisplayed =
-      panel === 'access' && !this.accessRightsPanelIsDisplayed;
-    this.notesPanelIsDisplayed =
-      panel === 'notes' && !this.notesPanelIsDisplayed;
+  togglePanel(panel: Pannel): void {
+    if (this.displayedPanel === panel) {
+      this.displayedPanel = null;
+    } else {
+      this.displayedPanel = panel;
+    }
   }
 
   /** Destroy */

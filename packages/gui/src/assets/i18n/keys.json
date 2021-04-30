@@ -1,5 +1,9 @@
 {
 	"access_title": "access_title",
+	"meta_title": "meta_title",
+	"meta_key_placeholder": "meta_key_placeholder",
+	"meta_value_placeholder": "meta_value_placeholder",
+	"meta_add_row": "meta_add_row",
 	"channels_generate": "channels_generate",
 	"channels_intro": "channels_intro",
 	"channels_title": "channels_title",

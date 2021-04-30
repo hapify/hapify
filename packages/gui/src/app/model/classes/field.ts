@@ -6,8 +6,9 @@ import { FieldType } from './field-type';
 export class Field implements IField {
   public name = '';
 
-  /** The field's notes */
   public notes: string;
+
+  public meta: Record<string, string>;
 
   public type = FieldType.String;
 
@@ -42,6 +43,7 @@ export class Field implements IField {
   public fromObject(object: IFieldBase): void {
     this.name = object.name;
     this.notes = object.notes || null;
+    this.meta = object.meta || null;
     this.type = object.type;
     this.subtype = object.subtype;
     this.value = object.value;
@@ -59,10 +61,11 @@ export class Field implements IField {
     this.ownership = !!(object.ownership as any);
   }
 
-  public toObject(): IFieldBase {
+  public toObject(): Required<IFieldBase> {
     return {
       name: this.name,
       notes: this.notes || null,
+      meta: this.meta || null,
       type: this.type,
       subtype: this.subtype,
       value: this.getValueProperty(),

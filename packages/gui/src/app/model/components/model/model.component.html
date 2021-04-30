@@ -23,25 +23,40 @@
 					mat-icon-button
 					matTooltip="{{ 'access_title' | translate }}"
 					(click)="togglePanel('access')"
-					[color]="accessRightsPanelIsDisplayed ? 'primary' : ''"
+					[color]="displayedPanel === 'access' ? 'primary' : ''"
 					type="button"
 				>
 					<mat-icon>fingerprint</mat-icon>
 				</button>
 				<button
-					mat-icon-button
-					matTooltip="{{ 'notes_title' | translate }}"
-					(click)="togglePanel('notes')"
-					[color]="notesPanelIsDisplayed ? 'primary' : ''"
-					type="button"
-					matBadge="1"
-					[matBadgeHidden]="!model.notes"
-					matBadgePosition="after"
-					matBadgeColor="primary"
-					matBadgeSize="small"
-					matBadgeOverlap="true"
+						mat-icon-button
+						matTooltip="{{ 'notes_title' | translate }}"
+						(click)="togglePanel('notes')"
+						[color]="displayedPanel === 'notes' ? 'primary' : ''"
+						type="button"
+						matBadge="1"
+						[matBadgeHidden]="!model.notes"
+						matBadgePosition="after"
+						matBadgeColor="primary"
+						matBadgeSize="small"
+						matBadgeOverlap="true"
 				>
 					<mat-icon>speaker_notes</mat-icon>
+				</button>
+				<button
+						mat-icon-button
+						matTooltip="{{ 'meta_title' | translate }}"
+						(click)="togglePanel('meta')"
+						[color]="displayedPanel === 'meta' ? 'primary' : ''"
+						type="button"
+						[matBadge]="countMeta()"
+						[matBadgeHidden]="!countMeta()"
+						matBadgePosition="after"
+						matBadgeColor="primary"
+						matBadgeSize="small"
+						matBadgeOverlap="true"
+				>
+					<mat-icon>code</mat-icon>
 				</button>
 				<button
 					mat-icon-button
@@ -86,7 +101,7 @@
 		<mat-card-content class="mb-0">
 			<div
 				class="container-fluid accessRights pt-3"
-				[class.d-none]="!accessRightsPanelIsDisplayed"
+				[class.d-none]="displayedPanel !== 'access'"
 			>
 				<div class="row">
 					<div class="col-12">
@@ -119,22 +134,33 @@
 				</div>
 			</div>
 			<div
-				class="container-fluid notes pt-3"
-				[class.d-none]="!notesPanelIsDisplayed"
+					class="container-fluid notes pt-3"
+					[class.d-none]="displayedPanel !== 'notes'"
 			>
 				<div class="row">
 					<div class="col-12">
 						<mat-form-field class="w-100">
 							<textarea
-								matInput
-								matTextareaAutosize
-								[matAutosizeMinRows]="6"
-								[matAutosizeMaxRows]="12"
-								[(ngModel)]="model.notes"
-								(ngModelChange)="onModelChange()"
-								placeholder="{{ 'notes_title' | translate }}"
+									matInput
+									matTextareaAutosize
+									[matAutosizeMinRows]="6"
+									[matAutosizeMaxRows]="12"
+									[(ngModel)]="model.notes"
+									(ngModelChange)="onModelChange()"
+									placeholder="{{ 'notes_title' | translate }}"
 							></textarea>
 						</mat-form-field>
+					</div>
+				</div>
+			</div>
+			<div
+					class="container-fluid notes pt-3"
+					[class.d-none]="displayedPanel !== 'meta'"
+			>
+				<div class="row">
+					<div class="col-12">
+						<h4 class="mb-3">{{ 'meta_title' | translate }}</h4>
+						<app-meta class="mb-3" [meta]="{ 'test': 'yes', 'yo': 'no' }"></app-meta>
 					</div>
 				</div>
 			</div>

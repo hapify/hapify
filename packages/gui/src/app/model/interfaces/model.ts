@@ -8,6 +8,8 @@ export interface IModelBase extends IStorableBase {
   name: string;
   /** The model's notes */
   notes?: string;
+  /** The model's meta */
+  meta?: Record<string, string>;
   /** The fields of the model */
   fields: IFieldBase[];
   /** The model privacy access */

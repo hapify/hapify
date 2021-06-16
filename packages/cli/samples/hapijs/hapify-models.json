@@ -20,8 +20,10 @@
           "type": "string",
           "properties": [
             "primary",
-            "internal"
-          ]
+            "internal",
+            "restricted"
+          ],
+          "notes": "fdsfs"
         },
         {
           "name": "created_at",
@@ -92,7 +94,10 @@
             "unique",
             "searchable",
             "sortable"
-          ]
+          ],
+          "meta": {
+            "gfd": "gdf"
+          }
         },
         {
           "name": "password",
@@ -100,7 +105,11 @@
           "subtype": "password",
           "properties": [
             "hidden"
-          ]
+          ],
+          "notes": "bhvj",
+          "meta": {
+            "fds": "fds"
+          }
         },
         {
           "name": "role",

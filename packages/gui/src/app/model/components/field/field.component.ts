@@ -7,6 +7,9 @@ import { FieldLightComponent } from '../field-light/field-light.component';
 import { FieldType } from '@app/model/classes/field-type';
 import { ILabelledValue } from '@app/model/interfaces/labelled-value';
 
+type Pannel = 'notes' | 'types' | 'meta' | 'attributes';
+type SubTypesPanel = 'subtype' | 'entity' | 'enum' | null;
+
 @Component({
   selector: 'app-model-field',
   templateUrl: './field.component.html',
@@ -22,29 +25,28 @@ export class FieldComponent extends FieldLightComponent implements OnInit {
   /** Request for delete field */
   @Output() delete = new EventEmitter<void>();
 
-  isTypesTooltipDisplayed = false;
+  displayedPanel: Pannel = null;
 
-  displayedSubTypesTooltip: 'subtype' | 'entity' | 'enum' | null = null;
-
-  isNotesTooltipDisplayed = false;
+  displayedSubTypesPanel: SubTypesPanel = null;
 
   fieldHovered = 'generic';
-
-  isFieldsTooltipDisplayed = false;
-
-  noSelectedField = false;
 
   readonly chipsListSeparatorKeysCodes: number[] = [ENTER, COMMA];
 
   ngOnInit(): void {
     super.ngOnInit();
-    this.areSelectedFields();
   }
 
   /** Called when a value change */
   onInputChange(): void {
     this.updateField();
     this.update.emit();
+  }
+
+  /** Called when meta change */
+  onMetaChange(meta: Record<string, string>): void {
+    this.field.meta = meta;
+    this.onInputChange();
   }
 
   /** Called when the user delete the field */
@@ -55,18 +57,6 @@ export class FieldComponent extends FieldLightComponent implements OnInit {
   /** Update models properties from inputs values */
   private updateField(): void {
     this.updatePropertiesIcons();
-    this.areSelectedFields();
-  }
-
-  /** Detect if at least one field attribute has been defined */
-  private areSelectedFields(): void {
-    this.noSelectedField = true;
-    for (const pi of this.propertiesIcons) {
-      if (this.field[pi.property]) {
-        this.noSelectedField = false;
-        break;
-      }
-    }
   }
 
   /** Display subtypes in tooltip */
@@ -80,16 +70,16 @@ export class FieldComponent extends FieldLightComponent implements OnInit {
     const isEnum = this.field.type === FieldType.Enum;
 
     if (isEnum) {
-      this.displayedSubTypesTooltip = 'enum';
+      this.displayedSubTypesPanel = 'enum';
       this.subtypes = null;
     } else if (isEntity) {
-      this.displayedSubTypesTooltip = 'entity';
+      this.displayedSubTypesPanel = 'entity';
       this.subtypes = this.field.getAvailableSubTypes();
     } else if (hasSubTypes) {
-      this.displayedSubTypesTooltip = 'subtype';
+      this.displayedSubTypesPanel = 'subtype';
       this.subtypes = this.field.getAvailableSubTypes();
     } else {
-      this.displayedSubTypesTooltip = null;
+      this.displayedSubTypesPanel = null;
       this.subtypes = null;
     }
   }

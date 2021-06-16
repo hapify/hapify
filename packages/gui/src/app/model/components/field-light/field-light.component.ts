@@ -74,4 +74,9 @@ export class FieldLightComponent implements OnInit {
     }
     this.filteredPropertiesIcons = this.propertiesIcons.filter((i) => i.value);
   }
+
+  countMeta(): number {
+    if (!this.field.meta) return 0;
+    return Object.keys(this.field.meta).filter((key) => !!key).length;
+  }
 }

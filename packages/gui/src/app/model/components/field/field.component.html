@@ -1,5 +1,5 @@
 <div class="row align-items-center flex-nowrap">
-	<div class="col-5">
+	<div class="col-4">
 		<input
 			class="inline-input w-100"
 			type="text"
@@ -7,39 +7,70 @@
 			(ngModelChange)="onInputChange()"
 		/>
 	</div>
-	<div class="col-1">
-		<div class="notes">
-			<mat-icon
-				color="primary"
-				(click)="isNotesTooltipDisplayed = true"
-				[class.inactive]="!field.notes"
-				[inline]="true"
-				>speaker_notes</mat-icon
-			>
-		</div>
-		<div
-			class="notesTooltip flex-column justify-content-center align-items-center p-2 border border-hpf-primary"
-			[class.active]="isNotesTooltipDisplayed"
-		>
-			<div class="row">
-				<div class="col-12">
-					<mat-form-field class="w-100">
-						<textarea
-							matInput
-							matTextareaAutosize
-							[matAutosizeMinRows]="4"
-							[matAutosizeMaxRows]="8"
-							[(ngModel)]="field.notes"
-							(ngModelChange)="onInputChange()"
-							placeholder="{{ 'notes_title' | translate }}"
-						></textarea>
-					</mat-form-field>
+	<div class="col-2">
+		<div class="d-flex justify-content-end">
+			<div class="notesCnt">
+				<div class="notes">
+					<mat-icon
+							color="primary"
+							(click)="displayedPanel = 'notes'"
+							[class.inactive]="!field.notes"
+							[inline]="true"
+					>speaker_notes</mat-icon
+					>
+				</div>
+				<div
+						class="notesTooltip flex-column justify-content-center align-items-center p-2 border border-hpf-primary"
+						[class.active]="displayedPanel === 'notes'"
+				>
+					<div class="row">
+						<div class="col-12">
+							<mat-form-field class="w-100">
+								<textarea
+										matInput
+										matTextareaAutosize
+										[matAutosizeMinRows]="4"
+										[matAutosizeMaxRows]="8"
+										[(ngModel)]="field.notes"
+										(ngModelChange)="onInputChange()"
+										placeholder="{{ 'notes_title' | translate }}"
+								></textarea>
+							</mat-form-field>
+						</div>
+					</div>
+					<div
+							class="overlay"
+							(click)="displayedPanel = null"
+					></div>
 				</div>
 			</div>
-			<div
-				class="overlay"
-				(click)="isNotesTooltipDisplayed = false"
-			></div>
+			<div class="metaCnt ml-1">
+				<div class="meta">
+					<mat-icon
+							color="primary"
+							(click)="displayedPanel = 'meta'"
+							[class.inactive]="!countMeta()"
+							[inline]="true"
+					>extension</mat-icon>
+				</div>
+				<div
+						class="metaTooltip flex-column justify-content-center align-items-center p-2 border border-hpf-primary"
+						[class.active]="displayedPanel === 'meta'"
+				>
+					<div class="row">
+						<div class="col-12">
+							<p class="pb-2 px-2 border-bottom w-100 m-0 d-flex align-items-center justify-content-center">
+								{{ 'meta_title' | translate }}
+							</p>
+							<app-meta class="mb-3" [meta]="field.meta" (update)="onMetaChange($event)"></app-meta>
+						</div>
+					</div>
+					<div
+							class="overlay"
+							(click)="displayedPanel = null"
+					></div>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div
@@ -48,8 +79,8 @@
 		<div class="badge field-{{ field.type }}">
 			<span
 				(click)="
-					isTypesTooltipDisplayed = true;
-					displayedSubTypesTooltip = null
+					displayedPanel = 'types';
+					displayedSubTypesPanel = null
 				"
 				>{{
 					field.type === fieldType.Entity
@@ -58,34 +89,34 @@
 				}}</span
 			><span
 				*ngIf="field.subtype"
-				(click)="isTypesTooltipDisplayed = true"
+				(click)="displayedPanel = 'types'"
 				>:{{ field.subtype }}</span
 			>
 			<div
 				class="typesTooltip d-flex justify-content-between align-items-center py-2 border border-hpf-primary"
-				[class.active]="isTypesTooltipDisplayed"
+				[class.active]="displayedPanel === 'types'"
 			>
 				<div class="pl-1 backIcon">
 					<mat-icon
-						*ngIf="displayedSubTypesTooltip !== null"
-						(click)="displayedSubTypesTooltip = null"
+						*ngIf="displayedSubTypesPanel !== null"
+						(click)="displayedSubTypesPanel = null"
 						color="primary"
 						>arrow_back</mat-icon
 					>
 				</div>
         <div class="pr-2 w-100 flex-shrink-1 flex-grow-1 d-flex"
-             *ngIf="displayedSubTypesTooltip === null"
+             *ngIf="displayedSubTypesPanel === null"
         >
           <ng-container *ngTemplateOutlet="typesList"></ng-container>
         </div>
 				<div class="pr-2 w-100 flex-shrink-1 flex-grow-1 d-flex "
-					*ngIf="displayedSubTypesTooltip === 'subtype'"
+					*ngIf="displayedSubTypesPanel === 'subtype'"
 				>
           <ng-container *ngTemplateOutlet="subtypeTitle"></ng-container>
           <ng-container *ngTemplateOutlet="subtypesList"></ng-container>
 				</div>
         <div class="pr-2 w-100 flex-shrink-1 flex-grow-1 d-flex"
-          *ngIf="displayedSubTypesTooltip === 'entity'"
+          *ngIf="displayedSubTypesPanel === 'entity'"
 				>
           <ng-container *ngTemplateOutlet="subtypeTitle"></ng-container>
           <div class="w-100">
@@ -96,14 +127,14 @@
           </div>
 				</div>
           <div class="pr-2 w-100 flex-shrink-1 flex-grow-1 d-flex"
-          *ngIf="displayedSubTypesTooltip === 'enum'"
+          *ngIf="displayedSubTypesPanel === 'enum'"
         >
           <ng-container *ngTemplateOutlet="subtypeTitle"></ng-container>
           <ng-container *ngTemplateOutlet="enumList"></ng-container>
         </div>
 				<div
 					class="overlay"
-					(click)="isTypesTooltipDisplayed = false"
+					(click)="displayedPanel = null"
 				></div>
 			</div>
 		</div>
@@ -111,7 +142,7 @@
 		<div class="d-flex align-items-center position-relative">
 			<div
 				class="fieldsTooltip flex-column justify-content-center align-items-center p-2 border border-hpf-primary"
-				[class.active]="isFieldsTooltipDisplayed"
+				[class.active]="displayedPanel === 'attributes'"
 			>
 				<!--
 					  DO NOT REMOVE
@@ -168,7 +199,7 @@
 				</ul>
 				<div
 					class="overlay"
-					(click)="isFieldsTooltipDisplayed = false"
+					(click)="displayedPanel = null"
 				></div>
 			</div>
 			<ul
@@ -183,8 +214,8 @@
 			</ul>
 			<ul
 				class="list-unstyled m-0 p-0 flex-nowrap align-items-center selectedFields d-flex"
-				(click)="isFieldsTooltipDisplayed = true"
-        *ngIf="!deletionMode"
+				(click)="displayedPanel = 'attributes'"
+				*ngIf="!deletionMode"
 			>
 				<li *ngFor="let pi of filteredPropertiesIcons">
 					<mat-icon [inline]="true">{{ pi.icon }}</mat-icon>

@@ -41,6 +41,7 @@ export class Model implements IModel {
     this.id = object.id;
     this.name = object.name;
     this.notes = object.notes || null;
+    this.meta = object.meta || null;
     this.fields = object.fields.map(
       (fieldBase: IFieldBase): IField => {
         const field = this.newField();

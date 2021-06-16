@@ -19,8 +19,6 @@ export class ModelLightComponent {
 
   countMeta(): number {
     if (!this.model.meta) return 0;
-    return Object.keys(this.model.meta)
-        .filter(key => !!key)
-        .length;
+    return Object.keys(this.model.meta).filter((key) => !!key).length;
   }
 }

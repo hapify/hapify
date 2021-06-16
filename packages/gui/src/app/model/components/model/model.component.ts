@@ -133,6 +133,12 @@ export class ModelComponent
     this.onModelChange();
   }
 
+  /** Called when meta change */
+  onMetaChange(meta: Record<string, string>): void {
+    this.model.meta = meta;
+    this.onModelChange();
+  }
+
   /** Denotes if the access should be highlighted */
   private isAccessSelected(
     action: AccessType,

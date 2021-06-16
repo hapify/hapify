@@ -45,7 +45,11 @@
             "ownership"
           ]
         }
-      ]
+      ],
+      "notes": "fdsf",
+      "meta": {
+        "bla bla ds": "fdsfs"
+      }
     },
     {
       "id": "a35db558-353c-e51a-db2c-1a9a9485f0f5",
@@ -127,7 +131,13 @@
             "internal"
           ]
         }
-      ]
+      ],
+      "meta": {
+        "fds": "s",
+        "fdsd": "ss",
+        "fdfss": "fsfsfs",
+        "fdsfsdf": "fsfsf"
+      }
     }
   ]
 }

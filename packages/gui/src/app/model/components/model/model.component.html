@@ -56,7 +56,7 @@
 						matBadgeSize="small"
 						matBadgeOverlap="true"
 				>
-					<mat-icon>code</mat-icon>
+					<mat-icon>extension</mat-icon>
 				</button>
 				<button
 					mat-icon-button
@@ -160,7 +160,7 @@
 				<div class="row">
 					<div class="col-12">
 						<h4 class="mb-3">{{ 'meta_title' | translate }}</h4>
-						<app-meta class="mb-3" [meta]="{ 'test': 'yes', 'yo': 'no' }"></app-meta>
+						<app-meta class="mb-3" [meta]="model.meta" (update)="onMetaChange($event)"></app-meta>
 					</div>
 				</div>
 			</div>

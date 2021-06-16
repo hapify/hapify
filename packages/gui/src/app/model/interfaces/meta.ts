@@ -1,2 +1,1 @@
-
-export type MetaEntry = { key: string, value: string };
+export type MetaEntry = { key: string; value: string };

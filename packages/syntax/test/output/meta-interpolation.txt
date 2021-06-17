@@ -1,0 +1,11 @@
+This is the camel videoYoutube.
+This is the pascal VideoYoutube.
+This is the lower video youtube.
+This is the capital Video Youtube.
+This is the kebab video-youtube.
+This is the header Video-Youtube.
+This is the snake video_youtube.
+This is the constant VIDEO_YOUTUBE.
+This is the compact videoyoutube.
+This is the raw Video youtube.
+This should not be detected <<-M nameMirrora>>.

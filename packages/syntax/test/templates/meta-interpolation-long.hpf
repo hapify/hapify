@@ -1,0 +1,11 @@
+This is the camel <<-M nameMirror camel>>.
+This is the pascal <<- M nameMirror pascal>>.
+This is the lower <<- M nameMirror lower >>.
+This is the capital <<-M nameMirror  capital>>.
+This is the kebab <<-M nameMirror kebab>>.
+This is the header <<- M nameMirror header>>.
+This is the snake <<-M nameMirror snake>>.
+This is the constant <<-M nameMirror constant>>.
+This is the compact <<-M nameMirror compact>>.
+This is the raw <<-M nameMirror raw>>.
+This should not be detected <<-M nameMirrora>>.

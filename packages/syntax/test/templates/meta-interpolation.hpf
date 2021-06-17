@@ -1,0 +1,11 @@
+This is the camel <<-M nameMirror aA>>.
+This is the pascal <<- M nameMirror AA>>.
+This is the lower <<- M nameMirror a >>.
+This is the capital <<-M nameMirror  A>>.
+This is the kebab <<-M nameMirror a-a>>.
+This is the header <<- M nameMirror A-A>>.
+This is the snake <<-M nameMirror a_a>>.
+This is the constant <<-M nameMirror A_A>>.
+This is the compact <<-M nameMirror aa>>.
+This is the raw <<-M nameMirror R>>.
+This should not be detected <<-M nameMirrora>>.

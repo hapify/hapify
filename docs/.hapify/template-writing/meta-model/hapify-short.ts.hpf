@@ -1,0 +1,3 @@
+<<< if (root.meta.plural) { >>>
+    // The model's plural name is <<-M plural aA>>
+<<< } >>>

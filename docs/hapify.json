@@ -1,5 +1,5 @@
 {
-  "version": "2",
+  "version": "3",
   "validatorPath": ".hapify/validator.js",
   "project": "hapify-models.json",
   "name": "Documentation samples",
@@ -206,6 +206,46 @@
     },
     {
       "path": "template-writing/iteration-hidden/javascript.ts",
+      "engine": "js",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/meta-field/ejs.ts",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/meta-field/hapify-long.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/meta-field/hapify-short.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/meta-field/javascript.ts",
+      "engine": "js",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/meta-model/ejs.ts",
+      "engine": "ejs",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/meta-model/hapify-long.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/meta-model/hapify-short.ts",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "template-writing/meta-model/javascript.ts",
       "engine": "js",
       "input": "one"
     },

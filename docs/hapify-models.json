@@ -1,5 +1,5 @@
 {
-  "version": "2",
+  "version": "3",
   "name": "Documentation samples",
   "models": [
     {
@@ -33,7 +33,10 @@
             "internal",
             "ownership"
           ],
-          "notes": "Current user when creating the bookmark"
+          "notes": "Current user when creating the bookmark",
+          "meta": {
+            "plural": "owners"
+          }
         },
         {
           "name": "place",
@@ -43,10 +46,16 @@
           "properties": [
             "unique",
             "searchable"
-          ]
+          ],
+          "meta": {
+            "plural": "places"
+          }
         }
       ],
-      "notes": "A user can only list its own bookmarks"
+      "notes": "A user can only list its own bookmarks",
+      "meta": {
+        "plural": "bookmarks"
+      }
     },
     {
       "id": "287c113d-18bd-8c92-b946-311378f9b7b2",

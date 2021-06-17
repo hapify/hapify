@@ -1,0 +1,5 @@
+<<for Fields field>>
+    <<< if (field.meta.plural) { >>>
+// Plural of <<field camel>> is <<-field plural camel>>
+    <<< } >>>
+<<endfor>>

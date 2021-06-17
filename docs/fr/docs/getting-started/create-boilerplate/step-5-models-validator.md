@@ -107,6 +107,12 @@ if (primary) {
     errors.push('Primary key is required');
 }
 
+// -----------------------------
+// Meta values
+if (!model.meta.plural) {
+    errors.push('Plural name is required');
+}
+
 return {
     errors,
     warnings,

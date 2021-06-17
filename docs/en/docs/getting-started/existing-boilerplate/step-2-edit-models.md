@@ -91,7 +91,20 @@ You can leave notes on the data models and their fields. Click on the "speech" i
 
 **On a field:**
 
-![Hapify GUI - Models notes](../../assets/gui-models-fields-notes.jpg 'Models notes'){: style="width: 411px"}
+![Hapify GUI - Fields notes](../../assets/gui-models-fields-notes.jpg 'Fields notes'){: style="width: 411px"}
+
+## Add meta-data
+
+Some boilerplates use meta-data that will be processed during generation.
+These meta-data can be used to add custom variables to a field or a model.
+
+**On a model:**
+
+![Hapify GUI - Models meta](../../assets/gui-models-meta.jpg 'Models meta'){: style="width: 448px"}
+
+**On a field:**
+
+![Hapify GUI - Fields meta](../../assets/gui-models-fields-meta.jpg 'Fields meta'){: style="width: 332px"}
 
 ## Errors and warnings
 

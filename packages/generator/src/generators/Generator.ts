@@ -639,8 +639,9 @@ export class Generator {
     const output: Record<string, string> = {};
     const keys = Object.keys(input.meta);
     for (const key of keys) {
-      if (input.meta[key]) {
-        output[key] = input.meta[key];
+      const trimmedKey = key.trim();
+      if (input.meta[trimmedKey]) {
+        output[trimmedKey] = input.meta[trimmedKey].toString();
       }
     }
     return output;

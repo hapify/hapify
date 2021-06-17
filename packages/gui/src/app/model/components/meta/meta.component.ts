@@ -67,7 +67,7 @@ export class MetaComponent implements OnInit, OnDestroy {
   private getMetaFromEntries(): Record<string, string> {
     return this.entries.reduce((acc, entry) => {
       if (!!entry.key && !!entry.value) {
-        acc[entry.key] = entry.value;
+        acc[entry.key.trim()] = entry.value.trim();
       }
       return acc;
     }, {} as Record<string, string>);

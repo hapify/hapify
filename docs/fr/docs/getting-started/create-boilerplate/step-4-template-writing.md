@@ -839,7 +839,7 @@ Voici comment les retrouver dans les templates:
 !!! tip "À savoir"
     Avec la syntaxe Hapify il est également possible d'afficher les notes en utilisant l'interpolation : `#!hapify <<= root.notes >>` ou `#!hapify <<= model.notes >>` pour un modèle ou bien `#!hapify <<= field.notes >>` pour un champ.
 
-## Meta
+## Meta-données
 
 Il est possible d'ajouter des meta-données au niveau d'un champ ou bien d'un modèle.
 Voici comment les retrouver dans les templates :

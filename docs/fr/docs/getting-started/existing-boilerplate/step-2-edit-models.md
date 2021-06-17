@@ -95,7 +95,7 @@ Vous pouvez laisser des notes sur les modèles de données et leurs champs. Cliq
 
 ## Ajouter des meta-données
 
-Certains boilerplate permettent l'utilisation de méta-donnés qui seront traitées lors de la génération.
+Certains boilerplate utilisent de méta-donnés qui seront traitées lors de la génération.
 Ces meta-données permettent d'ajouter des variables personnalisées au niveau d'un champ ou d'un modèle.
 
 **Sur un modèle:**

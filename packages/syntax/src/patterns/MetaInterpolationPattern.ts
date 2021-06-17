@@ -10,7 +10,7 @@ const ForRegExp = (r: Replacement): string =>
   r.search.map(EscapeStringRegexp).join('|');
 /** Meta interpolation pattern */
 const RegEx = new RegExp(
-  `<<-\\s*([a-zA-Z_.]+)\\s+([a-zA-Z_]+)\\s+(${CasesReplacements.map(
+  `<<-\\s*([a-zA-Z_.]+)\\s+([a-zA-Z0-9_]+)\\s+(${CasesReplacements.map(
     ForRegExp,
   ).join('|')})\\s*>>`,
   'g',

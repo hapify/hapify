@@ -71,8 +71,8 @@ describe('meta interpolation', () => {
     );
     // Variable
     expect(
-      MetaInterpolationPattern.execute('<<- f property_name aA>>'),
-    ).to.equal('${f.meta.property_name.camel}');
+      MetaInterpolationPattern.execute('<<- f property_name2 aA>>'),
+    ).to.equal('${f.meta.property_name2.camel}');
     // Spaces
     expect(
       MetaInterpolationPattern.execute('<<-    f      prop  aA>>'),

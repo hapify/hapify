@@ -16,9 +16,9 @@ describe('generate command', () => {
       '--boilerplate',
       'hapijs_tractr',
       '--preset',
-      '60104aabe0fe50001033f10e', // User
+      '60caa7bce343b600106315cd', // User
       '--preset',
-      '60104aabe0fe50001033f10f', // Place
+      '60caa7bce343b600106315ce', // Place
       '--project-name',
       'The Name',
       '--project-desc',
@@ -59,7 +59,7 @@ describe('generate command', () => {
       '--boilerplate-url',
       'https://github.com/Tractr/boilerplate-ngx-components.git',
       '--preset',
-      '60104aabe0fe50001033f10e', // User
+      '60caa7bce343b600106315cd', // User
       '--project-name',
       'The Name',
       '--project-desc',
@@ -111,9 +111,9 @@ describe('generate command', () => {
       '--boilerplate',
       'hapijs_tractr',
       '--preset',
-      '60104aabe0fe50001033f10e', // User
+      '60caa7bce343b600106315cd', // User
       '--preset',
-      '60104aabe0fe50001033f10f', // Place
+      '60caa7bce343b600106315ce', // Place
       '--project-name',
       'The Name',
       '--project-desc',
@@ -154,7 +154,7 @@ describe('generate command', () => {
       '--boilerplate',
       'hapijs_tractr',
       '--preset',
-      '60104aabe0fe50001033f10e', // User
+      '60caa7bce343b600106315cd', // User
       '--project-name',
       'The Name',
       '--project-desc',

@@ -32,9 +32,9 @@ describe('import command', () => {
       '--dir',
       sandbox.getPath(),
       '--preset',
-      '60104aabe0fe50001033f10e', // User
+      '60caa7bce343b600106315cd', // User
       '--preset',
-      '60104aabe0fe50001033f10f', // Place
+      '60caa7bce343b600106315ce', // Place
     ]);
 
     expect(response.stderr).to.be.empty();
@@ -80,9 +80,9 @@ describe('import command', () => {
       '--dir',
       sandbox.getPath(),
       '--preset',
-      '60104aabe0fe50001033f10e', // User
+      '60caa7bce343b600106315cd', // User
       '--preset',
-      '60104aabe0fe50001033f10f', // Place
+      '60caa7bce343b600106315ce', // Place
     ]);
 
     expect(response.stderr).to.be.empty();
@@ -124,9 +124,9 @@ describe('import command', () => {
       '--dir',
       sandbox.getPath(),
       '--preset',
-      '60104aabe0fe50001033f10e', // User
+      '60caa7bce343b600106315cd', // User
       '--preset',
-      '60104aabe0fe50001033f10f', // Place
+      '60caa7bce343b600106315ce', // Place
     ]);
 
     expect(response.stderr).to.be.empty();
@@ -138,9 +138,9 @@ describe('import command', () => {
       '--dir',
       sandbox.getPath(),
       '--preset',
-      '60104aabe0fe50001033f10e', // User
+      '60caa7bce343b600106315cd', // User
       '--preset',
-      '60104aabe0fe50001033f10f', // Place
+      '60caa7bce343b600106315ce', // Place
     ]);
 
     expect(response2.stderr).to.be.empty();

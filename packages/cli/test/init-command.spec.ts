@@ -43,7 +43,7 @@ describe('init command', () => {
     expect(hapifyJSON.name).to.equal(channelName);
     expect(hapifyJSON.description).to.equal(channelDescription);
     expect(hapifyJSON.logo).to.equal(channelLogo);
-    expect(hapifyJSON.version).to.equal('2');
+    expect(hapifyJSON.version).to.equal('3');
     expect(hapifyJSON.project).to.be.a.string();
     expect(hapifyJSON.validatorPath).to.be.a.string();
     expect(hapifyJSON.defaultFields).to.be.an.array();

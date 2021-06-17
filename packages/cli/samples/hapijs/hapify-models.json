@@ -50,7 +50,7 @@
       ],
       "notes": "fdsf",
       "meta": {
-        "bla bla ds": "fdsfs"
+        "name1": "yes"
       }
     },
     {
@@ -96,7 +96,7 @@
             "sortable"
           ],
           "meta": {
-            "gfd": "gdf"
+            "key": "value"
           }
         },
         {
@@ -108,7 +108,8 @@
           ],
           "notes": "bhvj",
           "meta": {
-            "fds": "fds"
+            "key1": "val1",
+            "key2": "val2"
           }
         },
         {
@@ -141,12 +142,7 @@
           ]
         }
       ],
-      "meta": {
-        "fds": "s",
-        "fdsd": "ss",
-        "fdfss": "fsfsfs",
-        "fdsfsdf": "fsfsf"
-      }
+      "meta": {}
     }
   ]
 }

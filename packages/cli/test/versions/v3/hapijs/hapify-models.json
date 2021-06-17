@@ -1,0 +1,100 @@
+{
+  "version": "3",
+  "name": "Hello World",
+  "description": "Another project",
+  "models": [
+    {
+      "id": "9637edb3-a533-374f-a27d-7b228d4f0b14",
+      "name": "profile",
+      "meta": {
+        "name1": "value",
+        "name2": "val"
+      },
+      "accesses": {
+        "create": "guest",
+        "read": "owner",
+        "update": "admin",
+        "remove": "admin",
+        "search": "guest",
+        "count": "admin"
+      },
+      "fields": [
+        {
+          "name": "_id",
+          "type": "string",
+          "properties": [
+            "primary",
+            "internal"
+          ],
+          "meta": {
+            "name1": "value",
+            "name2": "val"
+          }
+        },
+        {
+          "name": "created_at",
+          "type": "datetime",
+          "subtype": "date",
+          "properties": [
+            "sortable",
+            "internal"
+          ],
+          "notes": "Creation date"
+        },
+        {
+          "name": "validated",
+          "type": "boolean",
+          "properties": [
+            "label",
+            "nullable",
+            "hidden",
+            "internal",
+            "restricted",
+            "ownership"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "a35db558-353c-e51a-db2c-1a9a9485f0f5",
+      "name": "user",
+      "accesses": {
+        "create": "auth",
+        "read": "guest",
+        "update": "admin",
+        "remove": "admin",
+        "search": "guest",
+        "count": "guest"
+      },
+      "fields": [
+        {
+          "name": "_id",
+          "type": "string",
+          "properties": [
+            "primary",
+            "internal"
+          ]
+        },
+        {
+          "name": "created_at",
+          "type": "datetime",
+          "properties": [
+            "sortable",
+            "internal"
+          ]
+        },
+        {
+          "name": "name",
+          "type": "string",
+          "properties": []
+        },
+        {
+          "name": "role",
+          "type": "enum",
+          "value": ["admin", "customer"],
+          "properties": []
+        }
+      ]
+    }
+  ]
+}

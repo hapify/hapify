@@ -839,6 +839,98 @@ Here is how to find them in the templates:
 !!! tip "Tip"
     With the Hapify syntax it is also possible to display notes using interpolation: `#!hapify <<= root.notes >>` or `#!hapify <<= model.notes >>` for a model or `#!hapify <<= field.notes >>` for a field.
 
+## Meta-data
+
+It is possible to add meta-data to a field or a model.
+Here is how to find them in the templates:
+
+=== "Hapify (long)"
+
+    ```hapify
+    // The model's plural name is <<-Model plural camel>>
+    ```
+
+=== "Hapify (short)"
+
+    ```hapify
+    // The model's plural name is <<-M plural aA>>
+    ```
+
+=== "EJS"
+
+    ```js
+    // The model's plural name is <%=model.meta.plural.camel%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    output = `// The model's plural name is ${model.meta.plural.camel}`;
+    return output;
+    ```
+
+=== "Output"
+
+    ```typescript
+    // The model's plural name is bookmarks
+    ```
+
+### Test if a meta-data is defined
+
+It is also possible to test if a metadata exists before using it:
+
+=== "Hapify (long)"
+
+    ```hapify
+    <<for Fields field>>
+        <<< if (field.meta.plural) { >>>
+    // Plural of <<field camel>> is <<-field plural camel>>
+        <<< } >>>
+    <<endfor>>
+    ```
+
+=== "Hapify (short)"
+
+    ```hapify
+    <<@ F f>>
+        <<< if (f.meta.plural) { >>>
+    // Plural of <<f aA>> is <<-f plural aA>>
+        <<< } >>>
+    <<@>>
+    ```
+
+=== "EJS"
+
+    ```js
+    <% for(const field of model.fields.list) { -%>
+        <% if (field.meta.plural) { -%>
+    // Plural of <%=field.names.camel%> is <%=field.meta.plural.camel%>
+        <% } -%>
+    <% } -%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    output = '';
+        for (const field of model.fields.list) {
+            if (field.meta.plural) {
+                output += `// Plural of ${field.names.camel} is ${field.meta.plural.camel}\n`;
+            }
+        }
+    return output;
+    ```
+
+=== "Output"
+
+    ```typescript
+    // Plural of owner is owners
+    // Plural of place is places
+    ```
+
+!!! tip "Tip"
+    You can force the insertion of meta for fields or models by setting [a model validator](./step-5-models-validator.md).
+
 ## Exclusion of generated files
 
 It is possible to exclude some files from the generation.

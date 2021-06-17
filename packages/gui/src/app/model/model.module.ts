@@ -25,6 +25,8 @@ import {
 import { ModelService } from '@app/preset/services/model.service';
 import { MessageService } from '@app/services/message.service';
 import { SharedModule } from '@app/shared/shared.module';
+import { MetaEntryComponent } from './components/meta-entry/meta-entry.component';
+import { MetaComponent } from './components/meta/meta.component';
 
 @NgModule({
   imports: [
@@ -48,6 +50,8 @@ import { SharedModule } from '@app/shared/shared.module';
     ValidatorIconComponent,
     ValidatorDetailsComponent,
     HeaderComponent,
+    MetaEntryComponent,
+    MetaComponent,
   ],
   providers: [StorageService, ModelService, MessageService],
   entryComponents: [PresetRootComponent],

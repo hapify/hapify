@@ -1,3 +1,4 @@
+import { DeepRequired } from 'ts-essentials';
 import { Container } from 'typedi';
 
 import { IV1Config } from '../../../interface/legacy/v1/Config';
@@ -13,9 +14,9 @@ export class ChannelV1Parser
     this.converterService = Container.get(ConverterService);
   }
 
-  convert(input: IV1Config): IStorableCompactConfig {
+  convert(input: IV1Config): DeepRequired<IStorableCompactConfig> {
     return {
-      version: '2',
+      version: '3',
       validatorPath: input.validatorPath,
       project: input.project,
       name: input.name,
@@ -31,6 +32,7 @@ export class ChannelV1Parser
               f,
             ),
             notes: f.notes,
+            meta: undefined,
           }))
         : undefined,
       templates: input.templates,

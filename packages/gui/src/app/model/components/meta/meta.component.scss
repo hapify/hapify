@@ -1,0 +1,17 @@
+@import '~bootstrap/scss/_functions.scss';
+@import '~bootstrap/scss/_variables.scss';
+@import '../../../../palette.scss';
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  li {
+    margin: .5em 0;
+  }
+}
+
+.addRow {
+  color: mat-color($hpf-app-primary);
+  cursor: pointer;
+}

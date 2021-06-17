@@ -1,0 +1,5 @@
+<<@ F f>>
+    <<< if (f.meta.plural) { >>>
+// Plural of <<f aA>> is <<-f plural aA>>
+    <<< } >>>
+<<@>>

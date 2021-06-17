@@ -1,5 +1,5 @@
 {
-  "version": "2",
+  "version": "3",
   "name": "Hello World",
   "description": "Another project",
   "models": [
@@ -20,8 +20,10 @@
           "type": "string",
           "properties": [
             "primary",
-            "internal"
-          ]
+            "internal",
+            "restricted"
+          ],
+          "notes": "fdsfs"
         },
         {
           "name": "created_at",
@@ -45,7 +47,11 @@
             "ownership"
           ]
         }
-      ]
+      ],
+      "notes": "fdsf",
+      "meta": {
+        "name1": "yes"
+      }
     },
     {
       "id": "a35db558-353c-e51a-db2c-1a9a9485f0f5",
@@ -88,7 +94,10 @@
             "unique",
             "searchable",
             "sortable"
-          ]
+          ],
+          "meta": {
+            "key": "value"
+          }
         },
         {
           "name": "password",
@@ -96,7 +105,12 @@
           "subtype": "password",
           "properties": [
             "hidden"
-          ]
+          ],
+          "notes": "bhvj",
+          "meta": {
+            "key1": "val1",
+            "key2": "val2"
+          }
         },
         {
           "name": "role",
@@ -127,7 +141,8 @@
             "internal"
           ]
         }
-      ]
+      ],
+      "meta": {}
     }
   ]
 }

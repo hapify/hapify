@@ -839,6 +839,98 @@ Voici comment les retrouver dans les templates:
 !!! tip "À savoir"
     Avec la syntaxe Hapify il est également possible d'afficher les notes en utilisant l'interpolation : `#!hapify <<= root.notes >>` ou `#!hapify <<= model.notes >>` pour un modèle ou bien `#!hapify <<= field.notes >>` pour un champ.
 
+## Meta-données
+
+Il est possible d'ajouter des meta-données au niveau d'un champ ou bien d'un modèle.
+Voici comment les retrouver dans les templates :
+
+=== "Hapify (long)"
+
+    ```hapify
+    // The model's plural name is <<-Model plural camel>>
+    ```
+
+=== "Hapify (short)"
+
+    ```hapify
+    // The model's plural name is <<-M plural aA>>
+    ```
+
+=== "EJS"
+
+    ```js
+    // The model's plural name is <%=model.meta.plural.camel%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    output = `// The model's plural name is ${model.meta.plural.camel}`;
+    return output;
+    ```
+
+=== "Sortie"
+
+    ```typescript
+    // The model's plural name is bookmarks
+    ```
+
+### Tester si une meta-donnée est définie
+
+Il est également possible de tester l'existence d'une meta-donnée avant de l'utiliser :
+
+=== "Hapify (long)"
+
+    ```hapify
+    <<for Fields field>>
+        <<< if (field.meta.plural) { >>>
+    // Plural of <<field camel>> is <<-field plural camel>>
+        <<< } >>>
+    <<endfor>>
+    ```
+
+=== "Hapify (short)"
+
+    ```hapify
+    <<@ F f>>
+        <<< if (f.meta.plural) { >>>
+    // Plural of <<f aA>> is <<-f plural aA>>
+        <<< } >>>
+    <<@>>
+    ```
+
+=== "EJS"
+
+    ```js
+    <% for(const field of model.fields.list) { -%>
+        <% if (field.meta.plural) { -%>
+    // Plural of <%=field.names.camel%> is <%=field.meta.plural.camel%>
+        <% } -%>
+    <% } -%>
+    ```
+
+=== "JavaScript"
+
+    ```javascript
+    output = '';
+        for (const field of model.fields.list) {
+            if (field.meta.plural) {
+                output += `// Plural of ${field.names.camel} is ${field.meta.plural.camel}\n`;
+            }
+        }
+    return output;
+    ```
+
+=== "Sortie"
+
+    ```typescript
+    // Plural of owner is owners
+    // Plural of place is places
+    ```
+
+!!! tip "À savoir"
+    Vous pouvez forcer l'ajout de meta pour les champs ou les modèles en définissant [un validateur de modèle](./step-5-models-validator.md).
+
 ## Exclusion de fichiers générés
 
 Il est possible d'exclure certain fichier de la génération.

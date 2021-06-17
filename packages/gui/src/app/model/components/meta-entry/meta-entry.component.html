@@ -1,0 +1,24 @@
+<div class="d-flex align-items-center justify-content-between">
+    <div class="w-50">
+        <input type="text"
+               class="inline-input w-100"
+               placeholder="{{ 'meta_key_placeholder' | translate }}"
+               color="primary"
+               [(ngModel)]="meta.key"
+               (ngModelChange)="onChange()"
+        >
+    </div>
+    <div class="w-50 ml-1">
+        <input type="text"
+               class="inline-input w-100"
+               placeholder="{{ 'meta_value_placeholder' | translate }}"
+               [(ngModel)]="meta.value"
+               (ngModelChange)="onChange()"
+        >
+    </div>
+    <div class="ml-1">
+        <mat-icon [inline]="true" color="warn" (click)="onDelete()" class="delete">
+            remove_circle
+        </mat-icon>
+    </div>
+</div>

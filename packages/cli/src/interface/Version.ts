@@ -1,7 +1,7 @@
-type MODEL_VERSION = '2';
-type PROJECT_VERSION = '2';
-type CHANNEL_VERSION = '2';
-type PRESET_VERSION = '2';
+type MODEL_VERSION = '3';
+type PROJECT_VERSION = '3';
+type CHANNEL_VERSION = '3';
+type PRESET_VERSION = '3';
 
 export type CurrentVersion<T> = T extends 'model'
   ? MODEL_VERSION

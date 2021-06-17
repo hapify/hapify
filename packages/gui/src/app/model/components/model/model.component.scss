@@ -63,7 +63,8 @@ input[type='text'] {
 }
 
 .accessRights,
-.notes {
+.notes,
+.meta {
 	font-size: 0.9em;
 	background-color: mat-color($hpf-app-primary, 50, 0.3);
 	h4 {

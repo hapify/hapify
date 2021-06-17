@@ -4,6 +4,7 @@ import {
   FieldType,
   FieldValueType,
 } from '@hapify/generator/dist/Interfaces';
+import { DeepRequired } from 'ts-essentials';
 
 import { IConfigTemplate } from './Config';
 import { IModel } from './Generator';
@@ -18,7 +19,7 @@ export interface ISerializable<IT, T> {
   fromObject(object: IT): T;
 
   /** Convert the instance to an object */
-  toObject(): IT;
+  toObject(): DeepRequired<IT>;
 }
 
 /** Represent a class that can be loaded and saved */
@@ -72,6 +73,8 @@ export interface IStorableCompactModel {
   fields: IStorableCompactField[];
   /** The model's notes */
   notes?: string;
+  /** The model's meta data */
+  meta?: Record<string, string>;
 }
 /** Represents the compact description of a model */
 export interface IStorableCompactField<T extends FieldType = FieldType> {
@@ -87,6 +90,8 @@ export interface IStorableCompactField<T extends FieldType = FieldType> {
   properties: CompactFieldBooleanProperty[];
   /** The field's notes */
   notes?: string;
+  /** The field's meta data */
+  meta?: Record<string, string>;
 }
 /** Keys of field's boolean properties */
 export type CompactFieldBooleanProperty =

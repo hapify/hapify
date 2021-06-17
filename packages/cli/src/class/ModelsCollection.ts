@@ -1,3 +1,4 @@
+import { DeepRequired } from 'ts-essentials';
 import { Container } from 'typedi';
 
 import { IModel } from '../interface/Generator';
@@ -127,7 +128,7 @@ export class ModelsCollection
     return this.models;
   }
 
-  public toObject(): IModel[] {
+  public toObject(): DeepRequired<IModel[]> {
     return this.models.map((m) => m.toObject());
   }
 

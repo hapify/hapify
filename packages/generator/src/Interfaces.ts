@@ -1,7 +1,7 @@
 // ==================================================================
 //  Names
 // ==================================================================
-export interface NameInterpolable {
+export interface WithNameInterpolable {
   /** The name of the object, as the user entered it */
   name: string;
   /** All names computed from the `name` property */
@@ -10,11 +10,20 @@ export interface NameInterpolable {
 // ==================================================================
 //  Notes
 // ==================================================================
-export interface Annotated {
-  /** The field's notes */
+export interface WithNotes {
+  /** The object's notes */
   notes: string;
   /** Denotes if the notes value is defined */
   hasNotes: boolean;
+}
+// ==================================================================
+//  Meta
+// ==================================================================
+export interface WithMetaInterpolable {
+  /** The object's meta */
+  meta: Meta;
+  /** Denotes if the meta value is defined and has at least one value */
+  hasMeta: boolean;
 }
 // ==================================================================
 //  Fields
@@ -59,6 +68,8 @@ export interface Field<T extends FieldType = FieldType> {
   name: string;
   /** The field's notes */
   notes?: string;
+  /** The field's meta */
+  meta?: Record<string, string>;
   /** The field's type */
   type: T;
   /** The field's subtype */
@@ -126,6 +137,8 @@ export interface Model {
   name: string;
   /** The model's notes */
   notes?: string;
+  /** The model's meta */
+  meta?: Record<string, string>;
   /** The fields of the model */
   fields: Field[];
   /** The model privacy access */
@@ -154,7 +167,10 @@ export interface AliasedArray<T> extends Array<T> {
     thisArg?: any,
   ): T[];
 }
-interface BaseExplicitModel extends NameInterpolable, Annotated {
+interface BaseExplicitModel
+  extends WithNameInterpolable,
+    WithNotes,
+    WithMetaInterpolable {
   /** An unique id */
   id: string;
   /** An object containing pre-computed properties from fields */
@@ -196,14 +212,12 @@ export interface ExplicitReferenceModel extends BaseExplicitModel {
   /** Alias of `fields` */
   f: AliasedArray<ExplicitField>;
 }
-export type ExplicitEnum = NameInterpolable;
+export type ExplicitEnum = WithNameInterpolable;
 export interface ExplicitField<T extends FieldType = FieldType>
-  extends Field<T>,
-    NameInterpolable,
-    Annotated {
-  // Redefine notes to force interface conflict
-  notes: string;
-}
+  extends Omit<Field<T>, 'notes' | 'meta'>,
+    WithNameInterpolable,
+    WithNotes,
+    WithMetaInterpolable {}
 export interface ExplicitReferenceField extends ExplicitField<'entity'> {
   /** The target model object if the field is of type `entity` */
   model: ExplicitDeepModel;
@@ -505,6 +519,11 @@ export interface StringVariations {
   camel: string;
 }
 export type StringVariationType = keyof StringVariations;
+
+// ==================================================================
+//  Meta
+// ==================================================================
+export type Meta = Record<string, StringVariations>;
 
 // ==================================================================
 //  Generator

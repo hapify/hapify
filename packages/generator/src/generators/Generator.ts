@@ -24,6 +24,7 @@ import {
   Field,
   GeneratorResult,
   GeneratorWorker,
+  Meta,
   Model,
   NumberedError,
   StringVariationType,
@@ -210,6 +211,8 @@ export class Generator {
       names: StringVariants(model.name),
       notes: this.getNotes(model),
       hasNotes: this.hasNotes(model),
+      meta: this.getMeta(model),
+      hasMeta: this.hasMeta(model),
       fields,
       f: fields,
       properties,
@@ -241,6 +244,8 @@ export class Generator {
       names: StringVariants(model.name),
       notes: this.getNotes(model),
       hasNotes: this.hasNotes(model),
+      meta: this.getMeta(model),
+      hasMeta: this.hasMeta(model),
       fields,
       f: fields,
       properties,
@@ -253,7 +258,7 @@ export class Generator {
   /** Convert the model used for a reference. Get model description (first level) and remove non referencing fields */
   private explicitReferenceModel(
     model: Model,
-    filter: (f: Field) => boolean,
+    filter: (f: ExplicitField) => boolean,
   ): ExplicitReferenceModel {
     const fields = this.explicitFields(model);
     const properties = this.explicitProperties(fields);
@@ -268,6 +273,8 @@ export class Generator {
       names: StringVariants(model.name),
       notes: this.getNotes(model),
       hasNotes: this.hasNotes(model),
+      meta: this.getMeta(model),
+      hasMeta: this.hasMeta(model),
       fields: filteredFields,
       f: filteredFields,
       properties,
@@ -360,8 +367,9 @@ export class Generator {
     model: Model,
   ): AliasedArray<ExplicitReferenceModel> {
     // Filter referencing models
-    const extractReferencingFields = (f: Field) =>
-      f.type === 'entity' && (<Field<'entity'>>f).value === model.id;
+    const extractReferencingFields = (f: Field | ExplicitField) =>
+      f.type === 'entity' &&
+      (f as Field<'entity'> | ExplicitField<'entity'>).value === model.id;
     const referencedIn: AliasedArray<ExplicitReferenceModel> = models
       .filter((m) => m.fields.some(extractReferencingFields))
       .map((m) =>
@@ -380,6 +388,8 @@ export class Generator {
         names: StringVariants(f.name),
         notes: this.getNotes(f),
         hasNotes: this.hasNotes(f),
+        meta: this.getMeta(f),
+        hasMeta: this.hasMeta(f),
       };
       // Deal with enums
       if (f.type === 'enum' && f.value) {
@@ -590,18 +600,19 @@ export class Generator {
       mainlyInternal: fields.list.length < 2 * fields.internal.length,
       isGeolocated:
         fields.list.filter(
-          (f: Field) => f.type === 'number' && f.subtype === 'latitude',
+          (f: ExplicitField) => f.type === 'number' && f.subtype === 'latitude',
         ).length > 0 &&
         fields.list.filter(
-          (f: Field) => f.type === 'number' && f.subtype === 'longitude',
+          (f: ExplicitField) =>
+            f.type === 'number' && f.subtype === 'longitude',
         ).length > 0,
       isGeoSearchable:
         fields.list.filter(
-          (f: Field) =>
+          (f: ExplicitField) =>
             f.type === 'number' && f.subtype === 'latitude' && f.searchable,
         ).length > 0 &&
         fields.list.filter(
-          (f: Field) =>
+          (f: ExplicitField) =>
             f.type === 'number' && f.subtype === 'longitude' && f.searchable,
         ).length > 0,
     };
@@ -620,5 +631,35 @@ export class Generator {
   /** Safely denotes if the notes is defined */
   private hasNotes(input: Model | Field): boolean {
     return this.getNotes(input).length > 0;
+  }
+
+  /** Safely get meta from model or field */
+  private cleanupMeta(input: Model | Field): Record<string, string> {
+    if (typeof input.meta === 'undefined' || input.meta === null) return {};
+    const output: Record<string, string> = {};
+    const keys = Object.keys(input.meta);
+    for (const key of keys) {
+      const trimmedKey = key.trim();
+      if (input.meta[trimmedKey]) {
+        output[trimmedKey] = input.meta[trimmedKey].toString();
+      }
+    }
+    return output;
+  }
+
+  /** Safely get meta from model or field */
+  private getMeta(input: Model | Field): Meta {
+    const meta = this.cleanupMeta(input);
+    const output: Meta = {};
+    const keys = Object.keys(meta);
+    for (const key of keys) {
+      output[key] = StringVariants(meta[key].toString());
+    }
+    return output;
+  }
+
+  /** Safely denotes if the meta is defined and filled */
+  private hasMeta(input: Model | Field): boolean {
+    return Object.keys(this.cleanupMeta(input)).length > 0;
   }
 }

@@ -1,5 +1,9 @@
 {
 	"access_title": "Restrictions d'accès",
+	"meta_title": "Meta-données",
+	"meta_key_placeholder": "Clé",
+	"meta_value_placeholder": "Valeur",
+	"meta_add_row": "Ajouter une ligne",
 	"channels_generate": "Générer",
 	"channels_intro": "Choisissez un boilerplate pour éditer ses templates",
 	"channels_title": "Boilerplates",

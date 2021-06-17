@@ -4,7 +4,7 @@ import { ParsingError } from '../errors/ParsingError';
 import { Replacement } from '../Interfaces';
 import { BasePattern } from './BasePattern';
 
-const Cases: Replacement[] = [
+export const CasesReplacements: Replacement[] = [
   { search: ['aA', 'camel'], replace: 'camel' },
   { search: ['AA', 'pascal'], replace: 'pascal' },
   { search: ['a', 'lower'], replace: 'lower' },
@@ -22,7 +22,7 @@ const ForRegExp = (r: Replacement): string =>
   r.search.map(EscapeStringRegexp).join('|');
 /** Name interpolation pattern */
 const RegEx = new RegExp(
-  `<<([a-zA-Z_.]+)\\s+(${Cases.map(ForRegExp).join('|')})\\s*>>`,
+  `<<([a-zA-Z_.]+)\\s+(${CasesReplacements.map(ForRegExp).join('|')})\\s*>>`,
   'g',
 );
 
@@ -38,7 +38,9 @@ export class NameInterpolationPattern extends BasePattern {
         jsVariable = 'root.fields.primary';
 
       // Get the property
-      const matchingCase = Cases.find((c) => c.search.includes(property));
+      const matchingCase = CasesReplacements.find((c) =>
+        c.search.includes(property),
+      );
       if (!matchingCase) {
         throw new ParsingError(
           `[NameInterpolationPattern.execute] Unknown name property: ${property}`,

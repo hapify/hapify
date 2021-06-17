@@ -1,5 +1,6 @@
 @import '~bootstrap/scss/_functions.scss';
 @import '~bootstrap/scss/_variables.scss';
+@import '../../../../palette.scss';
 
 $string: #799599;
 $enum: #998279;
@@ -66,7 +67,8 @@ mat-icon.inactive {
 
 .fieldsTooltip,
 .typesTooltip,
-.notesTooltip {
+.notesTooltip,
+.metaTooltip {
   position: absolute;
   z-index: 99999;
   bottom: 110%;
@@ -77,6 +79,11 @@ mat-icon.inactive {
   transition: opacity 0.2s ease, right 0.2s ease;
   width: 400px;
   right: -32px;
+
+  &.metaTooltip {
+    width: 300px;
+    left: -170px;
+  }
 
   &.notesTooltip {
     left: -170px;
@@ -104,6 +111,14 @@ mat-icon.inactive {
     bottom: 0;
     left: 0;
     z-index: 99998;
+  }
+}
+
+.metaTooltip {
+  ::ng-deep {
+    input {
+      background-color: mat-color($hpf-app-primary, 50, 0.3) !important;
+    }
   }
 }
 
@@ -215,7 +230,8 @@ mat-icon.inactive {
   }
 }
 
-.notes {
+.notes,
+.meta {
 	cursor: pointer;
 }
 

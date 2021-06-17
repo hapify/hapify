@@ -9,17 +9,17 @@ import {
 @Service()
 export class VersionService {
   private supportedVersions: VersionScopes<string[]> = {
-    model: ['1', '2'],
-    project: ['1', '2'],
-    channel: ['1', '2'],
-    preset: ['1', '2'],
+    model: ['1', '2', '3'],
+    project: ['1', '2', '3'],
+    channel: ['1', '2', '3'],
+    preset: ['1', '2', '3'],
   };
 
   private currentVersions: CurrentVersions = {
-    model: '2',
-    project: '2',
-    channel: '2',
-    preset: '2',
+    model: '3',
+    project: '3',
+    channel: '3',
+    preset: '3',
   };
 
   ensureVersionIsSupported(scope: VersionScope, version: string) {

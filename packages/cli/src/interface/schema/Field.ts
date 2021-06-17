@@ -34,6 +34,7 @@ const FieldSubTypes = [
 export const FieldSchema = Joi.object({
   name: Joi.string().required(),
   notes: Joi.string().allow(null),
+  meta: Joi.object().allow(null),
   type: Joi.string()
     .valid(...FieldTypes)
     .required(),

@@ -1,0 +1,60 @@
+'use strict';
+ 
+/**
+ * Delete <<M a>>
+ */
+ 
+const Joi = require('joi');
+const Boom = require('boom');
+const MongoDB = require('mongodb');
+ 
+// Validation schema for params
+const schema = Joi.object({
+    <<P a_a>>: Joi.string().length(24).hex().required()
+});
+ 
+/**
+ * Export route to delete <<M a>>
+ */
+module.exports = {
+    method: 'DELETE',
+    path: '/<<M a-a>>/{<<P a_a>>}',
+    config: {
+        validate: { params: schema },
+        description: 'Route to delete <<M a>>',
+        tags: ['<<M a-a>>', 'delete']
+    },
+    handler: async (request, h) => {
+ 
+        // Get <<M a>> <<P a>>
+        const <<P a_a>> = new MongoDB.ObjectId(request.params.<<P a_a>>);
+ 
+        // Remove <<M a>> from database
+        const result = await request.server.db.collection('<<M a_a>>')
+            .deleteOne({ <<P a_a>> });
+ 
+        if (result.deletedCount === 0) {
+            return Boom.notFound('<<M A>> not found');
+        }
+
+<<? R>>
+ 
+    <<@ R m>>
+        <<@ m.f f>>
+        // Remove references in <<m a>> as <<f a>>
+        await request.server.db.collection('<<m a_a>>')
+            <<? f ml>>
+            .updateMany({ <<f a_a>>: <<P a_a>> }, { $pull: { <<f a_a>>: <<P a_a>> } });
+            <<??>>
+            .updateMany({ <<f a_a>>: <<P a_a>> }, { $set: { <<f a_a>>: null } });
+            <<?>>
+
+        <<@>>
+    <<@>>
+
+<<?>>
+ 
+        return h.response().code(204);
+    }
+};
+ 

@@ -1,3 +1,4 @@
+import { DeepRequired } from 'ts-essentials';
 import { Container } from 'typedi';
 
 import { IConfigTemplate } from '../interface/Config';
@@ -52,7 +53,7 @@ export class Template
     return this;
   }
 
-  public toObject(): ITemplate {
+  public toObject(): DeepRequired<ITemplate> {
     return {
       path: this.path,
       engine: this.engine,

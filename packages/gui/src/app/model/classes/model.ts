@@ -10,6 +10,8 @@ export class Model implements IModel {
 
   public notes: string;
 
+  public meta: Record<string, string>;
+
   public fields: IField[] = [];
 
   public accesses: IAccesses;
@@ -39,6 +41,7 @@ export class Model implements IModel {
     this.id = object.id;
     this.name = object.name;
     this.notes = object.notes || null;
+    this.meta = object.meta || null;
     this.fields = object.fields.map(
       (fieldBase: IFieldBase): IField => {
         const field = this.newField();
@@ -49,11 +52,12 @@ export class Model implements IModel {
     this.accesses = object.accesses;
   }
 
-  public toObject(): IModelBase {
+  public toObject(): Required<IModelBase> {
     return {
       id: this.id,
       name: this.name,
       notes: this.notes || null,
+      meta: this.meta || null,
       fields: this.fields
         .filter((field: IField): boolean => !field.isEmpty())
         .map((field: IField): IFieldBase => field.toObject()),

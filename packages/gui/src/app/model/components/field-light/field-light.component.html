@@ -1,8 +1,13 @@
 <div class="row align-items-center flex-nowrap">
-	<div class="col-5 ellipsis">{{ field.name }}</div>
-	<div class="col-1">
-		<div class="notes" *ngIf="field.notes">
-			<mat-icon color="primary" [inline]="true">speaker_notes</mat-icon>
+	<div class="col-4 ellipsis">{{ field.name }}</div>
+	<div class="col-2">
+		<div class="d-flex justify-content-end">
+			<div class="notes" *ngIf="field.notes">
+				<mat-icon color="primary" [inline]="true">speaker_notes</mat-icon>
+			</div>
+			<div class="meta ml-1" *ngIf="countMeta()">
+				<mat-icon color="primary" [inline]="true">extension</mat-icon>
+			</div>
 		</div>
 	</div>
 	<div

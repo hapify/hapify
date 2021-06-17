@@ -1,0 +1,11 @@
+<ul>
+    <li *ngFor="let entry of entries">
+        <app-meta-entry [meta]="entry" (update)="onChange()" (delete)="onDelete(entry)"></app-meta-entry>
+    </li>
+    <li
+            (click)="addEntry()"
+            class="row align-items-center my-3 addRow"
+    >
+        <span>{{ 'meta_add_row' | translate }}</span>
+    </li>
+</ul>

@@ -1,6 +1,7 @@
 import * as Path from 'path';
 
 import md5 from 'md5';
+import { DeepRequired } from 'ts-essentials';
 import { Container } from 'typedi';
 
 import { IConfig } from '../interface/Config';
@@ -273,7 +274,7 @@ export class Channel implements IStorable, ISerializable<IChannel, Channel> {
     return this;
   }
 
-  public toObject(): IChannel {
+  public toObject(): DeepRequired<IChannel> {
     return {
       id: this.id,
       name: this.name,

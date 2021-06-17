@@ -91,7 +91,20 @@ Vous pouvez laisser des notes sur les modèles de données et leurs champs. Cliq
 
 **Sur un champ:**
 
-![Hapify GUI - Models notes](../../assets/gui-models-fields-notes.jpg 'Models notes'){: style="width: 411px"}
+![Hapify GUI - Fields notes](../../assets/gui-models-fields-notes.jpg 'Fields notes'){: style="width: 411px"}
+
+## Ajouter des meta-données
+
+Certains boilerplate utilisent de méta-donnés qui seront traitées lors de la génération.
+Ces meta-données permettent d'ajouter des variables personnalisées au niveau d'un champ ou d'un modèle.
+
+**Sur un modèle:**
+
+![Hapify GUI - Models meta](../../assets/gui-models-meta.jpg 'Models meta'){: style="width: 448px"}
+
+**Sur un champ:**
+
+![Hapify GUI - Fields meta](../../assets/gui-models-fields-meta.jpg 'Fields meta'){: style="width: 332px"}
 
 ## Erreurs et avertissements
 

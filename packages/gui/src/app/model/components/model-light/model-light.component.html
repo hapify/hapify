@@ -26,6 +26,18 @@
 				>
 					<mat-icon>speaker_notes</mat-icon>
 				</button>
+				<button
+						mat-icon-button
+						type="button"
+						[matBadge]="countMeta()"
+						[matBadgeHidden]="!countMeta()"
+						matBadgePosition="after"
+						matBadgeColor="primary"
+						matBadgeSize="small"
+						matBadgeOverlap="true"
+				>
+					<mat-icon>extension</mat-icon>
+				</button>
 				<button mat-icon-button type="button">
 					<mat-icon>delete_sweep</mat-icon>
 				</button>

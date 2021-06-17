@@ -1,11 +1,11 @@
 import * as Path from 'path';
 
+import { DeepRequired } from 'ts-essentials';
 import { Service } from 'typedi';
 
 import { IModel } from '../../../interface/Generator';
 import { IProject } from '../../../interface/Objects';
 import {
-  IStorableCompactModel,
   IStorableCompactProject,
   IStorableProject,
 } from '../../../interface/Storage';
@@ -25,26 +25,25 @@ export class ProjectFileStorageService extends SingleSaveFileStorage<IStorablePr
   }
 
   protected serialize(content: IStorableProject): string {
-    const compact: IStorableCompactProject = {
+    const compact: DeepRequired<IStorableCompactProject> = {
       version: content.version,
       name: content.name || undefined,
       description: content.description || undefined,
-      models: content.models.map(
-        (model): IStorableCompactModel => ({
-          id: model.id,
-          name: model.name,
-          accesses: model.accesses,
-          fields: model.fields.map((f) =>
-            this.converterService.convertFieldToCompactFormat(f),
-          ),
-          notes: model.notes || undefined,
-        }),
-      ),
+      models: content.models.map((model) => ({
+        id: model.id,
+        name: model.name,
+        accesses: model.accesses,
+        fields: model.fields.map((f) =>
+          this.converterService.convertFieldToCompactFormat(f),
+        ),
+        notes: model.notes || undefined,
+        meta: model.meta || undefined,
+      })),
     };
     return JSON.stringify(compact, null, 2);
   }
 
-  protected deserialize(content: string): IStorableProject {
+  protected deserialize(content: string): DeepRequired<IStorableProject> {
     try {
       const parsedContent: VersionedObject = JSON.parse(content);
       const compact = new ProjectParser(parsedContent).convert();
@@ -60,6 +59,7 @@ export class ProjectFileStorageService extends SingleSaveFileStorage<IStorablePr
             this.converterService.convertFieldFromCompactFormat(f),
           ),
           notes: model.notes || null,
+          meta: model.meta || null,
         })),
       };
     } catch (error) {

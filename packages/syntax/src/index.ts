@@ -17,6 +17,7 @@ import { EvaluatePattern } from './patterns/EvaluatePattern';
 import { IndentPattern } from './patterns/IndentPattern';
 import { InterpolationPattern } from './patterns/InterpolationPattern';
 import { IterationPattern } from './patterns/IterationPattern';
+import { MetaInterpolationPattern } from './patterns/MetaInterpolationPattern';
 import { NameInterpolationPattern } from './patterns/NameInterpolationPattern';
 import { NotesInterpolationPattern } from './patterns/NotesInterpolationPattern';
 
@@ -30,6 +31,7 @@ const PatternsStack = [
   IterationPattern,
   InterpolationPattern,
   NameInterpolationPattern,
+  MetaInterpolationPattern,
   NotesInterpolationPattern,
   EvaluatePattern,
   EscapePattern,

@@ -1,3 +1,4 @@
+import { DeepRequired } from 'ts-essentials';
 import { Container } from 'typedi';
 
 import { IProject } from '../interface/Objects';
@@ -67,7 +68,7 @@ export class ProjectsCollection
     return this.projects;
   }
 
-  public toObject(): IProject[] {
+  public toObject(): DeepRequired<IProject[]> {
     return this.projects.map((p) => p.toObject());
   }
 }

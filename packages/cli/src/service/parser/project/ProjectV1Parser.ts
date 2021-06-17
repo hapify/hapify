@@ -1,12 +1,16 @@
+import { DeepRequired } from 'ts-essentials';
+
 import { IV1StorableCompactProject } from '../../../interface/legacy/v1/Storage';
 import { IStorableCompactProject } from '../../../interface/Storage';
 import { VersionedObjectParser } from '../../../interface/Version';
 
 export class ProjectV1Parser
   implements VersionedObjectParser<IStorableCompactProject> {
-  convert(input: IV1StorableCompactProject): IStorableCompactProject {
+  convert(
+    input: IV1StorableCompactProject,
+  ): DeepRequired<IStorableCompactProject> {
     return {
-      version: '2',
+      version: '3',
       name: input.name,
       description: input.description,
       models: input.models.map((model) => ({
@@ -20,8 +24,10 @@ export class ProjectV1Parser
           value: field.reference,
           properties: field.properties,
           notes: field.notes,
+          meta: undefined,
         })),
         notes: model.notes,
+        meta: undefined,
       })),
     };
   }

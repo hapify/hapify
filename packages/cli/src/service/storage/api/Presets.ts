@@ -1,7 +1,7 @@
+import { DeepRequired } from 'ts-essentials';
 import { Service } from 'typedi';
 
-import { IApiModel, IApiPreset } from '../../../interface/Api';
-import { IModel } from '../../../interface/Generator';
+import { IApiPreset } from '../../../interface/Api';
 import { IPreset } from '../../../interface/Objects';
 import { VersionedObject } from '../../../interface/Version';
 import { ConverterService } from '../../Converter';
@@ -48,7 +48,7 @@ export class PresetsApiStorageService extends BaseApiStorageService<
     return new ApiPresetParser(object).convert();
   }
 
-  protected fromApi(object: IApiPreset): IPreset {
+  protected fromApi(object: IApiPreset): DeepRequired<IPreset> {
     return {
       id: object._id,
       name: object.name,
@@ -56,17 +56,16 @@ export class PresetsApiStorageService extends BaseApiStorageService<
       description: object.description,
       description__fr: object.description__fr,
       icon: object.icon,
-      models: object.models.map(
-        (m: IApiModel): IModel => ({
-          id: m._id,
-          name: m.name,
-          notes: m.notes || null,
-          fields: m.fields.map((f) =>
-            this.converterService.convertFieldFromCompactFormat(f),
-          ),
-          accesses: m.accesses,
-        }),
-      ),
+      models: object.models.map((m) => ({
+        id: m._id,
+        name: m.name,
+        notes: m.notes || null,
+        meta: m.meta || null,
+        fields: m.fields.map((f) =>
+          this.converterService.convertFieldFromCompactFormat(f),
+        ),
+        accesses: m.accesses,
+      })),
     };
   }
 

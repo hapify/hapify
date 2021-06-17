@@ -1,3 +1,5 @@
+import { DeepRequired } from 'ts-essentials';
+
 import { IAccesses, IModel } from '../interface/Generator';
 import { ISerializable } from '../interface/Storage';
 import { Field } from './Field';
@@ -17,6 +19,9 @@ export class Model implements ISerializable<IModel, Model>, IModel {
   /** The model's notes */
   notes?: string;
 
+  /** The model's meta */
+  meta?: Record<string, string>;
+
   /** The fields of the model */
   fields: Field[];
 
@@ -33,16 +38,18 @@ export class Model implements ISerializable<IModel, Model>, IModel {
     this.id = object.id;
     this.name = object.name;
     this.notes = object.notes || null;
+    this.meta = object.meta || null;
     this.fields = object.fields.map((f) => new Field(f));
     this.accesses = object.accesses;
     return this;
   }
 
-  public toObject(): IModel {
+  public toObject(): DeepRequired<IModel> {
     return {
       id: this.id,
       name: this.name,
       notes: this.notes || null,
+      meta: this.meta || null,
       fields: this.fields.map((f) => f.toObject()),
       accesses: this.accesses,
     };

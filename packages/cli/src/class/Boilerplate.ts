@@ -1,3 +1,5 @@
+import { DeepRequired } from 'ts-essentials';
+
 import { IBoilerplate } from '../interface/Objects';
 import { ISerializable } from '../interface/Storage';
 
@@ -29,7 +31,7 @@ export class Boilerplate
     return this;
   }
 
-  public toObject(): IBoilerplate {
+  public toObject(): DeepRequired<IBoilerplate> {
     return {
       id: this.id,
       slug: this.slug,

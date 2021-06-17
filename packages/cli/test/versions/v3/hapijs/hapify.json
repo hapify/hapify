@@ -1,0 +1,77 @@
+{
+  "version": "3",
+  "validatorPath": "hapify/validator.js",
+  "project": "hapify-models.json",
+  "name": "HapiJS",
+  "description": "NodeJS Backend with MongoDB",
+  "logo": "https://hapijs.com/public/img/hapi.svg",
+  "defaultFields": [
+    {
+      "name": "_id",
+      "type": "string",
+      "properties": [
+        "primary",
+        "internal"
+      ],
+      "meta": {
+        "name1": "value",
+        "name2": "val"
+      }
+    },
+    {
+      "name": "created_at",
+      "type": "datetime",
+      "properties": [
+        "sortable",
+        "internal"
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "path": "src/routes/{kebab}/count.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/create.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/delete.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/inc.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/index.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/list.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/read.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/{kebab}/update.js",
+      "engine": "hpf",
+      "input": "one"
+    },
+    {
+      "path": "src/routes/index.js",
+      "engine": "hpf",
+      "input": "all"
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { DeepRequired } from 'ts-essentials';
 import { Service } from 'typedi';
 
 import { IBoilerplate } from '../../../interface/Objects';
@@ -49,7 +50,7 @@ export class BoilerplatesApiStorageService extends BaseApiStorageService<
     return 'boilerplate';
   }
 
-  protected fromApi(object: IApiBoilerplate): IBoilerplate {
+  protected fromApi(object: IApiBoilerplate): DeepRequired<IBoilerplate> {
     return {
       id: object._id,
       slug: object.slug,

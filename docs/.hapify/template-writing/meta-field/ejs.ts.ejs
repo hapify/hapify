@@ -1,0 +1,5 @@
+<% for(const field of model.fields.list) { -%>
+    <% if (field.meta.plural) { -%>
+// Plural of <%=field.names.camel%> is <%=field.meta.plural.camel%>
+    <% } -%>
+<% } -%>

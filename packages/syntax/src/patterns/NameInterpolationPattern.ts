@@ -38,7 +38,9 @@ export class NameInterpolationPattern extends BasePattern {
         jsVariable = 'root.fields.primary';
 
       // Get the property
-      const matchingCase = CasesReplacements.find((c) => c.search.includes(property));
+      const matchingCase = CasesReplacements.find((c) =>
+        c.search.includes(property),
+      );
       if (!matchingCase) {
         throw new ParsingError(
           `[NameInterpolationPattern.execute] Unknown name property: ${property}`,

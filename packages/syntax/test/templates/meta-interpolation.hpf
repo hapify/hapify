@@ -8,4 +8,5 @@ This is the snake <<-M nameMirror a_a>>.
 This is the constant <<-M nameMirror A_A>>.
 This is the compact <<-M nameMirror aa>>.
 This is the raw <<-M nameMirror R>>.
+This is the unknown <<-M unknown R>>.
 This should not be detected <<-M nameMirrora>>.

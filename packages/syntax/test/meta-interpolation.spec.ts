@@ -44,48 +44,54 @@ describe('meta interpolation', () => {
   });
 
   it('unit', () => {
+    const inter = (
+      variable: string,
+      property: string,
+      stringCase: string,
+    ): string => `\${(${variable}.meta.${property} || {}).${stringCase} || ''}`;
+
     // Names
     expect(MetaInterpolationPattern.execute('<<-M propertyName aA>>')).to.equal(
-      '${root.meta.propertyName.camel}',
+      inter('root', 'propertyName', 'camel'),
     );
     expect(
       MetaInterpolationPattern.execute('<<-    M propertyName AA>>'),
-    ).to.equal('${root.meta.propertyName.pascal}');
+    ).to.equal(inter('root', 'propertyName', 'pascal'));
     expect(MetaInterpolationPattern.execute('<<-M propertyName a>>')).to.equal(
-      '${root.meta.propertyName.lower}',
+      inter('root', 'propertyName', 'lower'),
     );
     expect(
       MetaInterpolationPattern.execute('<<-  M propertyName A>>'),
-    ).to.equal('${root.meta.propertyName.capital}');
+    ).to.equal(inter('root', 'propertyName', 'capital'));
     expect(
       MetaInterpolationPattern.execute('<<- M propertyName a-a>>'),
-    ).to.equal('${root.meta.propertyName.kebab}');
+    ).to.equal(inter('root', 'propertyName', 'kebab'));
     expect(
       MetaInterpolationPattern.execute('<<-M propertyName a_a>>'),
-    ).to.equal('${root.meta.propertyName.snake}');
+    ).to.equal(inter('root', 'propertyName', 'snake'));
     expect(MetaInterpolationPattern.execute('<<-M propertyName aa>>')).to.equal(
-      '${root.meta.propertyName.compact}',
+      inter('root', 'propertyName', 'compact'),
     );
     expect(MetaInterpolationPattern.execute('<<-M propertyName R>>')).to.equal(
-      '${root.meta.propertyName.raw}',
+      inter('root', 'propertyName', 'raw'),
     );
     // Variable
     expect(
       MetaInterpolationPattern.execute('<<- f property_name2 aA>>'),
-    ).to.equal('${f.meta.property_name2.camel}');
+    ).to.equal(inter('f', 'property_name2', 'camel'));
     // Spaces
     expect(
       MetaInterpolationPattern.execute('<<-    f      prop  aA>>'),
-    ).to.equal('${f.meta.prop.camel}');
+    ).to.equal(inter('f', 'prop', 'camel'));
 
     // Primary field
     expect(MetaInterpolationPattern.execute('<<-P prop aA>>')).to.equal(
-      '${root.fields.primary.meta.prop.camel}',
+      inter('root.fields.primary', 'prop', 'camel'),
     );
 
     // Sub field
     expect(
       MetaInterpolationPattern.execute('<<-root.fields.primary prop aA>>'),
-    ).to.equal('${root.fields.primary.meta.prop.camel}');
+    ).to.equal(inter('root.fields.primary', 'prop', 'camel'));
   });
 });

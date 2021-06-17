@@ -38,7 +38,7 @@ export class MetaInterpolationPattern extends BasePattern {
       }
       const jsProperty = matchingCase.replace;
 
-      return `\${${jsVariable}.meta.${meta}.${jsProperty}}`;
+      return `\${(${jsVariable}.meta.${meta} || {}).${jsProperty} || ''}`;
     });
   }
 }

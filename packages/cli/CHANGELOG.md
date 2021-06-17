@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## @hapify/cli [1.3.1](https://github.com/hapify/hapify/compare/@hapify/cli@1.3.0...@hapify/cli@1.3.1) (2021-06-17)
+
+
+
+
+
+### Dependencies
+
+* **@hapify/generator:** upgraded to 1.4.1
+
 # @hapify/cli [1.3.0](https://github.com/hapify/hapify/compare/@hapify/cli@1.2.0...@hapify/cli@1.3.0) (2021-06-17)
 
 

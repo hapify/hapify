@@ -1,4 +1,6 @@
-![Logo](images/Hapify_logo_white.png)
+<p align="center">
+    <img width="300" alt="Logo" src="images/Hapify_logo_white.png">
+</p>
 
 - [Howdy, developer!](https://github.com/hapify/hapify#howdy-developer)
 - [Good reasons to check out Hapify](https://github.com/hapify/hapify#5-reasons-to-check-out-hapify)

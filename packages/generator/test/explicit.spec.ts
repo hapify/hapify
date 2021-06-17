@@ -57,6 +57,7 @@ const getModels = (
       id: `0cf80d75-abcd-f8c7-41f6-ed41c6425aa1`,
       name: 'User profile',
       notes: 'this is a comment',
+      meta: { key1: 'value1' },
       fields,
       accesses: {
         create: 'guest',
@@ -130,6 +131,24 @@ describe('model notes', () => {
   });
 });
 
+describe('model meta', () => {
+  it('model.meta', async () => {
+    const templates = getTemplates(
+      `return model.meta.key1 ? model.meta.key1.constant : 'No meta';`,
+    );
+    // With meta
+    const models = getModels();
+    const response1 = await Generator.run(templates, models);
+    expect(response1.length).to.equal(1);
+    expect(response1[0].content).to.equal('VALUE1');
+    // Without meta
+    delete models[0].meta;
+    const response2 = await Generator.run(templates, models);
+    expect(response2.length).to.equal(1);
+    expect(response2[0].content).to.equal('No meta');
+  });
+});
+
 describe('field names', () => {
   const variations: { name: keyof StringVariations; value: string }[] = [
     { name: 'raw', value: 'Created at' },
@@ -179,6 +198,29 @@ describe('field notes', () => {
     const response3 = await Generator.run(templates, models);
     expect(response3.length).to.equal(1);
     expect(response3[0].content).to.equal('');
+  });
+});
+
+describe('field meta', () => {
+  it('field.meta', async () => {
+    const templates = getTemplates(
+      `return model.fields.list[0].meta.key1 ? model.fields.list[0].meta.key1.constant : 'nothing'`,
+    );
+    // With meta
+    let models = getModels([{ meta: { key1: 'value1' } }]);
+    const response1 = await Generator.run(templates, models);
+    expect(response1.length).to.equal(1);
+    expect(response1[0].content).to.equal('VALUE1');
+    // Without meta
+    models = getModels();
+    const response2 = await Generator.run(templates, models);
+    expect(response2.length).to.equal(1);
+    expect(response2[0].content).to.equal('nothing');
+    // Without null meta
+    models = getModels([{ meta: { key1: null } }]);
+    const response3 = await Generator.run(templates, models);
+    expect(response3.length).to.equal(1);
+    expect(response3[0].content).to.equal('nothing');
   });
 });
 

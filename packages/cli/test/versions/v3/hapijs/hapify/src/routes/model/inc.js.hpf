@@ -1,0 +1,21 @@
+'use strict';
+ 
+/**
+ * Export common methods for <<M a>>
+ */
+ 
+module.exports = {
+<<? F hd>>
+    projection: () => ({
+    <<? M pMHd>>
+        <<@ F /pr/hd f>>
+        <<f a_a>>: true,
+        <<@>>
+    <<??>>
+        <<@ F hd f>>
+        <<f a_a>>: false,
+        <<@>>
+    <<?>>
+    })
+<<?>>
+};

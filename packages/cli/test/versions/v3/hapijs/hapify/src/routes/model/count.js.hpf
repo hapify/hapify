@@ -1,0 +1,111 @@
+'use strict';
+ 
+/**
+ * Count <<M a>>
+ */
+ 
+const Joi = require('joi');
+const MongoDB = require('mongodb');
+ 
+// Validation schema for query
+const schema = Joi.object({
+    <<P a_a>>: Joi.array().items(Joi.string().length(24).hex()).single(),
+<<@ F se f>>
+    <<=joiValidator(f)>>
+<<@>>
+})
+<<@ F se*(tN+tD) f>>
+    .without('<<f a_a>>', ['<<f a_a>>__min', '<<f a_a>>__max'])
+<<@>>;
+ 
+/**
+ * Export route to count <<M a>>
+ */
+module.exports = {
+    method: 'GET',
+    path: '/<<M a-a>>/count',
+    config: {
+        validate: { query: schema },
+        description: 'Route to count <<M a>>',
+        tags: ['<<M a-a>>', 'count']
+    },
+    handler: async (request) => {
+ 
+        // Build filter from query
+        const filter = Object.assign({}, request.query);
+ 
+        // Convert MongoId for <<P a>>
+        if (filter.<<P a_a>>) {
+            filter.<<P a_a>> = { $in: filter.<<P a_a>>.map((i) => new MongoDB.ObjectId(i)) };
+        }
+
+<<@ F se f>>
+
+    <<? f tN+tD>>
+ 
+        // Set min for <<f a>> if defined
+        if (typeof filter.<<f a_a>>__min !== 'undefined') {
+            filter.<<f a_a>> = filter.<<f a_a>> || {};
+            filter.<<f a_a>>.$gte = filter.<<f a_a>>__min;
+            delete filter.<<f a_a>>__min;
+        }
+        // Set max for <<f a>> if defined
+        if (typeof filter.<<f a_a>>__max !== 'undefined') {
+            filter.<<f a_a>> = filter.<<f a_a>> || {};
+            filter.<<f a_a>>.$lte = filter.<<f a_a>>__max;
+            delete filter.<<f a_a>>__max;
+        }
+    <<?? f tE>>
+ 
+        // Convert MongoId for <<f a>>
+        if (filter.<<f a_a>>) {
+        <<? f ml>>
+            filter.<<f a_a>> = { $all: filter.<<f a_a>>.map((i) => new MongoDB.ObjectId(i)) };
+        <<??>>
+            filter.<<f a_a>> = new MongoDB.ObjectId(filter.<<f a_a>>);
+        <<?>>
+        }
+    <<?? f tS*lb>>
+ 
+        // Use regexp for <<f a>>
+        if (filter.<<f a_a>>) {
+            filter.<<f a_a>> = new RegExp(filter.<<f a_a>>, 'i');
+        }
+    <<?>>
+
+<<@>>
+ 
+        // Count <<M a>> from database
+        const total = await request.server.db.collection('<<M a_a>>')
+            .find(filter)
+            .count();
+ 
+        return { total };
+    }
+};
+ 
+<<< 
+function joiValidator(f) {
+    const prop = f.names.snake;
+    let v = "";
+    
+    if (f.type === "boolean") v = `${prop}: Joi.boolean(),`;
+    else if (f.type === "string") v = `${prop}: Joi.string(),`;
+    else if (f.type === "number" || f.type === "datetime") {
+        v = `${prop}: Joi.number(),\n    ${prop}__min: Joi.number(),\n    ${prop}__max: Joi.number(),`;
+    }
+    else if (f.type === "entity") {
+        const validator = "Joi.string().length(24).hex()";
+        if (f.multiple) {
+            v = `${prop}: Joi.array().items(${validator}).single(),`;
+        } else {
+            v = `${prop}: ${validator},`;
+        }
+    }
+    
+    return v;
+}
+function validList(fs) {
+    return fs.map(function(f) { return "'"+f.names.snake+"'"; }).join(', ');
+}
+>>>

@@ -860,6 +860,20 @@ ace.define(
           ],
         },
         {
+          token: 'hpf.inter.meta.start',
+          regex: '<<-',
+          push: [
+            {
+              token: 'hpf.inter.meta.end',
+              regex: '>>',
+              next: pop,
+            },
+            {
+              defaultToken: 'hpf.inter.meta',
+            },
+          ],
+        },
+        {
           token: 'hpf.inter.name.start',
           // regex: /<<(?!@|\?|for\b|endfor\b|if\b|elseif\b|else\b|endif\b)\S+/,
           regex: '<<',

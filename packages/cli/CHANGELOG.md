@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# @hapify/cli [1.3.0](https://github.com/hapify/hapify/compare/@hapify/cli@1.2.0...@hapify/cli@1.3.0) (2021-06-17)
+
+
+### Features
+
+* metadata ([#23](https://github.com/hapify/hapify/issues/23)) ([67d0f51](https://github.com/hapify/hapify/commit/67d0f510dc241f15cc1442f9db4099a0bb5843c2))
+
+
+
+
+
+### Dependencies
+
+* **@hapify/generator:** upgraded to 1.4.0
+* **@hapify/gui:** upgraded to 1.2.0
+
 # @hapify/cli [1.2.0](https://github.com/hapify/hapify/compare/@hapify/cli@1.1.1...@hapify/cli@1.2.0) (2021-04-22)
 
 

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# @hapify/syntax [1.5.0](https://github.com/hapify/hapify/compare/@hapify/syntax@1.4.0...@hapify/syntax@1.5.0) (2021-06-17)
+
+
+### Features
+
+* metadata ([#23](https://github.com/hapify/hapify/issues/23)) ([67d0f51](https://github.com/hapify/hapify/commit/67d0f510dc241f15cc1442f9db4099a0bb5843c2))
+
 # @hapify/syntax [1.4.0](https://github.com/hapify/hapify/compare/@hapify/syntax@1.3.0...@hapify/syntax@1.4.0) (2021-04-22)
 
 

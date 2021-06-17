@@ -1,6 +1,6 @@
 {
   "name": "@hapify/syntax",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "Templating syntax optimized for Hapify models handling.",
   "keywords": [
     "hapify",

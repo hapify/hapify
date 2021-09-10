@@ -558,3 +558,14 @@ export type GenerationContext =
 export interface NumberedError extends Error {
   code: number;
 }
+
+export interface JsxHapifyProps {
+  context: GenerationContext;
+}
+
+export interface SingleModelJsxHapifyProps {
+  context: SingleModelGenerationContext;
+}
+export interface MultipleModelsJsxHapifyProps {
+  context: MultipleModelsGenerationContext;
+}

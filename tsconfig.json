@@ -12,9 +12,7 @@
     "experimentalDecorators": false,
     "skipLibCheck": true,
     "paths": {
-      "@hapi/podium": [
-        "node_modules/@types/hapi__podium"
-      ]
+      "@hapi/podium": ["node_modules/@types/hapi__podium"]
     }
   }
 }

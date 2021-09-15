@@ -1568,14 +1568,14 @@
     "@hapi/bourne" "2.x.x"
     "@hapi/hoek" "9.x.x"
 
-"@hapify/cli@file:/Users/edouard/workspace/hapify/hapify/packages/cli":
+"@hapify/cli@file:/Users/edouard/workspace/hapify/packages/cli":
   "resolved" "file:packages/cli"
-  "version" "1.2.0"
+  "version" "1.3.1"
   dependencies:
     "@hapi/hapi" "^20.1.0"
     "@hapi/hoek" "^9.1.1"
     "@hapi/inert" "^6.0.3"
-    "@hapify/generator" "1.3.0"
+    "@hapify/generator" "1.4.1"
     "@hapify/vm" "1.4.0"
     "axios" "^0.21.1"
     "case" "^1.6.3"
@@ -1597,36 +1597,40 @@
     "typedi" "^0.8.0"
     "ws" "^7.4.2"
 
-"@hapify/ejs@1.3.0", "@hapify/ejs@file:/Users/edouard/workspace/hapify/hapify/packages/ejs":
+"@hapify/core@file:/Users/edouard/workspace/hapify/packages/core":
+  "resolved" "file:packages/core"
+  "version" "1.0.0"
+
+"@hapify/ejs@1.3.0", "@hapify/ejs@file:/Users/edouard/workspace/hapify/packages/ejs":
   "resolved" "file:packages/ejs"
   "version" "1.3.0"
   dependencies:
     "@hapify/vm" "1.4.0"
     "pkg-dir" "^5.0.0"
 
-"@hapify/generator@1.3.0", "@hapify/generator@file:/Users/edouard/workspace/hapify/hapify/packages/generator":
+"@hapify/generator@1.4.1", "@hapify/generator@file:/Users/edouard/workspace/hapify/packages/generator":
   "resolved" "file:packages/generator"
-  "version" "1.3.0"
+  "version" "1.4.1"
   dependencies:
     "@hapify/ejs" "1.3.0"
-    "@hapify/syntax" "1.4.0"
+    "@hapify/syntax" "1.5.0"
     "@hapify/vm" "1.4.0"
     "case" "^1.6.3"
 
-"@hapify/gui@1.1.0", "@hapify/gui@file:/Users/edouard/workspace/hapify/hapify/packages/gui":
+"@hapify/gui@1.2.0", "@hapify/gui@file:/Users/edouard/workspace/hapify/packages/gui":
   "resolved" "file:packages/gui"
-  "version" "1.1.0"
+  "version" "1.2.0"
 
-"@hapify/syntax@1.4.0", "@hapify/syntax@file:/Users/edouard/workspace/hapify/hapify/packages/syntax":
+"@hapify/syntax@1.5.0", "@hapify/syntax@file:/Users/edouard/workspace/hapify/packages/syntax":
   "resolved" "file:packages/syntax"
-  "version" "1.4.0"
+  "version" "1.5.0"
   dependencies:
     "@hapi/hoek" "^9.1.1"
     "@hapify/vm" "1.4.0"
     "escape-string-regexp" "^4.0.0"
     "line-column" "^1.0.2"
 
-"@hapify/vm@1.4.0", "@hapify/vm@file:/Users/edouard/workspace/hapify/hapify/packages/vm":
+"@hapify/vm@1.4.0", "@hapify/vm@file:/Users/edouard/workspace/hapify/packages/vm":
   "resolved" "file:packages/vm"
   "version" "1.4.0"
   dependencies:

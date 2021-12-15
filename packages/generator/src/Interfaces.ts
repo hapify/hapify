@@ -566,6 +566,7 @@ export interface JsxHapifyProps {
 export interface SingleModelJsxHapifyProps {
   context: SingleModelGenerationContext;
 }
+
 export interface MultipleModelsJsxHapifyProps {
   context: MultipleModelsGenerationContext;
 }

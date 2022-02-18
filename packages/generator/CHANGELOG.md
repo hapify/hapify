@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## @hapify/generator [1.4.2](https://github.com/hapify/hapify/compare/@hapify/generator@1.4.1...@hapify/generator@1.4.2) (2022-02-18)
+
+
+
+
+
+### Dependencies
+
+* **@hapify/syntax:** upgraded to 1.6.0
+
 ## @hapify/generator [1.4.1](https://github.com/hapify/hapify/compare/@hapify/generator@1.4.0...@hapify/generator@1.4.1) (2021-06-17)
 
 

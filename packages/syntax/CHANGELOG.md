@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# @hapify/syntax [1.6.0](https://github.com/hapify/hapify/compare/@hapify/syntax@1.5.0...@hapify/syntax@1.6.0) (2022-02-18)
+
+
+### Features
+
+* **syntax:** handle hasAdmin hasAuth hasOwner and hasGuest properties ([#25](https://github.com/hapify/hapify/issues/25)) ([d803fd6](https://github.com/hapify/hapify/commit/d803fd6fe8bb5edeedf9138a5b3d43f9bd3343b6))
+
 # @hapify/syntax [1.5.0](https://github.com/hapify/hapify/compare/@hapify/syntax@1.4.0...@hapify/syntax@1.5.0) (2021-06-17)
 
 

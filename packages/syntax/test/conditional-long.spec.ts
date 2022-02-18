@@ -342,6 +342,18 @@ describe('conditional long', () => {
     expect(ConditionalPatternExecute('<<if Model noGuest>>')).to.equal(
       conditionModel('i.accesses.properties.noGuest'),
     );
+    expect(ConditionalPatternExecute('<<if Model hasAdmin>>')).to.equal(
+      conditionModel('i.accesses.properties.hasAdmin'),
+    );
+    expect(ConditionalPatternExecute('<<if Model hasOwner>>')).to.equal(
+      conditionModel('i.accesses.properties.hasOwner'),
+    );
+    expect(ConditionalPatternExecute('<<if Model hasAuth>>')).to.equal(
+      conditionModel('i.accesses.properties.hasAuth'),
+    );
+    expect(ConditionalPatternExecute('<<if Model hasGuest>>')).to.equal(
+      conditionModel('i.accesses.properties.hasGuest'),
+    );
   }).slow(200);
 
   it('collisions', () => {

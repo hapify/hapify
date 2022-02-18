@@ -179,6 +179,10 @@ const Replacements: Replacement[] = [
   { search: ['noOwner', 'pNOw'], replace: 'i.accesses.properties.noOwner' },
   { search: ['noAuth', 'pNAu'], replace: 'i.accesses.properties.noAuth' },
   { search: ['noGuest', 'pNGs'], replace: 'i.accesses.properties.noGuest' },
+  { search: ['hasAdmin', 'pHAd'], replace: 'i.accesses.properties.hasAdmin' },
+  { search: ['hasOwner', 'pHOw'], replace: 'i.accesses.properties.hasOwner' },
+  { search: ['hasAuth', 'pHAu'], replace: 'i.accesses.properties.hasAuth' },
+  { search: ['hasGuest', 'pHGs'], replace: 'i.accesses.properties.hasGuest' },
 ];
 /** Denotes if a string contains non alphanumeric char */
 const HasNonAlphaNumeric = (s: string): boolean => !/^[a-zA-Z0-9]+$/.test(s);

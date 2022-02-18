@@ -310,6 +310,18 @@ describe('conditional', () => {
     expect(ConditionalPattern.execute('<<? M pNGs>>')).to.equal(
       conditionModel('i.accesses.properties.noGuest'),
     );
+    expect(ConditionalPattern.execute('<<? M pHAd>>')).to.equal(
+      conditionModel('i.accesses.properties.hasAdmin'),
+    );
+    expect(ConditionalPattern.execute('<<? M pHOw>>')).to.equal(
+      conditionModel('i.accesses.properties.hasOwner'),
+    );
+    expect(ConditionalPattern.execute('<<? M pHAu>>')).to.equal(
+      conditionModel('i.accesses.properties.hasAuth'),
+    );
+    expect(ConditionalPattern.execute('<<? M pHGs>>')).to.equal(
+      conditionModel('i.accesses.properties.hasGuest'),
+    );
   }).slow(200);
 
   it('fixes', () => {

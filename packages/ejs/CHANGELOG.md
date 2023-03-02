@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## @hapify/ejs [1.3.1](https://github.com/hapify/hapify/compare/@hapify/ejs@1.3.0...@hapify/ejs@1.3.1) (2023-03-02)
+
+
+### Bug Fixes
+
+* increase generator timeout limit ([#58](https://github.com/hapify/hapify/issues/58)) ([b56a9ae](https://github.com/hapify/hapify/commit/b56a9ae9ac8accf962e3ffb4e553ac0a932ccb0c))
+
+
+
+
+
+### Dependencies
+
+* **@hapify/vm:** upgraded to 1.4.1
+
 # @hapify/ejs [1.3.0](https://github.com/hapify/hapify/compare/@hapify/ejs@1.2.0...@hapify/ejs@1.3.0) (2021-04-21)
 
 

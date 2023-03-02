@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## @hapify/generator [1.4.3](https://github.com/hapify/hapify/compare/@hapify/generator@1.4.2...@hapify/generator@1.4.3) (2023-03-02)
+
+
+### Bug Fixes
+
+* increase generator timeout limit ([#58](https://github.com/hapify/hapify/issues/58)) ([b56a9ae](https://github.com/hapify/hapify/commit/b56a9ae9ac8accf962e3ffb4e553ac0a932ccb0c))
+
+
+
+
+
+### Dependencies
+
+* **@hapify/ejs:** upgraded to 1.3.1
+* **@hapify/syntax:** upgraded to 1.6.1
+* **@hapify/vm:** upgraded to 1.4.1
+
 ## @hapify/generator [1.4.2](https://github.com/hapify/hapify/compare/@hapify/generator@1.4.1...@hapify/generator@1.4.2) (2022-02-18)
 
 

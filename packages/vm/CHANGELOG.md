@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## @hapify/vm [1.4.1](https://github.com/hapify/hapify/compare/@hapify/vm@1.4.0...@hapify/vm@1.4.1) (2023-03-02)
+
+
+### Bug Fixes
+
+* increase generator timeout limit ([#58](https://github.com/hapify/hapify/issues/58)) ([b56a9ae](https://github.com/hapify/hapify/commit/b56a9ae9ac8accf962e3ffb4e553ac0a932ccb0c))
+
 # @hapify/vm [1.4.0](https://github.com/hapify/hapify/compare/@hapify/vm@1.3.0...@hapify/vm@1.4.0) (2021-04-21)
 
 

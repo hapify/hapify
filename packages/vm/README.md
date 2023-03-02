@@ -22,9 +22,9 @@ import { HapifyVM } from '@hapify/vm';
 
 const script = `const sum = a + b; return sum;`;
 const options = {
-    timeout: 200, // Maximum script execution time. Default to 1000ms.
-    allowAnyOutput: true, // Allow the input script to return any data type. Default to false.
-    eval: true // Allow function constructors (Function, GeneratorFunction, etc)
+  timeout: 200, // Maximum script execution time. Default to 5000ms.
+  allowAnyOutput: true, // Allow the input script to return any data type. Default to false.
+  eval: true, // Allow function constructors (Function, GeneratorFunction, etc)
 };
 const result = new HapifyVM(options).run(script, { a: 1, b: 2 }); // result = 3
 ```

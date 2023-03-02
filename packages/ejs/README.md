@@ -22,6 +22,6 @@ import { HapifyEJS } from '@hapify/ejs';
 
 const script = `hello <%= value %>`;
 const result = new HapifyEJS({
-    timeout: 200, // Maximum script execution time. Default to 1000ms.
+  timeout: 200, // Maximum script execution time. Default to 5000ms.
 }).run(script, { value: 'world' }); // result = 'hello world'
 ```

@@ -1,5 +1,5 @@
 export const Config = {
   Generator: {
-    timeout: 1000,
+    timeout: 5000,
   },
 };

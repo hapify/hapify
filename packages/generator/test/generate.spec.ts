@@ -226,17 +226,21 @@ describe('generate', () => {
         [{ ...templates[1], content: '<<< while(true) {} >>>' }],
         models,
       ),
-    ).to.reject('Template processing timed out (1000ms)');
+    ).to.reject('Template processing timed out (5000ms)');
     expect(error.code).to.equal(1005);
-  }).slow(4000);
+  })
+    .timeout(20000)
+    .slow(10000);
 
   it('generate with timeout js template', async () => {
     // eslint-disable-next-line @typescript-eslint/await-thenable
     const error: any = await expect(
       Generator.run([{ ...templates[2], content: 'while(true) {}' }], models),
-    ).to.reject('Template processing timed out (1000ms)');
+    ).to.reject('Template processing timed out (5000ms)');
     expect(error.code).to.equal(2005);
-  }).slow(4000);
+  })
+    .timeout(20000)
+    .slow(10000);
 
   it('globals are undefined', async () => {
     // eslint-disable-next-line @typescript-eslint/await-thenable

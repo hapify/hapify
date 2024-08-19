@@ -28,22 +28,15 @@ Hapify was born out of the desire to **accelerate modern development**, by repla
 ## 5 reasons to check out Hapify
 
 1. We've improved boilerplates.
-2. Our open source [templating syntax](https://docs.hapify.io/en/latest/templating/hapify/syntax/) is unique, simple and powerful.
-3. You are free to [write you own dynamic boilerplates](https://docs.hapify.io/en/latest/cli/#create-a-new-boilerplate-channel) with you own specifications, in any language
+2. Our open source [templating syntax](https://hapify.github.io/en/latest/templating/hapify/syntax/) is unique, simple and powerful.
+3. You are free to [write you own dynamic boilerplates](https://hapify.github.io/en/latest/cli/#create-a-new-boilerplate-channel) with you own specifications, in any language
 4. You can easily reverse-engineer your current static boilerplates
 5. We strongly encourage our community to share boilerplates and data-models collections on [Hapify Hub](https://hub.hapify.io/).
 
 
 ## Get Started
 
-Visit our [Get Started Tutorial](https://www.hapify.io/get-started)
-
-
-## Community
-
-### Resources
-You can browse and import sample boilerplates & data models in your Hapify projects thanks to The [Hapify Community Hub](https://hub.hapify.io/).
-
+Visit our [Get Started Tutorial](https://hapify.github.io/getting-started/installation/)
 
 ### Contributing
 
@@ -56,12 +49,11 @@ Please refer [to the contribution guide](https://github.com/hapify/hapify/blob/m
 
 ### Channels
 - [Slack](https://hapify.slack.com)
-- [Email](mailto:hello@hapify.io)
+- [Email](mailto:hapify@tractr.net)
 
 
 ## Getting Help
-- [Official documentation](https://docs.hapify.io/)
-- [Official website](https://www.hapify.io)
+- [Official documentation](https://hapify.github.io/)
 
 
 
